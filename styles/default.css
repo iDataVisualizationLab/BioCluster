@@ -1,0 +1,28 @@
+.link line {
+    stroke: #000000;
+    stroke-opacity: 2px;
+}
+
+.nodes circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+}
+
+.node text {
+    pointer-events: none;
+    font: 8px sans-serif;
+}
+.bubble {
+    pointer-events: none;
+    font: 12px sans-serif;
+}
+div {
+    border: 1px solid black;
+    width: 1500px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#community{
+    overflow: auto;
+    width: 100%;
+}

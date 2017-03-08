@@ -1,0 +1,329 @@
+{
+  "nodes": [
+    {
+      "id": "4198",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3105+hsa:3106+hsa:3107+hsa:3108+h…19+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127+hsa:3133+hsa:3134+hsa:3135",
+      "name": "HLA-A",
+      "shared_name": "hsa:3105 hsa:3106 hsa:3107 hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127 hsa:3133 hsa:3134 hsa:3135",
+      "type": "gene"
+    },
+    {
+      "id": "4197",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:941+hsa:942",
+      "name": "CD80",
+      "shared_name": "hsa:941 hsa:942",
+      "type": "gene"
+    },
+    {
+      "id": "4196",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3592+hsa:3593",
+      "name": "IL12A",
+      "shared_name": "hsa:3592 hsa:3593",
+      "type": "gene"
+    },
+    {
+      "id": "4195",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00533",
+      "name": "C00533",
+      "shared_name": "cpd:C00533",
+      "type": "compound"
+    },
+    {
+      "id": "4194",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7124",
+      "name": "TNF",
+      "shared_name": "hsa:7124",
+      "type": "gene"
+    },
+    {
+      "id": "4193",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:959",
+      "name": "CD40LG",
+      "shared_name": "hsa:959",
+      "type": "gene"
+    },
+    {
+      "id": "4192",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:958",
+      "name": "CD40",
+      "shared_name": "hsa:958",
+      "type": "gene"
+    },
+    {
+      "id": "4191",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:940",
+      "name": "CD28",
+      "shared_name": "hsa:940",
+      "type": "gene"
+    },
+    {
+      "id": "4190",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:941+hsa:942",
+      "name": "CD80",
+      "shared_name": "hsa:941 hsa:942",
+      "type": "gene"
+    },
+    {
+      "id": "4189",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3458",
+      "name": "IFNG",
+      "shared_name": "hsa:3458",
+      "type": "gene"
+    },
+    {
+      "id": "4188",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "4187",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3105+hsa:3106+hsa:3107+hsa:3133+hsa:3134+hsa:3135",
+      "name": "HLA-A",
+      "shared_name": "hsa:3105 hsa:3106 hsa:3107 hsa:3133 hsa:3134 hsa:3135",
+      "type": "gene"
+    },
+    {
+      "id": "4186",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3586",
+      "name": "IL10",
+      "shared_name": "hsa:3586",
+      "type": "gene"
+    },
+    {
+      "id": "4185",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:940",
+      "name": "CD28",
+      "shared_name": "hsa:940",
+      "type": "gene"
+    },
+    {
+      "id": "4184",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:940",
+      "name": "CD28",
+      "shared_name": "hsa:940",
+      "type": "gene"
+    },
+    {
+      "id": "4183",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:941+hsa:942",
+      "name": "CD80",
+      "shared_name": "hsa:941 hsa:942",
+      "type": "gene"
+    },
+    {
+      "id": "4182",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3567",
+      "name": "IL5",
+      "shared_name": "hsa:3567",
+      "type": "gene"
+    },
+    {
+      "id": "4181",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "4180",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "4177",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5551",
+      "name": "PRF1",
+      "shared_name": "hsa:5551",
+      "type": "gene"
+    },
+    {
+      "id": "4176",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3002",
+      "name": "GZMB",
+      "shared_name": "hsa:3002",
+      "type": "gene"
+    },
+    {
+      "id": "4175",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3105+hsa:3106+hsa:3107+hsa:3133+hsa:3134+hsa:3135",
+      "name": "HLA-A",
+      "shared_name": "hsa:3105 hsa:3106 hsa:3107 hsa:3133 hsa:3134 hsa:3135",
+      "type": "gene"
+    },
+    {
+      "id": "4174",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "4173",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:356",
+      "name": "FASLG",
+      "shared_name": "hsa:356",
+      "type": "gene"
+    },
+    {
+      "id": "4172",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:355",
+      "name": "FAS",
+      "shared_name": "hsa:355",
+      "type": "gene"
+    },
+    {
+      "id": "4171",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "4170",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+h…15+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "4169",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "4168",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:958",
+      "name": "CD40",
+      "shared_name": "hsa:958",
+      "type": "gene"
+    },
+    {
+      "id": "4167",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:959",
+      "name": "CD40LG",
+      "shared_name": "hsa:959",
+      "type": "gene"
+    },
+    {
+      "id": "4166",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "4165",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+h…15+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "4160",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "4159",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+h…15+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "4157",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3558",
+      "name": "IL2",
+      "shared_name": "hsa:3558",
+      "type": "gene"
+    },
+    {
+      "id": "4156",
+      "study": "4146_Allograft rejection",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3105+hsa:3106+hsa:3107+hsa:3108+h…19+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127+hsa:3133+hsa:3134+hsa:3135",
+      "name": "HLA-A",
+      "shared_name": "hsa:3105 hsa:3106 hsa:3107 hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127 hsa:3133 hsa:3134 hsa:3135",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "4197",
+      "target": "4185",
+      "weight": 1
+    },
+    {
+      "source": "4193",
+      "target": "4192",
+      "weight": 1
+    },
+    {
+      "source": "4190",
+      "target": "4191",
+      "weight": 1
+    },
+    {
+      "source": "4183",
+      "target": "4184",
+      "weight": 1
+    },
+    {
+      "source": "4180",
+      "target": "4198",
+      "weight": 1
+    },
+    {
+      "source": "4173",
+      "target": "4172",
+      "weight": 1
+    },
+    {
+      "source": "4167",
+      "target": "4168",
+      "weight": 1
+    }
+  ]
+}

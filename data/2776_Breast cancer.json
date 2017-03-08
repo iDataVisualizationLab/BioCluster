@@ -1,0 +1,1406 @@
+{
+  "nodes": [
+    {
+      "id": "2903",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    },
+    {
+      "id": "2902",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2324",
+      "name": "FLT4",
+      "shared_name": "hsa:2324",
+      "type": "gene"
+    },
+    {
+      "id": "2901",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23462+hsa:23493+hsa:26508",
+      "name": "HEY1",
+      "shared_name": "hsa:23462 hsa:23493 hsa:26508",
+      "type": "gene"
+    },
+    {
+      "id": "2900",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3280+hsa:388585",
+      "name": "HES1",
+      "shared_name": "hsa:3280 hsa:388585",
+      "type": "gene"
+    },
+    {
+      "id": "2899",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    },
+    {
+      "id": "2898",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2246+hsa:2247+hsa:2248+hsa:2249+hsa:2250+hsa:2251+hsa:2252+hsa:2253+hsa:2254+hsa:2255+hsa:2256+hsa:2257+hsa:2258+hsa:2259+hsa:26281+hsa:26291+hsa:27006+hsa:8074+hsa:8817+hsa:8822+hsa:8823+hsa:9965",
+      "name": "FGF1",
+      "shared_name": "hsa:2246 hsa:2247 hsa:2248 hsa:2249 hsa:2250 hsa:2251 hsa:2252 hsa:2253 hsa:2254 hsa:2255 hsa:2256 hsa:2257 hsa:2258 hsa:2259 hsa:26281 hsa:26291 hsa:27006 hsa:8074 hsa:8817 hsa:8822 hsa:8823 hsa:9965",
+      "type": "gene"
+    },
+    {
+      "id": "2897",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:675",
+      "name": "BRCA2",
+      "shared_name": "hsa:675",
+      "type": "gene"
+    },
+    {
+      "id": "2896",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:672",
+      "name": "BRCA1",
+      "shared_name": "hsa:672",
+      "type": "gene"
+    },
+    {
+      "id": "2895",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950",
+      "name": "EGF",
+      "shared_name": "hsa:1950",
+      "type": "gene"
+    },
+    {
+      "id": "2894",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950",
+      "name": "EGF",
+      "shared_name": "hsa:1950",
+      "type": "gene"
+    },
+    {
+      "id": "2893",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4609",
+      "name": "MYC",
+      "shared_name": "hsa:4609",
+      "type": "gene"
+    },
+    {
+      "id": "2892",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8600",
+      "name": "TNFSF11",
+      "shared_name": "hsa:8600",
+      "type": "gene"
+    },
+    {
+      "id": "2891",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:54361+hsa:7471",
+      "name": "WNT4",
+      "shared_name": "hsa:54361 hsa:7471",
+      "type": "gene"
+    },
+    {
+      "id": "2890",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2889",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2260",
+      "name": "FGFR1",
+      "shared_name": "hsa:2260",
+      "type": "gene"
+    },
+    {
+      "id": "2888",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    },
+    {
+      "id": "2887",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4609",
+      "name": "MYC",
+      "shared_name": "hsa:4609",
+      "type": "gene"
+    },
+    {
+      "id": "2886",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4791",
+      "name": "NFKB2",
+      "shared_name": "hsa:4791",
+      "type": "gene"
+    },
+    {
+      "id": "2885",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1026",
+      "name": "CDKN1A",
+      "shared_name": "hsa:1026",
+      "type": "gene"
+    },
+    {
+      "id": "2884",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2883",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3815",
+      "name": "KIT",
+      "shared_name": "hsa:3815",
+      "type": "gene"
+    },
+    {
+      "id": "2881",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2880",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1869+hsa:1870+hsa:1871",
+      "name": "E2F1",
+      "shared_name": "hsa:1869 hsa:1870 hsa:1871",
+      "type": "gene"
+    },
+    {
+      "id": "2879",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5925",
+      "name": "RB1",
+      "shared_name": "hsa:5925",
+      "type": "gene"
+    },
+    {
+      "id": "2878",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1019+hsa:1021",
+      "name": "CDK4",
+      "shared_name": "hsa:1019 hsa:1021",
+      "type": "gene"
+    },
+    {
+      "id": "2875",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51384+hsa:54361+hsa:7471+hsa:7472+hsa:7473+hsa:7474+hsa:7475+hsa:7476+hsa:7477+hsa:7478+hsa:7479+hsa:7480+hsa:7481+hsa:7482+hsa:7483+hsa:7484+hsa:80326+hsa:81029+hsa:89780",
+      "name": "WNT16...",
+      "shared_name": "hsa:51384 hsa:54361 hsa:7471 hsa:7472 hsa:7473 hsa:7474 hsa:7475 hsa:7476 hsa:7477 hsa:7478 hsa:7479 hsa:7480 hsa:7481 hsa:7482 hsa:7483 hsa:7484 hsa:80326 hsa:81029 hsa:89780",
+      "type": "gene"
+    },
+    {
+      "id": "2874",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:11211+hsa:2535+hsa:7855+hsa:7976+hsa:8321+hsa:8322+hsa:8323+hsa:8324+hsa:8325+hsa:8326",
+      "name": "FZD10",
+      "shared_name": "hsa:11211 hsa:2535 hsa:7855 hsa:7976 hsa:8321 hsa:8322 hsa:8323 hsa:8324 hsa:8325 hsa:8326",
+      "type": "gene"
+    },
+    {
+      "id": "2873",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4040+hsa:4041",
+      "name": "LRP6",
+      "shared_name": "hsa:4040 hsa:4041",
+      "type": "gene"
+    },
+    {
+      "id": "2872",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1855+hsa:1856+hsa:1857",
+      "name": "DVL1",
+      "shared_name": "hsa:1855 hsa:1856 hsa:1857",
+      "type": "gene"
+    },
+    {
+      "id": "2871",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10023+hsa:23401",
+      "name": "FRAT1...",
+      "shared_name": "hsa:10023 hsa:23401",
+      "type": "gene"
+    },
+    {
+      "id": "2870",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2932",
+      "name": "GSK3B",
+      "shared_name": "hsa:2932",
+      "type": "gene"
+    },
+    {
+      "id": "2869",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1499",
+      "name": "CTNNB1",
+      "shared_name": "hsa:1499",
+      "type": "gene"
+    },
+    {
+      "id": "2868",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10297+hsa:324",
+      "name": "APC2",
+      "shared_name": "hsa:10297 hsa:324",
+      "type": "gene"
+    },
+    {
+      "id": "2867",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8312+hsa:8313",
+      "name": "AXIN1",
+      "shared_name": "hsa:8312 hsa:8313",
+      "type": "gene"
+    },
+    {
+      "id": "2866",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:122011+hsa:1452",
+      "name": "CSNK1A1L",
+      "shared_name": "hsa:122011 hsa:1452",
+      "type": "gene"
+    },
+    {
+      "id": "2865",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51176+hsa:6932+hsa:6934+hsa:83439",
+      "name": "LEF1",
+      "shared_name": "hsa:51176 hsa:6932 hsa:6934 hsa:83439",
+      "type": "gene"
+    },
+    {
+      "id": "2864",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4609",
+      "name": "MYC",
+      "shared_name": "hsa:4609",
+      "type": "gene"
+    },
+    {
+      "id": "2863",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2862",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5728",
+      "name": "PTEN",
+      "shared_name": "hsa:5728",
+      "type": "gene"
+    },
+    {
+      "id": "2861",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "2860",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "2859",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "2858",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5728",
+      "name": "PTEN",
+      "shared_name": "hsa:5728",
+      "type": "gene"
+    },
+    {
+      "id": "2857",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "2856",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "2855",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "2854",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5728",
+      "name": "PTEN",
+      "shared_name": "hsa:5728",
+      "type": "gene"
+    },
+    {
+      "id": "2853",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "2852",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3480",
+      "name": "IGF1R",
+      "shared_name": "hsa:3480",
+      "type": "gene"
+    },
+    {
+      "id": "2851",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3479",
+      "name": "IGF1",
+      "shared_name": "hsa:3479",
+      "type": "gene"
+    },
+    {
+      "id": "2850",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6198+hsa:6199",
+      "name": "RPS6KB1",
+      "shared_name": "hsa:6198 hsa:6199",
+      "type": "gene"
+    },
+    {
+      "id": "2849",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2475",
+      "name": "MTOR",
+      "shared_name": "hsa:2475",
+      "type": "gene"
+    },
+    {
+      "id": "2848",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "2847",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "2846",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:25759+hsa:399694+hsa:53358+hsa:6464",
+      "name": "SHC2",
+      "shared_name": "hsa:25759 hsa:399694 hsa:53358 hsa:6464",
+      "type": "gene"
+    },
+    {
+      "id": "2845",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "2844",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "2843",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "2842",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "2841",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956",
+      "name": "EGFR",
+      "shared_name": "hsa:1956",
+      "type": "gene"
+    },
+    {
+      "id": "2840",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3480",
+      "name": "IGF1R",
+      "shared_name": "hsa:3480",
+      "type": "gene"
+    },
+    {
+      "id": "2839",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3479",
+      "name": "IGF1",
+      "shared_name": "hsa:3479",
+      "type": "gene"
+    },
+    {
+      "id": "2838",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6198+hsa:6199",
+      "name": "RPS6KB1",
+      "shared_name": "hsa:6198 hsa:6199",
+      "type": "gene"
+    },
+    {
+      "id": "2837",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2475",
+      "name": "MTOR",
+      "shared_name": "hsa:2475",
+      "type": "gene"
+    },
+    {
+      "id": "2836",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "2835",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "2834",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "2833",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "2832",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:25759+hsa:399694+hsa:53358+hsa:6464",
+      "name": "SHC2",
+      "shared_name": "hsa:25759 hsa:399694 hsa:53358 hsa:6464",
+      "type": "gene"
+    },
+    {
+      "id": "2830",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "2829",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "2828",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "2827",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "2826",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8202+hsa:8648",
+      "name": "NCOA3",
+      "shared_name": "hsa:8202 hsa:8648",
+      "type": "gene"
+    },
+    {
+      "id": "2825",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5241",
+      "name": "PGR",
+      "shared_name": "hsa:5241",
+      "type": "gene"
+    },
+    {
+      "id": "2824",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5241",
+      "name": "PGR",
+      "shared_name": "hsa:5241",
+      "type": "gene"
+    },
+    {
+      "id": "2823",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00410",
+      "name": "C00410",
+      "shared_name": "cpd:C00410",
+      "type": "compound"
+    },
+    {
+      "id": "2822",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00410",
+      "name": "C00410",
+      "shared_name": "cpd:C00410",
+      "type": "compound"
+    },
+    {
+      "id": "2821",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00410",
+      "name": "C00410",
+      "shared_name": "cpd:C00410",
+      "type": "compound"
+    },
+    {
+      "id": "2820",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00951",
+      "name": "C00951",
+      "shared_name": "cpd:C00951",
+      "type": "compound"
+    },
+    {
+      "id": "2819",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00951",
+      "name": "C00951",
+      "shared_name": "cpd:C00951",
+      "type": "compound"
+    },
+    {
+      "id": "2818",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2099+hsa:2100",
+      "name": "ESR1",
+      "shared_name": "hsa:2099 hsa:2100",
+      "type": "gene"
+    },
+    {
+      "id": "2817",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00951",
+      "name": "C00951",
+      "shared_name": "cpd:C00951",
+      "type": "compound"
+    },
+    {
+      "id": "2816",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00951",
+      "name": "C00951",
+      "shared_name": "cpd:C00951",
+      "type": "compound"
+    },
+    {
+      "id": "2814",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10683+hsa:28514+hsa:54567",
+      "name": "DLL3",
+      "shared_name": "hsa:10683 hsa:28514 hsa:54567",
+      "type": "gene"
+    },
+    {
+      "id": "2813",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2099+hsa:2100",
+      "name": "ESR1",
+      "shared_name": "hsa:2099 hsa:2100",
+      "type": "gene"
+    },
+    {
+      "id": "2812",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2353+hsa:3725+hsa:6667",
+      "name": "FOS",
+      "shared_name": "hsa:2353 hsa:3725 hsa:6667",
+      "type": "gene"
+    },
+    {
+      "id": "2810",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8202+hsa:8648",
+      "name": "NCOA3",
+      "shared_name": "hsa:8202 hsa:8648",
+      "type": "gene"
+    },
+    {
+      "id": "2809",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    },
+    {
+      "id": "2808",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3480",
+      "name": "IGF1R",
+      "shared_name": "hsa:3480",
+      "type": "gene"
+    },
+    {
+      "id": "2807",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3479",
+      "name": "IGF1",
+      "shared_name": "hsa:3479",
+      "type": "gene"
+    },
+    {
+      "id": "2806",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6198+hsa:6199",
+      "name": "RPS6KB1",
+      "shared_name": "hsa:6198 hsa:6199",
+      "type": "gene"
+    },
+    {
+      "id": "2805",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2475",
+      "name": "MTOR",
+      "shared_name": "hsa:2475",
+      "type": "gene"
+    },
+    {
+      "id": "2804",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "2803",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4851+hsa:4853+hsa:4854+hsa:4855",
+      "name": "NOTCH1",
+      "shared_name": "hsa:4851 hsa:4853 hsa:4854 hsa:4855",
+      "type": "gene"
+    },
+    {
+      "id": "2802",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:182+hsa:3714",
+      "name": "JAG1",
+      "shared_name": "hsa:182 hsa:3714",
+      "type": "gene"
+    },
+    {
+      "id": "2800",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "2799",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "2798",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:25759+hsa:399694+hsa:53358+hsa:6464",
+      "name": "SHC2",
+      "shared_name": "hsa:25759 hsa:399694 hsa:53358 hsa:6464",
+      "type": "gene"
+    },
+    {
+      "id": "2797",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "2796",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "2795",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "2794",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "2793",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8202+hsa:8648",
+      "name": "NCOA3",
+      "shared_name": "hsa:8202 hsa:8648",
+      "type": "gene"
+    },
+    {
+      "id": "2792",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2099+hsa:2100",
+      "name": "ESR1",
+      "shared_name": "hsa:2099 hsa:2100",
+      "type": "gene"
+    },
+    {
+      "id": "2791",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00951",
+      "name": "C00951",
+      "shared_name": "cpd:C00951",
+      "type": "compound"
+    },
+    {
+      "id": "2790",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956",
+      "name": "EGFR",
+      "shared_name": "hsa:1956",
+      "type": "gene"
+    },
+    {
+      "id": "2789",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00951",
+      "name": "C00951",
+      "shared_name": "cpd:C00951",
+      "type": "compound"
+    },
+    {
+      "id": "2788",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2099+hsa:2100",
+      "name": "ESR1",
+      "shared_name": "hsa:2099 hsa:2100",
+      "type": "gene"
+    },
+    {
+      "id": "2787",
+      "study": "2776_Breast cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2099+hsa:2100",
+      "name": "ESR1",
+      "shared_name": "hsa:2099 hsa:2100",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "2901",
+      "target": "2903",
+      "weight": 1
+    },
+    {
+      "source": "2901",
+      "target": "2886",
+      "weight": 1
+    },
+    {
+      "source": "2901",
+      "target": "2887",
+      "weight": 1
+    },
+    {
+      "source": "2901",
+      "target": "2885",
+      "weight": 1
+    },
+    {
+      "source": "2901",
+      "target": "2884",
+      "weight": 1
+    },
+    {
+      "source": "2900",
+      "target": "2903",
+      "weight": 1
+    },
+    {
+      "source": "2900",
+      "target": "2886",
+      "weight": 1
+    },
+    {
+      "source": "2900",
+      "target": "2887",
+      "weight": 1
+    },
+    {
+      "source": "2900",
+      "target": "2885",
+      "weight": 1
+    },
+    {
+      "source": "2900",
+      "target": "2884",
+      "weight": 1
+    },
+    {
+      "source": "2898",
+      "target": "2889",
+      "weight": 1
+    },
+    {
+      "source": "2895",
+      "target": "2841",
+      "weight": 1
+    },
+    {
+      "source": "2894",
+      "target": "2790",
+      "weight": 1
+    },
+    {
+      "source": "2889",
+      "target": "2835",
+      "weight": 1
+    },
+    {
+      "source": "2889",
+      "target": "2832",
+      "weight": 1
+    },
+    {
+      "source": "2888",
+      "target": "2835",
+      "weight": 1
+    },
+    {
+      "source": "2888",
+      "target": "2832",
+      "weight": 1
+    },
+    {
+      "source": "2883",
+      "target": "2859",
+      "weight": 1
+    },
+    {
+      "source": "2883",
+      "target": "2846",
+      "weight": 1
+    },
+    {
+      "source": "2881",
+      "target": "2879",
+      "weight": 1
+    },
+    {
+      "source": "2879",
+      "target": "2880",
+      "weight": 1
+    },
+    {
+      "source": "2878",
+      "target": "2881",
+      "weight": 1
+    },
+    {
+      "source": "2875",
+      "target": "2873",
+      "weight": 1
+    },
+    {
+      "source": "2874",
+      "target": "2872",
+      "weight": 1
+    },
+    {
+      "source": "2873",
+      "target": "2874",
+      "weight": 1
+    },
+    {
+      "source": "2872",
+      "target": "2871",
+      "weight": 1
+    },
+    {
+      "source": "2872",
+      "target": "2870",
+      "weight": 1
+    },
+    {
+      "source": "2870",
+      "target": "2867",
+      "weight": 1
+    },
+    {
+      "source": "2870",
+      "target": "2869",
+      "weight": 1
+    },
+    {
+      "source": "2869",
+      "target": "2865",
+      "weight": 1
+    },
+    {
+      "source": "2869",
+      "target": "2866",
+      "weight": 1
+    },
+    {
+      "source": "2867",
+      "target": "2868",
+      "weight": 1
+    },
+    {
+      "source": "2865",
+      "target": "2863",
+      "weight": 1
+    },
+    {
+      "source": "2865",
+      "target": "2864",
+      "weight": 1
+    },
+    {
+      "source": "2862",
+      "target": "2861",
+      "weight": 1
+    },
+    {
+      "source": "2861",
+      "target": "2860",
+      "weight": 1
+    },
+    {
+      "source": "2860",
+      "target": "2849",
+      "weight": 1
+    },
+    {
+      "source": "2859",
+      "target": "2861",
+      "weight": 1
+    },
+    {
+      "source": "2858",
+      "target": "2857",
+      "weight": 1
+    },
+    {
+      "source": "2857",
+      "target": "2856",
+      "weight": 1
+    },
+    {
+      "source": "2856",
+      "target": "2805",
+      "weight": 1
+    },
+    {
+      "source": "2855",
+      "target": "2857",
+      "weight": 1
+    },
+    {
+      "source": "2854",
+      "target": "2853",
+      "weight": 1
+    },
+    {
+      "source": "2853",
+      "target": "2836",
+      "weight": 1
+    },
+    {
+      "source": "2852",
+      "target": "2859",
+      "weight": 1
+    },
+    {
+      "source": "2852",
+      "target": "2846",
+      "weight": 1
+    },
+    {
+      "source": "2851",
+      "target": "2852",
+      "weight": 1
+    },
+    {
+      "source": "2849",
+      "target": "2850",
+      "weight": 1
+    },
+    {
+      "source": "2848",
+      "target": "2842",
+      "weight": 1
+    },
+    {
+      "source": "2847",
+      "target": "2848",
+      "weight": 1
+    },
+    {
+      "source": "2846",
+      "target": "2847",
+      "weight": 1
+    },
+    {
+      "source": "2844",
+      "target": "2845",
+      "weight": 1
+    },
+    {
+      "source": "2843",
+      "target": "2844",
+      "weight": 1
+    },
+    {
+      "source": "2842",
+      "target": "2843",
+      "weight": 1
+    },
+    {
+      "source": "2841",
+      "target": "2859",
+      "weight": 1
+    },
+    {
+      "source": "2841",
+      "target": "2846",
+      "weight": 1
+    },
+    {
+      "source": "2840",
+      "target": "2835",
+      "weight": 1
+    },
+    {
+      "source": "2840",
+      "target": "2832",
+      "weight": 1
+    },
+    {
+      "source": "2839",
+      "target": "2840",
+      "weight": 1
+    },
+    {
+      "source": "2837",
+      "target": "2838",
+      "weight": 1
+    },
+    {
+      "source": "2836",
+      "target": "2837",
+      "weight": 1
+    },
+    {
+      "source": "2835",
+      "target": "2853",
+      "weight": 1
+    },
+    {
+      "source": "2834",
+      "target": "2827",
+      "weight": 1
+    },
+    {
+      "source": "2833",
+      "target": "2834",
+      "weight": 1
+    },
+    {
+      "source": "2832",
+      "target": "2833",
+      "weight": 1
+    },
+    {
+      "source": "2829",
+      "target": "2830",
+      "weight": 1
+    },
+    {
+      "source": "2828",
+      "target": "2829",
+      "weight": 1
+    },
+    {
+      "source": "2827",
+      "target": "2828",
+      "weight": 1
+    },
+    {
+      "source": "2826",
+      "target": "2825",
+      "weight": 1
+    },
+    {
+      "source": "2825",
+      "target": "2892",
+      "weight": 1
+    },
+    {
+      "source": "2825",
+      "target": "2891",
+      "weight": 1
+    },
+    {
+      "source": "2824",
+      "target": "2822",
+      "weight": 1
+    },
+    {
+      "source": "2823",
+      "target": "2826",
+      "weight": 1
+    },
+    {
+      "source": "2820",
+      "target": "2810",
+      "weight": 1
+    },
+    {
+      "source": "2819",
+      "target": "2812",
+      "weight": 1
+    },
+    {
+      "source": "2818",
+      "target": "2893",
+      "weight": 1
+    },
+    {
+      "source": "2818",
+      "target": "2890",
+      "weight": 1
+    },
+    {
+      "source": "2817",
+      "target": "2792",
+      "weight": 1
+    },
+    {
+      "source": "2816",
+      "target": "2787",
+      "weight": 1
+    },
+    {
+      "source": "2814",
+      "target": "2803",
+      "weight": 1
+    },
+    {
+      "source": "2813",
+      "target": "2893",
+      "weight": 1
+    },
+    {
+      "source": "2813",
+      "target": "2890",
+      "weight": 1
+    },
+    {
+      "source": "2812",
+      "target": "2793",
+      "weight": 1
+    },
+    {
+      "source": "2810",
+      "target": "2813",
+      "weight": 1
+    },
+    {
+      "source": "2809",
+      "target": "2855",
+      "weight": 1
+    },
+    {
+      "source": "2809",
+      "target": "2798",
+      "weight": 1
+    },
+    {
+      "source": "2808",
+      "target": "2798",
+      "weight": 1
+    },
+    {
+      "source": "2807",
+      "target": "2808",
+      "weight": 1
+    },
+    {
+      "source": "2805",
+      "target": "2806",
+      "weight": 1
+    },
+    {
+      "source": "2803",
+      "target": "2902",
+      "weight": 1
+    },
+    {
+      "source": "2803",
+      "target": "2901",
+      "weight": 1
+    },
+    {
+      "source": "2803",
+      "target": "2900",
+      "weight": 1
+    },
+    {
+      "source": "2803",
+      "target": "2899",
+      "weight": 1
+    },
+    {
+      "source": "2802",
+      "target": "2803",
+      "weight": 1
+    },
+    {
+      "source": "2800",
+      "target": "2794",
+      "weight": 1
+    },
+    {
+      "source": "2799",
+      "target": "2800",
+      "weight": 1
+    },
+    {
+      "source": "2798",
+      "target": "2799",
+      "weight": 1
+    },
+    {
+      "source": "2796",
+      "target": "2797",
+      "weight": 1
+    },
+    {
+      "source": "2795",
+      "target": "2796",
+      "weight": 1
+    },
+    {
+      "source": "2794",
+      "target": "2795",
+      "weight": 1
+    },
+    {
+      "source": "2793",
+      "target": "2818",
+      "weight": 1
+    },
+    {
+      "source": "2791",
+      "target": "2788",
+      "weight": 1
+    },
+    {
+      "source": "2790",
+      "target": "2855",
+      "weight": 1
+    },
+    {
+      "source": "2790",
+      "target": "2798",
+      "weight": 1
+    }
+  ]
+}

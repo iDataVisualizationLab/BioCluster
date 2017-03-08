@@ -1,0 +1,229 @@
+{
+  "nodes": [
+    {
+      "id": "1579",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51176+hsa:6932+hsa:6934+hsa:83439",
+      "name": "LEF1",
+      "shared_name": "hsa:51176 hsa:6932 hsa:6934 hsa:83439",
+      "type": "gene"
+    },
+    {
+      "id": "1578",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2932",
+      "name": "GSK3B",
+      "shared_name": "hsa:2932",
+      "type": "gene"
+    },
+    {
+      "id": "1577",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1499",
+      "name": "CTNNB1",
+      "shared_name": "hsa:1499",
+      "type": "gene"
+    },
+    {
+      "id": "1576",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:64399",
+      "name": "HHIP",
+      "shared_name": "hsa:64399",
+      "type": "gene"
+    },
+    {
+      "id": "1575",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6608",
+      "name": "SMO",
+      "shared_name": "hsa:6608",
+      "type": "gene"
+    },
+    {
+      "id": "1574",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:27148",
+      "name": "STK36",
+      "shared_name": "hsa:27148",
+      "type": "gene"
+    },
+    {
+      "id": "1573",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2735+hsa:2736+hsa:2737",
+      "name": "GLI1",
+      "shared_name": "hsa:2735 hsa:2736 hsa:2737",
+      "type": "gene"
+    },
+    {
+      "id": "1571",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:11211+hsa:2535+hsa:7855+hsa:7976+hsa:8321+hsa:8322+hsa:8323+hsa:8324+hsa:8325+hsa:8326",
+      "name": "FZD10",
+      "shared_name": "hsa:11211 hsa:2535 hsa:7855 hsa:7976 hsa:8321 hsa:8322 hsa:8323 hsa:8324 hsa:8325 hsa:8326",
+      "type": "gene"
+    },
+    {
+      "id": "1570",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1855+hsa:1856+hsa:1857",
+      "name": "DVL1",
+      "shared_name": "hsa:1855 hsa:1856 hsa:1857",
+      "type": "gene"
+    },
+    {
+      "id": "1569",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8312+hsa:8313",
+      "name": "AXIN1",
+      "shared_name": "hsa:8312 hsa:8313",
+      "type": "gene"
+    },
+    {
+      "id": "1568",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51684",
+      "name": "SUFU",
+      "shared_name": "hsa:51684",
+      "type": "gene"
+    },
+    {
+      "id": "1567",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5727",
+      "name": "PTCH1",
+      "shared_name": "hsa:5727",
+      "type": "gene"
+    },
+    {
+      "id": "1566",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10297+hsa:324",
+      "name": "APC2",
+      "shared_name": "hsa:10297 hsa:324",
+      "type": "gene"
+    },
+    {
+      "id": "1565",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6469",
+      "name": "SHH",
+      "shared_name": "hsa:6469",
+      "type": "gene"
+    },
+    {
+      "id": "1564",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51384+hsa:54361+hsa:7471+hsa:7472…hsa:7480+hsa:7481+hsa:7482+hsa:7483+hsa:7484+hsa:80326+hsa:81029+hsa:89780",
+      "name": "WNT16...",
+      "shared_name": "hsa:51384 hsa:54361 hsa:7471 hsa:7472 hsa:7473 hsa:7474 hsa:7475 hsa:7476 hsa:7477 hsa:7478 hsa:7479 hsa:7480 hsa:7481 hsa:7482 hsa:7483 hsa:7484 hsa:80326 hsa:81029 hsa:89780",
+      "type": "gene"
+    },
+    {
+      "id": "1563",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "1562",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:650+hsa:652",
+      "name": "BMP2",
+      "shared_name": "hsa:650 hsa:652",
+      "type": "gene"
+    },
+    {
+      "id": "1561",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5727+hsa:8643",
+      "name": "PTCH1",
+      "shared_name": "hsa:5727 hsa:8643",
+      "type": "gene"
+    },
+    {
+      "id": "1560",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2735",
+      "name": "GLI1",
+      "shared_name": "hsa:2735",
+      "type": "gene"
+    },
+    {
+      "id": "1559",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00187",
+      "name": "C00187",
+      "shared_name": "cpd:C00187",
+      "type": "compound"
+    },
+    {
+      "id": "1558",
+      "study": "1548_Basal_cell_carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K06227",
+      "name": "K06227",
+      "shared_name": "ko:K06227",
+      "type": "ortholog"
+    }
+  ],
+  "links": [
+    {
+      "source": "1578",
+      "target": "1577",
+      "weight": 1
+    },
+    {
+      "source": "1577",
+      "target": "1579",
+      "weight": 1
+    },
+    {
+      "source": "1573",
+      "target": "1564",
+      "weight": 1
+    },
+    {
+      "source": "1573",
+      "target": "1561",
+      "weight": 1
+    },
+    {
+      "source": "1573",
+      "target": "1560",
+      "weight": 1
+    },
+    {
+      "source": "1573",
+      "target": "1576",
+      "weight": 1
+    },
+    {
+      "source": "1573",
+      "target": "1562",
+      "weight": 1
+    },
+    {
+      "source": "1571",
+      "target": "1570",
+      "weight": 1
+    },
+    {
+      "source": "1570",
+      "target": "1578",
+      "weight": 1
+    },
+    {
+      "source": "1565",
+      "target": "1567",
+      "weight": 1
+    },
+    {
+      "source": "1564",
+      "target": "1571",
+      "weight": 1
+    }
+  ]
+}

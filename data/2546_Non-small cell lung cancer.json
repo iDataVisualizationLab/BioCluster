@@ -1,0 +1,609 @@
+{
+  "nodes": [
+    {
+      "id": "2609",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:238+hsa:27436",
+      "name": "ALK",
+      "shared_name": "hsa:238 hsa:27436",
+      "type": "gene"
+    },
+    {
+      "id": "2601",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3845",
+      "name": "KRAS",
+      "shared_name": "hsa:3845",
+      "type": "gene"
+    },
+    {
+      "id": "2600",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "2599",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "2598",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "2596",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2272",
+      "name": "FHIT",
+      "shared_name": "hsa:2272",
+      "type": "gene"
+    },
+    {
+      "id": "2595",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5290+hsa:5291+hsa:5293+hsa:5294",
+      "name": "PIK3CA",
+      "shared_name": "hsa:5290 hsa:5291 hsa:5293 hsa:5294",
+      "type": "gene"
+    },
+    {
+      "id": "2594",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "2593",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "2592",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2591",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:83593",
+      "name": "RASSF5",
+      "shared_name": "hsa:83593",
+      "type": "gene"
+    },
+    {
+      "id": "2590",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:11186",
+      "name": "RASSF1",
+      "shared_name": "hsa:11186",
+      "type": "gene"
+    },
+    {
+      "id": "2589",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6256+hsa:6257+hsa:6258",
+      "name": "RXRA",
+      "shared_name": "hsa:6256 hsa:6257 hsa:6258",
+      "type": "gene"
+    },
+    {
+      "id": "2588",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "2587",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "2586",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "2585",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5170",
+      "name": "PDPK1",
+      "shared_name": "hsa:5170",
+      "type": "gene"
+    },
+    {
+      "id": "2584",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5915",
+      "name": "RARB",
+      "shared_name": "hsa:5915",
+      "type": "gene"
+    },
+    {
+      "id": "2583",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5925",
+      "name": "RB1",
+      "shared_name": "hsa:5925",
+      "type": "gene"
+    },
+    {
+      "id": "2582",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950",
+      "name": "EGF",
+      "shared_name": "hsa:1950",
+      "type": "gene"
+    },
+    {
+      "id": "2581",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    },
+    {
+      "id": "2580",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2579",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6789",
+      "name": "STK4",
+      "shared_name": "hsa:6789",
+      "type": "gene"
+    },
+    {
+      "id": "2578",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:842",
+      "name": "CASP9",
+      "shared_name": "hsa:842",
+      "type": "gene"
+    },
+    {
+      "id": "2577",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:572",
+      "name": "BAD",
+      "shared_name": "hsa:572",
+      "type": "gene"
+    },
+    {
+      "id": "2576",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2309",
+      "name": "FOXO3",
+      "shared_name": "hsa:2309",
+      "type": "gene"
+    },
+    {
+      "id": "2575",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956",
+      "name": "EGFR",
+      "shared_name": "hsa:1956",
+      "type": "gene"
+    },
+    {
+      "id": "2574",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7039",
+      "name": "TGFA",
+      "shared_name": "hsa:7039",
+      "type": "gene"
+    },
+    {
+      "id": "2573",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5335+hsa:5336",
+      "name": "PLCG1",
+      "shared_name": "hsa:5335 hsa:5336",
+      "type": "gene"
+    },
+    {
+      "id": "2572",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "2571",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "2570",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1869+hsa:1870+hsa:1871",
+      "name": "E2F1",
+      "shared_name": "hsa:1869 hsa:1870 hsa:1871",
+      "type": "gene"
+    },
+    {
+      "id": "2569",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2568",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1019+hsa:1021",
+      "name": "CDK4",
+      "shared_name": "hsa:1019 hsa:1021",
+      "type": "gene"
+    },
+    {
+      "id": "2567",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "2566",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5170",
+      "name": "PDPK1",
+      "shared_name": "hsa:5170",
+      "type": "gene"
+    },
+    {
+      "id": "2565",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "2564",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:572",
+      "name": "BAD",
+      "shared_name": "hsa:572",
+      "type": "gene"
+    },
+    {
+      "id": "2563",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:842",
+      "name": "CASP9",
+      "shared_name": "hsa:842",
+      "type": "gene"
+    },
+    {
+      "id": "2562",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2309",
+      "name": "FOXO3",
+      "shared_name": "hsa:2309",
+      "type": "gene"
+    },
+    {
+      "id": "2561",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "2560",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C01245",
+      "name": "C01245",
+      "shared_name": "cpd:C01245",
+      "type": "compound"
+    },
+    {
+      "id": "2559",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00165",
+      "name": "C00165",
+      "shared_name": "cpd:C00165",
+      "type": "compound"
+    },
+    {
+      "id": "2558",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00076",
+      "name": "C00076",
+      "shared_name": "cpd:C00076",
+      "type": "compound"
+    },
+    {
+      "id": "2557",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00777+C15493",
+      "name": "C00777...",
+      "shared_name": "cpd:C00777 cpd:C15493",
+      "type": "compound"
+    },
+    {
+      "id": "2556",
+      "study": "2546_Non-small cell lung cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5578+hsa:5579+hsa:5582",
+      "name": "PRKCA",
+      "shared_name": "hsa:5578 hsa:5579 hsa:5582",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "2609",
+      "target": "2571",
+      "weight": 1
+    },
+    {
+      "source": "2609",
+      "target": "2595",
+      "weight": 1
+    },
+    {
+      "source": "2601",
+      "target": "2591",
+      "weight": 1
+    },
+    {
+      "source": "2601",
+      "target": "2600",
+      "weight": 1
+    },
+    {
+      "source": "2601",
+      "target": "2567",
+      "weight": 1
+    },
+    {
+      "source": "2600",
+      "target": "2599",
+      "weight": 1
+    },
+    {
+      "source": "2599",
+      "target": "2598",
+      "weight": 1
+    },
+    {
+      "source": "2598",
+      "target": "2592",
+      "weight": 1
+    },
+    {
+      "source": "2595",
+      "target": "2588",
+      "weight": 1
+    },
+    {
+      "source": "2594",
+      "target": "2576",
+      "weight": 1
+    },
+    {
+      "source": "2594",
+      "target": "2578",
+      "weight": 1
+    },
+    {
+      "source": "2594",
+      "target": "2577",
+      "weight": 1
+    },
+    {
+      "source": "2593",
+      "target": "2568",
+      "weight": 1
+    },
+    {
+      "source": "2590",
+      "target": "2579",
+      "weight": 1
+    },
+    {
+      "source": "2590",
+      "target": "2569",
+      "weight": 1
+    },
+    {
+      "source": "2590",
+      "target": "2591",
+      "weight": 1
+    },
+    {
+      "source": "2588",
+      "target": "2585",
+      "weight": 1
+    },
+    {
+      "source": "2588",
+      "target": "2594",
+      "weight": 1
+    },
+    {
+      "source": "2587",
+      "target": "2586",
+      "weight": 1
+    },
+    {
+      "source": "2586",
+      "target": "2571",
+      "weight": 1
+    },
+    {
+      "source": "2585",
+      "target": "2594",
+      "weight": 1
+    },
+    {
+      "source": "2584",
+      "target": "2589",
+      "weight": 1
+    },
+    {
+      "source": "2582",
+      "target": "2581",
+      "weight": 1
+    },
+    {
+      "source": "2582",
+      "target": "2575",
+      "weight": 1
+    },
+    {
+      "source": "2581",
+      "target": "2573",
+      "weight": 1
+    },
+    {
+      "source": "2581",
+      "target": "2595",
+      "weight": 1
+    },
+    {
+      "source": "2581",
+      "target": "2587",
+      "weight": 1
+    },
+    {
+      "source": "2580",
+      "target": "2583",
+      "weight": 1
+    },
+    {
+      "source": "2575",
+      "target": "2573",
+      "weight": 1
+    },
+    {
+      "source": "2575",
+      "target": "2595",
+      "weight": 1
+    },
+    {
+      "source": "2575",
+      "target": "2587",
+      "weight": 1
+    },
+    {
+      "source": "2574",
+      "target": "2581",
+      "weight": 1
+    },
+    {
+      "source": "2574",
+      "target": "2575",
+      "weight": 1
+    },
+    {
+      "source": "2573",
+      "target": "2559",
+      "weight": 1
+    },
+    {
+      "source": "2571",
+      "target": "2600",
+      "weight": 1
+    },
+    {
+      "source": "2570",
+      "target": "2583",
+      "weight": 1
+    },
+    {
+      "source": "2568",
+      "target": "2580",
+      "weight": 1
+    },
+    {
+      "source": "2567",
+      "target": "2561",
+      "weight": 1
+    },
+    {
+      "source": "2566",
+      "target": "2565",
+      "weight": 1
+    },
+    {
+      "source": "2565",
+      "target": "2562",
+      "weight": 1
+    },
+    {
+      "source": "2565",
+      "target": "2563",
+      "weight": 1
+    },
+    {
+      "source": "2565",
+      "target": "2564",
+      "weight": 1
+    },
+    {
+      "source": "2561",
+      "target": "2566",
+      "weight": 1
+    },
+    {
+      "source": "2561",
+      "target": "2565",
+      "weight": 1
+    },
+    {
+      "source": "2559",
+      "target": "2575",
+      "weight": 1
+    },
+    {
+      "source": "2557",
+      "target": "2584",
+      "weight": 1
+    },
+    {
+      "source": "2556",
+      "target": "2600",
+      "weight": 1
+    }
+  ]
+}

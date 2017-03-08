@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Protein-Protein interaction network</title>
+    <link rel="stylesheet" type="text/css" href="styles/default.css" media="screen"/>
+    <script type="text/javascript" src="Libs/jquery-3.1.1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script type="text/javascript" src="Libs/jLouvain.js"></script>
+    <script type="text/javascript" src="Libs/main.js"></script>
+</head>
+<body>
+<div id="community">
+
+</div>
+</body>
+
+<script>
+    var width=400, height=300;
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    var svg = d3.select("#community").append("svg").attr("width",width).attr("height",height);
+
+    var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function(d) { return d.id; }))
+        .force("charge", d3.forceManyBody().strength(-3))
+        .force("center", d3.forceCenter(width / 2, height / 2));
+
+    d3.json("data/4146_Allograft rejection.cyjs", function (error, graph) {
+        if (error) throw error;
+        // console.log(rawdata)
+        var node_ids=[];
+        console.log(graph)
+        var temp = {"nodes":[],"links":[]};
+        var node_ids=[];
+        graph.elements.nodes.forEach(function (d) {
+            if(d.data.Type!=="map"){
+                temp.nodes.push({"id":d.data.id,"study":"4146_Allograft rejection","link":d.data.Link,"name":d.data.Label,"shared_name":d.data.shared_name,"type":d.data.Type})
+                node_ids.push(d.data.id);
+            }
+
+        });
+        graph.elements.edges.forEach(function (d) {
+            if(node_ids.indexOf(d.data.source)!==-1&&node_ids.indexOf(d.data.target)!==-1)
+            temp.links.push({"source":d.data.source,"target":d.data.target,"weight":1})
+
+        });
+        console.log(JSON.stringify(temp));
+//        graph.nodes.forEach(function (d) {
+//            node_ids.push(Number(d.id));
+//        });
+//        var link_ids=[];
+//        graph.links.forEach(function (d) {
+//            link_ids.push({"source": +d.source, "target":+d.target, "weight": +d.weight});
+//        });
+//        var community = jLouvain().nodes(node_ids).edges(link_ids)();
+//        graph.nodes.forEach(function (d,i) {
+//            d.community=community[+d.id];
+//        });
+//        var link = svg.append("g")
+//            .attr("class", "links")
+//            .selectAll("line")
+//            .data(graph.links)
+//            .enter().append("line")
+//            .attr("stroke-width", 1);
+//
+//        var node = svg.selectAll(".node")
+//            .data(graph.nodes)
+//            .enter().append("g")
+//            .attr("class", "node");
+//
+//        node.append("circle")
+//            .attr("r",5)
+//            .style("fill",function (d) {
+//                return color(d.community);
+//            }).call(d3.drag()
+//            .on("start", dragstarted)
+//            .on("drag", dragged)
+//            .on("end", dragended));
+
+
+
+        // node.append("image")
+        //     .attr("xlink:href", "https://github.com/favicon.ico")
+        //     .attr("x", -8)
+        //     .attr("y", -8)
+        //     .attr("width", 16)
+        //     .attr("height", 16);
+//
+//        node.append("text")
+//            .attr("dx", 12)
+//            .attr("dy", ".35em")
+//            .text(function(d) { return d.name });
+//
+//        simulation.on("tick", function() {
+//            link.attr("x1", function(d) { return d.source.x; })
+//                .attr("y1", function(d) { return d.source.y; })
+//                .attr("x2", function(d) { return d.target.x; })
+//                .attr("y2", function(d) { return d.target.y; });
+//
+//            node.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+//        });
+//        simulation
+//            .nodes(graph.nodes);
+//
+//
+//        simulation.force("link")
+//            .links(graph.links);
+
+
+    });
+
+    function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+    }
+
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+
+    function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+
+</script>
+</html>

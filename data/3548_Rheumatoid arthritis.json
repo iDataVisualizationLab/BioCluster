@@ -1,0 +1,465 @@
+{
+  "nodes": [
+    {
+      "id": "3616",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1493",
+      "name": "CTLA4",
+      "shared_name": "hsa:1493",
+      "type": "gene"
+    },
+    {
+      "id": "3615",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6347",
+      "name": "CCL2",
+      "shared_name": "hsa:6347",
+      "type": "gene"
+    },
+    {
+      "id": "3613",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:284",
+      "name": "ANGPT1",
+      "shared_name": "hsa:284",
+      "type": "gene"
+    },
+    {
+      "id": "3612",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7010",
+      "name": "TEK",
+      "shared_name": "hsa:7010",
+      "type": "gene"
+    },
+    {
+      "id": "3611",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6352",
+      "name": "CCL5",
+      "shared_name": "hsa:6352",
+      "type": "gene"
+    },
+    {
+      "id": "3610",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2353+hsa:3725",
+      "name": "FOS",
+      "shared_name": "hsa:2353 hsa:3725",
+      "type": "gene"
+    },
+    {
+      "id": "3609",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7097+hsa:7099",
+      "name": "TLR2",
+      "shared_name": "hsa:7097 hsa:7099",
+      "type": "gene"
+    },
+    {
+      "id": "3608",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6364",
+      "name": "CCL20",
+      "shared_name": "hsa:6364",
+      "type": "gene"
+    },
+    {
+      "id": "3607",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8600",
+      "name": "TNFSF11",
+      "shared_name": "hsa:8600",
+      "type": "gene"
+    },
+    {
+      "id": "3606",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6372+hsa:6374",
+      "name": "CXCL6",
+      "shared_name": "hsa:6372 hsa:6374",
+      "type": "gene"
+    },
+    {
+      "id": "3605",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2919",
+      "name": "CXCL1",
+      "shared_name": "hsa:2919",
+      "type": "gene"
+    },
+    {
+      "id": "3604",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:414062+hsa:6348+hsa:6349",
+      "name": "CCL3L3",
+      "shared_name": "hsa:414062 hsa:6348 hsa:6349",
+      "type": "gene"
+    },
+    {
+      "id": "3603",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3576",
+      "name": "CXCL8",
+      "shared_name": "hsa:3576",
+      "type": "gene"
+    },
+    {
+      "id": "3602",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6387",
+      "name": "CXCL12",
+      "shared_name": "hsa:6387",
+      "type": "gene"
+    },
+    {
+      "id": "3601",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7422",
+      "name": "VEGFA",
+      "shared_name": "hsa:7422",
+      "type": "gene"
+    },
+    {
+      "id": "3600",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3606",
+      "name": "IL18",
+      "shared_name": "hsa:3606",
+      "type": "gene"
+    },
+    {
+      "id": "3598",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2321",
+      "name": "FLT1",
+      "shared_name": "hsa:2321",
+      "type": "gene"
+    },
+    {
+      "id": "3596",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:940",
+      "name": "CD28",
+      "shared_name": "hsa:940",
+      "type": "gene"
+    },
+    {
+      "id": "3595",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:941+hsa:942",
+      "name": "CD80",
+      "shared_name": "hsa:941 hsa:942",
+      "type": "gene"
+    },
+    {
+      "id": "3594",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3383",
+      "name": "ICAM1",
+      "shared_name": "hsa:3383",
+      "type": "gene"
+    },
+    {
+      "id": "3593",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3683+hsa:3689",
+      "name": "ITGAL",
+      "shared_name": "hsa:3683 hsa:3689",
+      "type": "gene"
+    },
+    {
+      "id": "3592",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10673",
+      "name": "TNFSF13B",
+      "shared_name": "hsa:10673",
+      "type": "gene"
+    },
+    {
+      "id": "3591",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8741",
+      "name": "TNFSF13",
+      "shared_name": "hsa:8741",
+      "type": "gene"
+    },
+    {
+      "id": "3590",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:54",
+      "name": "ACP5",
+      "shared_name": "hsa:54",
+      "type": "gene"
+    },
+    {
+      "id": "3589",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1513",
+      "name": "CTSK",
+      "shared_name": "hsa:1513",
+      "type": "gene"
+    },
+    {
+      "id": "3588",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00080",
+      "name": "C00080",
+      "shared_name": "cpd:C00080",
+      "type": "compound"
+    },
+    {
+      "id": "3587",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10312+hsa:127124+hsa:155066+hsa:2…:533+hsa:534+hsa:535+hsa:537+hsa:8992+hsa:90423+hsa:9114+hsa:9296+hsa:9550",
+      "name": "TCIRG1",
+      "shared_name": "hsa:10312 hsa:127124 hsa:155066 hsa:23545 hsa:245972 hsa:245973 hsa:50617 hsa:51382 hsa:51606 hsa:523 hsa:525 hsa:526 hsa:527 hsa:528 hsa:529 hsa:533 hsa:534 hsa:535 hsa:537 hsa:8992 hsa:90423 hsa:9114 hsa:9296 hsa:9550",
+      "type": "gene"
+    },
+    {
+      "id": "3586",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "3585",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+h…15+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "3584",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3582",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3600",
+      "name": "IL15",
+      "shared_name": "hsa:3600",
+      "type": "gene"
+    },
+    {
+      "id": "3581",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1514",
+      "name": "CTSL",
+      "shared_name": "hsa:1514",
+      "type": "gene"
+    },
+    {
+      "id": "3580",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4312+hsa:4314",
+      "name": "MMP1",
+      "shared_name": "hsa:4312 hsa:4314",
+      "type": "gene"
+    },
+    {
+      "id": "3579",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3553",
+      "name": "IL1B",
+      "shared_name": "hsa:3553",
+      "type": "gene"
+    },
+    {
+      "id": "3578",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3569",
+      "name": "IL6",
+      "shared_name": "hsa:3569",
+      "type": "gene"
+    },
+    {
+      "id": "3577",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1437",
+      "name": "CSF2",
+      "shared_name": "hsa:1437",
+      "type": "gene"
+    },
+    {
+      "id": "3576",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3458",
+      "name": "IFNG",
+      "shared_name": "hsa:3458",
+      "type": "gene"
+    },
+    {
+      "id": "3575",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1435",
+      "name": "CSF1",
+      "shared_name": "hsa:1435",
+      "type": "gene"
+    },
+    {
+      "id": "3574",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3589",
+      "name": "IL11",
+      "shared_name": "hsa:3589",
+      "type": "gene"
+    },
+    {
+      "id": "3573",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4050",
+      "name": "LTB",
+      "shared_name": "hsa:4050",
+      "type": "gene"
+    },
+    {
+      "id": "3572",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "3571",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00584",
+      "name": "C00584",
+      "shared_name": "cpd:C00584",
+      "type": "compound"
+    },
+    {
+      "id": "3570",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C16051",
+      "name": "C16051",
+      "shared_name": "cpd:C16051",
+      "type": "compound"
+    },
+    {
+      "id": "3569",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05443",
+      "name": "C05443",
+      "shared_name": "cpd:C05443",
+      "type": "compound"
+    },
+    {
+      "id": "3568",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3569",
+      "name": "IL6",
+      "shared_name": "hsa:3569",
+      "type": "gene"
+    },
+    {
+      "id": "3567",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51561",
+      "name": "IL23A",
+      "shared_name": "hsa:51561",
+      "type": "gene"
+    },
+    {
+      "id": "3566",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3569",
+      "name": "IL6",
+      "shared_name": "hsa:3569",
+      "type": "gene"
+    },
+    {
+      "id": "3565",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7124",
+      "name": "TNF",
+      "shared_name": "hsa:7124",
+      "type": "gene"
+    },
+    {
+      "id": "3564",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3552+hsa:3553",
+      "name": "IL1A",
+      "shared_name": "hsa:3552 hsa:3553",
+      "type": "gene"
+    },
+    {
+      "id": "3563",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3605",
+      "name": "IL17A",
+      "shared_name": "hsa:3605",
+      "type": "gene"
+    },
+    {
+      "id": "3562",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8600",
+      "name": "TNFSF11",
+      "shared_name": "hsa:8600",
+      "type": "gene"
+    },
+    {
+      "id": "3560",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8792",
+      "name": "TNFRSF11A",
+      "shared_name": "hsa:8792",
+      "type": "gene"
+    },
+    {
+      "id": "3559",
+      "study": "3548_Rheumatoid arthritis",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8600",
+      "name": "TNFSF11",
+      "shared_name": "hsa:8600",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "3613",
+      "target": "3612",
+      "weight": 1
+    },
+    {
+      "source": "3609",
+      "target": "3610",
+      "weight": 1
+    },
+    {
+      "source": "3601",
+      "target": "3598",
+      "weight": 1
+    },
+    {
+      "source": "3595",
+      "target": "3616",
+      "weight": 1
+    },
+    {
+      "source": "3595",
+      "target": "3596",
+      "weight": 1
+    },
+    {
+      "source": "3593",
+      "target": "3594",
+      "weight": 1
+    },
+    {
+      "source": "3559",
+      "target": "3560",
+      "weight": 1
+    }
+  ]
+}

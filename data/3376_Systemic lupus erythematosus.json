@@ -1,0 +1,480 @@
+{
+  "nodes": [
+    {
+      "id": "3446",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2904",
+      "name": "GRIN2B",
+      "shared_name": "hsa:2904",
+      "type": "gene"
+    },
+    {
+      "id": "3445",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6741",
+      "name": "SSB",
+      "shared_name": "hsa:6741",
+      "type": "gene"
+    },
+    {
+      "id": "3444",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:712+hsa:713+hsa:714",
+      "name": "C1QA...",
+      "shared_name": "hsa:712 hsa:713 hsa:714",
+      "type": "gene"
+    },
+    {
+      "id": "3443",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:81+hsa:87",
+      "name": "ACTN4",
+      "shared_name": "hsa:81 hsa:87",
+      "type": "gene"
+    },
+    {
+      "id": "3442",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2903",
+      "name": "GRIN2A",
+      "shared_name": "hsa:2903",
+      "type": "gene"
+    },
+    {
+      "id": "3441",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6632+hsa:6634",
+      "name": "SNRPD1",
+      "shared_name": "hsa:6632 hsa:6634",
+      "type": "gene"
+    },
+    {
+      "id": "3440",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6628",
+      "name": "SNRPB",
+      "shared_name": "hsa:6628",
+      "type": "gene"
+    },
+    {
+      "id": "3439",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6737+hsa:6738",
+      "name": "TRIM21",
+      "shared_name": "hsa:6737 hsa:6738",
+      "type": "gene"
+    },
+    {
+      "id": "3438",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:121504+hsa:554313+hsa:8294+hsa:8359+hsa:8360+hsa:8361+hsa:8362+hsa:8363+hsa:8364+hsa:8365+hsa:8366+hsa:8367+hsa:8368+hsa:8369+hsa:8370",
+      "name": "HIST4H4",
+      "shared_name": "hsa:121504 hsa:554313 hsa:8294 hsa:8359 hsa:8360 hsa:8361 hsa:8362 hsa:8363 hsa:8364 hsa:8365 hsa:8366 hsa:8367 hsa:8368 hsa:8369 hsa:8370",
+      "type": "gene"
+    },
+    {
+      "id": "3437",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:126961+hsa:3020+hsa:3021+hsa:333932+hsa:440093+hsa:653604+hsa:8290+hsa:8350+hsa:8351+hsa:8352+hsa:8353+hsa:8354+hsa:8355+hsa:8356+hsa:8357+hsa:8358+hsa:8968",
+      "name": "HIST2H3C",
+      "shared_name": "hsa:126961 hsa:3020 hsa:3021 hsa:333932 hsa:440093 hsa:653604 hsa:8290 hsa:8350 hsa:8351 hsa:8352 hsa:8353 hsa:8354 hsa:8355 hsa:8356 hsa:8357 hsa:8358 hsa:8968",
+      "type": "gene"
+    },
+    {
+      "id": "3436",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:128312+hsa:158983+hsa:255626+hsa:286436+hsa:3017+hsa:3018+hsa:440689+hsa:8339+hsa:8340+hsa:8341+hsa:8342+hsa:8343+hsa:8344+hsa:8345+hsa:8346+hsa:8347+hsa:8348+hsa:8349+hsa:85236+hsa:8970",
+      "name": "HIST3H2BB",
+      "shared_name": "hsa:128312 hsa:158983 hsa:255626 hsa:286436 hsa:3017 hsa:3018 hsa:440689 hsa:8339 hsa:8340 hsa:8341 hsa:8342 hsa:8343 hsa:8344 hsa:8345 hsa:8346 hsa:8347 hsa:8348 hsa:8349 hsa:85236 hsa:8970",
+      "type": "gene"
+    },
+    {
+      "id": "3435",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:221613+hsa:3012+hsa:3013+hsa:3014+hsa:3015+hsa:317772+hsa:474381+hsa:474382+hsa:55506+hsa:55766+hsa:723790+hsa:8329+hsa:8330+hsa:8331+hsa:8332+hsa:8334+hsa:8335+hsa:8336+hsa:8337+hsa:8338+hsa:83740+hsa:85235+hsa:8969+hsa:92815+hsa:94239+hsa:9555",
+      "name": "HIST1H2AA",
+      "shared_name": "hsa:221613 hsa:3012 hsa:3013 hsa:3014 hsa:3015 hsa:317772 hsa:474381 hsa:474382 hsa:55506 hsa:55766 hsa:723790 hsa:8329 hsa:8330 hsa:8331 hsa:8332 hsa:8334 hsa:8335 hsa:8336 hsa:8337 hsa:8338 hsa:83740 hsa:85235 hsa:8969 hsa:92815 hsa:94239 hsa:9555",
+      "type": "gene"
+    },
+    {
+      "id": "3434",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C02737",
+      "name": "C02737",
+      "shared_name": "cpd:C02737",
+      "type": "compound"
+    },
+    {
+      "id": "3433",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00434",
+      "name": "C00434",
+      "shared_name": "cpd:C00434",
+      "type": "compound"
+    },
+    {
+      "id": "3424",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:958",
+      "name": "CD40",
+      "shared_name": "hsa:958",
+      "type": "gene"
+    },
+    {
+      "id": "3423",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:959",
+      "name": "CD40LG",
+      "shared_name": "hsa:959",
+      "type": "gene"
+    },
+    {
+      "id": "3422",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "3421",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+hsa:3113+hsa:3115+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "3420",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "3419",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+hsa:3113+hsa:3115+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "3418",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:940",
+      "name": "CD28",
+      "shared_name": "hsa:940",
+      "type": "gene"
+    },
+    {
+      "id": "3417",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:941+hsa:942",
+      "name": "CD80",
+      "shared_name": "hsa:941 hsa:942",
+      "type": "gene"
+    },
+    {
+      "id": "3416",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:717",
+      "name": "C2",
+      "shared_name": "hsa:717",
+      "type": "gene"
+    },
+    {
+      "id": "3415",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:717",
+      "name": "C2",
+      "shared_name": "hsa:717",
+      "type": "gene"
+    },
+    {
+      "id": "3414",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:720+hsa:721",
+      "name": "C4A",
+      "shared_name": "hsa:720 hsa:721",
+      "type": "gene"
+    },
+    {
+      "id": "3413",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:712+hsa:713+hsa:714",
+      "name": "C1QA...",
+      "shared_name": "hsa:712 hsa:713 hsa:714",
+      "type": "gene"
+    },
+    {
+      "id": "3412",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:720+hsa:721",
+      "name": "C4A",
+      "shared_name": "hsa:720 hsa:721",
+      "type": "gene"
+    },
+    {
+      "id": "3411",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:712+hsa:713+hsa:714",
+      "name": "C1QA...",
+      "shared_name": "hsa:712 hsa:713 hsa:714",
+      "type": "gene"
+    },
+    {
+      "id": "3410",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3586",
+      "name": "IL10",
+      "shared_name": "hsa:3586",
+      "type": "gene"
+    },
+    {
+      "id": "3409",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3458",
+      "name": "IFNG",
+      "shared_name": "hsa:3458",
+      "type": "gene"
+    },
+    {
+      "id": "3408",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7124",
+      "name": "TNF",
+      "shared_name": "hsa:7124",
+      "type": "gene"
+    },
+    {
+      "id": "3407",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:735",
+      "name": "C9",
+      "shared_name": "hsa:735",
+      "type": "gene"
+    },
+    {
+      "id": "3406",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:727+hsa:729+hsa:730+hsa:731+hsa:732+hsa:733",
+      "name": "C5",
+      "shared_name": "hsa:727 hsa:729 hsa:730 hsa:731 hsa:732 hsa:733",
+      "type": "gene"
+    },
+    {
+      "id": "3405",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:731+hsa:732+hsa:733",
+      "name": "C8A...",
+      "shared_name": "hsa:731 hsa:732 hsa:733",
+      "type": "gene"
+    },
+    {
+      "id": "3404",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:730",
+      "name": "C7",
+      "shared_name": "hsa:730",
+      "type": "gene"
+    },
+    {
+      "id": "3403",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:729",
+      "name": "C6",
+      "shared_name": "hsa:729",
+      "type": "gene"
+    },
+    {
+      "id": "3402",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:715",
+      "name": "C1R",
+      "shared_name": "hsa:715",
+      "type": "gene"
+    },
+    {
+      "id": "3401",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:712+hsa:713+hsa:714",
+      "name": "C1QA...",
+      "shared_name": "hsa:712 hsa:713 hsa:714",
+      "type": "gene"
+    },
+    {
+      "id": "3400",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:716",
+      "name": "C1S",
+      "shared_name": "hsa:716",
+      "type": "gene"
+    },
+    {
+      "id": "3399",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:717",
+      "name": "C2",
+      "shared_name": "hsa:717",
+      "type": "gene"
+    },
+    {
+      "id": "3398",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:718",
+      "name": "C3",
+      "shared_name": "hsa:718",
+      "type": "gene"
+    },
+    {
+      "id": "3397",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:720+hsa:721",
+      "name": "C4A",
+      "shared_name": "hsa:720 hsa:721",
+      "type": "gene"
+    },
+    {
+      "id": "3396",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:727",
+      "name": "C5",
+      "shared_name": "hsa:727",
+      "type": "gene"
+    },
+    {
+      "id": "3395",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1511",
+      "name": "CTSG",
+      "shared_name": "hsa:1511",
+      "type": "gene"
+    },
+    {
+      "id": "3394",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1991",
+      "name": "ELANE",
+      "shared_name": "hsa:1991",
+      "type": "gene"
+    },
+    {
+      "id": "3393",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3392",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3391",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00027",
+      "name": "C00027",
+      "shared_name": "cpd:C00027",
+      "type": "compound"
+    },
+    {
+      "id": "3390",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3389",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3388",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2209+hsa:2212+hsa:2214+hsa:2215",
+      "name": "FCGR1A",
+      "shared_name": "hsa:2209 hsa:2212 hsa:2214 hsa:2215",
+      "type": "gene"
+    },
+    {
+      "id": "3387",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2209+hsa:2212+hsa:2214+hsa:2215",
+      "name": "FCGR1A",
+      "shared_name": "hsa:2209 hsa:2212 hsa:2214 hsa:2215",
+      "type": "gene"
+    },
+    {
+      "id": "3386",
+      "study": "3376_Systemic lupus erythematosus",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "3423",
+      "target": "3424",
+      "weight": 1
+    },
+    {
+      "source": "3417",
+      "target": "3418",
+      "weight": 1
+    },
+    {
+      "source": "3402",
+      "target": "3397",
+      "weight": 1
+    },
+    {
+      "source": "3401",
+      "target": "3402",
+      "weight": 1
+    },
+    {
+      "source": "3400",
+      "target": "3401",
+      "weight": 1
+    },
+    {
+      "source": "3399",
+      "target": "3398",
+      "weight": 1
+    },
+    {
+      "source": "3397",
+      "target": "3399",
+      "weight": 1
+    },
+    {
+      "source": "3392",
+      "target": "3400",
+      "weight": 1
+    },
+    {
+      "source": "3390",
+      "target": "3388",
+      "weight": 1
+    },
+    {
+      "source": "3389",
+      "target": "3387",
+      "weight": 1
+    }
+  ]
+}

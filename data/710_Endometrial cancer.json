@@ -1,0 +1,403 @@
+{
+  "nodes": [
+    {
+      "id": "761",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3845",
+      "name": "KRAS",
+      "shared_name": "hsa:3845",
+      "type": "gene"
+    },
+    {
+      "id": "760",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "759",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "758",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "754",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950",
+      "name": "EGF",
+      "shared_name": "hsa:1950",
+      "type": "gene"
+    },
+    {
+      "id": "753",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "752",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "750",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4609",
+      "name": "MYC",
+      "shared_name": "hsa:4609",
+      "type": "gene"
+    },
+    {
+      "id": "748",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "747",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956",
+      "name": "EGFR",
+      "shared_name": "hsa:1956",
+      "type": "gene"
+    },
+    {
+      "id": "746",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2002",
+      "name": "ELK1",
+      "shared_name": "hsa:2002",
+      "type": "gene"
+    },
+    {
+      "id": "745",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4292",
+      "name": "MLH1",
+      "shared_name": "hsa:4292",
+      "type": "gene"
+    },
+    {
+      "id": "744",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "742",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "741",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "740",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5170",
+      "name": "PDPK1",
+      "shared_name": "hsa:5170",
+      "type": "gene"
+    },
+    {
+      "id": "739",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5728",
+      "name": "PTEN",
+      "shared_name": "hsa:5728",
+      "type": "gene"
+    },
+    {
+      "id": "738",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51176+hsa:6932+hsa:6934+hsa:83439",
+      "name": "LEF1",
+      "shared_name": "hsa:51176 hsa:6932 hsa:6934 hsa:83439",
+      "type": "gene"
+    },
+    {
+      "id": "737",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:999",
+      "name": "CDH1",
+      "shared_name": "hsa:999",
+      "type": "gene"
+    },
+    {
+      "id": "736",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    },
+    {
+      "id": "735",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "733",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3611",
+      "name": "ILK",
+      "shared_name": "hsa:3611",
+      "type": "gene"
+    },
+    {
+      "id": "732",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:842",
+      "name": "CASP9",
+      "shared_name": "hsa:842",
+      "type": "gene"
+    },
+    {
+      "id": "731",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:572",
+      "name": "BAD",
+      "shared_name": "hsa:572",
+      "type": "gene"
+    },
+    {
+      "id": "730",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2309",
+      "name": "FOXO3",
+      "shared_name": "hsa:2309",
+      "type": "gene"
+    },
+    {
+      "id": "728",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1499",
+      "name": "CTNNB1",
+      "shared_name": "hsa:1499",
+      "type": "gene"
+    },
+    {
+      "id": "727",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1495+hsa:1496+hsa:29119",
+      "name": "CTNNA1",
+      "shared_name": "hsa:1495 hsa:1496 hsa:29119",
+      "type": "gene"
+    },
+    {
+      "id": "726",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2932",
+      "name": "GSK3B",
+      "shared_name": "hsa:2932",
+      "type": "gene"
+    },
+    {
+      "id": "725",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8312+hsa:8313",
+      "name": "AXIN1",
+      "shared_name": "hsa:8312 hsa:8313",
+      "type": "gene"
+    },
+    {
+      "id": "724",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10297+hsa:324",
+      "name": "APC2",
+      "shared_name": "hsa:10297 hsa:324",
+      "type": "gene"
+    },
+    {
+      "id": "723",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "722",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "721",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1499",
+      "name": "CTNNB1",
+      "shared_name": "hsa:1499",
+      "type": "gene"
+    },
+    {
+      "id": "720",
+      "study": "710_Endometrial cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1499",
+      "name": "CTNNB1",
+      "shared_name": "hsa:1499",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "761",
+      "target": "760",
+      "weight": 1
+    },
+    {
+      "source": "760",
+      "target": "759",
+      "weight": 1
+    },
+    {
+      "source": "759",
+      "target": "758",
+      "weight": 1
+    },
+    {
+      "source": "758",
+      "target": "746",
+      "weight": 1
+    },
+    {
+      "source": "754",
+      "target": "747",
+      "weight": 1
+    },
+    {
+      "source": "753",
+      "target": "744",
+      "weight": 1
+    },
+    {
+      "source": "752",
+      "target": "730",
+      "weight": 1
+    },
+    {
+      "source": "752",
+      "target": "731",
+      "weight": 1
+    },
+    {
+      "source": "752",
+      "target": "732",
+      "weight": 1
+    },
+    {
+      "source": "747",
+      "target": "742",
+      "weight": 1
+    },
+    {
+      "source": "747",
+      "target": "753",
+      "weight": 1
+    },
+    {
+      "source": "744",
+      "target": "733",
+      "weight": 1
+    },
+    {
+      "source": "744",
+      "target": "740",
+      "weight": 1
+    },
+    {
+      "source": "742",
+      "target": "741",
+      "weight": 1
+    },
+    {
+      "source": "741",
+      "target": "722",
+      "weight": 1
+    },
+    {
+      "source": "740",
+      "target": "752",
+      "weight": 1
+    },
+    {
+      "source": "739",
+      "target": "744",
+      "weight": 1
+    },
+    {
+      "source": "738",
+      "target": "748",
+      "weight": 1
+    },
+    {
+      "source": "738",
+      "target": "750",
+      "weight": 1
+    },
+    {
+      "source": "733",
+      "target": "752",
+      "weight": 1
+    },
+    {
+      "source": "726",
+      "target": "720",
+      "weight": 1
+    },
+    {
+      "source": "725",
+      "target": "726",
+      "weight": 1
+    },
+    {
+      "source": "724",
+      "target": "725",
+      "weight": 1
+    },
+    {
+      "source": "722",
+      "target": "760",
+      "weight": 1
+    },
+    {
+      "source": "720",
+      "target": "738",
+      "weight": 1
+    }
+  ]
+}

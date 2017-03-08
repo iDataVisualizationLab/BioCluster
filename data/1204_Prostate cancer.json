@@ -1,0 +1,625 @@
+{
+  "nodes": [
+    {
+      "id": "1269",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "1268",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "1267",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "1264",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2950",
+      "name": "GSTP1",
+      "shared_name": "hsa:2950",
+      "type": "gene"
+    },
+    {
+      "id": "1263",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "1262",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "1260",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1027",
+      "name": "CDKN1B",
+      "shared_name": "hsa:1027",
+      "type": "gene"
+    },
+    {
+      "id": "1259",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2475",
+      "name": "MTOR",
+      "shared_name": "hsa:2475",
+      "type": "gene"
+    },
+    {
+      "id": "1258",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3320+hsa:3326+hsa:7184",
+      "name": "HSP90AA1",
+      "shared_name": "hsa:3320 hsa:3326 hsa:7184",
+      "type": "gene"
+    },
+    {
+      "id": "1257",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2932",
+      "name": "GSK3B",
+      "shared_name": "hsa:2932",
+      "type": "gene"
+    },
+    {
+      "id": "1256",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "1255",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "1254",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "1253",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5170",
+      "name": "PDPK1",
+      "shared_name": "hsa:5170",
+      "type": "gene"
+    },
+    {
+      "id": "1252",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5925",
+      "name": "RB1",
+      "shared_name": "hsa:5925",
+      "type": "gene"
+    },
+    {
+      "id": "1251",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950+hsa:3479+hsa:3630+hsa:5154+hsa:5155+hsa:56034+hsa:7039+hsa:80310",
+      "name": "EGF",
+      "shared_name": "hsa:1950 hsa:3479 hsa:3630 hsa:5154 hsa:5155 hsa:56034 hsa:7039 hsa:80310",
+      "type": "gene"
+    },
+    {
+      "id": "1250",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:898+hsa:9134",
+      "name": "CCNE1",
+      "shared_name": "hsa:898 hsa:9134",
+      "type": "gene"
+    },
+    {
+      "id": "1249",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10488+hsa:1385+hsa:148327+hsa:468+hsa:64764+hsa:84699+hsa:90993+hsa:9586",
+      "name": "CREB3",
+      "shared_name": "hsa:10488 hsa:1385 hsa:148327 hsa:468 hsa:64764 hsa:84699 hsa:90993 hsa:9586",
+      "type": "gene"
+    },
+    {
+      "id": "1248",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:842",
+      "name": "CASP9",
+      "shared_name": "hsa:842",
+      "type": "gene"
+    },
+    {
+      "id": "1247",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:572",
+      "name": "BAD",
+      "shared_name": "hsa:572",
+      "type": "gene"
+    },
+    {
+      "id": "1246",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1147+hsa:3551+hsa:8517",
+      "name": "CHUK",
+      "shared_name": "hsa:1147 hsa:3551 hsa:8517",
+      "type": "gene"
+    },
+    {
+      "id": "1244",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956+hsa:2064+hsa:2260+hsa:2263+hsa:3480+hsa:3645+hsa:5156+hsa:5159",
+      "name": "EGFR",
+      "shared_name": "hsa:1956 hsa:2064 hsa:2260 hsa:2263 hsa:3480 hsa:3645 hsa:5156 hsa:5159",
+      "type": "gene"
+    },
+    {
+      "id": "1243",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "1242",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "1241",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1869+hsa:1870+hsa:1871",
+      "name": "E2F1",
+      "shared_name": "hsa:1869 hsa:1870 hsa:1871",
+      "type": "gene"
+    },
+    {
+      "id": "1240",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1499",
+      "name": "CTNNB1",
+      "shared_name": "hsa:1499",
+      "type": "gene"
+    },
+    {
+      "id": "1239",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1017",
+      "name": "CDK2",
+      "shared_name": "hsa:1017",
+      "type": "gene"
+    },
+    {
+      "id": "1238",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2308",
+      "name": "FOXO1",
+      "shared_name": "hsa:2308",
+      "type": "gene"
+    },
+    {
+      "id": "1237",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1026",
+      "name": "CDKN1A",
+      "shared_name": "hsa:1026",
+      "type": "gene"
+    },
+    {
+      "id": "1236",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4193",
+      "name": "MDM2",
+      "shared_name": "hsa:4193",
+      "type": "gene"
+    },
+    {
+      "id": "1235",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C16038",
+      "name": "C16038",
+      "shared_name": "cpd:C16038",
+      "type": "compound"
+    },
+    {
+      "id": "1234",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:367",
+      "name": "AR",
+      "shared_name": "hsa:367",
+      "type": "gene"
+    },
+    {
+      "id": "1232",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00535",
+      "name": "C00535",
+      "shared_name": "cpd:C00535",
+      "type": "compound"
+    },
+    {
+      "id": "1231",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C03917",
+      "name": "C03917",
+      "shared_name": "cpd:C03917",
+      "type": "compound"
+    },
+    {
+      "id": "1230",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00951+C00410+C07653+C01227+C00280+C00735+C00762",
+      "name": "C00951...",
+      "shared_name": "cpd:C00951 cpd:C00410 cpd:C07653 cpd:C01227 cpd:C00280 cpd:C00735 cpd:C00762",
+      "type": "compound"
+    },
+    {
+      "id": "1229",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1387+hsa:2033",
+      "name": "CREBBP",
+      "shared_name": "hsa:1387 hsa:2033",
+      "type": "gene"
+    },
+    {
+      "id": "1228",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51176+hsa:6932+hsa:6934+hsa:83439",
+      "name": "LEF1",
+      "shared_name": "hsa:51176 hsa:6932 hsa:6934 hsa:83439",
+      "type": "gene"
+    },
+    {
+      "id": "1227",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "1226",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:596",
+      "name": "BCL2",
+      "shared_name": "hsa:596",
+      "type": "gene"
+    },
+    {
+      "id": "1225",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:354",
+      "name": "KLK3",
+      "shared_name": "hsa:354",
+      "type": "gene"
+    },
+    {
+      "id": "1224",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4824",
+      "name": "NKX3-1",
+      "shared_name": "hsa:4824",
+      "type": "gene"
+    },
+    {
+      "id": "1223",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5728",
+      "name": "PTEN",
+      "shared_name": "hsa:5728",
+      "type": "gene"
+    },
+    {
+      "id": "1222",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1027",
+      "name": "CDKN1B",
+      "shared_name": "hsa:1027",
+      "type": "gene"
+    },
+    {
+      "id": "1221",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4792",
+      "name": "NFKBIA",
+      "shared_name": "hsa:4792",
+      "type": "gene"
+    },
+    {
+      "id": "1220",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970",
+      "name": "NFKB1",
+      "shared_name": "hsa:4790 hsa:5970",
+      "type": "gene"
+    },
+    {
+      "id": "1219",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:367",
+      "name": "AR",
+      "shared_name": "hsa:367",
+      "type": "gene"
+    },
+    {
+      "id": "1218",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:367",
+      "name": "AR",
+      "shared_name": "hsa:367",
+      "type": "gene"
+    },
+    {
+      "id": "1217",
+      "study": "1204_Prostate cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6716",
+      "name": "SRD5A2",
+      "shared_name": "hsa:6716",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "1269",
+      "target": "1268",
+      "weight": 1
+    },
+    {
+      "source": "1268",
+      "target": "1267",
+      "weight": 1
+    },
+    {
+      "source": "1267",
+      "target": "1218",
+      "weight": 1
+    },
+    {
+      "source": "1264",
+      "target": "1235",
+      "weight": 1
+    },
+    {
+      "source": "1263",
+      "target": "1256",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1257",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1222",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1237",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1238",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1247",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1248",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1259",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1246",
+      "weight": 1
+    },
+    {
+      "source": "1262",
+      "target": "1236",
+      "weight": 1
+    },
+    {
+      "source": "1260",
+      "target": "1239",
+      "weight": 1
+    },
+    {
+      "source": "1258",
+      "target": "1218",
+      "weight": 1
+    },
+    {
+      "source": "1257",
+      "target": "1240",
+      "weight": 1
+    },
+    {
+      "source": "1257",
+      "target": "1249",
+      "weight": 1
+    },
+    {
+      "source": "1256",
+      "target": "1262",
+      "weight": 1
+    },
+    {
+      "source": "1256",
+      "target": "1253",
+      "weight": 1
+    },
+    {
+      "source": "1255",
+      "target": "1254",
+      "weight": 1
+    },
+    {
+      "source": "1254",
+      "target": "1242",
+      "weight": 1
+    },
+    {
+      "source": "1253",
+      "target": "1262",
+      "weight": 1
+    },
+    {
+      "source": "1251",
+      "target": "1244",
+      "weight": 1
+    },
+    {
+      "source": "1250",
+      "target": "1252",
+      "weight": 1
+    },
+    {
+      "source": "1249",
+      "target": "1229",
+      "weight": 1
+    },
+    {
+      "source": "1246",
+      "target": "1221",
+      "weight": 1
+    },
+    {
+      "source": "1244",
+      "target": "1255",
+      "weight": 1
+    },
+    {
+      "source": "1244",
+      "target": "1263",
+      "weight": 1
+    },
+    {
+      "source": "1242",
+      "target": "1269",
+      "weight": 1
+    },
+    {
+      "source": "1241",
+      "target": "1252",
+      "weight": 1
+    },
+    {
+      "source": "1240",
+      "target": "1228",
+      "weight": 1
+    },
+    {
+      "source": "1240",
+      "target": "1229",
+      "weight": 1
+    },
+    {
+      "source": "1239",
+      "target": "1250",
+      "weight": 1
+    },
+    {
+      "source": "1236",
+      "target": "1243",
+      "weight": 1
+    },
+    {
+      "source": "1234",
+      "target": "1258",
+      "weight": 1
+    },
+    {
+      "source": "1232",
+      "target": "1234",
+      "weight": 1
+    },
+    {
+      "source": "1231",
+      "target": "1234",
+      "weight": 1
+    },
+    {
+      "source": "1230",
+      "target": "1234",
+      "weight": 1
+    },
+    {
+      "source": "1229",
+      "target": "1243",
+      "weight": 1
+    },
+    {
+      "source": "1228",
+      "target": "1227",
+      "weight": 1
+    },
+    {
+      "source": "1224",
+      "target": "1262",
+      "weight": 1
+    },
+    {
+      "source": "1223",
+      "target": "1256",
+      "weight": 1
+    },
+    {
+      "source": "1220",
+      "target": "1226",
+      "weight": 1
+    },
+    {
+      "source": "1220",
+      "target": "1221",
+      "weight": 1
+    },
+    {
+      "source": "1219",
+      "target": "1225",
+      "weight": 1
+    },
+    {
+      "source": "1218",
+      "target": "1219",
+      "weight": 1
+    }
+  ]
+}

@@ -1,0 +1,337 @@
+{
+  "nodes": [
+    {
+      "id": "1896",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "1895",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "1894",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "1893",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "1890",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "1889",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "1888",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "1886",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "1885",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1019+hsa:1021",
+      "name": "CDK4",
+      "shared_name": "hsa:1019 hsa:1021",
+      "type": "gene"
+    },
+    {
+      "id": "1884",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5925",
+      "name": "RB1",
+      "shared_name": "hsa:5925",
+      "type": "gene"
+    },
+    {
+      "id": "1883",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1869+hsa:1870+hsa:1871",
+      "name": "E2F1",
+      "shared_name": "hsa:1869 hsa:1870 hsa:1871",
+      "type": "gene"
+    },
+    {
+      "id": "1882",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "1881",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4193",
+      "name": "MDM2",
+      "shared_name": "hsa:4193",
+      "type": "gene"
+    },
+    {
+      "id": "1880",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "1879",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1026",
+      "name": "CDKN1A",
+      "shared_name": "hsa:1026",
+      "type": "gene"
+    },
+    {
+      "id": "1878",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "1877",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:572",
+      "name": "BAD",
+      "shared_name": "hsa:572",
+      "type": "gene"
+    },
+    {
+      "id": "1876",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950+hsa:2246+hsa:2247+hsa:2248+h…+hsa:5155+hsa:56034+hsa:80310+hsa:8074+hsa:8817+hsa:8822+hsa:8823+hsa:9965",
+      "name": "EGF",
+      "shared_name": "hsa:1950 hsa:2246 hsa:2247 hsa:2248 hsa:2249 hsa:2250 hsa:2251 hsa:2252 hsa:2253 hsa:2254 hsa:2255 hsa:2256 hsa:2257 hsa:2258 hsa:2259 hsa:26281 hsa:26291 hsa:27006 hsa:3082 hsa:3479 hsa:5154 hsa:5155 hsa:56034 hsa:80310 hsa:8074 hsa:8817 hsa:8822 hsa:8823 hsa:9965",
+      "type": "gene"
+    },
+    {
+      "id": "1875",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956+hsa:2260+hsa:3480+hsa:4233+hsa:5156+hsa:5159",
+      "name": "EGFR",
+      "shared_name": "hsa:1956 hsa:2260 hsa:3480 hsa:4233 hsa:5156 hsa:5159",
+      "type": "gene"
+    },
+    {
+      "id": "1874",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5728",
+      "name": "PTEN",
+      "shared_name": "hsa:5728",
+      "type": "gene"
+    },
+    {
+      "id": "1873",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4286",
+      "name": "MITF",
+      "shared_name": "hsa:4286",
+      "type": "gene"
+    },
+    {
+      "id": "1872",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "1871",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1019",
+      "name": "CDK4",
+      "shared_name": "hsa:1019",
+      "type": "gene"
+    },
+    {
+      "id": "1870",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4893",
+      "name": "NRAS",
+      "shared_name": "hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "1868",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "1867",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:999",
+      "name": "CDH1",
+      "shared_name": "hsa:999",
+      "type": "gene"
+    },
+    {
+      "id": "1866",
+      "study": "1854_Melanoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:673",
+      "name": "BRAF",
+      "shared_name": "hsa:673",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "1896",
+      "target": "1889",
+      "weight": 1
+    },
+    {
+      "source": "1896",
+      "target": "1895",
+      "weight": 1
+    },
+    {
+      "source": "1895",
+      "target": "1894",
+      "weight": 1
+    },
+    {
+      "source": "1894",
+      "target": "1893",
+      "weight": 1
+    },
+    {
+      "source": "1893",
+      "target": "1871",
+      "weight": 1
+    },
+    {
+      "source": "1893",
+      "target": "1872",
+      "weight": 1
+    },
+    {
+      "source": "1890",
+      "target": "1885",
+      "weight": 1
+    },
+    {
+      "source": "1889",
+      "target": "1880",
+      "weight": 1
+    },
+    {
+      "source": "1888",
+      "target": "1877",
+      "weight": 1
+    },
+    {
+      "source": "1886",
+      "target": "1884",
+      "weight": 1
+    },
+    {
+      "source": "1885",
+      "target": "1886",
+      "weight": 1
+    },
+    {
+      "source": "1883",
+      "target": "1884",
+      "weight": 1
+    },
+    {
+      "source": "1882",
+      "target": "1879",
+      "weight": 1
+    },
+    {
+      "source": "1881",
+      "target": "1882",
+      "weight": 1
+    },
+    {
+      "source": "1880",
+      "target": "1888",
+      "weight": 1
+    },
+    {
+      "source": "1879",
+      "target": "1885",
+      "weight": 1
+    },
+    {
+      "source": "1878",
+      "target": "1881",
+      "weight": 1
+    },
+    {
+      "source": "1876",
+      "target": "1875",
+      "weight": 1
+    },
+    {
+      "source": "1875",
+      "target": "1896",
+      "weight": 1
+    },
+    {
+      "source": "1874",
+      "target": "1880",
+      "weight": 1
+    },
+    {
+      "source": "1870",
+      "target": "1889",
+      "weight": 1
+    },
+    {
+      "source": "1870",
+      "target": "1895",
+      "weight": 1
+    },
+    {
+      "source": "1866",
+      "target": "1894",
+      "weight": 1
+    }
+  ]
+}

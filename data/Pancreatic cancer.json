@@ -1,0 +1,607 @@
+{
+  "nodes": [
+    {
+      "id": "542",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "541",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00416",
+      "name": "C00416",
+      "shared_name": "cpd:C00416",
+      "type": "compound"
+    },
+    {
+      "id": "540",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "531",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "530",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956",
+      "name": "EGFR",
+      "shared_name": "hsa:1956",
+      "type": "gene"
+    },
+    {
+      "id": "529",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5888",
+      "name": "RAD51",
+      "shared_name": "hsa:5888",
+      "type": "gene"
+    },
+    {
+      "id": "528",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:675",
+      "name": "BRCA2",
+      "shared_name": "hsa:675",
+      "type": "gene"
+    },
+    {
+      "id": "527",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "526",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4089",
+      "name": "SMAD4",
+      "shared_name": "hsa:4089",
+      "type": "gene"
+    },
+    {
+      "id": "525",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4087+hsa:4088",
+      "name": "SMAD2",
+      "shared_name": "hsa:4087 hsa:4088",
+      "type": "gene"
+    },
+    {
+      "id": "524",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7048",
+      "name": "TGFBR2",
+      "shared_name": "hsa:7048",
+      "type": "gene"
+    },
+    {
+      "id": "523",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7046",
+      "name": "TGFBR1",
+      "shared_name": "hsa:7046",
+      "type": "gene"
+    },
+    {
+      "id": "522",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "521",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1869+hsa:1870+hsa:1871",
+      "name": "E2F1",
+      "shared_name": "hsa:1869 hsa:1870 hsa:1871",
+      "type": "gene"
+    },
+    {
+      "id": "520",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5925",
+      "name": "RB1",
+      "shared_name": "hsa:5925",
+      "type": "gene"
+    },
+    {
+      "id": "519",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1019+hsa:1021",
+      "name": "CDK4",
+      "shared_name": "hsa:1019 hsa:1021",
+      "type": "gene"
+    },
+    {
+      "id": "518",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5879+hsa:5880+hsa:5881+hsa:998",
+      "name": "RAC1",
+      "shared_name": "hsa:5879 hsa:5880 hsa:5881 hsa:998",
+      "type": "gene"
+    },
+    {
+      "id": "517",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "516",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7422",
+      "name": "VEGFA",
+      "shared_name": "hsa:7422",
+      "type": "gene"
+    },
+    {
+      "id": "515",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970",
+      "name": "NFKB1",
+      "shared_name": "hsa:4790 hsa:5970",
+      "type": "gene"
+    },
+    {
+      "id": "514",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:598",
+      "name": "BCL2L1",
+      "shared_name": "hsa:598",
+      "type": "gene"
+    },
+    {
+      "id": "513",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6772",
+      "name": "STAT1",
+      "shared_name": "hsa:6772",
+      "type": "gene"
+    },
+    {
+      "id": "512",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6774",
+      "name": "STAT3",
+      "shared_name": "hsa:6774",
+      "type": "gene"
+    },
+    {
+      "id": "511",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "510",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3716",
+      "name": "JAK1",
+      "shared_name": "hsa:3716",
+      "type": "gene"
+    },
+    {
+      "id": "509",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "508",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950",
+      "name": "EGF",
+      "shared_name": "hsa:1950",
+      "type": "gene"
+    },
+    {
+      "id": "507",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7039",
+      "name": "TGFA",
+      "shared_name": "hsa:7039",
+      "type": "gene"
+    },
+    {
+      "id": "506",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5599+hsa:5601+hsa:5602",
+      "name": "MAPK8",
+      "shared_name": "hsa:5599 hsa:5601 hsa:5602",
+      "type": "gene"
+    },
+    {
+      "id": "505",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5337",
+      "name": "PLD1",
+      "shared_name": "hsa:5337",
+      "type": "gene"
+    },
+    {
+      "id": "504",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10928",
+      "name": "RALBP1",
+      "shared_name": "hsa:10928",
+      "type": "gene"
+    },
+    {
+      "id": "503",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5898+hsa:5899",
+      "name": "RALA",
+      "shared_name": "hsa:5898 hsa:5899",
+      "type": "gene"
+    },
+    {
+      "id": "502",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5900",
+      "name": "RALGDS",
+      "shared_name": "hsa:5900",
+      "type": "gene"
+    },
+    {
+      "id": "501",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "500",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604",
+      "type": "gene"
+    },
+    {
+      "id": "499",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:842",
+      "name": "CASP9",
+      "shared_name": "hsa:842",
+      "type": "gene"
+    },
+    {
+      "id": "498",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "497",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:598",
+      "name": "BCL2L1",
+      "shared_name": "hsa:598",
+      "type": "gene"
+    },
+    {
+      "id": "496",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:572",
+      "name": "BAD",
+      "shared_name": "hsa:572",
+      "type": "gene"
+    },
+    {
+      "id": "495",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970",
+      "name": "NFKB1",
+      "shared_name": "hsa:4790 hsa:5970",
+      "type": "gene"
+    },
+    {
+      "id": "494",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1147+hsa:3551+hsa:8517",
+      "name": "CHUK",
+      "shared_name": "hsa:1147 hsa:3551 hsa:8517",
+      "type": "gene"
+    },
+    {
+      "id": "493",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5879+hsa:5880+hsa:5881",
+      "name": "RAC1",
+      "shared_name": "hsa:5879 hsa:5880 hsa:5881",
+      "type": "gene"
+    },
+    {
+      "id": "492",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "491",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:9459",
+      "name": "ARHGEF6",
+      "shared_name": "hsa:9459",
+      "type": "gene"
+    },
+    {
+      "id": "490",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "489",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3845",
+      "name": "KRAS",
+      "shared_name": "hsa:3845",
+      "type": "gene"
+    },
+    {
+      "id": "488",
+      "study": "Pancreatic cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "542",
+      "target": "511",
+      "weight": 1
+    },
+    {
+      "source": "540",
+      "target": "492",
+      "weight": 1
+    },
+    {
+      "source": "540",
+      "target": "491",
+      "weight": 1
+    },
+    {
+      "source": "540",
+      "target": "490",
+      "weight": 1
+    },
+    {
+      "source": "530",
+      "target": "530",
+      "weight": 1
+    },
+    {
+      "source": "530",
+      "target": "488",
+      "weight": 1
+    },
+    {
+      "source": "530",
+      "target": "510",
+      "weight": 1
+    },
+    {
+      "source": "530",
+      "target": "509",
+      "weight": 1
+    },
+    {
+      "source": "528",
+      "target": "529",
+      "weight": 1
+    },
+    {
+      "source": "525",
+      "target": "526",
+      "weight": 1
+    },
+    {
+      "source": "523",
+      "target": "525",
+      "weight": 1
+    },
+    {
+      "source": "523",
+      "target": "524",
+      "weight": 1
+    },
+    {
+      "source": "522",
+      "target": "524",
+      "weight": 1
+    },
+    {
+      "source": "520",
+      "target": "521",
+      "weight": 1
+    },
+    {
+      "source": "519",
+      "target": "520",
+      "weight": 1
+    },
+    {
+      "source": "519",
+      "target": "531",
+      "weight": 1
+    },
+    {
+      "source": "517",
+      "target": "531",
+      "weight": 1
+    },
+    {
+      "source": "515",
+      "target": "516",
+      "weight": 1
+    },
+    {
+      "source": "513",
+      "target": "516",
+      "weight": 1
+    },
+    {
+      "source": "512",
+      "target": "516",
+      "weight": 1
+    },
+    {
+      "source": "511",
+      "target": "515",
+      "weight": 1
+    },
+    {
+      "source": "511",
+      "target": "514",
+      "weight": 1
+    },
+    {
+      "source": "510",
+      "target": "513",
+      "weight": 1
+    },
+    {
+      "source": "510",
+      "target": "512",
+      "weight": 1
+    },
+    {
+      "source": "509",
+      "target": "542",
+      "weight": 1
+    },
+    {
+      "source": "508",
+      "target": "530",
+      "weight": 1
+    },
+    {
+      "source": "507",
+      "target": "530",
+      "weight": 1
+    },
+    {
+      "source": "505",
+      "target": "541",
+      "weight": 1
+    },
+    {
+      "source": "504",
+      "target": "518",
+      "weight": 1
+    },
+    {
+      "source": "503",
+      "target": "505",
+      "weight": 1
+    },
+    {
+      "source": "503",
+      "target": "504",
+      "weight": 1
+    },
+    {
+      "source": "502",
+      "target": "503",
+      "weight": 1
+    },
+    {
+      "source": "500",
+      "target": "506",
+      "weight": 1
+    },
+    {
+      "source": "500",
+      "target": "501",
+      "weight": 1
+    },
+    {
+      "source": "498",
+      "target": "500",
+      "weight": 1
+    },
+    {
+      "source": "496",
+      "target": "497",
+      "weight": 1
+    },
+    {
+      "source": "494",
+      "target": "495",
+      "weight": 1
+    },
+    {
+      "source": "493",
+      "target": "495",
+      "weight": 1
+    },
+    {
+      "source": "492",
+      "target": "499",
+      "weight": 1
+    },
+    {
+      "source": "492",
+      "target": "496",
+      "weight": 1
+    },
+    {
+      "source": "492",
+      "target": "494",
+      "weight": 1
+    },
+    {
+      "source": "491",
+      "target": "493",
+      "weight": 1
+    },
+    {
+      "source": "489",
+      "target": "502",
+      "weight": 1
+    },
+    {
+      "source": "489",
+      "target": "498",
+      "weight": 1
+    },
+    {
+      "source": "489",
+      "target": "490",
+      "weight": 1
+    }
+  ]
+}

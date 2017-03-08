@@ -1,0 +1,788 @@
+{
+  "nodes": [
+    {
+      "id": "3939",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7099",
+      "name": "TLR4",
+      "shared_name": "hsa:7099",
+      "type": "gene"
+    },
+    {
+      "id": "3938",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:50943",
+      "name": "FOXP3",
+      "shared_name": "hsa:50943",
+      "type": "gene"
+    },
+    {
+      "id": "3937",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:50943",
+      "name": "FOXP3",
+      "shared_name": "hsa:50943",
+      "type": "gene"
+    },
+    {
+      "id": "3936",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6095",
+      "name": "RORA",
+      "shared_name": "hsa:6095",
+      "type": "gene"
+    },
+    {
+      "id": "3934",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6774",
+      "name": "STAT3",
+      "shared_name": "hsa:6774",
+      "type": "gene"
+    },
+    {
+      "id": "3933",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:50615",
+      "name": "IL21R",
+      "shared_name": "hsa:50615",
+      "type": "gene"
+    },
+    {
+      "id": "3932",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3458",
+      "name": "IFNG",
+      "shared_name": "hsa:3458",
+      "type": "gene"
+    },
+    {
+      "id": "3931",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6097",
+      "name": "RORC",
+      "shared_name": "hsa:6097",
+      "type": "gene"
+    },
+    {
+      "id": "3930",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8807+hsa:8809",
+      "name": "IL18RAP",
+      "shared_name": "hsa:8807 hsa:8809",
+      "type": "gene"
+    },
+    {
+      "id": "3928",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3561",
+      "name": "IL2RG",
+      "shared_name": "hsa:3561",
+      "type": "gene"
+    },
+    {
+      "id": "3927",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3567",
+      "name": "IL5",
+      "shared_name": "hsa:3567",
+      "type": "gene"
+    },
+    {
+      "id": "3926",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3925",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3595",
+      "name": "IL12RB2",
+      "shared_name": "hsa:3595",
+      "type": "gene"
+    },
+    {
+      "id": "3924",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970",
+      "name": "NFKB1",
+      "shared_name": "hsa:4790 hsa:5970",
+      "type": "gene"
+    },
+    {
+      "id": "3923",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3725",
+      "name": "JUN",
+      "shared_name": "hsa:3725",
+      "type": "gene"
+    },
+    {
+      "id": "3922",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3606",
+      "name": "IL18",
+      "shared_name": "hsa:3606",
+      "type": "gene"
+    },
+    {
+      "id": "3921",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "3920",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6774",
+      "name": "STAT3",
+      "shared_name": "hsa:6774",
+      "type": "gene"
+    },
+    {
+      "id": "3919",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6774",
+      "name": "STAT3",
+      "shared_name": "hsa:6774",
+      "type": "gene"
+    },
+    {
+      "id": "3918",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4087+hsa:4088",
+      "name": "SMAD2",
+      "shared_name": "hsa:4087 hsa:4088",
+      "type": "gene"
+    },
+    {
+      "id": "3917",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:50616",
+      "name": "IL22",
+      "shared_name": "hsa:50616",
+      "type": "gene"
+    },
+    {
+      "id": "3916",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:59067",
+      "name": "IL21",
+      "shared_name": "hsa:59067",
+      "type": "gene"
+    },
+    {
+      "id": "3915",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:112744+hsa:3605",
+      "name": "IL17F",
+      "shared_name": "hsa:112744 hsa:3605",
+      "type": "gene"
+    },
+    {
+      "id": "3914",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3594",
+      "name": "IL12RB1",
+      "shared_name": "hsa:3594",
+      "type": "gene"
+    },
+    {
+      "id": "3913",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:149233",
+      "name": "IL23R",
+      "shared_name": "hsa:149233",
+      "type": "gene"
+    },
+    {
+      "id": "3912",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3558",
+      "name": "IL2",
+      "shared_name": "hsa:3558",
+      "type": "gene"
+    },
+    {
+      "id": "3911",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3596",
+      "name": "IL13",
+      "shared_name": "hsa:3596",
+      "type": "gene"
+    },
+    {
+      "id": "3910",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7097+hsa:7099+hsa:7100",
+      "name": "TLR2",
+      "shared_name": "hsa:7097 hsa:7099 hsa:7100",
+      "type": "gene"
+    },
+    {
+      "id": "3909",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:64127",
+      "name": "NOD2",
+      "shared_name": "hsa:64127",
+      "type": "gene"
+    },
+    {
+      "id": "3908",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3586",
+      "name": "IL10",
+      "shared_name": "hsa:3586",
+      "type": "gene"
+    },
+    {
+      "id": "3907",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3567",
+      "name": "IL5",
+      "shared_name": "hsa:3567",
+      "type": "gene"
+    },
+    {
+      "id": "3906",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "3905",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3586",
+      "name": "IL10",
+      "shared_name": "hsa:3586",
+      "type": "gene"
+    },
+    {
+      "id": "3904",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3596",
+      "name": "IL13",
+      "shared_name": "hsa:3596",
+      "type": "gene"
+    },
+    {
+      "id": "3903",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3552+hsa:3553",
+      "name": "IL1A",
+      "shared_name": "hsa:3552 hsa:3553",
+      "type": "gene"
+    },
+    {
+      "id": "3902",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3569",
+      "name": "IL6",
+      "shared_name": "hsa:3569",
+      "type": "gene"
+    },
+    {
+      "id": "3901",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7124",
+      "name": "TNF",
+      "shared_name": "hsa:7124",
+      "type": "gene"
+    },
+    {
+      "id": "3900",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4094",
+      "name": "MAF",
+      "shared_name": "hsa:4094",
+      "type": "gene"
+    },
+    {
+      "id": "3899",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4772",
+      "name": "NFATC1",
+      "shared_name": "hsa:4772",
+      "type": "gene"
+    },
+    {
+      "id": "3898",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3897",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2625",
+      "name": "GATA3",
+      "shared_name": "hsa:2625",
+      "type": "gene"
+    },
+    {
+      "id": "3896",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6778",
+      "name": "STAT6",
+      "shared_name": "hsa:6778",
+      "type": "gene"
+    },
+    {
+      "id": "3895",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3566",
+      "name": "IL4R",
+      "shared_name": "hsa:3566",
+      "type": "gene"
+    },
+    {
+      "id": "3894",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3893",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3458",
+      "name": "IFNG",
+      "shared_name": "hsa:3458",
+      "type": "gene"
+    },
+    {
+      "id": "3892",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:30009",
+      "name": "TBX21",
+      "shared_name": "hsa:30009",
+      "type": "gene"
+    },
+    {
+      "id": "3891",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6772",
+      "name": "STAT1",
+      "shared_name": "hsa:6772",
+      "type": "gene"
+    },
+    {
+      "id": "3890",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3459+hsa:3460",
+      "name": "IFNGR1",
+      "shared_name": "hsa:3459 hsa:3460",
+      "type": "gene"
+    },
+    {
+      "id": "3889",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6775",
+      "name": "STAT4",
+      "shared_name": "hsa:6775",
+      "type": "gene"
+    },
+    {
+      "id": "3888",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3594",
+      "name": "IL12RB1",
+      "shared_name": "hsa:3594",
+      "type": "gene"
+    },
+    {
+      "id": "3887",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3458",
+      "name": "IFNG",
+      "shared_name": "hsa:3458",
+      "type": "gene"
+    },
+    {
+      "id": "3886",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3592+hsa:3593",
+      "name": "IL12A",
+      "shared_name": "hsa:3592 hsa:3593",
+      "type": "gene"
+    },
+    {
+      "id": "3885",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "3884",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+hsa:3113+hsa:3115+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "3883",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3569",
+      "name": "IL6",
+      "shared_name": "hsa:3569",
+      "type": "gene"
+    },
+    {
+      "id": "3882",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "3881",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51561",
+      "name": "IL23A",
+      "shared_name": "hsa:51561",
+      "type": "gene"
+    },
+    {
+      "id": "3879",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7124",
+      "name": "TNF",
+      "shared_name": "hsa:7124",
+      "type": "gene"
+    },
+    {
+      "id": "3878",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970",
+      "name": "NFKB1",
+      "shared_name": "hsa:4790 hsa:5970",
+      "type": "gene"
+    },
+    {
+      "id": "3877",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7097",
+      "name": "TLR2",
+      "shared_name": "hsa:7097",
+      "type": "gene"
+    },
+    {
+      "id": "3876",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7100",
+      "name": "TLR5",
+      "shared_name": "hsa:7100",
+      "type": "gene"
+    },
+    {
+      "id": "3875",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:64127",
+      "name": "NOD2",
+      "shared_name": "hsa:64127",
+      "type": "gene"
+    },
+    {
+      "id": "3874",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970",
+      "name": "NFKB1",
+      "shared_name": "hsa:4790 hsa:5970",
+      "type": "gene"
+    },
+    {
+      "id": "3873",
+      "study": "3862_Inflammatory bowel disease",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7097",
+      "name": "TLR2",
+      "shared_name": "hsa:7097",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "3939",
+      "target": "3878",
+      "weight": 1
+    },
+    {
+      "source": "3937",
+      "target": "3931",
+      "weight": 1
+    },
+    {
+      "source": "3936",
+      "target": "3917",
+      "weight": 1
+    },
+    {
+      "source": "3936",
+      "target": "3915",
+      "weight": 1
+    },
+    {
+      "source": "3934",
+      "target": "3913",
+      "weight": 1
+    },
+    {
+      "source": "3933",
+      "target": "3934",
+      "weight": 1
+    },
+    {
+      "source": "3931",
+      "target": "3917",
+      "weight": 1
+    },
+    {
+      "source": "3931",
+      "target": "3915",
+      "weight": 1
+    },
+    {
+      "source": "3930",
+      "target": "3924",
+      "weight": 1
+    },
+    {
+      "source": "3930",
+      "target": "3923",
+      "weight": 1
+    },
+    {
+      "source": "3928",
+      "target": "3896",
+      "weight": 1
+    },
+    {
+      "source": "3925",
+      "target": "3930",
+      "weight": 1
+    },
+    {
+      "source": "3925",
+      "target": "3889",
+      "weight": 1
+    },
+    {
+      "source": "3924",
+      "target": "3893",
+      "weight": 1
+    },
+    {
+      "source": "3923",
+      "target": "3893",
+      "weight": 1
+    },
+    {
+      "source": "3922",
+      "target": "3930",
+      "weight": 1
+    },
+    {
+      "source": "3921",
+      "target": "3938",
+      "weight": 1
+    },
+    {
+      "source": "3920",
+      "target": "3936",
+      "weight": 1
+    },
+    {
+      "source": "3920",
+      "target": "3931",
+      "weight": 1
+    },
+    {
+      "source": "3919",
+      "target": "3916",
+      "weight": 1
+    },
+    {
+      "source": "3916",
+      "target": "3933",
+      "weight": 1
+    },
+    {
+      "source": "3914",
+      "target": "3920",
+      "weight": 1
+    },
+    {
+      "source": "3913",
+      "target": "3920",
+      "weight": 1
+    },
+    {
+      "source": "3900",
+      "target": "3898",
+      "weight": 1
+    },
+    {
+      "source": "3899",
+      "target": "3898",
+      "weight": 1
+    },
+    {
+      "source": "3897",
+      "target": "3932",
+      "weight": 1
+    },
+    {
+      "source": "3897",
+      "target": "3911",
+      "weight": 1
+    },
+    {
+      "source": "3897",
+      "target": "3907",
+      "weight": 1
+    },
+    {
+      "source": "3897",
+      "target": "3898",
+      "weight": 1
+    },
+    {
+      "source": "3896",
+      "target": "3908",
+      "weight": 1
+    },
+    {
+      "source": "3896",
+      "target": "3897",
+      "weight": 1
+    },
+    {
+      "source": "3895",
+      "target": "3896",
+      "weight": 1
+    },
+    {
+      "source": "3894",
+      "target": "3928",
+      "weight": 1
+    },
+    {
+      "source": "3894",
+      "target": "3895",
+      "weight": 1
+    },
+    {
+      "source": "3892",
+      "target": "3925",
+      "weight": 1
+    },
+    {
+      "source": "3892",
+      "target": "3927",
+      "weight": 1
+    },
+    {
+      "source": "3892",
+      "target": "3926",
+      "weight": 1
+    },
+    {
+      "source": "3891",
+      "target": "3892",
+      "weight": 1
+    },
+    {
+      "source": "3890",
+      "target": "3891",
+      "weight": 1
+    },
+    {
+      "source": "3889",
+      "target": "3912",
+      "weight": 1
+    },
+    {
+      "source": "3888",
+      "target": "3930",
+      "weight": 1
+    },
+    {
+      "source": "3888",
+      "target": "3889",
+      "weight": 1
+    },
+    {
+      "source": "3887",
+      "target": "3890",
+      "weight": 1
+    },
+    {
+      "source": "3886",
+      "target": "3888",
+      "weight": 1
+    },
+    {
+      "source": "3886",
+      "target": "3925",
+      "weight": 1
+    },
+    {
+      "source": "3883",
+      "target": "3919",
+      "weight": 1
+    },
+    {
+      "source": "3882",
+      "target": "3918",
+      "weight": 1
+    },
+    {
+      "source": "3881",
+      "target": "3914",
+      "weight": 1
+    },
+    {
+      "source": "3881",
+      "target": "3913",
+      "weight": 1
+    },
+    {
+      "source": "3878",
+      "target": "3879",
+      "weight": 1
+    },
+    {
+      "source": "3877",
+      "target": "3878",
+      "weight": 1
+    },
+    {
+      "source": "3876",
+      "target": "3878",
+      "weight": 1
+    },
+    {
+      "source": "3874",
+      "target": "3886",
+      "weight": 1
+    },
+    {
+      "source": "3873",
+      "target": "3874",
+      "weight": 1
+    }
+  ]
+}

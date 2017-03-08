@@ -1,0 +1,347 @@
+{
+  "nodes": [
+    {
+      "id": "2044",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6714",
+      "name": "SRC",
+      "shared_name": "hsa:6714",
+      "type": "gene"
+    },
+    {
+      "id": "2043",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1839",
+      "name": "HBEGF",
+      "shared_name": "hsa:1839",
+      "type": "gene"
+    },
+    {
+      "id": "2042",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7380",
+      "name": "UPK3A",
+      "shared_name": "hsa:7380",
+      "type": "gene"
+    },
+    {
+      "id": "2041",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4313+hsa:4318",
+      "name": "MMP2",
+      "shared_name": "hsa:4313 hsa:4318",
+      "type": "gene"
+    },
+    {
+      "id": "2040",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "2039",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "2038",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "2037",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "2034",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1950",
+      "name": "EGF",
+      "shared_name": "hsa:1950",
+      "type": "gene"
+    },
+    {
+      "id": "2033",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "2032",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:9252",
+      "name": "RPS6KA5",
+      "shared_name": "hsa:9252",
+      "type": "gene"
+    },
+    {
+      "id": "2030",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2028",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1019",
+      "name": "CDK4",
+      "shared_name": "hsa:1019",
+      "type": "gene"
+    },
+    {
+      "id": "2027",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2261",
+      "name": "FGFR3",
+      "shared_name": "hsa:2261",
+      "type": "gene"
+    },
+    {
+      "id": "2026",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5925",
+      "name": "RB1",
+      "shared_name": "hsa:5925",
+      "type": "gene"
+    },
+    {
+      "id": "2025",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1869+hsa:1870+hsa:1871",
+      "name": "E2F1",
+      "shared_name": "hsa:1869 hsa:1870 hsa:1871",
+      "type": "gene"
+    },
+    {
+      "id": "2024",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "2023",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4193",
+      "name": "MDM2",
+      "shared_name": "hsa:4193",
+      "type": "gene"
+    },
+    {
+      "id": "2022",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1612+hsa:1613+hsa:23604",
+      "name": "DAPK1",
+      "shared_name": "hsa:1612 hsa:1613 hsa:23604",
+      "type": "gene"
+    },
+    {
+      "id": "2021",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:11186",
+      "name": "RASSF1",
+      "shared_name": "hsa:11186",
+      "type": "gene"
+    },
+    {
+      "id": "2020",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4609",
+      "name": "MYC",
+      "shared_name": "hsa:4609",
+      "type": "gene"
+    },
+    {
+      "id": "2019",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1026",
+      "name": "CDKN1A",
+      "shared_name": "hsa:1026",
+      "type": "gene"
+    },
+    {
+      "id": "2018",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "2017",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2064",
+      "name": "ERBB2",
+      "shared_name": "hsa:2064",
+      "type": "gene"
+    },
+    {
+      "id": "2016",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:999",
+      "name": "CDH1",
+      "shared_name": "hsa:999",
+      "type": "gene"
+    },
+    {
+      "id": "2015",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1956",
+      "name": "EGFR",
+      "shared_name": "hsa:1956",
+      "type": "gene"
+    },
+    {
+      "id": "2014",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7057",
+      "name": "THBS1",
+      "shared_name": "hsa:7057",
+      "type": "gene"
+    },
+    {
+      "id": "2013",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3576",
+      "name": "CXCL8",
+      "shared_name": "hsa:3576",
+      "type": "gene"
+    },
+    {
+      "id": "2012",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7422",
+      "name": "VEGFA",
+      "shared_name": "hsa:7422",
+      "type": "gene"
+    },
+    {
+      "id": "2011",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1890",
+      "name": "TYMP",
+      "shared_name": "hsa:1890",
+      "type": "gene"
+    },
+    {
+      "id": "2010",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4312+hsa:4313+hsa:4318",
+      "name": "MMP1",
+      "shared_name": "hsa:4312 hsa:4313 hsa:4318",
+      "type": "gene"
+    },
+    {
+      "id": "2007",
+      "study": "1996_Bladder cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265",
+      "name": "HRAS",
+      "shared_name": "hsa:3265",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "2040",
+      "target": "2039",
+      "weight": 1
+    },
+    {
+      "source": "2039",
+      "target": "2038",
+      "weight": 1
+    },
+    {
+      "source": "2038",
+      "target": "2037",
+      "weight": 1
+    },
+    {
+      "source": "2037",
+      "target": "2032",
+      "weight": 1
+    },
+    {
+      "source": "2034",
+      "target": "2015",
+      "weight": 1
+    },
+    {
+      "source": "2034",
+      "target": "2017",
+      "weight": 1
+    },
+    {
+      "source": "2033",
+      "target": "2028",
+      "weight": 1
+    },
+    {
+      "source": "2030",
+      "target": "2026",
+      "weight": 1
+    },
+    {
+      "source": "2028",
+      "target": "2030",
+      "weight": 1
+    },
+    {
+      "source": "2027",
+      "target": "2040",
+      "weight": 1
+    },
+    {
+      "source": "2025",
+      "target": "2026",
+      "weight": 1
+    },
+    {
+      "source": "2023",
+      "target": "2024",
+      "weight": 1
+    },
+    {
+      "source": "2022",
+      "target": "2037",
+      "weight": 1
+    },
+    {
+      "source": "2021",
+      "target": "2040",
+      "weight": 1
+    },
+    {
+      "source": "2019",
+      "target": "2028",
+      "weight": 1
+    },
+    {
+      "source": "2018",
+      "target": "2023",
+      "weight": 1
+    },
+    {
+      "source": "2007",
+      "target": "2039",
+      "weight": 1
+    }
+  ]
+}

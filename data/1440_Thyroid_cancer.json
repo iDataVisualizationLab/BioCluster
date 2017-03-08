@@ -1,0 +1,236 @@
+{
+  "nodes": [
+    {
+      "id": "1470",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:51176+hsa:6932+hsa:6934+hsa:83439",
+      "name": "LEF1",
+      "shared_name": "hsa:51176 hsa:6932 hsa:6934 hsa:83439",
+      "type": "gene"
+    },
+    {
+      "id": "1469",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10342+hsa:4914+hsa:7170+hsa:7175",
+      "name": "TFG",
+      "shared_name": "hsa:10342 hsa:4914 hsa:7170 hsa:7175",
+      "type": "gene"
+    },
+    {
+      "id": "1468",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5979+hsa:8030+hsa:8031",
+      "name": "RET",
+      "shared_name": "hsa:5979 hsa:8030 hsa:8031",
+      "type": "gene"
+    },
+    {
+      "id": "1467",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "1466",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:673",
+      "name": "BRAF",
+      "shared_name": "hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "1465",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "1464",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "1463",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "1461",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:999",
+      "name": "CDH1",
+      "shared_name": "hsa:999",
+      "type": "gene"
+    },
+    {
+      "id": "1460",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4609",
+      "name": "MYC",
+      "shared_name": "hsa:4609",
+      "type": "gene"
+    },
+    {
+      "id": "1459",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1499",
+      "name": "CTNNB1",
+      "shared_name": "hsa:1499",
+      "type": "gene"
+    },
+    {
+      "id": "1458",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6256+hsa:6257+hsa:6258",
+      "name": "RXRA",
+      "shared_name": "hsa:6256 hsa:6257 hsa:6258",
+      "type": "gene"
+    },
+    {
+      "id": "1457",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "1456",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5468+hsa:7849",
+      "name": "PPARG",
+      "shared_name": "hsa:5468 hsa:7849",
+      "type": "gene"
+    },
+    {
+      "id": "1455",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "1454",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "1453",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:673",
+      "name": "BRAF",
+      "shared_name": "hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "1452",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:673",
+      "name": "BRAF",
+      "shared_name": "hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "1451",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5468",
+      "name": "PPARG",
+      "shared_name": "hsa:5468",
+      "type": "gene"
+    },
+    {
+      "id": "1450",
+      "study": "1440_Thyroid cancer",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "1470",
+      "target": "1464",
+      "weight": 1
+    },
+    {
+      "source": "1470",
+      "target": "1460",
+      "weight": 1
+    },
+    {
+      "source": "1469",
+      "target": "1467",
+      "weight": 1
+    },
+    {
+      "source": "1468",
+      "target": "1467",
+      "weight": 1
+    },
+    {
+      "source": "1467",
+      "target": "1466",
+      "weight": 1
+    },
+    {
+      "source": "1466",
+      "target": "1465",
+      "weight": 1
+    },
+    {
+      "source": "1465",
+      "target": "1463",
+      "weight": 1
+    },
+    {
+      "source": "1459",
+      "target": "1470",
+      "weight": 1
+    },
+    {
+      "source": "1459",
+      "target": "1461",
+      "weight": 1
+    },
+    {
+      "source": "1456",
+      "target": "1458",
+      "weight": 1
+    },
+    {
+      "source": "1455",
+      "target": "1454",
+      "weight": 1
+    },
+    {
+      "source": "1453",
+      "target": "1465",
+      "weight": 1
+    },
+    {
+      "source": "1452",
+      "target": "1455",
+      "weight": 1
+    },
+    {
+      "source": "1450",
+      "target": "1452",
+      "weight": 1
+    }
+  ]
+}

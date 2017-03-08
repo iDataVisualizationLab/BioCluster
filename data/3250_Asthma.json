@@ -1,0 +1,325 @@
+{
+  "nodes": [
+    {
+      "id": "3305",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3596",
+      "name": "IL13",
+      "shared_name": "hsa:3596",
+      "type": "gene"
+    },
+    {
+      "id": "3304",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7124",
+      "name": "TNF",
+      "shared_name": "hsa:7124",
+      "type": "gene"
+    },
+    {
+      "id": "3303",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3301",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05951",
+      "name": "C05951",
+      "shared_name": "cpd:C05951",
+      "type": "compound"
+    },
+    {
+      "id": "3300",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05951",
+      "name": "C05951",
+      "shared_name": "cpd:C05951",
+      "type": "compound"
+    },
+    {
+      "id": "3299",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3298",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3297",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3295",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3567",
+      "name": "IL5",
+      "shared_name": "hsa:3567",
+      "type": "gene"
+    },
+    {
+      "id": "3294",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3562",
+      "name": "IL3",
+      "shared_name": "hsa:3562",
+      "type": "gene"
+    },
+    {
+      "id": "3293",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3567",
+      "name": "IL5",
+      "shared_name": "hsa:3567",
+      "type": "gene"
+    },
+    {
+      "id": "3292",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6356",
+      "name": "CCL11",
+      "shared_name": "hsa:6356",
+      "type": "gene"
+    },
+    {
+      "id": "3291",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C04598",
+      "name": "C04598",
+      "shared_name": "cpd:C04598",
+      "type": "compound"
+    },
+    {
+      "id": "3290",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05951",
+      "name": "C05951",
+      "shared_name": "cpd:C05951",
+      "type": "compound"
+    },
+    {
+      "id": "3289",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C04598",
+      "name": "C04598",
+      "shared_name": "cpd:C04598",
+      "type": "compound"
+    },
+    {
+      "id": "3288",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00696",
+      "name": "C00696",
+      "shared_name": "cpd:C00696",
+      "type": "compound"
+    },
+    {
+      "id": "3287",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C02166",
+      "name": "C02166",
+      "shared_name": "cpd:C02166",
+      "type": "compound"
+    },
+    {
+      "id": "3286",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00388",
+      "name": "C00388",
+      "shared_name": "cpd:C00388",
+      "type": "compound"
+    },
+    {
+      "id": "3284",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8288",
+      "name": "EPX",
+      "shared_name": "hsa:8288",
+      "type": "gene"
+    },
+    {
+      "id": "3283",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3281",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3596",
+      "name": "IL13",
+      "shared_name": "hsa:3596",
+      "type": "gene"
+    },
+    {
+      "id": "3280",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3279",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:102723407",
+      "name": "IGH",
+      "shared_name": "hsa:102723407",
+      "type": "gene"
+    },
+    {
+      "id": "3278",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5553",
+      "name": "PRG2",
+      "shared_name": "hsa:5553",
+      "type": "gene"
+    },
+    {
+      "id": "3277",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6037",
+      "name": "RNASE3",
+      "shared_name": "hsa:6037",
+      "type": "gene"
+    },
+    {
+      "id": "3276",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3596",
+      "name": "IL13",
+      "shared_name": "hsa:3596",
+      "type": "gene"
+    },
+    {
+      "id": "3275",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3274",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3565",
+      "name": "IL4",
+      "shared_name": "hsa:3565",
+      "type": "gene"
+    },
+    {
+      "id": "3273",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2205+hsa:2206+hsa:2207",
+      "name": "FCER1A",
+      "shared_name": "hsa:2205 hsa:2206 hsa:2207",
+      "type": "gene"
+    },
+    {
+      "id": "3272",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2205+hsa:2206+hsa:2207",
+      "name": "FCER1A",
+      "shared_name": "hsa:2205 hsa:2206 hsa:2207",
+      "type": "gene"
+    },
+    {
+      "id": "3271",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3578",
+      "name": "IL9",
+      "shared_name": "hsa:3578",
+      "type": "gene"
+    },
+    {
+      "id": "3270",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3586",
+      "name": "IL10",
+      "shared_name": "hsa:3586",
+      "type": "gene"
+    },
+    {
+      "id": "3269",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+h…15+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    },
+    {
+      "id": "3268",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "3267",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:958",
+      "name": "CD40",
+      "shared_name": "hsa:958",
+      "type": "gene"
+    },
+    {
+      "id": "3266",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:959",
+      "name": "CD40LG",
+      "shared_name": "hsa:959",
+      "type": "gene"
+    },
+    {
+      "id": "3265",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?K10784+K10785",
+      "name": "K10784...",
+      "shared_name": "ko:K10784 ko:K10785",
+      "type": "ortholog"
+    },
+    {
+      "id": "3264",
+      "study": "3250_Asthma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3108+hsa:3109+hsa:3111+hsa:3112+h…15+hsa:3117+hsa:3118+hsa:3119+hsa:3122+hsa:3123+hsa:3125+hsa:3126+hsa:3127",
+      "name": "HLA-DMA",
+      "shared_name": "hsa:3108 hsa:3109 hsa:3111 hsa:3112 hsa:3113 hsa:3115 hsa:3117 hsa:3118 hsa:3119 hsa:3122 hsa:3123 hsa:3125 hsa:3126 hsa:3127",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "3299",
+      "target": "3272",
+      "weight": 1
+    },
+    {
+      "source": "3298",
+      "target": "3273",
+      "weight": 1
+    },
+    {
+      "source": "3266",
+      "target": "3267",
+      "weight": 1
+    }
+  ]
+}

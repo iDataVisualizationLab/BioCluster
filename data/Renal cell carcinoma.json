@@ -1,0 +1,608 @@
+{
+  "nodes": [
+    {
+      "id": "318",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "317",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "316",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "315",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "313",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3082",
+      "name": "HGF",
+      "shared_name": "hsa:3082",
+      "type": "gene"
+    },
+    {
+      "id": "312",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7039",
+      "name": "TGFA",
+      "shared_name": "hsa:7039",
+      "type": "gene"
+    },
+    {
+      "id": "311",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3725",
+      "name": "JUN",
+      "shared_name": "hsa:3725",
+      "type": "gene"
+    },
+    {
+      "id": "310",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "309",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "308",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2113",
+      "name": "ETS1",
+      "shared_name": "hsa:2113",
+      "type": "gene"
+    },
+    {
+      "id": "307",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:998",
+      "name": "CDC42",
+      "shared_name": "hsa:998",
+      "type": "gene"
+    },
+    {
+      "id": "306",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5906+hsa:5908",
+      "name": "RAP1A",
+      "shared_name": "hsa:5906 hsa:5908",
+      "type": "gene"
+    },
+    {
+      "id": "305",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6513",
+      "name": "SLC2A1",
+      "shared_name": "hsa:6513",
+      "type": "gene"
+    },
+    {
+      "id": "304",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5155",
+      "name": "PDGFB",
+      "shared_name": "hsa:5155",
+      "type": "gene"
+    },
+    {
+      "id": "303",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10298+hsa:106821730+hsa:5058+hsa:5062+hsa:5063+hsa:56924+hsa:57144",
+      "name": "PAK4...",
+      "shared_name": "hsa:10298 hsa:106821730 hsa:5058 hsa:5062 hsa:5063 hsa:56924 hsa:57144",
+      "type": "gene"
+    },
+    {
+      "id": "302",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2549",
+      "name": "GAB1",
+      "shared_name": "hsa:2549",
+      "type": "gene"
+    },
+    {
+      "id": "301",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4233",
+      "name": "MET",
+      "shared_name": "hsa:4233",
+      "type": "gene"
+    },
+    {
+      "id": "300",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2034+hsa:3091",
+      "name": "EPAS1",
+      "shared_name": "hsa:2034 hsa:3091",
+      "type": "gene"
+    },
+    {
+      "id": "299",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1387+hsa:2033",
+      "name": "CREBBP",
+      "shared_name": "hsa:1387 hsa:2033",
+      "type": "gene"
+    },
+    {
+      "id": "298",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:405+hsa:9915",
+      "name": "ARNT",
+      "shared_name": "hsa:405 hsa:9915",
+      "type": "gene"
+    },
+    {
+      "id": "297",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7428",
+      "name": "VHL",
+      "shared_name": "hsa:7428",
+      "type": "gene"
+    },
+    {
+      "id": "296",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:112398+hsa:112399+hsa:54583",
+      "name": "EGLN2",
+      "shared_name": "hsa:112398 hsa:112399 hsa:54583",
+      "type": "gene"
+    },
+    {
+      "id": "295",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "294",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "293",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2889",
+      "name": "RAPGEF1",
+      "shared_name": "hsa:2889",
+      "type": "gene"
+    },
+    {
+      "id": "292",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1398+hsa:1399",
+      "name": "CRK",
+      "shared_name": "hsa:1398 hsa:1399",
+      "type": "gene"
+    },
+    {
+      "id": "291",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5879",
+      "name": "RAC1",
+      "shared_name": "hsa:5879",
+      "type": "gene"
+    },
+    {
+      "id": "290",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7422",
+      "name": "VEGFA",
+      "shared_name": "hsa:7422",
+      "type": "gene"
+    },
+    {
+      "id": "289",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2271",
+      "name": "FH",
+      "shared_name": "hsa:2271",
+      "type": "gene"
+    },
+    {
+      "id": "288",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:201163",
+      "name": "FLCN",
+      "shared_name": "hsa:201163",
+      "type": "gene"
+    },
+    {
+      "id": "287",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00007",
+      "name": "C00007",
+      "shared_name": "cpd:C00007",
+      "type": "compound"
+    },
+    {
+      "id": "286",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5155",
+      "name": "PDGFB",
+      "shared_name": "hsa:5155",
+      "type": "gene"
+    },
+    {
+      "id": "285",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7039",
+      "name": "TGFA",
+      "shared_name": "hsa:7039",
+      "type": "gene"
+    },
+    {
+      "id": "284",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "283",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6921",
+      "name": "TCEB1",
+      "shared_name": "hsa:6921",
+      "type": "gene"
+    },
+    {
+      "id": "282",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6923",
+      "name": "TCEB2",
+      "shared_name": "hsa:6923",
+      "type": "gene"
+    },
+    {
+      "id": "281",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:9978",
+      "name": "RBX1",
+      "shared_name": "hsa:9978",
+      "type": "gene"
+    },
+    {
+      "id": "280",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8453",
+      "name": "CUL2",
+      "shared_name": "hsa:8453",
+      "type": "gene"
+    },
+    {
+      "id": "279",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00122",
+      "name": "C00122",
+      "shared_name": "cpd:C00122",
+      "type": "compound"
+    },
+    {
+      "id": "278",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00149",
+      "name": "C00149",
+      "shared_name": "cpd:C00149",
+      "type": "compound"
+    },
+    {
+      "id": "277",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C00007",
+      "name": "C00007",
+      "shared_name": "cpd:C00007",
+      "type": "compound"
+    },
+    {
+      "id": "276",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2034+hsa:3091",
+      "name": "EPAS1",
+      "shared_name": "hsa:2034 hsa:3091",
+      "type": "gene"
+    },
+    {
+      "id": "275",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:112398+hsa:112399+hsa:54583",
+      "name": "EGLN2",
+      "shared_name": "hsa:112398 hsa:112399 hsa:54583",
+      "type": "gene"
+    },
+    {
+      "id": "274",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7428",
+      "name": "VHL",
+      "shared_name": "hsa:7428",
+      "type": "gene"
+    },
+    {
+      "id": "273",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6921",
+      "name": "TCEB1",
+      "shared_name": "hsa:6921",
+      "type": "gene"
+    },
+    {
+      "id": "272",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6923",
+      "name": "TCEB2",
+      "shared_name": "hsa:6923",
+      "type": "gene"
+    },
+    {
+      "id": "271",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:9978",
+      "name": "RBX1",
+      "shared_name": "hsa:9978",
+      "type": "gene"
+    },
+    {
+      "id": "270",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:8453",
+      "name": "CUL2",
+      "shared_name": "hsa:8453",
+      "type": "gene"
+    },
+    {
+      "id": "269",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1387+hsa:2033",
+      "name": "CREBBP",
+      "shared_name": "hsa:1387 hsa:2033",
+      "type": "gene"
+    },
+    {
+      "id": "268",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:405+hsa:9915",
+      "name": "ARNT",
+      "shared_name": "hsa:405 hsa:9915",
+      "type": "gene"
+    },
+    {
+      "id": "267",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6513",
+      "name": "SLC2A1",
+      "shared_name": "hsa:6513",
+      "type": "gene"
+    },
+    {
+      "id": "266",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7422",
+      "name": "VEGFA",
+      "shared_name": "hsa:7422",
+      "type": "gene"
+    },
+    {
+      "id": "265",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "264",
+      "study": "Renal cell carcinoma",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5781",
+      "name": "PTPN11",
+      "shared_name": "hsa:5781",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "317",
+      "target": "316",
+      "weight": 1
+    },
+    {
+      "source": "316",
+      "target": "315",
+      "weight": 1
+    },
+    {
+      "source": "315",
+      "target": "311",
+      "weight": 1
+    },
+    {
+      "source": "315",
+      "target": "308",
+      "weight": 1
+    },
+    {
+      "source": "313",
+      "target": "301",
+      "weight": 1
+    },
+    {
+      "source": "310",
+      "target": "309",
+      "weight": 1
+    },
+    {
+      "source": "307",
+      "target": "303",
+      "weight": 1
+    },
+    {
+      "source": "302",
+      "target": "295",
+      "weight": 1
+    },
+    {
+      "source": "302",
+      "target": "264",
+      "weight": 1
+    },
+    {
+      "source": "302",
+      "target": "292",
+      "weight": 1
+    },
+    {
+      "source": "302",
+      "target": "310",
+      "weight": 1
+    },
+    {
+      "source": "301",
+      "target": "295",
+      "weight": 1
+    },
+    {
+      "source": "301",
+      "target": "302",
+      "weight": 1
+    },
+    {
+      "source": "300",
+      "target": "298",
+      "weight": 1
+    },
+    {
+      "source": "300",
+      "target": "299",
+      "weight": 1
+    },
+    {
+      "source": "300",
+      "target": "312",
+      "weight": 1
+    },
+    {
+      "source": "300",
+      "target": "304",
+      "weight": 1
+    },
+    {
+      "source": "300",
+      "target": "284",
+      "weight": 1
+    },
+    {
+      "source": "300",
+      "target": "290",
+      "weight": 1
+    },
+    {
+      "source": "300",
+      "target": "305",
+      "weight": 1
+    },
+    {
+      "source": "296",
+      "target": "300",
+      "weight": 1
+    },
+    {
+      "source": "295",
+      "target": "294",
+      "weight": 1
+    },
+    {
+      "source": "293",
+      "target": "306",
+      "weight": 1
+    },
+    {
+      "source": "292",
+      "target": "293",
+      "weight": 1
+    },
+    {
+      "source": "291",
+      "target": "303",
+      "weight": 1
+    },
+    {
+      "source": "279",
+      "target": "275",
+      "weight": 1
+    },
+    {
+      "source": "276",
+      "target": "268",
+      "weight": 1
+    },
+    {
+      "source": "276",
+      "target": "269",
+      "weight": 1
+    },
+    {
+      "source": "276",
+      "target": "285",
+      "weight": 1
+    },
+    {
+      "source": "276",
+      "target": "286",
+      "weight": 1
+    },
+    {
+      "source": "276",
+      "target": "265",
+      "weight": 1
+    },
+    {
+      "source": "276",
+      "target": "266",
+      "weight": 1
+    },
+    {
+      "source": "276",
+      "target": "267",
+      "weight": 1
+    },
+    {
+      "source": "264",
+      "target": "315",
+      "weight": 1
+    }
+  ]
+}

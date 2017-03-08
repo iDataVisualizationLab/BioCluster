@@ -1,0 +1,584 @@
+{
+  "nodes": [
+    {
+      "id": "2198",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3265+hsa:3845+hsa:4893",
+      "name": "HRAS",
+      "shared_name": "hsa:3265 hsa:3845 hsa:4893",
+      "type": "gene"
+    },
+    {
+      "id": "2197",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:369+hsa:5894+hsa:673",
+      "name": "ARAF",
+      "shared_name": "hsa:369 hsa:5894 hsa:673",
+      "type": "gene"
+    },
+    {
+      "id": "2196",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5604+hsa:5605",
+      "name": "MAP2K1",
+      "shared_name": "hsa:5604 hsa:5605",
+      "type": "gene"
+    },
+    {
+      "id": "2195",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5594+hsa:5595",
+      "name": "MAPK1",
+      "shared_name": "hsa:5594 hsa:5595",
+      "type": "gene"
+    },
+    {
+      "id": "2192",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "2191",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23533+hsa:5290+hsa:5291+hsa:5293+hsa:5294+hsa:5295+hsa:5296+hsa:8503",
+      "name": "PIK3R5",
+      "shared_name": "hsa:23533 hsa:5290 hsa:5291 hsa:5293 hsa:5294 hsa:5295 hsa:5296 hsa:8503",
+      "type": "gene"
+    },
+    {
+      "id": "2190",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:10000+hsa:207+hsa:208",
+      "name": "AKT3",
+      "shared_name": "hsa:10000 hsa:207 hsa:208",
+      "type": "gene"
+    },
+    {
+      "id": "2188",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:595",
+      "name": "CCND1",
+      "shared_name": "hsa:595",
+      "type": "gene"
+    },
+    {
+      "id": "2187",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1019+hsa:1021",
+      "name": "CDK4",
+      "shared_name": "hsa:1019 hsa:1021",
+      "type": "gene"
+    },
+    {
+      "id": "2186",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4088",
+      "name": "SMAD3",
+      "shared_name": "hsa:4088",
+      "type": "gene"
+    },
+    {
+      "id": "2185",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5925",
+      "name": "RB1",
+      "shared_name": "hsa:5925",
+      "type": "gene"
+    },
+    {
+      "id": "2184",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1869+hsa:1870+hsa:1871",
+      "name": "E2F1",
+      "shared_name": "hsa:1869 hsa:1870 hsa:1871",
+      "type": "gene"
+    },
+    {
+      "id": "2183",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "2182",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4193",
+      "name": "MDM2",
+      "shared_name": "hsa:4193",
+      "type": "gene"
+    },
+    {
+      "id": "2181",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?C05981",
+      "name": "C05981",
+      "shared_name": "cpd:C05981",
+      "type": "compound"
+    },
+    {
+      "id": "2180",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1398+hsa:1399",
+      "name": "CRK",
+      "shared_name": "hsa:1398 hsa:1399",
+      "type": "gene"
+    },
+    {
+      "id": "2179",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:23624+hsa:867+hsa:868",
+      "name": "CBLC",
+      "shared_name": "hsa:23624 hsa:867 hsa:868",
+      "type": "gene"
+    },
+    {
+      "id": "2178",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1398+hsa:1399",
+      "name": "CRK",
+      "shared_name": "hsa:1398 hsa:1399",
+      "type": "gene"
+    },
+    {
+      "id": "2177",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:9846",
+      "name": "GAB2",
+      "shared_name": "hsa:9846",
+      "type": "gene"
+    },
+    {
+      "id": "2176",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:25759+hsa:399694+hsa:53358+hsa:6464",
+      "name": "SHC2",
+      "shared_name": "hsa:25759 hsa:399694 hsa:53358 hsa:6464",
+      "type": "gene"
+    },
+    {
+      "id": "2175",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2885",
+      "name": "GRB2",
+      "shared_name": "hsa:2885",
+      "type": "gene"
+    },
+    {
+      "id": "2174",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6654+hsa:6655",
+      "name": "SOS1",
+      "shared_name": "hsa:6654 hsa:6655",
+      "type": "gene"
+    },
+    {
+      "id": "2173",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1026",
+      "name": "CDKN1A",
+      "shared_name": "hsa:1026",
+      "type": "gene"
+    },
+    {
+      "id": "2172",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1029",
+      "name": "CDKN2A",
+      "shared_name": "hsa:1029",
+      "type": "gene"
+    },
+    {
+      "id": "2171",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:572",
+      "name": "BAD",
+      "shared_name": "hsa:572",
+      "type": "gene"
+    },
+    {
+      "id": "2170",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:598",
+      "name": "BCL2L1",
+      "shared_name": "hsa:598",
+      "type": "gene"
+    },
+    {
+      "id": "2169",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1147+hsa:3551+hsa:8517",
+      "name": "CHUK",
+      "shared_name": "hsa:1147 hsa:3551 hsa:8517",
+      "type": "gene"
+    },
+    {
+      "id": "2168",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4193",
+      "name": "MDM2",
+      "shared_name": "hsa:4193",
+      "type": "gene"
+    },
+    {
+      "id": "2167",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1027",
+      "name": "CDKN1B",
+      "shared_name": "hsa:1027",
+      "type": "gene"
+    },
+    {
+      "id": "2166",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4792",
+      "name": "NFKBIA",
+      "shared_name": "hsa:4792",
+      "type": "gene"
+    },
+    {
+      "id": "2165",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4790+hsa:5970",
+      "name": "NFKB1",
+      "shared_name": "hsa:4790 hsa:5970",
+      "type": "gene"
+    },
+    {
+      "id": "2164",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4089",
+      "name": "SMAD4",
+      "shared_name": "hsa:4089",
+      "type": "gene"
+    },
+    {
+      "id": "2163",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:6776+hsa:6777",
+      "name": "STAT5A",
+      "shared_name": "hsa:6776 hsa:6777",
+      "type": "gene"
+    },
+    {
+      "id": "2162",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7046",
+      "name": "TGFBR1",
+      "shared_name": "hsa:7046",
+      "type": "gene"
+    },
+    {
+      "id": "2161",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7048",
+      "name": "TGFBR2",
+      "shared_name": "hsa:7048",
+      "type": "gene"
+    },
+    {
+      "id": "2160",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:4609",
+      "name": "MYC",
+      "shared_name": "hsa:4609",
+      "type": "gene"
+    },
+    {
+      "id": "2159",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2122",
+      "name": "MECOM",
+      "shared_name": "hsa:2122",
+      "type": "gene"
+    },
+    {
+      "id": "2158",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:1487+hsa:1488",
+      "name": "CTBP1",
+      "shared_name": "hsa:1487 hsa:1488",
+      "type": "gene"
+    },
+    {
+      "id": "2157",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:3065+hsa:3066",
+      "name": "HDAC1",
+      "shared_name": "hsa:3065 hsa:3066",
+      "type": "gene"
+    },
+    {
+      "id": "2156",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7040+hsa:7042+hsa:7043",
+      "name": "TGFB1",
+      "shared_name": "hsa:7040 hsa:7042 hsa:7043",
+      "type": "gene"
+    },
+    {
+      "id": "2155",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "2151",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:7157",
+      "name": "TP53",
+      "shared_name": "hsa:7157",
+      "type": "gene"
+    },
+    {
+      "id": "2150",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:25+hsa:613",
+      "name": "ABL1",
+      "shared_name": "hsa:25 hsa:613",
+      "type": "gene"
+    },
+    {
+      "id": "2149",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:5781",
+      "name": "PTPN11",
+      "shared_name": "hsa:5781",
+      "type": "gene"
+    },
+    {
+      "id": "2148",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:598",
+      "name": "BCL2L1",
+      "shared_name": "hsa:598",
+      "type": "gene"
+    },
+    {
+      "id": "2147",
+      "study": "2136_Chronic myeloid leukemia",
+      "link": "http://www.kegg.jp/dbget-bin/www_bget?hsa:2122+hsa:861",
+      "name": "MECOM",
+      "shared_name": "hsa:2122 hsa:861",
+      "type": "gene"
+    }
+  ],
+  "links": [
+    {
+      "source": "2198",
+      "target": "2197",
+      "weight": 1
+    },
+    {
+      "source": "2197",
+      "target": "2196",
+      "weight": 1
+    },
+    {
+      "source": "2196",
+      "target": "2195",
+      "weight": 1
+    },
+    {
+      "source": "2192",
+      "target": "2187",
+      "weight": 1
+    },
+    {
+      "source": "2191",
+      "target": "2181",
+      "weight": 1
+    },
+    {
+      "source": "2190",
+      "target": "2167",
+      "weight": 1
+    },
+    {
+      "source": "2190",
+      "target": "2171",
+      "weight": 1
+    },
+    {
+      "source": "2190",
+      "target": "2168",
+      "weight": 1
+    },
+    {
+      "source": "2190",
+      "target": "2169",
+      "weight": 1
+    },
+    {
+      "source": "2188",
+      "target": "2185",
+      "weight": 1
+    },
+    {
+      "source": "2187",
+      "target": "2188",
+      "weight": 1
+    },
+    {
+      "source": "2186",
+      "target": "2164",
+      "weight": 1
+    },
+    {
+      "source": "2184",
+      "target": "2185",
+      "weight": 1
+    },
+    {
+      "source": "2183",
+      "target": "2173",
+      "weight": 1
+    },
+    {
+      "source": "2182",
+      "target": "2183",
+      "weight": 1
+    },
+    {
+      "source": "2181",
+      "target": "2190",
+      "weight": 1
+    },
+    {
+      "source": "2180",
+      "target": "2191",
+      "weight": 1
+    },
+    {
+      "source": "2179",
+      "target": "2180",
+      "weight": 1
+    },
+    {
+      "source": "2178",
+      "target": "2179",
+      "weight": 1
+    },
+    {
+      "source": "2177",
+      "target": "2149",
+      "weight": 1
+    },
+    {
+      "source": "2177",
+      "target": "2191",
+      "weight": 1
+    },
+    {
+      "source": "2175",
+      "target": "2174",
+      "weight": 1
+    },
+    {
+      "source": "2175",
+      "target": "2177",
+      "weight": 1
+    },
+    {
+      "source": "2174",
+      "target": "2198",
+      "weight": 1
+    },
+    {
+      "source": "2173",
+      "target": "2187",
+      "weight": 1
+    },
+    {
+      "source": "2172",
+      "target": "2182",
+      "weight": 1
+    },
+    {
+      "source": "2171",
+      "target": "2170",
+      "weight": 1
+    },
+    {
+      "source": "2169",
+      "target": "2166",
+      "weight": 1
+    },
+    {
+      "source": "2168",
+      "target": "2151",
+      "weight": 1
+    },
+    {
+      "source": "2165",
+      "target": "2166",
+      "weight": 1
+    },
+    {
+      "source": "2163",
+      "target": "2148",
+      "weight": 1
+    },
+    {
+      "source": "2162",
+      "target": "2186",
+      "weight": 1
+    },
+    {
+      "source": "2161",
+      "target": "2162",
+      "weight": 1
+    },
+    {
+      "source": "2159",
+      "target": "2157",
+      "weight": 1
+    },
+    {
+      "source": "2157",
+      "target": "2158",
+      "weight": 1
+    },
+    {
+      "source": "2156",
+      "target": "2161",
+      "weight": 1
+    },
+    {
+      "source": "2150",
+      "target": "2178",
+      "weight": 1
+    },
+    {
+      "source": "2150",
+      "target": "2163",
+      "weight": 1
+    },
+    {
+      "source": "2150",
+      "target": "2160",
+      "weight": 1
+    },
+    {
+      "source": "2150",
+      "target": "2176",
+      "weight": 1
+    },
+    {
+      "source": "2150",
+      "target": "2175",
+      "weight": 1
+    },
+    {
+      "source": "2147",
+      "target": "2157",
+      "weight": 1
+    }
+  ]
+}
