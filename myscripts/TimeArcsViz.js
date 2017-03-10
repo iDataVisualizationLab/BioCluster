@@ -35,9 +35,11 @@ function drawTimeArcs(){
     }
   }
   sort_tlinks();
-  resetForce3();
-  draw();
-}      
+  //resetForce3();
+  //draw();
+}
+
+
 function getNode(d){
   if (nodesList[d.fields.entity_text]==undefined){
     var node = {};

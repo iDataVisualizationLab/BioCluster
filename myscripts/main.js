@@ -9,7 +9,7 @@
 // This is the MAIN class javasrcipt
 var margin = {top: 0, right: 0, bottom: 0, left: 0};
 var width = document.body.clientWidth - margin.left - margin.right;
-var height = 800 - margin.top - margin.bottom;
+var height = 1400 - margin.top - margin.bottom;
 
 var serverUrl = "http://ccrg-data.evl.uic.edu/index-cards/api";
 //var serverUrl = "http://localhost:9999/api";
@@ -681,7 +681,10 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
     isDisplayingPopup = !isDisplayingPopup;
     tip.hide(d);
     expand2(d);
-    // Download Genomics data from cBioPortal ************************************
+
+      drawTimeArcs();
+      addStacking();
+      // Download Genomics data from cBioPortal ************************************
     //getGenomics(d.ref.fields.entity_text);
   } 
     // Toggle children on click.

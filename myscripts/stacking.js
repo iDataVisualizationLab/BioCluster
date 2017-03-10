@@ -8,6 +8,11 @@
  
 var y_svg;
 var cellHeight2 = 11;
+var graphs = {};
+graphs["Context_Species"] = {};
+graphs["Context_Species"]["nouse"]= {};
+graphs["Context_Species"]["nouse"].nodes = [];
+graphs["Context_Species"]["nouse"].links = [];
 
 function addStacking(){
   svgContext.selectAll(".stackingRect").remove();
@@ -207,7 +212,6 @@ function addStacking2(fieldName,label, map){
         })   
     }
 
-  
   
   svgContext.selectAll(".arc_"+fieldName).remove();
   svgContext.selectAll(".arc_"+fieldName).data(tlinks).enter()
