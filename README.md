@@ -30,6 +30,7 @@ We use [TimeArcs visualization](https://github.com/CreativeCodingLab/TimeArcs) t
 We use an [comparator script](https://github.com/PathwayCommons/pathway-cards/blob/master/comparator/src/main/scripts/IndexCardComparator.js) to detect potential conflicts between index cards in the main view. For example, we select *TGF-beta* as protein of interest and iteratively expand the network around this protein. The index card comparison results are presented in form of an adjacency matrix. In each cell, we draw an arc symbol for each interaction (colored by type) of the two participating index cards. Cells with orange background contain two index cards with potential conflict as depicted in the left panel of Fig.(a). In Fig.(b), we inspect a potential conflict cell in the matrix (left). Two corresponding index cards are highlighted in the publication view (right). We can see that the two index cards have the same participants (*TGF-beta* and *Smad7*), but opposite interaction types (*increase_activity* versus *decrease_activity*). This indicates conflicting knowledge obtained from two different publications in 2010 and 2011. We can look further into details of publication data for each index card to verify these conflicting information as shown in Fig.(c). 
 ![ScreenShot](https://github.com/CreativeCodingLab/BioLinker/blob/master/figures/Figure7.png)
 
+
 ### Acknowledgments
 This work was funded by the DARPA Big Mechanism Program under ARO contract WF911NF-14-1-0395.
 
