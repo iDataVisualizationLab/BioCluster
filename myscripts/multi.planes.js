@@ -2,8 +2,8 @@ var mutiPlanes = {};
 var multiPlaneRepresentationSvg;
 var multiPlaneForceLayouts = {};
 
-var SINGLE_NETWORK_WIDTH = 400;
-var SINGLE_NETWORK_HEIGHT = 300;
+var SINGLE_NETWORK_WIDTH = 500;
+var SINGLE_NETWORK_HEIGHT = 450;
 
 var links = links || [];
 
