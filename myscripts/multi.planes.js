@@ -2,10 +2,20 @@ var mutiPlanes = {};
 var multiPlaneRepresentationSvg;
 var multiPlaneForceLayouts = {};
 
+var SINGLE_NETWORK_WIDTH = 400;
+var SINGLE_NETWORK_HEIGHT = 300;
+
+var links = links || [];
+
 mutiPlanes.speciesNetworks = {
     network1: {
-        nodes: [],
-        links: []
+        nodes: [
+            { x:   SINGLE_NETWORK_WIDTH/3, y: SINGLE_NETWORK_HEIGHT/2 },
+            { x: 2*SINGLE_NETWORK_WIDTH/3, y: SINGLE_NETWORK_HEIGHT/2 }
+        ],
+        links: [
+            { source: 0, target: 1 }
+        ]
     },
 
     network2: {
@@ -26,26 +36,86 @@ mutiPlanes.cellTypeNetworks = {
     }
 };
 
-mutiPlanes.init = function (containerWitth, containerHeight, graphWidth, graphHeight) {
-    multiPlaneRepresentationSvg = d3.select("#container").append("svg")
-        .attr("width", containerWitth)
-        .attr("height", containerHeight);
+mutiPlanes.init = function (originalLinks) {
+    if (!originalLinks) {
+        originalLinks = links;
+    }
 
+    var curLink;
+    for(var i = 0; i < originalLinks.length; i++) {
+        curLink = originalLinks[i];
+
+        if (!curLink) {
+            continue;
+        }
+
+        this.createNetwork(mutiPlanes.speciesNetworks, curLink,  curLink.Context_Species);
+        this.createNetwork(mutiPlanes.cellTypeNetworks, curLink, curLink.Context_CellType);
+
+    }
+
+    mutiPlanes.setup(1500, 600, SINGLE_NETWORK_WIDTH, SINGLE_NETWORK_HEIGHT);
+};
+
+mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray) {
+
+    if (!contextContentArray) {
+        return;
+    }
+
+    var contextVal;
+    var myContextNetwork;
+    var addedLinks = {};
+    var addedNodes = {};
+    for(var i = 0; i < contextContentArray.length; i++) {
+        contextVal = contextContentArray[i];
+        if (!networkContainer.hasOwnProperty(contextVal)) {
+            networkContainer[contextVal] = {
+                nodes: [],
+                links: []
+            };
+        }
+
+        myContextNetwork = networkContainer[contextVal];
+        if (!addedLinks.hasOwnProperty(link.name)) {
+            myContextNetwork.links.push(link);
+            addedLinks[link.name] = link;
+        }
+
+        if (!addedNodes.hasOwnProperty(link.source.id)) {
+            myContextNetwork.nodes.push(link.source);
+            addedNodes[link.source.id] = link.source;
+        }
+
+        if (!addedNodes.hasOwnProperty(link.target.id)) {
+            myContextNetwork.nodes.push(link.target);
+            addedNodes[link.target.id] = link.target;
+        }
+    }
+};
+
+mutiPlanes.setup = function (containerWidth, containerHeight, graphWidth, graphHeight) {
     var tmpNetwork;
-    for(var species in this.speciesNetworks) {
+    var mySvg ;
+    for(var species in this.speciesNetworks)  {
         if (!this.speciesNetworks.hasOwnProperty(species)) {
             continue;
         }
 
+        mySvg =  d3.select("#multi-plane-representation").append("svg")
+            .attr("width", graphWidth)
+            .attr("height", graphHeight);
         tmpNetwork = this.speciesNetworks[species];
 
-        this.renderNetwork(svg, graphWidth, graphHeight, tmpNetwork);
+        this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
 
     }
 
 };
 
 mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
+
+
     var forceLayout = d3.layout.force()
         .size([svgWidth, svgHeight])
         .nodes(network.nodes)
@@ -63,7 +133,14 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
     var myNode = svg.selectAll('.node')
         .data(network.nodes)
         .enter().append('circle')
-        .attr('class', 'node');
+        // .attr('class', 'node')
+            .style("fill", "#888")
+            .style("stroke", "#000")
+            .style("stroke-opacity", 1)
+            .style("stroke-width", function(d) {
+                return 1;
+            })
+        ;
 
     forceLayout.on('end', function() {
 
@@ -85,3 +162,4 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
 
     forceLayout.start();
 };
+
