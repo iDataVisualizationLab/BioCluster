@@ -8,38 +8,43 @@ var SINGLE_NETWORK_HEIGHT = 300;
 var links = links || [];
 
 mutiPlanes.speciesNetworks = {
-    network1: {
-        nodes: [
-            { x:   SINGLE_NETWORK_WIDTH/3, y: SINGLE_NETWORK_HEIGHT/2 },
-            { x: 2*SINGLE_NETWORK_WIDTH/3, y: SINGLE_NETWORK_HEIGHT/2 }
-        ],
-        links: [
-            { source: 0, target: 1 }
-        ]
-    },
-
-    network2: {
-        nodes: [],
-        links: []
-    }
+    // network1: {
+    //     nodes: [
+    //         { x:   SINGLE_NETWORK_WIDTH/3, y: SINGLE_NETWORK_HEIGHT/2 },
+    //         { x: 2*SINGLE_NETWORK_WIDTH/3, y: SINGLE_NETWORK_HEIGHT/2 }
+    //     ],
+    //     links: [
+    //         { source: 0, target: 1 }
+    //     ]
+    // },
+    //
+    // network2: {
+    //     nodes: [],
+    //     links: []
+    // }
 };
 
 mutiPlanes.cellTypeNetworks = {
-    cellType1: {
-        nodes: [],
-        links: []
-    },
-
-    cellType2: {
-        nodes: [],
-        links: []
-    }
+    // cellType1: {
+    //     nodes: [],
+    //     links: []
+    // },
+    //
+    // cellType2: {
+    //     nodes: [],
+    //     links: []
+    // }
+};
+mutiPlanes.clear = function () {
+    d3.select("#multi-plane-representation").selectAll('*').remove();
 };
 
 mutiPlanes.init = function (originalLinks) {
     if (!originalLinks) {
         originalLinks = links;
     }
+
+    this.clear();
 
     var curLink;
     for(var i = 0; i < originalLinks.length; i++) {
@@ -67,6 +72,9 @@ mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray
     var myContextNetwork;
     var addedLinks = {};
     var addedNodes = {};
+    var sourceNode;
+    var targetNode;
+    var newLink;
     for(var i = 0; i < contextContentArray.length; i++) {
         contextVal = contextContentArray[i];
         if (!networkContainer.hasOwnProperty(contextVal)) {
@@ -77,19 +85,33 @@ mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray
         }
 
         myContextNetwork = networkContainer[contextVal];
-        if (!addedLinks.hasOwnProperty(link.name)) {
-            myContextNetwork.links.push(link);
-            addedLinks[link.name] = link;
-        }
 
         if (!addedNodes.hasOwnProperty(link.source.id)) {
-            myContextNetwork.nodes.push(link.source);
-            addedNodes[link.source.id] = link.source;
+            sourceNode = new Object();
+            sourceNode.ref = link.source;
+            sourceNode.id = link.source.id;
+
+            myContextNetwork.nodes.push(sourceNode);
+            addedNodes[link.source.id] = sourceNode;
         }
 
         if (!addedNodes.hasOwnProperty(link.target.id)) {
-            myContextNetwork.nodes.push(link.target);
-            addedNodes[link.target.id] = link.target;
+            targetNode = new Object();
+            targetNode.ref = link.target;
+            targetNode.id = link.target.id;
+
+            myContextNetwork.nodes.push(targetNode);
+            addedNodes[link.target.id] = targetNode;
+        }
+
+        if (!addedLinks.hasOwnProperty(link.name)) {
+            newLink = new Object();
+            newLink.source = sourceNode;
+            newLink.target = targetNode;
+            newLink.name = link.name;
+
+            myContextNetwork.links.push(newLink);
+            addedLinks[link.name] = newLink;
         }
     }
 };
@@ -97,6 +119,7 @@ mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray
 mutiPlanes.setup = function (containerWidth, containerHeight, graphWidth, graphHeight) {
     var tmpNetwork;
     var mySvg ;
+    var count = 0;
     for(var species in this.speciesNetworks)  {
         if (!this.speciesNetworks.hasOwnProperty(species)) {
             continue;
@@ -108,6 +131,11 @@ mutiPlanes.setup = function (containerWidth, containerHeight, graphWidth, graphH
         tmpNetwork = this.speciesNetworks[species];
 
         this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
+        count ++;
+
+        if (count >=1) {
+            break;
+        }
 
     }
 
@@ -144,7 +172,7 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
 
     forceLayout.on('end', function() {
 
-        myNode.attr('r', svgWidth/25)
+        myNode.attr('r', 6)
             .attr('cx', function(d) { return d.x; })
             .attr('cy', function(d) { return d.y; });
 

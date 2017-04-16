@@ -415,8 +415,6 @@ d3.json("data/cardsWithContextData.json", function(error, data_) {
   secondLayout(35);
   // secondLayout(18);
 
-   // mutiPlanes.init(links);
-
 });
 
 
@@ -772,7 +770,9 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
         d.isExpanded = true;
         addNodes();   
         update2();
-        update1(); // Update the overview graph  
+        update1(); // Update the overview graph
+
+        mutiPlanes.init(curNode.directLinks);
     }  
     function update2() {
         node2 = svg2.selectAll(".node")
