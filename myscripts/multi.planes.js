@@ -42,6 +42,90 @@ mutiPlanes.clear = function () {
     // mutiPlanes.speciesNetworks = {};
 };
 
+mutiPlanes.setSpeciesNetwork = function (speciesNetworks) {
+    if (!speciesNetworks) {
+        console.log("Invalid speciesNetwork. Expect array");
+        return;
+    }
+
+    var singleSpeciesNetwork;
+    for(var i=0; i< 5; i++) {
+        if (i >= speciesNetworks.length) {
+            break;
+        }
+
+        singleSpeciesNetwork = speciesNetworks[i];
+
+        this.speciesNetworks[singleSpeciesNetwork.Context_Species] = this.createNodesAndLinks(singleSpeciesNetwork.list);
+    }
+
+};
+
+mutiPlanes.createNodesAndLinks = function (links) {
+    var myNetwork = {
+        nodes: [],
+        links: []
+    };
+
+    if (!links || links.length < 1) {
+        return myNetwork;
+    }
+
+    var link;
+
+    var sourceNode;
+    var targetNode;
+    var addedNodes = {};
+    var addedLinks = {};
+    var myLink = {};
+
+    for(var i=0; i< links.length; i++) {
+        link = links[i];
+
+        if (!addedNodes.hasOwnProperty(link.source.ref.id)) {
+            sourceNode = new Object();
+            sourceNode.ref = link.source.ref;
+            sourceNode.index = myNetwork.nodes.length;
+
+            addedNodes[sourceNode.ref.id] = sourceNode;
+            myNetwork.nodes.push(sourceNode);
+        }
+        else {
+            sourceNode =  addedNodes[link.source.ref.id];
+        }
+
+
+        if (!addedNodes.hasOwnProperty(link.target.ref.id)) {
+            targetNode = new Object();
+            targetNode.ref = link.target.ref;
+            targetNode.index = myNetwork.nodes.length;
+
+            addedNodes[targetNode.ref.id] = targetNode;
+            myNetwork.nodes.push(targetNode);
+        }
+        else {
+            targetNode =  addedNodes[link.target.ref.id];
+        }
+
+        // handling links
+        if (!addedLinks.hasOwnProperty(sourceNode.index + '-' + targetNode.index)) {
+            myLink = new Object();
+            myLink.name = sourceNode.index + '-' + targetNode.index;
+            myLink.source = sourceNode.index;
+            myLink.target = targetNode.index;
+
+            myNetwork.links.push(myLink);
+
+            addedLinks[myLink.name] = myLink;
+        }
+
+
+    }
+
+    return myNetwork;
+
+};
+
 mutiPlanes.init = function (originalLinks) {
     if (!originalLinks) {
         originalLinks = links;
