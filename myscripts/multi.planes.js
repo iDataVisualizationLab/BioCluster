@@ -1,11 +1,9 @@
-var mutiPlanes = {};
+var mutiPlanes = mutiPlanes || {};
 var multiPlaneRepresentationSvg;
 var multiPlaneForceLayouts = {};
 
 var SINGLE_NETWORK_WIDTH = 500;
 var SINGLE_NETWORK_HEIGHT = 450;
-
-var links = links || [];
 
 mutiPlanes.speciesNetworks = {
     // network1: {
@@ -35,8 +33,13 @@ mutiPlanes.cellTypeNetworks = {
     //     links: []
     // }
 };
+
+
 mutiPlanes.clear = function () {
     d3.select("#multi-plane-representation").selectAll('*').remove();
+
+    // mutiPlanes.cellTypeNetworks = {};
+    // mutiPlanes.speciesNetworks = {};
 };
 
 mutiPlanes.init = function (originalLinks) {
@@ -47,22 +50,28 @@ mutiPlanes.init = function (originalLinks) {
     this.clear();
 
     var curLink;
+    var excludedNodes = {};
+    var excludedLinks = {};
+    var excludedCellTypeNodes = {};
+    var excludedCellTypeLinks = {};
+
     for(var i = 0; i < originalLinks.length; i++) {
         curLink = originalLinks[i];
 
-        if (!curLink) {
+        if (!curLink || !curLink.source || !curLink.target) {
+            console.log("Not a valid link: " + curLink.name);
             continue;
         }
 
-        this.createNetwork(mutiPlanes.speciesNetworks, curLink,  curLink.Context_Species);
-        this.createNetwork(mutiPlanes.cellTypeNetworks, curLink, curLink.Context_CellType);
+        this.createNetwork(mutiPlanes.speciesNetworks, curLink,  curLink.Context_Species, excludedNodes, excludedLinks);
+       // this.createNetwork(mutiPlanes.cellTypeNetworks, curLink, curLink.Context_CellType, excludedCellTypeNodes, excludedCellTypeLinks);
 
     }
 
-    mutiPlanes.setup(1500, 600, SINGLE_NETWORK_WIDTH, SINGLE_NETWORK_HEIGHT);
+    mutiPlanes.runNetwork(1500, 600, SINGLE_NETWORK_WIDTH, SINGLE_NETWORK_HEIGHT);
 };
 
-mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray) {
+mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray, excludeNodes, excludeLinks) {
 
     if (!contextContentArray) {
         return;
@@ -70,8 +79,8 @@ mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray
 
     var contextVal;
     var myContextNetwork;
-    var addedLinks = {};
-    var addedNodes = {};
+    var addedLinks = excludeLinks;
+    var addedNodes = excludeNodes;
     var sourceNode;
     var targetNode;
     var newLink;
@@ -90,24 +99,33 @@ mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray
             sourceNode = new Object();
             sourceNode.ref = link.source;
             sourceNode.id = link.source.id;
+            sourceNode.index = myContextNetwork.nodes.length;
 
             myContextNetwork.nodes.push(sourceNode);
-            addedNodes[link.source.id] = sourceNode;
+            addedNodes[sourceNode.id] = sourceNode;
+        }
+        else {
+            sourceNode = addedNodes[link.source.id];
         }
 
         if (!addedNodes.hasOwnProperty(link.target.id)) {
             targetNode = new Object();
             targetNode.ref = link.target;
             targetNode.id = link.target.id;
+            targetNode.index = myContextNetwork.nodes.length;
+
 
             myContextNetwork.nodes.push(targetNode);
-            addedNodes[link.target.id] = targetNode;
+            addedNodes[targetNode.id] = targetNode;
+        }
+        else {
+            targetNode = addedNodes[link.target.id];
         }
 
         if (!addedLinks.hasOwnProperty(link.name)) {
             newLink = new Object();
-            newLink.source = sourceNode;
-            newLink.target = targetNode;
+            newLink.source = sourceNode.index;
+            newLink.target = targetNode.index;
             newLink.name = link.name;
 
             myContextNetwork.links.push(newLink);
@@ -116,33 +134,76 @@ mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray
     }
 };
 
-mutiPlanes.setup = function (containerWidth, containerHeight, graphWidth, graphHeight) {
+mutiPlanes.runNetwork = function (containerWidth, containerHeight, graphWidth, graphHeight) {
+
+    console.log("Run and display the network ");
+
+
     var tmpNetwork;
     var mySvg ;
     var count = 0;
+    var sp;
     for(var species in this.speciesNetworks)  {
         if (!this.speciesNetworks.hasOwnProperty(species)) {
             continue;
         }
 
+        sp = getContextFromID(species, speciesMap);
+        console.log("Species is: " + sp);
+        tmpNetwork = this.speciesNetworks[species];
+        // if (!sp || tmpNetwork.nodes.length < 10) {
+        //     continue;
+        // }
+
+        if (!this.displayable(sp)) {
+            continue;
+        }
+
+        console.log("*** displaying Transgenic mices network ****");
+        // debugger;
+        this.printNetwork(tmpNetwork);
+
         mySvg =  d3.select("#multi-plane-representation").append("svg")
             .attr("width", graphWidth)
             .attr("height", graphHeight);
-        tmpNetwork = this.speciesNetworks[species];
 
         this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
-        count ++;
 
-        if (count >=1) {
-            break;
-        }
+        mySvg.append('text')
+            .text(sp)
+            .attr("y", graphHeight - 3)
+            .attr("x", graphWidth / 2)
+        ;
+        count ++;
 
     }
 
 };
 
-mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
+mutiPlanes.displayable = function (item) {
 
+  // return item == 'Transgenic mices'  || item == 'women' || item == 'Mouse';
+  return false;
+};
+
+mutiPlanes.printNetwork = function (network) {
+
+    console.log("**** links ****");
+    var l;
+    for(var i=0; i< network.links.length; i++) {
+        l = network.links[i];
+        console.log("Link '" + l.name + "; source=" + l.source + "; target=" + l.target);
+    }
+
+    console.log("*** nodes ***")
+    var n;
+    for(var i=0; i< network.nodes.length; i++) {
+        n = network.nodes[i];
+        console.log("node '" + n.id);
+    }
+};
+
+mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
 
     var forceLayout = d3.layout.force()
         .size([svgWidth, svgHeight])
