@@ -661,15 +661,15 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
     forceLabel
       .nodes(labelAnchors)
       .links(labelAnchorLinks)
-      .start();    
+      .start();
 
-    svg2.selectAll(".anchorNode").remove();  
+    svg2.selectAll(".anchorNode").remove();
     svg2.selectAll(".anchorNode").data(labelAnchors).enter().append("text").attr("class", "anchorNode")
       .text(function(d, i) {
        return i % 2 == 0 ? "" : d.node.ref.fields.entity_text;
       })
       .style("fill", "#000")
-      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.6")                
+      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.6")
       .attr("font-family", "sans-serif")
       .attr("font-size", "10px");
                 

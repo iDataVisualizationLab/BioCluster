@@ -2,9 +2,9 @@ var mutiPlanes = mutiPlanes || {};
 var multiPlaneRepresentationSvg;
 var multiPlaneForceLayouts = {};
 
-var SINGLE_NETWORK_WIDTH = 270;
+var SINGLE_NETWORK_WIDTH = 320;
 var SINGLE_NETWORK_HEIGHT = 350;
-var CONTAINER_WIDTH = 1500;
+var CONTAINER_WIDTH = 2000;
 var CONTAINER_HEIGHT = 600;
 
 mutiPlanes.speciesNetworks = {
@@ -82,10 +82,17 @@ mutiPlanes.setCellTypeNetworks = function (cellTypeNetworks) {
 
 };
 
+/**
+ *  Each network has a set of nodes and links. We have to create label for each node as well. Hence there are array of labelNodes and labelLinks for another force layout
+ * @param links
+ * @return {{nodes: Array, links: Array, labelNodes: Array, labelLinks: Array}}
+ */
 mutiPlanes.createNodesAndLinks = function (links) {
     var myNetwork = {
         nodes: [],
-        links: []
+        links: [],
+        labelNodes: [],
+        labelLinks: []
     };
 
     if (!links || links.length < 1) {
@@ -216,11 +223,12 @@ mutiPlanes.printNetwork = function (network) {
 mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
 
     var forceLayout = d3.layout.force()
+        .gravity(0.05)
+        .linkDistance( 65 )
+        .charge(-100)
         .size([svgWidth, svgHeight])
         .nodes(network.nodes)
         .links(network.links);
-
-    forceLayout.linkDistance( 65 );
 
     // create links
     var myLink = svg.selectAll('.link')
@@ -229,10 +237,15 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
         .attr('class', 'link');
 
 
-    var myNode = svg.selectAll('.node')
+
+    var myNode = svg.selectAll(".node")
         .data(network.nodes)
-        .enter().append('circle')
-        // .attr('class', 'node')
+        .enter().append("g")
+        .attr("class", "node")
+        .call(forceLayout.drag);
+
+    myNode.append('circle')
+            .attr('r', 6)
             .style("fill", "#888")
             .style("stroke", "#000")
             .style("stroke-opacity", 1)
@@ -241,21 +254,40 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
             })
         ;
 
+    myNode.append("text")
+        .attr("dx", 12)
+        .attr("dy", ".35em")
+        .text(function(d) {
+            return d.ref.fields.entity_text ;
+        });
+
+
+    forceLayout.on("tick", function() {
+        myLink.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        myNode.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+    });
+
+
+
     forceLayout.on('end', function() {
 
-        myNode.attr('r', 6)
-            .attr('cx', function(d) { return d.x; })
-            .attr('cy', function(d) { return d.y; });
-
-        // We also need to update positions of the links.
-        // For those elements, the force layout sets the
-        // `source` and `target` properties, specifying
-        // `x` and `y` values in each case.
-
-        myLink.attr('x1', function(d) { return d.source.x; })
-            .attr('y1', function(d) { return d.source.y; })
-            .attr('x2', function(d) { return d.target.x; })
-            .attr('y2', function(d) { return d.target.y; });
+        // myNode.attr('r', 6)
+        //     .attr('cx', function(d) { return d.x; })
+        //     .attr('cy', function(d) { return d.y; });
+        //
+        // // We also need to update positions of the links.
+        // // For those elements, the force layout sets the
+        // // `source` and `target` properties, specifying
+        // // `x` and `y` values in each case.
+        //
+        // myLink.attr('x1', function(d) { return d.source.x; })
+        //     .attr('y1', function(d) { return d.source.y; })
+        //     .attr('x2', function(d) { return d.target.x; })
+        //     .attr('y2', function(d) { return d.target.y; });
 
 
         d3.select('body').selectAll("text.my-network-label")
