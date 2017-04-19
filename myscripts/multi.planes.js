@@ -44,7 +44,7 @@ mutiPlanes.clear = function () {
     // mutiPlanes.speciesNetworks = {};
 };
 
-mutiPlanes.setSpeciesNetwork = function (speciesNetworks) {
+mutiPlanes.setSpeciesNetworks = function (speciesNetworks) {
     if (!speciesNetworks) {
         console.log("Invalid speciesNetwork. Expect array");
         return;
@@ -59,6 +59,25 @@ mutiPlanes.setSpeciesNetwork = function (speciesNetworks) {
         singleSpeciesNetwork = speciesNetworks[i];
 
         this.speciesNetworks[singleSpeciesNetwork.Context_Species] = this.createNodesAndLinks(singleSpeciesNetwork.list);
+    }
+
+};
+
+mutiPlanes.setCellTypeNetworks = function (cellTypeNetworks) {
+    if (!cellTypeNetworks) {
+        console.log("Invalid cellTypeNetworks. Expect array");
+        return;
+    }
+
+    var singleCellTypeNetwork;
+    for(var i=0; i< 5; i++) {
+        if (i >= cellTypeNetworks.length) {
+            break;
+        }
+
+        singleCellTypeNetwork = cellTypeNetworks[i];
+
+        this.cellTypeNetworks[singleCellTypeNetwork.Context_CellType] = this.createNodesAndLinks(singleCellTypeNetwork.list);
     }
 
 };
@@ -128,107 +147,36 @@ mutiPlanes.createNodesAndLinks = function (links) {
 
 };
 
-mutiPlanes.init = function (originalLinks) {
-    if (!originalLinks) {
-        originalLinks = links;
-    }
-
-    this.clear();
-
-    var curLink;
-    var excludedNodes = {};
-    var excludedLinks = {};
-    var excludedCellTypeNodes = {};
-    var excludedCellTypeLinks = {};
-
-    for(var i = 0; i < originalLinks.length; i++) {
-        curLink = originalLinks[i];
-
-        if (!curLink || !curLink.source || !curLink.target) {
-            console.log("Not a valid link: " + curLink.name);
+mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphHeight, textMapping) {
+    var tmpNetwork;
+    var mySvg ;
+    var text;
+    for(var key in contextNetworks)  {
+        if (!contextNetworks.hasOwnProperty(key)) {
             continue;
         }
 
-        this.createNetwork(mutiPlanes.speciesNetworks, curLink,  curLink.Context_Species, excludedNodes, excludedLinks);
-       // this.createNetwork(mutiPlanes.cellTypeNetworks, curLink, curLink.Context_CellType, excludedCellTypeNodes, excludedCellTypeLinks);
+        text = getContextFromID(key, textMapping);
+        console.log("Species is: " + text);
+        tmpNetwork = contextNetworks[key];
 
-    }
+        mySvg =  d3.select("#multi-plane-representation").append("svg")
+            .attr("width", graphWidth)
+            .attr("height", graphHeight);
 
-    mutiPlanes.runNetwork(CONTAINER_WIDTH, CONTAINER_HEIGHT, SINGLE_NETWORK_WIDTH, SINGLE_NETWORK_HEIGHT);
-};
+        this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
 
-mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray, excludeNodes, excludeLinks) {
-
-    if (!contextContentArray) {
-        return;
-    }
-
-    var contextVal;
-    var myContextNetwork;
-    var addedLinks = excludeLinks;
-    var addedNodes = excludeNodes;
-    var sourceNode;
-    var targetNode;
-    var newLink;
-    for(var i = 0; i < contextContentArray.length; i++) {
-        contextVal = contextContentArray[i];
-        if (!networkContainer.hasOwnProperty(contextVal)) {
-            networkContainer[contextVal] = {
-                nodes: [],
-                links: []
-            };
-        }
-
-        myContextNetwork = networkContainer[contextVal];
-
-        if (!addedNodes.hasOwnProperty(link.source.id)) {
-            sourceNode = new Object();
-            sourceNode.ref = link.source;
-            sourceNode.id = link.source.id;
-            sourceNode.index = myContextNetwork.nodes.length;
-
-            myContextNetwork.nodes.push(sourceNode);
-            addedNodes[sourceNode.id] = sourceNode;
-        }
-        else {
-            sourceNode = addedNodes[link.source.id];
-        }
-
-        if (!addedNodes.hasOwnProperty(link.target.id)) {
-            targetNode = new Object();
-            targetNode.ref = link.target;
-            targetNode.id = link.target.id;
-            targetNode.index = myContextNetwork.nodes.length;
-
-
-            myContextNetwork.nodes.push(targetNode);
-            addedNodes[targetNode.id] = targetNode;
-        }
-        else {
-            targetNode = addedNodes[link.target.id];
-        }
-
-        if (!addedLinks.hasOwnProperty(link.name)) {
-            newLink = new Object();
-            newLink.source = sourceNode.index;
-            newLink.target = targetNode.index;
-            newLink.name = link.name;
-
-            myContextNetwork.links.push(newLink);
-            addedLinks[link.name] = newLink;
-        }
+        mySvg.append('text')
+            .attr('class', "my-network-label")
+            .text(text)
+            .attr("y", graphHeight - 3)
+            .attr("x", (graphWidth - 8) / 2)
+        ;
     }
 };
 
-mutiPlanes.runNetwork = function (containerWidth, containerHeight, graphWidth, graphHeight) {
+mutiPlanes.runNetwork = function (graphWidth, graphHeight) {
 
-    if (!containerWidth) {
-        containerWidth = CONTAINER_WIDTH;
-    }
-
-    if (!containerHeight) {
-        containerHeight = CONTAINER_HEIGHT;
-    }
 
     if (!graphWidth) {
         graphWidth = SINGLE_NETWORK_WIDTH;
@@ -241,54 +189,10 @@ mutiPlanes.runNetwork = function (containerWidth, containerHeight, graphWidth, g
     console.log("Run and display the network ");
 
 
-    var tmpNetwork;
-    var mySvg ;
-    var count = 0;
-    var sp;
-    var txt;
-    var boxContainingText;
-    for(var species in this.speciesNetworks)  {
-        if (!this.speciesNetworks.hasOwnProperty(species)) {
-            continue;
-        }
+    this.renderContextNetworks(this.speciesNetworks, graphWidth, graphHeight);
+    this.renderContextNetworks(this.cellTypeNetworks, graphWidth, graphHeight);
 
-        sp = getContextFromID(species, speciesMap);
-        console.log("Species is: " + sp);
-        tmpNetwork = this.speciesNetworks[species];
-        // if (!sp || tmpNetwork.nodes.length < 10) {
-        //     continue;
-        // }
 
-        if (!this.displayable(sp)) {
-            continue;
-        }
-
-        console.log("*** displaying Transgenic mices network ****");
-        // debugger;
-        this.printNetwork(tmpNetwork);
-
-        mySvg =  d3.select("#multi-plane-representation").append("svg")
-            .attr("width", graphWidth)
-            .attr("height", graphHeight);
-
-        this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
-
-        mySvg.append('text')
-            .attr('class', "my-network-label")
-            .text(sp)
-            .attr("y", graphHeight - 3)
-            .attr("x", (graphWidth - 8) / 2)
-        ;
-        count ++;
-
-    }
-
-};
-
-mutiPlanes.displayable = function (item) {
-
-  // return item == 'Transgenic mices'  || item == 'women' || item == 'Mouse';
-  return true;
 };
 
 mutiPlanes.printNetwork = function (network) {
@@ -354,7 +258,7 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
 
 
         d3.select('body').selectAll("text.my-network-label")
-            .attr("x", function (d) {
+            .attr("x", function () {
                 var boxContainingText = this.getBBox();
                 return (SINGLE_NETWORK_WIDTH - boxContainingText.width) / 2;
             });

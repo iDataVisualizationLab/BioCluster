@@ -17,18 +17,20 @@ graphs["Context_Species"]["nouse"].nodes = [];
 graphs["Context_Species"]["nouse"].links = [];
 
 function addStacking(){
-  var sortedContextSpecies;
   svgContext.selectAll(".stackingRect").remove();
   
   y_svg = 0; // inital y position     
   addStacking2("type", "Interaction types");
-    sortedContextSpecies = addStacking2("Context_Species", "Context-Species", speciesMap);
+    var sortedContextSpecies = addStacking2("Context_Species", "Context-Species", speciesMap);
 
     mutiPlanes.clear();
-    mutiPlanes.setSpeciesNetwork(sortedContextSpecies["tip_Context_Species"]);
+    mutiPlanes.setSpeciesNetworks(sortedContextSpecies["tip_Context_Species"]);
 
-  addStacking2("Context_CellType", "Context-CellType",celltypeMap);
-  addStacking2("Context_Organ", "Context-Organ", organMap);
+    var sortedContextCellType = addStacking2("Context_CellType", "Context-CellType",celltypeMap);
+    mutiPlanes.setCellTypeNetworks(sortedContextCellType["tip_Context_CellType"]);
+
+
+    addStacking2("Context_Organ", "Context-Organ", organMap);
 
     mutiPlanes.runNetwork();
 
