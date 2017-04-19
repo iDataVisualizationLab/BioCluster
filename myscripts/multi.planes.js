@@ -3,7 +3,7 @@ var multiPlaneRepresentationSvg;
 var multiPlaneForceLayouts = {};
 
 var SINGLE_NETWORK_WIDTH = 270;
-var SINGLE_NETWORK_HEIGHT = 300;
+var SINGLE_NETWORK_HEIGHT = 350;
 var CONTAINER_WIDTH = 1500;
 var CONTAINER_HEIGHT = 600;
 
@@ -161,6 +161,7 @@ mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphH
         tmpNetwork = contextNetworks[key];
 
         mySvg =  d3.select("#multi-plane-representation").append("svg")
+            .attr("class", "context-network-class")
             .attr("width", graphWidth)
             .attr("height", graphHeight);
 
