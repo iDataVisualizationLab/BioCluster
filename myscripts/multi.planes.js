@@ -2,8 +2,8 @@ var mutiPlanes = mutiPlanes || {};
 var multiPlaneRepresentationSvg;
 var multiPlaneForceLayouts = {};
 
-var SINGLE_NETWORK_WIDTH = 500;
-var SINGLE_NETWORK_HEIGHT = 450;
+var SINGLE_NETWORK_WIDTH = 270;
+var SINGLE_NETWORK_HEIGHT = 300;
 var CONTAINER_WIDTH = 1500;
 var CONTAINER_HEIGHT = 600;
 
@@ -245,6 +245,8 @@ mutiPlanes.runNetwork = function (containerWidth, containerHeight, graphWidth, g
     var mySvg ;
     var count = 0;
     var sp;
+    var txt;
+    var boxContainingText;
     for(var species in this.speciesNetworks)  {
         if (!this.speciesNetworks.hasOwnProperty(species)) {
             continue;
@@ -272,9 +274,10 @@ mutiPlanes.runNetwork = function (containerWidth, containerHeight, graphWidth, g
         this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
 
         mySvg.append('text')
+            .attr('class', "my-network-label")
             .text(sp)
             .attr("y", graphHeight - 3)
-            .attr("x", graphWidth / 2)
+            .attr("x", (graphWidth - 8) / 2)
         ;
         count ++;
 
@@ -312,7 +315,7 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
         .nodes(network.nodes)
         .links(network.links);
 
-    forceLayout.linkDistance(svgWidth/2);
+    forceLayout.linkDistance( 65 );
 
     // create links
     var myLink = svg.selectAll('.link')
@@ -349,6 +352,12 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
             .attr('x2', function(d) { return d.target.x; })
             .attr('y2', function(d) { return d.target.y; });
 
+
+        d3.select('body').selectAll("text.my-network-label")
+            .attr("x", function (d) {
+                var boxContainingText = this.getBBox();
+                return (SINGLE_NETWORK_WIDTH - boxContainingText.width) / 2;
+            });
     });
 
     forceLayout.start();

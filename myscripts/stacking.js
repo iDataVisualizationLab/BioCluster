@@ -78,7 +78,6 @@ function addStacking2(fieldName,label, map){
     }
   }
 
-  debugger;
   // Sort by number of links for each type
   obj["tip_"+fieldName].sort(function (a, b) {
     if (a.count > b.count) {
