@@ -684,6 +684,7 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
     expand2(d);
 
       drawTimeArcs();
+
       addStacking();
       // Download Genomics data from cBioPortal ************************************
     //getGenomics(d.ref.fields.entity_text);
@@ -772,7 +773,7 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
         update2();
         update1(); // Update the overview graph
 
-        mutiPlanes.init(curNode.directLinks);
+        // mutiPlanes.init(curNode.directLinks);
     }  
     function update2() {
         node2 = svg2.selectAll(".node")

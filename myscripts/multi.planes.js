@@ -4,6 +4,8 @@ var multiPlaneForceLayouts = {};
 
 var SINGLE_NETWORK_WIDTH = 500;
 var SINGLE_NETWORK_HEIGHT = 450;
+var CONTAINER_WIDTH = 1500;
+var CONTAINER_HEIGHT = 600;
 
 mutiPlanes.speciesNetworks = {
     // network1: {
@@ -152,7 +154,7 @@ mutiPlanes.init = function (originalLinks) {
 
     }
 
-    mutiPlanes.runNetwork(1500, 600, SINGLE_NETWORK_WIDTH, SINGLE_NETWORK_HEIGHT);
+    mutiPlanes.runNetwork(CONTAINER_WIDTH, CONTAINER_HEIGHT, SINGLE_NETWORK_WIDTH, SINGLE_NETWORK_HEIGHT);
 };
 
 mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray, excludeNodes, excludeLinks) {
@@ -220,6 +222,22 @@ mutiPlanes.createNetwork = function (networkContainer, link, contextContentArray
 
 mutiPlanes.runNetwork = function (containerWidth, containerHeight, graphWidth, graphHeight) {
 
+    if (!containerWidth) {
+        containerWidth = CONTAINER_WIDTH;
+    }
+
+    if (!containerHeight) {
+        containerHeight = CONTAINER_HEIGHT;
+    }
+
+    if (!graphWidth) {
+        graphWidth = SINGLE_NETWORK_WIDTH;
+    }
+
+    if (!graphHeight) {
+        graphHeight = SINGLE_NETWORK_HEIGHT;
+    }
+
     console.log("Run and display the network ");
 
 
@@ -267,7 +285,7 @@ mutiPlanes.runNetwork = function (containerWidth, containerHeight, graphWidth, g
 mutiPlanes.displayable = function (item) {
 
   // return item == 'Transgenic mices'  || item == 'women' || item == 'Mouse';
-  return false;
+  return true;
 };
 
 mutiPlanes.printNetwork = function (network) {

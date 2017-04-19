@@ -9,21 +9,31 @@
 var y_svg;
 var cellHeight2 = 11;
 var graphs = {};
+var mutiPlanes = mutiPlanes || {};
+
 graphs["Context_Species"] = {};
 graphs["Context_Species"]["nouse"]= {};
 graphs["Context_Species"]["nouse"].nodes = [];
 graphs["Context_Species"]["nouse"].links = [];
 
 function addStacking(){
+  var sortedContextSpecies;
   svgContext.selectAll(".stackingRect").remove();
   
   y_svg = 0; // inital y position     
   addStacking2("type", "Interaction types");
-  addStacking2("Context_Species", "Context-Species", speciesMap);
+    sortedContextSpecies = addStacking2("Context_Species", "Context-Species", speciesMap);
+
+    mutiPlanes.clear();
+    mutiPlanes.setSpeciesNetwork(sortedContextSpecies["tip_Context_Species"]);
+
   addStacking2("Context_CellType", "Context-CellType",celltypeMap);
   addStacking2("Context_Organ", "Context-Organ", organMap);
 
-  d3.select(".contextView")
+    mutiPlanes.runNetwork();
+
+
+    d3.select(".contextView")
     .attr("height", y_svg+10);
 
 }  
@@ -67,6 +77,8 @@ function addStacking2(fieldName,label, map){
       obj["tip_"+fieldName][e[fieldName]] =e; // hash from type to the actual element
     }
   }
+
+  debugger;
   // Sort by number of links for each type
   obj["tip_"+fieldName].sort(function (a, b) {
     if (a.count > b.count) {
@@ -242,7 +254,9 @@ function addStacking2(fieldName,label, map){
 
   obj["tip_"+fieldName].forEach(function(d2){   // make sure disable types are greyout on the second mouse over
     mouseoutType(d2);
-  });   
+  });
+
+  return obj;
 }
 
 function getContextFromID(id_, map){
