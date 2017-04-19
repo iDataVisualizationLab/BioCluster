@@ -190,8 +190,8 @@ mutiPlanes.runNetwork = function (graphWidth, graphHeight) {
     console.log("Run and display the network ");
 
 
-    this.renderContextNetworks(this.speciesNetworks, graphWidth, graphHeight);
-    this.renderContextNetworks(this.cellTypeNetworks, graphWidth, graphHeight);
+    this.renderContextNetworks(this.speciesNetworks, graphWidth, graphHeight, speciesMap);
+    this.renderContextNetworks(this.cellTypeNetworks, graphWidth, graphHeight, celltypeMap);
 
 
 };
