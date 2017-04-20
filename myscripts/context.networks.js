@@ -2,8 +2,8 @@ var mutiPlanes = mutiPlanes || {};
 var multiPlaneRepresentationSvg;
 var multiPlaneForceLayouts = {};
 
-var SINGLE_NETWORK_WIDTH = 320;
-var SINGLE_NETWORK_HEIGHT = 350;
+var SINGLE_NETWORK_WIDTH = 340;
+var SINGLE_NETWORK_HEIGHT = 360;
 var CONTAINER_WIDTH = 2000;
 var CONTAINER_HEIGHT = 600;
 
@@ -171,7 +171,17 @@ mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphH
         mySvg =  d3.select("#multi-plane-representation").append("svg")
             .attr("class", "context-network-class")
             .attr("width", graphWidth)
-            .attr("height", graphHeight);
+            .attr("height", graphHeight)
+        ;
+
+        mySvg.append("rect")
+            .attr("x", 0)
+            .attr("y", 0)
+            .attr("height", graphHeight)
+            .attr("width", graphWidth)
+            .style("stroke", '#000000')
+            .style("fill", "none")
+            .style("stroke-width", 1);
 
         this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
 
@@ -277,7 +287,11 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
             .attr("x2", function(d) { return d.target.x; })
             .attr("y2", function(d) { return d.target.y; });
 
-        myNode.attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+        myNode.attr("transform", function(d) {
+            var tX = Math.max(5, Math.min(svgWidth-5, d.x));
+            var tY = Math.max(5, Math.min(svgHeight-5, d.y));
+            return "translate(" + tX + "," + tY + ")";
+        });
     });
 
 
