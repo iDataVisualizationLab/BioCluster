@@ -559,10 +559,10 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
          return 1+Math.sqrt(l.list.length-1);
       })
       .on('mouseover', function(d) {
-        showTip(d); 
+        showTip(d);
       })
       .on('mouseout', function(d) {
-        tip.hide(d); 
+        tip.hide(d);
      //   removeTimeArcs();
       });
 
@@ -580,25 +580,25 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
           var a = {};
           for (var i=0;i<d.list.length;i++){
             a[d.list[i].name] = d.list[i];
-          }  
-          
+          }
+
           for (var i=0;i<tlinks.length;i++){
             if (a[tlinks[i].ref.name])
               tlinks[i].mouseover = true;
             else
               tlinks[i].mouseover = false;
-          } 
+          }
 
-          showTip(d); 
-          updateLinks(); 
-           
+          showTip(d);
+          updateLinks();
+
           force2.stop()
         }
       })
       .on('mouseout', function(d) {
-        tip.hide(d); 
+        tip.hide(d);
         resetLinks();
-      });  
+      });
 
     nodes2.forEach(function(d){
       var curNode = d;

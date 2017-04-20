@@ -141,6 +141,7 @@ mutiPlanes.createNodesAndLinks = function (links) {
             myLink.name = sourceNode.index + '-' + targetNode.index;
             myLink.source = sourceNode.index;
             myLink.target = targetNode.index;
+            myLink.type = link.ref.type;
 
             myNetwork.links.push(myLink);
 
@@ -234,7 +235,15 @@ mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
     var myLink = svg.selectAll('.link')
         .data(network.links)
         .enter().append('line')
-        .attr('class', 'link');
+        .attr('class', 'link')
+        .style("stroke", function(l){
+            return getColor(l.type);
+        })
+        .style("stroke-opacity", 0.5)
+        // .style("stroke-width",function(l){
+        //     return 1+Math.sqrt(l.list.length-1);
+        // })
+        ;
 
 
 
