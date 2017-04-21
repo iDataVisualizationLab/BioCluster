@@ -36,6 +36,19 @@ mutiPlanes.cellTypeNetworks = {
     // }
 };
 
+
+mutiPlanes.organNetworks = {
+    // organ1: {
+    //     nodes: [],
+    //     links: []
+    // },
+    //
+    // organ2: {
+    //     nodes: [],
+    //     links: []
+    // }
+};
+
 mutiPlanes.setupContainer = function () {
     d3.select('body').select('#multi-plane-representation')
         .style("width", CONTAINER_WIDTH)
@@ -101,7 +114,7 @@ mutiPlanes.setOrganNetworks = function (organNetworks) {
 
         singleOrganNetwork = organNetworks[i];
 
-        this.cellTypeNetworks[singleOrganNetwork.Context_Organ] = this.createNodesAndLinks(singleOrganNetwork.list);
+        this.organNetworks[singleOrganNetwork.Context_Organ] = this.createNodesAndLinks(singleOrganNetwork.list);
     }
 
 };
@@ -234,6 +247,7 @@ mutiPlanes.runNetwork = function (graphWidth, graphHeight) {
 
     this.renderContextNetworks(this.speciesNetworks, graphWidth, graphHeight, speciesMap);
     this.renderContextNetworks(this.cellTypeNetworks, graphWidth, graphHeight, celltypeMap);
+    this.renderContextNetworks(this.organNetworks, graphWidth, graphHeight, organMap);
 
 
 };
