@@ -1,11 +1,11 @@
 var mutiPlanes = mutiPlanes || {};
-var multiPlaneRepresentationSvg;
-var multiPlaneForceLayouts = {};
 
 var SINGLE_NETWORK_WIDTH = 340;
 var SINGLE_NETWORK_HEIGHT = 360;
 var CONTAINER_WIDTH = 2000;
-var CONTAINER_HEIGHT = 600;
+var CONTAINER_HEIGHT = 1600;
+
+
 
 mutiPlanes.speciesNetworks = {
     // network1: {
@@ -36,10 +36,15 @@ mutiPlanes.cellTypeNetworks = {
     // }
 };
 
-
+mutiPlanes.setupContainer = function () {
+    d3.select('body').select('#multi-plane-representation')
+        .style("width", CONTAINER_WIDTH)
+        .style("height", CONTAINER_HEIGHT)
+    ;
+};
 mutiPlanes.clear = function () {
     d3.select("#multi-plane-representation").selectAll('*').remove();
-
+    // this.setupContainer();
     // mutiPlanes.cellTypeNetworks = {};
     // mutiPlanes.speciesNetworks = {};
 };
@@ -78,6 +83,25 @@ mutiPlanes.setCellTypeNetworks = function (cellTypeNetworks) {
         singleCellTypeNetwork = cellTypeNetworks[i];
 
         this.cellTypeNetworks[singleCellTypeNetwork.Context_CellType] = this.createNodesAndLinks(singleCellTypeNetwork.list);
+    }
+
+};
+
+mutiPlanes.setOrganNetworks = function (organNetworks) {
+    if (!organNetworks) {
+        console.log("Invalid organNetworks. Expect array");
+        return;
+    }
+
+    var singleOrganNetwork;
+    for(var i=0; i< 5; i++) {
+        if (i >= organNetworks.length) {
+            break;
+        }
+
+        singleOrganNetwork = organNetworks[i];
+
+        this.cellTypeNetworks[singleOrganNetwork.Context_Organ] = this.createNodesAndLinks(singleOrganNetwork.list);
     }
 
 };

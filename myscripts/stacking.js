@@ -29,8 +29,8 @@ function addStacking(){
     var sortedContextCellType = addStacking2("Context_CellType", "Context-CellType",celltypeMap);
     mutiPlanes.setCellTypeNetworks(sortedContextCellType["tip_Context_CellType"]);
 
-
-    addStacking2("Context_Organ", "Context-Organ", organMap);
+    var sortedContextOrgan = addStacking2("Context_Organ", "Context-Organ", organMap);
+    mutiPlanes.setOrganNetworks(sortedContextOrgan["tip_Context_Organ"]);
 
     mutiPlanes.runNetwork();
 
