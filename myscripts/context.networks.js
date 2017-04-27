@@ -122,14 +122,14 @@ mutiPlanes.setOrganNetworks = function (organNetworks) {
 /**
  *  Each network has a set of nodes and links. We have to create label for each node as well. Hence there are array of labelNodes and labelLinks for another force layout
  * @param links
- * @return {{nodes: Array, links: Array, labelNodes: Array, labelLinks: Array}}
+ * @return {{nodes: Array, links: Array}}
  */
 mutiPlanes.createNodesAndLinks = function (links) {
     var myNetwork = {
         nodes: [],
+        nodeIds: [], // for community detection
         links: [],
-        labelNodes: [],
-        labelLinks: []
+        communityCount: 0
     };
 
     if (!links || links.length < 1) {
@@ -154,6 +154,7 @@ mutiPlanes.createNodesAndLinks = function (links) {
 
             addedNodes[sourceNode.ref.id] = sourceNode;
             myNetwork.nodes.push(sourceNode);
+            myNetwork.nodeIds.push(sourceNode.index);
         }
         else {
             sourceNode =  addedNodes[link.source.ref.id];
@@ -167,6 +168,8 @@ mutiPlanes.createNodesAndLinks = function (links) {
 
             addedNodes[targetNode.ref.id] = targetNode;
             myNetwork.nodes.push(targetNode);
+            myNetwork.nodeIds.push(targetNode.index);
+
         }
         else {
             targetNode =  addedNodes[link.target.ref.id];
@@ -179,6 +182,7 @@ mutiPlanes.createNodesAndLinks = function (links) {
             myLink.source = sourceNode.index;
             myLink.target = targetNode.index;
             myLink.type = link.ref.type;
+            myLink.weight = 1;
 
             myNetwork.links.push(myLink);
 
@@ -186,6 +190,18 @@ mutiPlanes.createNodesAndLinks = function (links) {
         }
 
 
+    }
+
+    var community = jLouvain().nodes(myNetwork.nodeIds).edges(myNetwork.links);
+    var community_assignment_result = community();
+    var max_community_number = 0;
+    for(var i=0; i< myNetwork.nodes.length; i++) {
+        myNetwork.nodes[i].community = community_assignment_result[i];
+        max_community_number = max_community_number < community_assignment_result[i] ? community_assignment_result[i]: max_community_number;
+    }
+
+    if (myNetwork.nodes.length > 0) {
+        myNetwork.communityCount = max_community_number + 1;
     }
 
     return myNetwork;
