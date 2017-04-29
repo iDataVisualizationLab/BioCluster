@@ -9,6 +9,8 @@
 var y_svg;
 var cellHeight2 = 11;
 var graphs = {};
+var mutiPlanes = mutiPlanes || {};
+
 graphs["Context_Species"] = {};
 graphs["Context_Species"]["nouse"]= {};
 graphs["Context_Species"]["nouse"].nodes = [];
@@ -19,11 +21,21 @@ function addStacking(){
   
   y_svg = 0; // inital y position     
   addStacking2("type", "Interaction types");
-  addStacking2("Context_Species", "Context-Species", speciesMap);
-  addStacking2("Context_CellType", "Context-CellType",celltypeMap);
-  addStacking2("Context_Organ", "Context-Organ", organMap);
+    var sortedContextSpecies = addStacking2("Context_Species", "Context-Species", speciesMap);
 
-  d3.select(".contextView")
+    mutiPlanes.clear();
+    mutiPlanes.setSpeciesNetworks(sortedContextSpecies["tip_Context_Species"]);
+
+    var sortedContextCellType = addStacking2("Context_CellType", "Context-CellType",celltypeMap);
+    mutiPlanes.setCellTypeNetworks(sortedContextCellType["tip_Context_CellType"]);
+
+    var sortedContextOrgan = addStacking2("Context_Organ", "Context-Organ", organMap);
+    mutiPlanes.setOrganNetworks(sortedContextOrgan["tip_Context_Organ"]);
+
+    mutiPlanes.runNetwork();
+
+
+    d3.select(".contextView")
     .attr("height", y_svg+10);
 
 }  
@@ -67,6 +79,7 @@ function addStacking2(fieldName,label, map){
       obj["tip_"+fieldName][e[fieldName]] =e; // hash from type to the actual element
     }
   }
+
   // Sort by number of links for each type
   obj["tip_"+fieldName].sort(function (a, b) {
     if (a.count > b.count) {
@@ -242,7 +255,9 @@ function addStacking2(fieldName,label, map){
 
   obj["tip_"+fieldName].forEach(function(d2){   // make sure disable types are greyout on the second mouse over
     mouseoutType(d2);
-  });   
+  });
+
+  return obj;
 }
 
 function getContextFromID(id_, map){

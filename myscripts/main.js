@@ -9,7 +9,7 @@
 // This is the MAIN class javasrcipt
 var margin = {top: 0, right: 0, bottom: 0, left: 0};
 var width = document.body.clientWidth - margin.left - margin.right;
-var height = 1400 - margin.top - margin.bottom;
+var height = 650 - margin.top - margin.bottom;
 
 var serverUrl = "http://ccrg-data.evl.uic.edu/index-cards/api";
 //var serverUrl = "http://localhost:9999/api";
@@ -414,6 +414,7 @@ d3.json("data/cardsWithContextData.json", function(error, data_) {
   // });
   secondLayout(35);
   // secondLayout(18);
+
 });
 
 
@@ -558,10 +559,10 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
          return 1+Math.sqrt(l.list.length-1);
       })
       .on('mouseover', function(d) {
-        showTip(d); 
+        showTip(d);
       })
       .on('mouseout', function(d) {
-        tip.hide(d); 
+        tip.hide(d);
      //   removeTimeArcs();
       });
 
@@ -579,25 +580,25 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
           var a = {};
           for (var i=0;i<d.list.length;i++){
             a[d.list[i].name] = d.list[i];
-          }  
-          
+          }
+
           for (var i=0;i<tlinks.length;i++){
             if (a[tlinks[i].ref.name])
               tlinks[i].mouseover = true;
             else
               tlinks[i].mouseover = false;
-          } 
+          }
 
-          showTip(d); 
-          updateLinks(); 
-           
+          showTip(d);
+          updateLinks();
+
           force2.stop()
         }
       })
       .on('mouseout', function(d) {
-        tip.hide(d); 
+        tip.hide(d);
         resetLinks();
-      });  
+      });
 
     nodes2.forEach(function(d){
       var curNode = d;
@@ -660,15 +661,15 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
     forceLabel
       .nodes(labelAnchors)
       .links(labelAnchorLinks)
-      .start();    
+      .start();
 
-    svg2.selectAll(".anchorNode").remove();  
+    svg2.selectAll(".anchorNode").remove();
     svg2.selectAll(".anchorNode").data(labelAnchors).enter().append("text").attr("class", "anchorNode")
       .text(function(d, i) {
        return i % 2 == 0 ? "" : d.node.ref.fields.entity_text;
       })
       .style("fill", "#000")
-      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.6")                
+      .style("text-shadow", "1px 1px 0 rgba(200, 200, 200, 0.6")
       .attr("font-family", "sans-serif")
       .attr("font-size", "10px");
                 
@@ -683,6 +684,7 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
     expand2(d);
 
       drawTimeArcs();
+
       addStacking();
       // Download Genomics data from cBioPortal ************************************
     //getGenomics(d.ref.fields.entity_text);
@@ -769,7 +771,9 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
         d.isExpanded = true;
         addNodes();   
         update2();
-        update1(); // Update the overview graph  
+        update1(); // Update the overview graph
+
+        // mutiPlanes.init(curNode.directLinks);
     }  
     function update2() {
         node2 = svg2.selectAll(".node")
