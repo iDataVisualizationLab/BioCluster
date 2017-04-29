@@ -113,9 +113,9 @@ svg2.on('mousemove', function () {
 
 
 var force2 = d3.forceSimulation()
-        // .force("center", d3.forceCenter((width+www)/2, (height+wMatrix) / 2))
-        .force("x", d3.forceX((width+www)/2))
-        .force("y", d3.forceY((height-wMatrix) / 2))
+        .force("centeringForce", d3.forceCenter((width+www)/2, (height-wMatrix) / 2))
+        // .force("x", d3.forceX((width+www)/2))
+        // .force("y", d3.forceY((height-wMatrix) / 2))
         .force("link", d3.forceLink().distance(70))
         .force("gravity", d3.forceManyBody(0.1))
         .force('charge', d3.forceManyBody().strength(-120))
