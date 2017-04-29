@@ -286,13 +286,13 @@ mutiPlanes.printNetwork = function (network) {
 };
 
  mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
-     var fd = new ForceDirectedGraph( {
-         svg: svg,
-         width: svgWidth,
-         height: svgHeight,
-         nodes: network.nodes,
-         links: network.links
-     });
+     // var fd = new ForceDirectedGraph( {
+     //     svg: svg,
+     //     width: svgWidth,
+     //     height: svgHeight,
+     //     nodes: network.nodes,
+     //     links: network.links
+     // });
  };
 
 //
