@@ -31,8 +31,7 @@ function ForceDirectedGraph(args) {
     };
   }
 
-  var threshold = sortedLinks[Math.round(Math.sqrt(this.links.length))].value;
-  this.defineClusters(Math.abs(threshold));
+  this.defineClusters();
 
   // set up simulation
   this.simulation = d3.forceSimulation()
@@ -77,6 +76,7 @@ ForceDirectedGraph.prototype = {
       .on("zoom", this.zoomed.bind(this)))
       .on("dblclick.zoom", null);
 
+    // make sure each link has "value" property
     this.links.forEach(function (l) {
         if (!!l.value && !!l.weight) {
             return;
@@ -89,7 +89,15 @@ ForceDirectedGraph.prototype = {
         if (!l.value) {
             l.value = 1;
         }
+    });
 
+    // make sure each node has its cluster
+    this.nodes.forEach(function (n) {
+        if (!!n.cluster) {
+            return;
+        }
+
+        n.cluster = n.community;
     });
 
     // colors from
@@ -407,224 +415,48 @@ ForceDirectedGraph.prototype = {
   },
 
   // cluster data based on threshold(s) of influence
-  defineClusters: function(threshold, alpha) {
-    if (threshold) {
-      this.threshold = threshold;
-    } else {
-      threshold = this.threshold;
-    }
-    if (App.infSlider && App.infSlider.activeTab < 1) { App.infSlider.setPosition(threshold); }
+  defineClusters: function(alpha) {
 
-    var clusters = [];
-    var data = this.filteredData;
-    var links;
+    let nodes = this.nodes;
+    let clusters = [];
+    let addedClusters = {};
+    let tmpCluster;
 
-    if (this.clusterMode === "timestep") {
-      links = this.links;
-    } else if (this.clusterMode === "global") {
-      // check if global ilnks have been calculated
-      if (this.globalClustering == null) {
-        this.globalClustering = this.averageInfluencesOverTime(0, App.dataset.length-1);
-      }
-      links = this.globalClustering.links;
-    } else if (this.clusterMode === "window") {
-      // check if window links have been calculated, or if they need to be because of a new range
-      if (this.windowClustering == null ||
-        this.windowClustering.timeRange[0] != App.item - this.windowClusteringRange ||
-        this.windowClustering.timeRange[1] != App.item + this.windowClusteringRange) {
-
-        this.windowClustering = this.averageInfluencesOverTime(App.item - this.windowClusteringRange, App.item + this.windowClusteringRange);
-      }
-
-      links = this.windowClustering.links;
-    }
-
-    // clear clusters
-    for (var n in data) {
-      data[n].cluster = undefined;
-    }
-
-    links.forEach(link => {
-      if (Math.abs(link.value) >= threshold
-        && (data[link.source] || link.source)
-        && (data[link.target] || link.target)) {
-        var source = data[link.source] || link.source,
-            target = data[link.target] || link.target,
-            sc = source.cluster,
-            tc = target.cluster;
-
-        if (source === target) { return; } // ignore self influencing nodes?
-
-        // create a new cluster
-        if (sc == undefined && tc == undefined) {
-          source.cluster = target.cluster = clusters.length;
-          clusters.push([source, target])
+    nodes.forEach(function (n) {
+        if (!addedClusters.hasOwnProperty(n.cluster)) {
+            addedClusters[n.cluster] = [];
         }
-        // already in a cluster
-        else if (sc !== tc) {
-          if (sc == undefined) {
-            source.cluster = tc;
-            if (clusters[tc].indexOf(source) < 0) clusters[tc].push(source);
-          }
-          else if (tc == undefined) {
-            target.cluster = sc;
-            if (clusters[sc].indexOf(target) < 0) clusters[sc].push(target);
-          }
-          else {
-            // join source cluster to target cluster
-            clusters[tc].forEach(n => n.cluster = sc);
-            clusters[sc] = clusters[sc].concat(clusters[tc]);
-            clusters[tc] = [];
-          }
+
+        tmpCluster =  addedClusters[n.cluster];
+        let existed = false;
+        for(var i =0; i< tmpCluster.length; i++) {
+            if (tmpCluster[i] == n) {
+                existed = true;
+                break;
+            }
         }
-      }
+
+        if (!existed) {
+            tmpCluster.push(n);
+        }
+
     });
 
-    // filter out null clusters & re-index
-    // clusters = clusters.map(function(c) {
-    //   console.log(c);
-    //   return c.filter(node => node.inf.length > 0 || node.outf.length > 0);
-    // });
+    for(var cl in addedClusters) {
+        if (!addedClusters.hasOwnProperty(cl)) {
+            continue;
+        }
 
-    clusters = [[]].concat(clusters.filter(cluster => cluster.length > 0));
-    for (var n in data) {
-      if (data[n].cluster == undefined) {
-        clusters[0].push(data[n]);
-      }
+        clusters.push(addedClusters[cl]);
     }
 
-    clusters.forEach((cluster,i) => {
-        cluster.forEach(n => {
-          n.cluster = i;
-        });
-        cluster.sort((a,b) => b.hits - a.hits);
-      });
 
-    // integrate painted clusters into master list
-    let self = this;
-
-    // if we will view painted clusters
-    if (this.paintingManager.isInPaintingMode()) {
-
-      if (this.paintingManager.isOverridingExistingClusters() ){
-        // remove painted nodes from calculated clusters
-        let paintedClusters = self.paintingManager.getPaintedClusters()
-          .filter((pc) => pc.length && d3.schemeCategory20.indexOf(pc[0].paintedCluster) < 8);
-
-        let reducedClusters =
-        _.map(clusters, function(c, i) {
-
-          let reduced = _.map(c);
-
-          _.forEach(paintedClusters, function(pc) {
-              reduced = _.differenceBy(reduced, pc, 'name');
-          });
-
-          return reduced;
-
-          // return _.uniqBy(reduced, 'name');
-        });
-
-        // assign new cluster numbers for painted clusters
-
-        _.forEach(paintedClusters, function (pc, i) {
-          _.forEach(pc, function(node) {
-            node.cluster = i + reducedClusters.length;
-          });
-        });
-
-        clusters = _.concat(reducedClusters, paintedClusters);
-
-      } else {
-        // remove calculated clustered nodes from painted clusters
-        // remove painted nodes from calculated clusters
-
-        // note: nodes still need to be removed from the '0' cluster
-        let unclusteredReducedSet = _.map(clusters[0]);
-
-        _.forEach(self.paintingManager.getPaintedClusters(), function(pc) {
-            unclusteredReducedSet = _.differenceBy(unclusteredReducedSet, pc, 'name');
-        });
-        clusters[0] = unclusteredReducedSet;
-
-        let reducedClusters =
-        _.map(self.paintingManager.getPaintedClusters(), function(pc) {
-          let reduced = _.map(pc);
-
-          _.forEach(_.drop(clusters), function(c) {
-            reduced = _.differenceBy(reduced, c, 'name');
-              // reduced = _.concat(reduced, _.differenceBy(pc, c, 'name'));
-          });
-
-          return reduced;
-        });
-
-        // assign new cluster numbers for painted clusters
-        _.forEach(reducedClusters, function (c, i) {
-          _.forEach(c, function(node) {
-            node.cluster = i + clusters.length;
-          });
-        });
-
-        clusters = _.concat(clusters, reducedClusters);
-      }
-    }
 
     let newColors = new Array(clusters.length);
-    let similarities = new Array(clusters.length);
-
-    // define color mapping
-    if (this.clusters && this.clusterColors) {
-      // map new colors from previous clusters & colors
-      for (let clusterNum = 1; clusterNum < clusters.length; clusterNum++) {
-        // need to bind this correctly
-        similarities[clusterNum] = findMostSimilarCluster.call(this, clusters[clusterNum]);
-        similarities[clusterNum].clusterNum = clusterNum;
-      }
-
-      let sortedSimilarities = _.orderBy(similarities, 'intersection', 'desc');
-      let clustersNeedingColor = [];
-
-        // reset inUse values of colorPalette
-      for (let color of Object.keys(this.colorPalette)) {
-        this.colorPalette[color].inUse = false;
-      }
-
-      for (let similarity of sortedSimilarities) {
-        if (similarity) { // first is undefined
-          if (similarity.closestCluster < 0) {
-            // if it shares no nodes with any existing clusters, it will need a new color
-            clustersNeedingColor.push(similarity);
-          } else {
-            // the potential color is the one of the cluster in the previous timestep that it was most similar to
-            let potentialColor = this.clusterColors[similarity.closestCluster];
-
-            // if the color is one from the colorPalette and is not already in use, assign it to this cluster
-            if (this.colorPalette[potentialColor] && !this.colorPalette[potentialColor].inUse) {
-              newColors[similarity.clusterNum] = potentialColor;
-              this.colorPalette[potentialColor] = {
-                inUse: true,
-                currentClusterNumber: similarity.clusterNum
-              };
-            } else {
-              // otherwise after the similarity color assignment it will still need a color
-              clustersNeedingColor.push(similarity);
-            }
-          }
-        }
-      }
-
-      // iterate through clusters needing a color, assigning them with an unused color
-      for (let cluster of clustersNeedingColor) {
-        newColors[cluster.clusterNum] = getFirstUnusedColor.call(this, cluster.clusterNum);
-      }
-
-    } else {
       for (let color = 0; color < clusters.length; color++) {
-        newColors[color] = Object.keys(this.colorPalette)[color];
+          newColors[color] = Object.keys(this.colorPalette)[color];
       }
 
-    }
     this.clusterColors = newColors;
     this.clusters = clusters;
 
@@ -632,41 +464,7 @@ ForceDirectedGraph.prototype = {
       this.simulation.alpha(alpha || 0.15).restart();
     }
 
-    function findMostSimilarCluster(cluster) {
-      // check which cluster it shares the most nodes with
-      let closestCluster = -1;
-      let maxIntersect = 0;
 
-      for (let num in this.clusters) {
-        let oldCluster = this.clusters[num];
-
-        let numSame = _.intersectionBy(cluster, oldCluster, 'name');
-
-        if (numSame.length > maxIntersect) {
-          maxIntersect = numSame.length;
-          closestCluster = num;
-        }
-      }
-
-      return {
-        closestCluster: closestCluster,
-        intersection: maxIntersect
-      };
-    }
-
-    function getFirstUnusedColor(clusterNum) {
-      for (let color of Object.keys(this.colorPalette)) {
-        if (!this.colorPalette[color].inUse) {
-          this.colorPalette[color] = {
-              inUse: true,
-              currentClusterNumber: clusterNum
-          };
-
-          return color;
-        }
-      }
-      return "#9e9e9e"; // no more
-    }
   },
 
   // start and end time in terms of array index into App.dataset
