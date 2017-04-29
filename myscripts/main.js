@@ -114,7 +114,10 @@ svg2.on('mousemove', function () {
 
 var force2 = d3.forceSimulation()
         .force("centeringForce", d3.forceCenter((width+www)/2, (height-wMatrix) / 2))
-        // .force("x", d3.forceX((width+www)/2))
+        // .force("x", function (d) {
+        //
+        //     return d.x;
+        // })
         // .force("y", d3.forceY((height-wMatrix) / 2))
         .force("link", d3.forceLink().distance(70))
         .force("gravity", d3.forceManyBody(0.1))
@@ -754,6 +757,16 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
               if (nameToNode2[neighbor.fields.entity_text]==undefined){
                 var neighborNode = new Object();
                 neighborNode.ref = neighbor;
+
+                if (!!d.x) {
+                    neighborNode.x = d.x + 30 + 50*Math.random();
+                }
+
+                if (!!d.y) {
+                    neighborNode.y = d.y;
+                }
+
+
                 nodes2.push(neighborNode);
                 
                 // Labels **********************************************
@@ -796,7 +809,8 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
         }
         // Load Publication data ********************************************************
         loadPMC(curNode);
-        
+
+        // debugger;
         d.ref.isExpanded = true;
         d.isExpanded = true;
         addNodes();   
