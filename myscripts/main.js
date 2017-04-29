@@ -47,18 +47,19 @@ var svg4 = d3.select(".publicationHolder").append("svg")
 //  .attr("width", 100);
 
 
-var force3 = d3.layout.force()
-    //.friction(0.5)
+var force3 = d3.forceSimulation()
     .alpha(0.1)
-    .size([wPublication, wMatrix]);
-  
-  force3.linkDistance(function(l) {
-    if (l.year){
-        return 4*(l.year-minYear);    
-    }
-    else
-      return 50;
-  });
+    .force("center", d3.forceCenter(wPublication / 2, wMatrix / 2))
+    // .size([wPublication, wMatrix])
+    .force("link", d3.forceLink().distance(
+        function(l) {
+            if (l.year){
+                return 4*(l.year-minYear);
+            }
+            else
+              return 50;
+        }))
+    ;
 
 
 
@@ -69,7 +70,7 @@ var svg3 = d3.select('.matrixHolder').append('svg')
 
 var g3 = svg3.append("g");
       // then, create the zoom behvavior
-      var zoom = d3.behavior.zoom()
+      var zoom = d3.zoom()
         // only scale up, e.g. between 1x and 50x
         .scaleExtent([1, 50])
         .on("zoom", function() {
@@ -100,29 +101,43 @@ svg2.on('mousemove', function () {
 });
 
 //Set up the force layout
-var force = d3.layout.force()
-    .charge(-4)
-    .linkDistance(2)
-    .gravity(0.05)
-    //.friction(0.5)
-  //  .alpha(0.1)
-    .size([www, www]);
-
-var force2 = d3.layout.force()
-    .charge(-120)
-    .linkDistance(70)
-    .gravity(0.1)
-    //.friction(0.5)
-  //  .alpha(0.1)
-    .size([width+www, height-wMatrix]);
+// var force = d3.layout.force()
+//     .charge(-4)
+//     .linkDistance(2)
+//     .gravity(0.05)
+//     //.friction(0.5)
+//   //  .alpha(0.1)
+//     .size([www, www]);
 
 
-var forceLabel = d3.layout.force()
-  .gravity(0)
-  .linkDistance(1)
-  .linkStrength(5)
-  .charge(-50)
-  .size([width+www, height+wMatrix]);
+var force2 = d3.forceSimulation()
+        .force("center", d3.forceCenter((width+www)/2, (height+wMatrix) / 2))
+        .force("link", d3.forceLink().distance(70))
+        .force("gravity", d3.forceManyBody(0.1))
+        .force('charge', d3.forceManyBody().strength(-50))
+
+    ;
+// var force2 = d3.layout.force()
+//     .charge(-120)
+//     .linkDistance(70)
+//     .gravity(0.1)
+//     //.friction(0.5)
+//   //  .alpha(0.1)
+//     .size([width+www, height-wMatrix]);
+
+var forceLabel = d3.forceSimulation()
+        .force("center", d3.forceCenter((width+www)/2, (height+wMatrix) / 2))
+        .force("link", d3.forceLink().distance(1))
+        .force("gravity", d3.forceManyBody(0))
+        .force('charge', d3.forceManyBody().strength(-50))
+
+    ;
+// var forceLabel = d3.layout.force()
+//   .gravity(0)
+//   .linkDistance(1)
+//   .linkStrength(5)
+//   .charge(-50)
+//   .size([width+www, height+wMatrix]);
 
 svg2.call(tip);  
 var nodes = [];
@@ -437,10 +452,10 @@ function update1(d) {
     });  
 }
 
-var node_drag = d3.behavior.drag()
-        .on("dragstart", dragstart)
+var node_drag = d3.drag()
+        .on("start", dragstart)
         .on("drag", dragmove)
-        .on("dragend", dragend);
+        .on("end", dragend);
     function dragstart(d, i) {
       force2.stop() // stops the force auto positioning before you start dragging
       forceLabel.stop();
@@ -536,8 +551,10 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
   function addNodes() {
     force2
         .nodes(nodes2)
-        .links(links2)
-        .start();
+        .force("link").links(links2)
+       ;
+
+      force2.alpha(0.15).restart();
 
     svg2.selectAll(".link")
       .data(links2)
@@ -656,12 +673,19 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
       .on('mouseout', function(d) {
         tip.hide(); 
       });
-    
+
+      force2
+          .nodes(nodes2)
+          .force("link").links(links2)
+      ;
+
     // Labels **********************************************    
     forceLabel
       .nodes(labelAnchors)
-      .links(labelAnchorLinks)
-      .start();
+        .force("link").links(labelAnchorLinks);
+
+    forceLabel.alpha(0.15)
+      .restart();
 
     svg2.selectAll(".anchorNode").remove();
     svg2.selectAll(".anchorNode").data(labelAnchors).enter().append("text").attr("class", "anchorNode")
