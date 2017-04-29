@@ -1,5 +1,13 @@
 var App = App || {};
 
+/**
+ * This object requires to have "nodes" and "links"
+ *
+ * Each object link must have "source", "destination", "name" and either "weight" or "value" as numeric value
+ *
+ * @param args
+ * @constructor
+ */
 function ForceDirectedGraph(args) {
   Object.assign(this, args || ForceDirectedGraph.prototype);
 
