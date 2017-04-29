@@ -33,15 +33,16 @@ function ForceDirectedGraph(args) {
 
   this.defineClusters();
 
+  let nodes = this.nodes;
   // set up simulation
   this.simulation = d3.forceSimulation()
-    .force("link",
+    .force("links",
       d3.forceLink()
         .id(d => d.name)
     )
     .force("collision", d3.forceCollide(22))
     .force("charge", d3.forceManyBody()
-      .strength(-Math.pow(150, Object.keys(this.filteredData).length > 30 ? 1 : 1.2))
+      .strength(-Math.pow(150, nodes.length > 30 ? 1 : 1.2))
       .distanceMax(Math.min(this.width, this.height)/4))
     .force("center", d3.forceCenter(
       (this.width / 2),
@@ -93,6 +94,19 @@ ForceDirectedGraph.prototype = {
 
     // make sure each node has its cluster
     this.nodes.forEach(function (n) {
+
+        if (!n.radius) {
+            n.radius = 6;
+        }
+
+        if (!n.x) {
+            n.x = width / 2;
+        }
+
+        if (!n.y) {
+            n.y = height / 2;
+        }
+
         if (!!n.cluster) {
             return;
         }
@@ -467,97 +481,6 @@ ForceDirectedGraph.prototype = {
 
   },
 
-  // start and end time in terms of array index into App.dataset
-  averageInfluencesOverTime: function(startTime, endTime) {
-    let rules = {};
-    let start = startTime < 0 ? 0: startTime;
-    let end = endTime >= App.dataset.length ? App.dataset.length - 1 : endTime;
-
-    for (let rule of Object.keys(App.data)) {
-      // make sekeleton to aggregate influences
-      rules[rule] = {
-        inf: {}, // influence on other rules
-        outf: {} // influence of other rules on this
-      };
-    }
-
-    for (let time = start; time <= end; time++) {
-      for (let rule of Object.keys(App.dataset[time].data)) {
-
-        // aggregate inf
-        for (let infRule of App.dataset[time].data[rule].inf) {
-          if (!rules[rule].inf[infRule.name]) {
-            rules[rule].inf[infRule.name] = 0;
-          }
-          rules[rule].inf[infRule.name] += infRule.flux;
-        }
-
-        // aggregate outf
-        for (let outfRule of App.dataset[time].data[rule].outf) {
-          if (!rules[rule].outf[outfRule.name]) {
-            rules[rule].outf[outfRule.name] = 0;
-          }
-          rules[rule].outf[outfRule.name] += outfRule.flux;
-        }
-
-      }
-    }
-
-    // average influences by amount of timesteps (end - start + 1)
-    let numTimesteps = end - start + 1;
-
-    for (let rule of Object.keys(rules)) {
-      // average inf
-      for (let infRule of Object.keys(rules[rule].inf)) {
-        rules[rule].inf[infRule] /= numTimesteps;
-      }
-
-      // average outf
-      for (let outfRule of Object.keys(rules[rule].outf)) {
-        rules[rule].outf[outfRule] /= numTimesteps;
-      }
-    }
-
-    let nodes = rules;
-    let links = [];
-
-    for (let rule of Object.keys(rules)) {
-      let infArray = [];
-      let outfArray = [];
-
-      for (let infRule of Object.keys(rules[rule].inf)) {
-        if (rules[rule].inf[infRule] != 0) {
-          infArray.push({
-            name: infRule,
-            flux: rules[rule].inf[infRule]
-          });
-        }
-      }
-
-      for (let outfRule of Object.keys(rules[rule].outf)) {
-        if (rules[rule].outf[outfRule] != 0) {
-          outfArray.push({
-            name: outfRule,
-            flux: rules[rule].outf[outfRule]
-          });
-        }
-      }
-
-      let ruleWithInf = {
-        inf: infArray
-      };
-
-      links = _.concat(links, this.extractLinksFromNode(ruleWithInf, rule));
-    }
-
-    // return to stay a bit consistent
-    return {
-      links: links,
-      nodes: nodes,
-      timeRange: [startTime, endTime]
-    };
-  },
-
   // update function
   drawGraph: function() {
     this.drawClusters();
@@ -567,25 +490,12 @@ ForceDirectedGraph.prototype = {
   },
 
   drawClusters: function() {
-    let clusters = this.clusters.filter(c => c.length && !(c[0].isPainted && c[0].paintedCluster === undefined));
-
-    let filteredData = this.filteredData;
-    var radiusScale = d3.scaleLinear()
-      .domain(d3.extent(Object.keys(filteredData), (d) => {
-        return filteredData[d].hits;
-      }))
-      .range([4, 14]);
-
+    // let clusters = this.clusters.filter(c => c.length && !(c[0].isPainted && c[0].paintedCluster === undefined));
+    let clusters = this.clusters;
     var self = this;
 
     function getFill(d) {
-      if (d[0].isPainted && d3.schemeCategory20.indexOf(d[0].paintedCluster) < 8) {
-        return d[0].paintedCluster;
-      }
-      else if (d[0].cluster !== 0) {
         return self.clusterColor(d[0].cluster);
-      }
-      return 'none';
     }
 
     var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters);
@@ -656,19 +566,19 @@ ForceDirectedGraph.prototype = {
 
   // draw nodes
   drawNodes: function() {
-    var filteredData = this.filteredData;
-    var radiusScale = d3.scaleLinear()
-      .domain(d3.extent(Object.keys(filteredData), (d) => {
-        return filteredData[d].hits;
-      }))
-      .range([4, 14]);
-
-    // scale nodes by # of hits
-    for (var key in filteredData) {
-      filteredData[key].radius = radiusScale(filteredData[key].hits);
-      filteredData[key].x = filteredData[key].x || this.width / 2;
-      filteredData[key].y = filteredData[key].y || this.height / 2;
-    }
+    // var filteredData = this.filteredData;
+    // var radiusScale = d3.scaleLinear()
+    //   .domain(d3.extent(Object.keys(filteredData), (d) => {
+    //     return filteredData[d].hits;
+    //   }))
+    //   .range([4, 14]);
+    //
+    // // scale nodes by # of hits
+    // for (var key in filteredData) {
+    //   filteredData[key].radius = radiusScale(filteredData[key].hits);
+    //   filteredData[key].x = filteredData[key].x || this.width / 2;
+    //   filteredData[key].y = filteredData[key].y || this.height / 2;
+    // }
 
     // define dragging behavior
     var self = this;
@@ -695,10 +605,10 @@ ForceDirectedGraph.prototype = {
         });
 
     var rule = this.nodeGroup.selectAll(".rule-node")
-        .data(Object.keys(filteredData).map(d => filteredData[d]));
+        .data(this.nodes);
 
     var text = this.nodeGroup.selectAll(".rule-text")
-        .data(Object.keys(filteredData).map(d => filteredData[d]));
+        .data(this.nodes);
 
 
     rule.enter().append("circle")
@@ -709,24 +619,24 @@ ForceDirectedGraph.prototype = {
     .merge(rule)
       .attr("cluster", d => d.cluster)
       .attr("r", d => d.radius)
-      .attr("pointer-events", (d) => {
-        if(App.property.node == true && d.cluster === 0) {
-          return 'none';
-        }
-        else return 'all';
-      })
-      .style("opacity", (d) => {
-        if( App.property.node == true && d.cluster === 0) {
-          return 0;
-        }
-        else return 1;
-      })
-      .style('stroke-opacity', (d) => {
-        if( App.property.node == true && d.cluster === 0) {
-          return 0;
-        }
-        else return 0.5;
-      })
+      // .attr("pointer-events", (d) => {
+      //   if(App.property.node == true && d.cluster === 0) {
+      //     return 'none';
+      //   }
+      //   else return 'all';
+      // })
+      // .style("opacity", (d) => {
+      //   if( App.property.node == true && d.cluster === 0) {
+      //     return 0;
+      //   }
+      //   else return 1;
+      // })
+      // .style('stroke-opacity', (d) => {
+      //   if( App.property.node == true && d.cluster === 0) {
+      //     return 0;
+      //   }
+      //   else return 0.5;
+      // })
       .on('mouseover', this._isDragging ? null : function(d) {
         self.showTip(d, 'rule');
 
@@ -756,22 +666,22 @@ ForceDirectedGraph.prototype = {
         d3.select(this)
           .classed('node-to-graph',true);
         d3.select('#linegraph-help').style('display','none');
-        if (App.panels.topVis) { App.panels.topVis.updateRule(d); }
-        if (App.panels.bottomVis) { App.panels.bottomVis.updateRule(d); }
-        if (App.panels.focusSlider) { App.panels.focusSlider.update(); }
+        // if (App.panels.topVis) { App.panels.topVis.updateRule(d); }
+        // if (App.panels.bottomVis) { App.panels.bottomVis.updateRule(d); }
+        // if (App.panels.focusSlider) { App.panels.focusSlider.update(); }
       })
       .on('click', function(d) {
         // if painting mode, add node to paintedClusters
-        if (self.paintingManager.isPaintingCluster()) {
-          self.paintingManager.addNodeToPaintingCluster(d);
-        }
-        else {
+        // if (self.paintingManager.isPaintingCluster()) {
+        //   self.paintingManager.addNodeToPaintingCluster(d);
+        // }
+        // else {
           d3.select(this)
             .style("fill", (d) => self.clusterColor(d.cluster))
             .style("stroke", "white");
             d.fx = d.fy = null;
             d._fixed = false;
-        }
+        // }
       })
       .call(drag);
 
@@ -788,15 +698,16 @@ ForceDirectedGraph.prototype = {
       })
     .merge(text)
       .text(d => d.name)
-      .style('font-size', App.property.labelFontSize)
-      .style('opacity', function(d) {
-        if (App.property.label == true || (d.isPainted && d3.schemeCategory20.indexOf(d.paintedCluster) >= 8)) {
-          return 1;
-        }
-        else {
-          return 0;
-        }
-      })
+      .style('font-size', 14)
+      // .style('opacity', function(d) {
+      //   if (App.property.label == true || (d.isPainted && d3.schemeCategory20.indexOf(d.paintedCluster) >= 8)) {
+      //     return 1;
+      //   }
+      //   else {
+      //     return 0;
+      //   }
+      // })
+    ;
 
 
     text.exit().remove();
@@ -831,9 +742,8 @@ ForceDirectedGraph.prototype = {
       .domain(this.links.map(d => Math.abs(d.value)))
       .range(d3.range(0.4, this.links.length > 200 ? 1 : 4, 0.05));
 
-    var threshold = Math.abs(App.panels.forceDirected.threshold);
     var mainLink = this.linkGroup.selectAll('.link-1')
-      .data(this.links)
+      .data(this.links);
 
     mainLink.exit().remove();
     mainLink.enter().append('path')
@@ -847,31 +757,31 @@ ForceDirectedGraph.prototype = {
         });
 
     // invisible line for collisions
-    var self = this;
-    var hoverLink = this.linkGroup.selectAll('.link-2')
-      .data(this.links);
-
-    hoverLink.exit().remove();
-    hoverLink.enter().append('path')
-        .attr("class", "link link-2")
-        .attr('fill','none')
-        .attr("value", d => d.value)
-        .style("stroke-opacity", 0)
-        .style("stroke-width", 8)
-        .on("mouseover", (d, i) => {
-          if (self._isDragging) return;
-          d3.select(d3.event.target)
-            .style('stroke-opacity',0.5)
-            .raise();
-          self.showTip(d, 'path');
-        })
-        .on("mouseout", (d, i) => {
-
-          d3.select(d3.event.target)
-            .transition()
-            .style('stroke-opacity',0);
-          self.hideTip();
-        });
+    // var self = this;
+    // var hoverLink = this.linkGroup.selectAll('.link-2')
+    //   .data(this.links);
+    //
+    // hoverLink.exit().remove();
+    // hoverLink.enter().append('path')
+    //     .attr("class", "link link-2")
+    //     .attr('fill','none')
+    //     .attr("value", d => d.value)
+    //     .style("stroke-opacity", 0)
+    //     .style("stroke-width", 8)
+    //     .on("mouseover", (d, i) => {
+    //       if (self._isDragging) return;
+    //       d3.select(d3.event.target)
+    //         .style('stroke-opacity',0.5)
+    //         .raise();
+    //       self.showTip(d, 'path');
+    //     })
+    //     .on("mouseout", (d, i) => {
+    //
+    //       d3.select(d3.event.target)
+    //         .transition()
+    //         .style('stroke-opacity',0);
+    //       self.hideTip();
+    //     });
 
     this.updateEdgeVisibility();
   },
@@ -881,49 +791,50 @@ ForceDirectedGraph.prototype = {
     d3.selectAll('.link-1')
       .interrupt()
       .style('stroke-opacity', (d) => {
-        if( !App.property.green && d.value > 0 ) {
-          return 0;
-        }
-        else if( !App.property.red && d.value < 0) {
-          return 0;
-        }
-        else if( Math.abs(d.value) < this.visThreshold) {
-          return 0;
-        }
-        else {
           return 1;
-        }
+        // if( !App.property.green && d.value > 0 ) {
+        //   return 0;
+        // }
+        // else if( !App.property.red && d.value < 0) {
+        //   return 0;
+        // }
+        // else if( Math.abs(d.value) < this.visThreshold) {
+        //   return 0;
+        // }
+        // else {
+        //   return 1;
+        // }
       });
 
     // mouseover functionality
     d3.selectAll('.link-2')
       .interrupt()
       .attr('pointer-events', (d) => {
-        if( !App.property.green && d.value > 0 ) {
-          return 'none';
-        }
-        else if( !App.property.red && d.value < 0) {
-          return 'none';
-        }
-        else if( Math.abs(d.value) < this.visThreshold) {
-          return 'none';
-        }
-        else {
           return 'all';
-        }
+        // if( !App.property.green && d.value > 0 ) {
+        //   return 'none';
+        // }
+        // else if( !App.property.red && d.value < 0) {
+        //   return 'none';
+        // }
+        // else if( Math.abs(d.value) < this.visThreshold) {
+        //   return 'none';
+        // }
+        // else {
+        //   return 'all';
+        // }
       });
   },
 
   // the big workhorse of the simulation ???
   createForceLayout: function() {
-    var data = this.filteredData,
-        nodeArr = Object.keys(data).map(n => data[n]);
+    var nodeArr = this.nodes;
 
-    var radiusScale = d3.scaleLinear()
-      .domain(d3.extent(Object.keys(data), (d) => {
-        return data[d].hits;
-      }))
-      .range([4, 14]);
+    // var radiusScale = d3.scaleLinear()
+    //   .domain(d3.extent(Object.keys(data), (d) => {
+    //     return data[d].hits;
+    //   }))
+    //   .range([4, 14]);
 
     var borderNodeMargin = 10;
 
@@ -1020,27 +931,30 @@ ForceDirectedGraph.prototype = {
           return (ext[1] + ext[0]) / 2;
         })
         .attr("r", function(d) {
-          var x = Number(d3.select(this).attr("cx"));
-          var y = Number(d3.select(this).attr("cy"));
 
-          var circlePadding = 15;
-
-          var radius = d3.max(d, (node) => {
-            return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2))
-              + radiusScale(node.hits);
-          });
-
-          if (isNaN(radius)) {
-            // console.log(d);
-          }
-
-          return radius + circlePadding;
+            return d.radius;
+          // var x = Number(d3.select(this).attr("cx"));
+          // var y = Number(d3.select(this).attr("cy"));
+          //
+          // var circlePadding = 15;
+          //
+          // var radius = d3.max(d, (node) => {
+          //   return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2))
+          //     + radiusScale(node.hits);
+          // });
+          //
+          // if (isNaN(radius)) {
+          //   // console.log(d);
+          // }
+          //
+          // return radius + circlePadding;
         });
     }
 
     function createArrowPath(d) {
-      var target = d.target,
-          source = d.source;
+        // debugger;
+      var target = nodeArr[d.target],
+          source = nodeArr[d.source];
 
       var dx = target.x - source.x,
           dy = target.y - source.y,
@@ -1078,8 +992,11 @@ ForceDirectedGraph.prototype = {
 
 
     // simulation forces
-    this.simulation.force("link")
-        .links(this.links)
+      var link_force =  d3.forceLink(this.links)
+          .id(function(d) { return d.name; });
+
+
+    this.simulation.force("links", link_force)
         .distance((d) => {
 
           let strengthScale = d3.scaleLinear()
@@ -1093,7 +1010,7 @@ ForceDirectedGraph.prototype = {
           else {
             return 25*strengthScale(d.value);
           }
-        })
+        });
 
     this.simulation.force("cluster", clustering)
                    .force("collision", collide);
