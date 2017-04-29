@@ -4,15 +4,13 @@ function ForceDirectedGraph(args) {
   Object.assign(this, args || ForceDirectedGraph.prototype);
 
   this.init();
-  this.filterData(App.data);
+  // this.filterData(App.data);
 
   var sortedLinks = this.links.concat().sort((a, b) => {
     return Math.abs(b.value) - Math.abs(a.value);
   });
 
-  this.maxInfl = Math.abs(sortedLinks[0].value);
-
-  this.paintingManager = new PaintingManager(this);
+  this.maxValue = Math.abs(sortedLinks[0].value);
 
   // initialize color palette
   let availableColors = ['#aec7e8','#ff7f0e','#ffbb78','#2ca02c','#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5','#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5'];
@@ -71,6 +69,20 @@ ForceDirectedGraph.prototype = {
       .on("zoom", this.zoomed.bind(this)))
       .on("dblclick.zoom", null);
 
+    this.links.forEach(function (l) {
+        if (!!l.value && !!l.weight) {
+            return;
+        }
+
+        if (!!l.weight) {
+            l.value = l.weight;
+        }
+
+        if (!l.value) {
+            l.value = 1;
+        }
+
+    });
 
     // colors from
     // http://colorbrewer2.org/#type=diverging&scheme=RdYlGn&n=9
@@ -359,7 +371,7 @@ ForceDirectedGraph.prototype = {
         name: data[key].name,
         inf: data[key].inf.filter(l => l.flux !== 0),
         outf: data[key].outf.filter(l => l.flux !== 0)
-      }
+      };
 
       links = _.concat(links, this.extractLinksFromNode(newNode, key));
 
@@ -368,7 +380,7 @@ ForceDirectedGraph.prototype = {
       }
     }
 
-    this.filteredData = filteredData,
+    this.filteredData = filteredData;
     this.links = links;
   },
 
@@ -1265,7 +1277,7 @@ ForceDirectedGraph.prototype = {
         .distance((d) => {
 
           let strengthScale = d3.scaleLinear()
-            .domain([0, self.maxInfl])
+            .domain([0, self.maxValue])
             .range([1,0.4])
             .clamp(true);
 
@@ -1387,7 +1399,7 @@ ForceDirectedGraph.prototype = {
     }
     this.paintingManager.setPaintedClusters(paintedClusters);
 
-    this.maxInfl = d3.max(this.links, d => Math.abs(d.value));
+    this.maxValue = d3.max(this.links, d => Math.abs(d.value));
     this.defineClusters(this.threshold, 0);
     this.drawGraph();
     this.simulation.alpha(0.1).restart();

@@ -289,7 +289,9 @@ mutiPlanes.printNetwork = function (network) {
      var fd = new ForceDirectedGraph( {
          svg: svg,
          width: svgWidth,
-         height: svgHeight
+         height: svgHeight,
+         nodes: network.nodes,
+         links: network.links
      });
  };
 
