@@ -476,8 +476,8 @@ var node_drag = d3.drag()
     }
     function dragend(d, i) {
       d.fixed = true;// of course set the node to fixed so the force doesn't include the node in its auto positioning stuff
-      force2.resume();
-      forceLabel.resume();
+      force2.restart();
+      forceLabel.restart();
     }
     function releasenode(d) {
       
