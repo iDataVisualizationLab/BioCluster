@@ -545,19 +545,21 @@ ForceDirectedGraph.prototype = {
       .attr('class','rule rule-text')
       .attr('pointer-events','none')
       .attr("transform", (d, i) => {
+          // debugger;
         return "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")";
       })
+        .text(function (d) {
+            return d.name;
+        })
+
     .merge(text)
-      .text(d => d.name)
-      .style('font-size', 14)
-      // .style('opacity', function(d) {
-      //   if (App.property.label == true || (d.isPainted && d3.schemeCategory20.indexOf(d.paintedCluster) >= 8)) {
-      //     return 1;
-      //   }
-      //   else {
-      //     return 0;
-      //   }
-      // })
+      .text( function (d) {
+          return d.name;
+      })
+      .style('font-size', 9)
+      .style('opacity', function(d) {
+        return 1;
+      })
     ;
 
 

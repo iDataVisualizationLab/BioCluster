@@ -141,6 +141,7 @@ mutiPlanes.createNodesAndLinks = function (links) {
         if (!addedNodes.hasOwnProperty(link.source.ref.id)) {
             sourceNode = new Object();
             sourceNode.ref = link.source.ref;
+            sourceNode.name = link.source.ref.fields.entity_text;
             sourceNode.index = myNetwork.nodes.length;
 
             addedNodes[sourceNode.ref.id] = sourceNode;
@@ -156,6 +157,7 @@ mutiPlanes.createNodesAndLinks = function (links) {
             targetNode = new Object();
             targetNode.ref = link.target.ref;
             targetNode.index = myNetwork.nodes.length;
+            targetNode.name = link.target.ref.fields.entity_text;
 
             addedNodes[targetNode.ref.id] = targetNode;
             myNetwork.nodes.push(targetNode);
