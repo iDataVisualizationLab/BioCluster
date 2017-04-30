@@ -20,8 +20,15 @@ function ForceDirectedGraph(args) {
 
   this.maxValue = Math.abs(sortedLinks[0].value);
 
-  // initialize color palette
-  let availableColors = ['#aec7e8','#ff7f0e','#ffbb78','#2ca02c','#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5','#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5'];
+    // initialize color palette
+    let availableColors = ['#aec7e8','#ff7f0e','#ffbb78','#2ca02c','#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5','#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5'];
+    // var colorFunction = d3.scaleOrdinal(d3.schemeCategory10);
+    // let availableColors = [];
+    //
+    // for(var i =0; i< 10; i++) {
+    //     availableColors.push(colorFunction(i));
+    // }
+
   this.colorPalette = {};
 
   for (let color of availableColors) {
@@ -38,7 +45,7 @@ function ForceDirectedGraph(args) {
   this.simulation = d3.forceSimulation()
     .force("links",
       d3.forceLink()
-        .id(d => d.name)
+        .id(d => d.index)
     )
     .force("collision", d3.forceCollide(22))
     .force("charge", d3.forceManyBody()
@@ -65,17 +72,14 @@ ForceDirectedGraph.prototype = {
     // no need to redraw on resize
     this.svg.attr("viewBox", "0 0 " + this.width + " " + this.height);
 
-    // background color
-    this.svg.append("rect")
-      .attr("width", this.width)
-      .attr("height", this.height)
-      .style("padding", "20px")
-      .style("fill", "#444");
+    if (!!this.zoomEnabled) {
+        this.svg.call(d3.zoom()
+            .scaleExtent([1 / 2, 4])
+            .on("zoom", this.zoomed.bind(this)))
+            .on("dblclick.zoom", null)
+        ;
+    }
 
-    this.svg.call(d3.zoom()
-      .scaleExtent([1 / 2, 4])
-      .on("zoom", this.zoomed.bind(this)))
-      .on("dblclick.zoom", null);
 
     // make sure each link has "value" property
     this.links.forEach(function (l) {
@@ -179,12 +183,6 @@ ForceDirectedGraph.prototype = {
 
     this._isDragging = false;
 
-    this.clusterMode = "timestep"; // or "global" or "window"
-    this.globalClustering = null;
-
-    this.windowClustering = null;
-    this.windowClusteringRange = 5; // # timesteps before and after current
-
     /* Initialize tooltip for nodes */
     this.tip = d3.select('#forceDirectedDiv').append('div').attr('id', 'tip');
   },
@@ -192,13 +190,13 @@ ForceDirectedGraph.prototype = {
   resize:function() {
     var rect = this.svg.node().parentNode.getBoundingClientRect();
     if (rect.width && rect.height) {
-      this.width = rect.width,
+      this.width = rect.width;
       this.height = rect.height;
     }
 
     this.svg
       .attr('width', this.width)
-      .attr('height', this.height)
+      .attr('height', this.height);
 
     this.aspect = this.width / this.height;
     this.width = 901;
@@ -230,164 +228,14 @@ ForceDirectedGraph.prototype = {
     this.clusterCircleGroup.attr("transform", this.transform);
   },
   showTip: function(d, type) {
-    this.tip.selectAll('*').remove();
-    this.tip.transition().style('opacity',1);
+    // this.tip.selectAll('*').remove();
+    // this.tip.transition().style('opacity',1);
 
-    var self = this;
-    function adjustedClusterColor(cluster) {
-      var color = d3.hsl(self.clusterColor(cluster))
-      if (color.l < 0.65) { color.l = 0.65 }
-      return color.toString();
-    }
 
-    if (type === 'rule') {
-      var sp = this.tip.append('span')
-          .text('Rule: ');
-
-      sp.append('span')
-          .style('letter-spacing',0)
-          .style('font-weight','bold')
-          .style('color', adjustedClusterColor(d.cluster))
-          .text(d.name);
-      sp.append('br');
-
-      sp = sp.append('div')
-        .style('font-size','0.85em')
-        .style('line-height','1.4em')
-        .style('padding-left','0.5vw')
-        .style('border-left','0.1vw dotted #ccc');
-
-      sp.append('span')
-        .text('Hits: ' + d.hits);
-
-      var selfInf = d.inf.filter(inf => inf.name === d.name);
-      var inf = d.inf.filter(inf => inf.name !== d.name)
-                  .sort((a,b) => Math.abs(b.flux) - Math.abs(a.flux) );
-      var outf = d.outf.filter(outf => outf.name !== d.name)
-                  .sort((a,b) => Math.abs(b.flux) - Math.abs(a.flux) );
-      var selfCluster = d.cluster;
-      var num;
-
-      function adjustedClusterColor(cluster) {
-        var color = d3.hsl(self.clusterColor(cluster))
-        if (color.l < 0.65) { color.l = 0.65 }
-        return color;
-      }
-
-      var self = this;
-      if (selfInf.length > 0) {
-        num = App.property.sci ?
-            Number(selfInf[0].flux.toPrecision(3)).toExponential() :
-            Number(selfInf[0].flux.toFixed(3))
-        sp.append('br');
-        sp.append('span')
-          .text('Self-influence: ')
-          .style('color', function() {
-            return adjustedClusterColor(selfCluster);
-          })
-      sp.append('span')
-          .text(num)
-          .style('color', function() {
-              return num < 0 ? '#f66' : '#4c4';
-            });
-      }
-      if (inf.length > 0) {
-        sp.append('br');
-        sp.append('span')
-          .text('Influence on...');
-        inf.slice(0,10).forEach(flux => {
-          num = App.property.sci ?
-            Number(flux.flux.toPrecision(3)).toExponential() :
-            Number(flux.flux.toFixed(3))
-
-          sp.append('br');
-          sp.append('span')
-            .text(flux.name + ': ')
-            .style('margin-left','0.75vw')
-            .style('font-weight','bold')
-            .style('color', function() {
-              var cluster = self.findCluster(flux.name);
-              return adjustedClusterColor(cluster);
-            });
-          sp.append('span')
-          .text(num)
-          .style('color', function() {
-              return flux.flux < 0 ? '#f66' : '#4c4';
-            });
-        })
-
-        if (inf.length > 10) {
-          sp.append('br');
-          sp.append('span')
-            .text('...and ' + (inf.length-10) + ' more')
-            .style('margin-left','0.75vw');
-        }
-      }
-      if (outf.length > 0) {
-        sp.append('br');
-        sp.append('span')
-          .text('Influenced by...');
-
-        outf.slice(0,10).forEach(flux => {
-          num = App.property.sci ?
-            Number(flux.flux.toPrecision(3)).toExponential() :
-            Number(flux.flux.toFixed(3))
-
-          sp.append('br');
-          sp.append('span')
-            .text(flux.name + ': ')
-            .style('margin-left','0.75vw')
-            .style('font-weight','bold')
-            .style('color', function() {
-              var cluster = self.findCluster(flux.name);
-              return adjustedClusterColor(cluster);
-            });
-          sp.append('span')
-          .text(num)
-          .style('color', function() {
-              return flux.flux < 0 ? '#f66' : '#4c4';
-            });
-        })
-
-        if (outf.length > 10) {
-          sp.append('br');
-          sp.append('span')
-            .text('...and ' + (outf.length-10) + ' more')
-            .style('margin-left','0.75vw');
-        }
-      }
-    }
-    else {
-      var cs = d3.hsl(this.clusterColor(d.source.cluster));
-      var ct = d3.hsl(this.clusterColor(d.target.cluster));
-      if (cs.l < 0.65) { cs.l = 0.65 }
-      if (ct.l < 0.65) { ct.l = 0.65 }
-
-      var sp = this.tip.append('span');
-      sp.text('Influence: ')
-        .append('span').text(App.property.sci ?
-            Number(d.value.toPrecision(3)).toExponential() :
-            Number(d.value.toFixed(3)) )
-          .style('font-weight','bold')
-          .style('color', d.value < 0 ? '#f66' : '#4c4');
-      sp.append('br');
-      sp.append('span')
-          .text(d.source.name)
-          .style('letter-spacing',0)
-          .style('font-weight','bold')
-          .style('color', cs.toString());
-      sp.append('br');
-      sp.append('text').text('on ');
-      sp.append('span')
-          .text(d.target.name)
-          .style('letter-spacing',0)
-          .style('font-weight','bold')
-          .style('color', ct.toString());
-    }
 
   },
   hideTip: function() {
-    this.tip.transition().style('opacity',0);
+    // this.tip.transition().style('opacity',0);
   },
 
   // process data into nodes & links where links have magnitude > 0
@@ -466,12 +314,12 @@ ForceDirectedGraph.prototype = {
 
 
 
-    let newColors = new Array(clusters.length);
-      for (let color = 0; color < clusters.length; color++) {
-          newColors[color] = Object.keys(this.colorPalette)[color];
-      }
-
-    this.clusterColors = newColors;
+    // let newColors = new Array(clusters.length);
+    //   for (let color = 0; color < clusters.length; color++) {
+    //       newColors[color] = Object.keys(this.colorPalette)[color];
+    //   }
+    //
+    // this.clusterColors = newColors;
     this.clusters = clusters;
 
     if (this.simulation && alpha !== 0) {
@@ -500,11 +348,10 @@ ForceDirectedGraph.prototype = {
 
     var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters);
 
-    circles.exit().remove();
-
-    circles
-      .style("fill", getFill)
-      .style("stroke", getFill);
+    //
+    // circles
+    //   .style("fill", getFill)
+    //   .style("stroke", getFill);
 
     circles.enter().append("circle")
       .attr("class", "clusterCircle")
@@ -533,35 +380,39 @@ ForceDirectedGraph.prototype = {
           if (!d3.event.active) {
             self.simulation.alphaTarget(0);
           }
-          let cluster = this;
+          // let cluster = this;
 
-          d.forEach((n) => {
-            // pin cluster nodes on cluster drag end (testing out how this feels)
-            n._fixed = true;
-
-            d3.selectAll('.rule-node')
-              .style('stroke', (d) => d._fixed ? "#404040" : "white");
-
-            d3.select(cluster)
-              .style("stroke-dasharray", null);
-          })
+          // d.forEach((n) => {
+          //   // pin cluster nodes on cluster drag end (testing out how this feels)
+          //   n._fixed = true;
+          //
+          //   d3.selectAll('.rule-node')
+          //     .style('stroke', (d) => d._fixed ? "#404040" : "white");
+          //
+          //   d3.select(cluster)
+          //     .style("stroke-dasharray", null);
+          // })
         }) )
         .on('click', function(d) {
           // unpin cluster and its nodes
-          let cluster = this;
+          // let cluster = this;
 
-          d.forEach((n) => {
-            // pin cluster nodes on cluster drag end (testing out how this feels)
-            n._fixed = false;
-            n.fx = n.fy = null;
+        //   d.forEach((n) => {
+        //     // pin cluster nodes on cluster drag end (testing out how this feels)
+        //     n._fixed = false;
+        //     n.fx = n.fy = null;
+        //
+        //     d3.selectAll('.rule-node')
+        //       .style('stroke', (d) => d._fixed ? "#404040" : "white");
+        //
+        //     d3.select(cluster)
+        //       .style("stroke-dasharray", "2, 2");
+        //   })
+        })
+    ;
 
-            d3.selectAll('.rule-node')
-              .style('stroke', (d) => d._fixed ? "#404040" : "white");
+      circles.exit().remove();
 
-            d3.select(cluster)
-              .style("stroke-dasharray", "2, 2");
-          })
-        });
   },
 
   // draw nodes
@@ -714,27 +565,17 @@ ForceDirectedGraph.prototype = {
   },
 
   clusterColor: function(cluster) {
-    if (cluster === 0) {
-      return '#222';
-    }
+    // if (cluster === 0) {
+    //   return '#222';
+    // }
 
     if (!this.clusterColors) {
-      return d3.scaleOrdinal(d3.schemeCategory20)
-        .domain(d3.range(1,20))
+      return d3.scaleOrdinal(d3.schemeCategory10)
+        .domain(d3.range(1,10))
         (cluster);
     }
 
     return this.clusterColors[cluster];
-  },
-
-  findCluster: function(name) {
-    var filteredData = App.panels.forceDirected.filteredData;
-    for (var key in filteredData) {
-      if (filteredData[key].name === name) {
-        return filteredData[key].cluster;
-      }
-    }
-    return 0;
   },
 
   drawLinks: function() {
@@ -839,9 +680,16 @@ ForceDirectedGraph.prototype = {
     var borderNodeMargin = 10;
 
     var self = this;
+    var endCb = this.simulationEndCallback ? this.simulationEndCallback : null;
     this.simulation
       .nodes(nodeArr)
-      .on("tick", tick);
+      .on("tick", tick)
+      .on("end", function () {
+          if (!!endCb) {
+              endCb();
+          }
+      })
+    ;
 
     // modify the appearance of the nodes and links on tick
     var node = this.nodeGroup.selectAll(".rule");
@@ -854,6 +702,10 @@ ForceDirectedGraph.prototype = {
       if (!this.flagAlpha) {
         node
           .datum((d) => {
+            if (d == undefined || d == null) {
+                // debugger;
+                return;
+            }
             var clampX = d3.scaleLinear()
               .domain([16 + borderNodeMargin, self.width - 16 - borderNodeMargin])
               .range([16 + borderNodeMargin, self.width - 16 - borderNodeMargin])
@@ -871,24 +723,30 @@ ForceDirectedGraph.prototype = {
       }
 
       node.filter('.rule-node')
-          .style("fill", function(d) {
-            return (d.isPainted ? 'white' :
-              d.hits === 0 ? "#777777" : self.clusterColor(d.cluster));
+          .style("fill", function(d, i) {
+              if (!d) {
+                  return;
+              }
+            return self.clusterColor(d.cluster);
 
           })
-          .style("stroke", function(d) {
-            return d.isPainted ? d.paintedCluster :
-              (d.hits === 0 ? "#000000" :
-                (d._fixed ? "#404040" : "white"));
-          })
-          .style("stroke-width", function(d) {
-            return d.isPainted ? 3 : 1.5;
-          })
-          .style("stroke-opacity", function(d) {
-            return d.isPainted ? 1 : 0.5;
-          });
+          // .style("stroke", function(d) {
+          //   return d.isPainted ? d.paintedCluster :
+          //     (d.hits === 0 ? "#000000" :
+          //       (d._fixed ? "#404040" : "white"));
+          // })
+          // .style("stroke-width", function(d) {
+          //   return d.isPainted ? 3 : 1.5;
+          // })
+          // .style("stroke-opacity", function(d) {
+          //   return d.isPainted ? 1 : 0.5;
+          // })
+        ;
 
       node.attr("transform", (d,i,el) => {
+          if( !d) {
+              return;
+          }
             return (d3.select(el[i]).classed('rule-text')) ?
               "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")" :
               "translate(" + d.x + "," + d.y + ")";
@@ -896,6 +754,10 @@ ForceDirectedGraph.prototype = {
 
       link
         .style("stroke", (d) => {
+            if( !d) {
+                return;
+            }
+
           var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y;
           if (d.value > 0) {
@@ -915,46 +777,68 @@ ForceDirectedGraph.prototype = {
 
       self.clusterCircleGroup.selectAll(".clusterCircle")
         .attr("cx", (d) => {
+            if( !d) {
+                return;
+            }
+
           var ext = d3.extent(d, node => node.x);
           if (isNaN(ext[0])  || isNaN(ext[1])) {
               // console.log(d);
           }
 
-          return (ext[1] + ext[0]) / 2;
+          return Math.max(5, Math.min(self.width-5, (ext[1] + ext[0]) / 2));
+
+          // return (ext[1] + ext[0]) / 2;
         })
         .attr("cy", (d) => {
+            if( !d) {
+                return;
+            }
+
           var ext = d3.extent(d, node => node.y);
           if (isNaN(ext[0])  || isNaN(ext[1])) {
             // console.log(d);
           }
 
-          return (ext[1] + ext[0]) / 2;
+            return Math.max(5, Math.min(self.height-5, (ext[1] + ext[0]) / 2));
+
+            // return (ext[1] + ext[0]) / 2;
         })
         .attr("r", function(d) {
+            if( !d) {
+                return;
+            }
+           // return d.radius;
+          var x = Number(d3.select(this).attr("cx"));
+          var y = Number(d3.select(this).attr("cy"));
 
-            return d.radius;
-          // var x = Number(d3.select(this).attr("cx"));
-          // var y = Number(d3.select(this).attr("cy"));
-          //
-          // var circlePadding = 15;
-          //
-          // var radius = d3.max(d, (node) => {
-          //   return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2))
-          //     + radiusScale(node.hits);
-          // });
-          //
-          // if (isNaN(radius)) {
-          //   // console.log(d);
-          // }
-          //
-          // return radius + circlePadding;
+          var circlePadding = 15;
+
+          var radius = d3.max(d, (node) => {
+            return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
+            //  + radiusScale(node.hits);
+          });
+
+          if (isNaN(radius)) {
+            // console.log(d);
+          }
+
+          return radius + circlePadding;
         });
+
+      if (!!self.ontickCallback) {
+          self.ontickCallback();
+      }
     }
 
     function createArrowPath(d) {
+
+        if (!d) {
+            return;
+        }
         // debugger;
-      var target = nodeArr[d.target],
-          source = nodeArr[d.source];
+      var target = isNumeric(d.target) ? nodeArr[d.target] : d.target,
+          source = isNumeric(d.source) ? nodeArr[d.source] : d.source;
 
       var dx = target.x - source.x,
           dy = target.y - source.y,
@@ -990,28 +874,31 @@ ForceDirectedGraph.prototype = {
       }
     }
 
-
     // simulation forces
       var link_force =  d3.forceLink(this.links)
-          .id(function(d) { return d.name; });
+                          .id(function(d) {
+
+                              return d.index;
+                          })
+                        .distance((d) => {
+
+                            let strengthScale = d3.scaleLinear()
+                                .domain([0, self.maxValue])
+                                .range([1,0.4])
+                                .clamp(true);
+
+                            if (d.value < 0) {
+                                return 25/strengthScale(-d.value);
+                            }
+                            else {
+                                return 25*strengthScale(d.value);
+                            }
+                        })
+          ;
 
 
-    this.simulation.force("links", link_force)
-        .distance((d) => {
 
-          let strengthScale = d3.scaleLinear()
-            .domain([0, self.maxValue])
-            .range([1,0.4])
-            .clamp(true);
-
-          if (d.value < 0) {
-            return 25/strengthScale(-d.value);
-          }
-          else {
-            return 25*strengthScale(d.value);
-          }
-        });
-
+    this.simulation.force("links", link_force);
     this.simulation.force("cluster", clustering)
                    .force("collision", collide);
 
@@ -1050,7 +937,7 @@ ForceDirectedGraph.prototype = {
           .addAll(nodeArr);
 
       nodeArr.forEach(function(d) {
-        if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
+        // if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
         var r = d.radius + maxRadius + Math.max(padding, clusterPadding),
             nx1 = d.x - r,
             nx2 = d.x + r,
@@ -1089,52 +976,5 @@ ForceDirectedGraph.prototype = {
   }, // end createForceLayout
 
   // to be called externally: change the source data
-  updateData: function(data) {
-    if (data) { App.data = data; }
 
-    // reprocess and cluster data
-    this.oldData = this.oldData || {};
-    for (var key in this.filteredData) {
-      this.oldData[key] = this.filteredData[key];
-    }
-
-    this.filterData(App.data);
-
-    var paintedClusters = [];
-    for (var key in this.filteredData) {
-      var d = this.filteredData[key];
-      if (this.oldData[key]) {
-        d.x = this.oldData[key].x;
-        d.y = this.oldData[key].y;
-        d.fx = this.oldData[key].fx;
-        d.fy = this.oldData[key].fy;
-        if (this.oldData[key].isPainted) {
-          d.isPainted = true;
-          d.paintedCluster = this.oldData[key].paintedCluster;
-          paintedClusters.push(d);
-        }
-      }
-      else if (App.property.pin) {
-        d._fixed = true;
-        d.fx = d.fx || d.x;
-        d.fy = d.fy || d.y;
-      }
-    }
-    this.paintingManager.setPaintedClusters(paintedClusters);
-
-    this.maxValue = d3.max(this.links, d => Math.abs(d.value));
-    this.defineClusters(this.threshold, 0);
-    this.drawGraph();
-    this.simulation.alpha(0.1).restart();
-  },
-
-  // change clustering mode between global, timestep, and window
-  setClusteringMode: function(newMode) {
-    this.clusterMode = newMode;
-  },
-
-  // this is a number where it will cluster around App.item +/- numTimesteps
-  setWindowClusteringRange: function(numTimesteps) {
-    this.windowClusteringRange = numTimesteps;
-  }
-}
+};

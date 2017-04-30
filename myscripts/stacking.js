@@ -20,10 +20,13 @@ function addStacking(){
   svgContext.selectAll(".stackingRect").remove();
   
   y_svg = 0; // inital y position     
-  addStacking2("type", "Interaction types");
-    var sortedContextSpecies = addStacking2("Context_Species", "Context-Species", speciesMap);
 
     mutiPlanes.clear();
+
+    var sortedInteractionTypes = addStacking2("type", "Interaction types");
+    mutiPlanes.setInteractionTypeNetworks(sortedInteractionTypes["tip_type"]);
+
+    var sortedContextSpecies = addStacking2("Context_Species", "Context-Species", speciesMap);
     mutiPlanes.setSpeciesNetworks(sortedContextSpecies["tip_Context_Species"]);
 
     var sortedContextCellType = addStacking2("Context_CellType", "Context-CellType",celltypeMap);
@@ -31,6 +34,7 @@ function addStacking(){
 
     var sortedContextOrgan = addStacking2("Context_Organ", "Context-Organ", organMap);
     mutiPlanes.setOrganNetworks(sortedContextOrgan["tip_Context_Organ"]);
+
 
     mutiPlanes.runNetwork();
 

@@ -49,6 +49,18 @@ mutiPlanes.organNetworks = {
     // }
 };
 
+mutiPlanes.interactionTypeNetworks = {
+    // organ1: {
+    //     nodes: [],
+    //     links: []
+    // },
+    //
+    // organ2: {
+    //     nodes: [],
+    //     links: []
+    // }
+};
+
 mutiPlanes.setupContainer = function () {
     d3.select('body').select('#multi-plane-representation')
         .style("width", CONTAINER_WIDTH)
@@ -57,67 +69,46 @@ mutiPlanes.setupContainer = function () {
 };
 mutiPlanes.clear = function () {
     d3.select("#multi-plane-representation").selectAll('*').remove();
-    // this.setupContainer();
-    // mutiPlanes.cellTypeNetworks = {};
-    // mutiPlanes.speciesNetworks = {};
 };
 
 mutiPlanes.setSpeciesNetworks = function (speciesNetworks) {
-    if (!speciesNetworks) {
-        console.log("Invalid speciesNetwork. Expect array");
-        return;
-    }
-
-    var singleSpeciesNetwork;
-    for(var i=0; i< 5; i++) {
-        if (i >= speciesNetworks.length) {
-            break;
-        }
-
-        singleSpeciesNetwork = speciesNetworks[i];
-
-        this.speciesNetworks[singleSpeciesNetwork.Context_Species] = this.createNodesAndLinks(singleSpeciesNetwork.list);
-    }
-
+    this.speciesNetworks = this.setupNetworks(speciesNetworks, "Context_Species");
 };
 
 mutiPlanes.setCellTypeNetworks = function (cellTypeNetworks) {
-    if (!cellTypeNetworks) {
-        console.log("Invalid cellTypeNetworks. Expect array");
-        return;
-    }
-
-    var singleCellTypeNetwork;
-    for(var i=0; i< 5; i++) {
-        if (i >= cellTypeNetworks.length) {
-            break;
-        }
-
-        singleCellTypeNetwork = cellTypeNetworks[i];
-
-        this.cellTypeNetworks[singleCellTypeNetwork.Context_CellType] = this.createNodesAndLinks(singleCellTypeNetwork.list);
-    }
-
+    this.cellTypeNetworks = this.setupNetworks(cellTypeNetworks, "Context_CellType");
 };
 
 mutiPlanes.setOrganNetworks = function (organNetworks) {
-    if (!organNetworks) {
-        console.log("Invalid organNetworks. Expect array");
+    this.organNetworks = this.setupNetworks(organNetworks, "Context_Organ");
+};
+
+
+mutiPlanes.setInteractionTypeNetworks = function (interactionTypeNetworks) {
+    this.interactionTypeNetworks = this.setupNetworks(interactionTypeNetworks, "type");
+};
+
+mutiPlanes.setupNetworks = function (originalNetworks, type) {
+    if (!originalNetworks) {
+        console.log("Invalid network. Expect array");
         return;
     }
 
-    var singleOrganNetwork;
+    var result = {};
+    var singleNetwork;
     for(var i=0; i< 5; i++) {
-        if (i >= organNetworks.length) {
+        if (i >= originalNetworks.length) {
             break;
         }
 
-        singleOrganNetwork = organNetworks[i];
+        singleNetwork = originalNetworks[i];
 
-        this.organNetworks[singleOrganNetwork.Context_Organ] = this.createNodesAndLinks(singleOrganNetwork.list);
+        result[singleNetwork[type]] = this.createNodesAndLinks(singleNetwork.list);
     }
 
+    return result;
 };
+
 
 /**
  *  Each network has a set of nodes and links. We have to create label for each node as well. Hence there are array of labelNodes and labelLinks for another force layout
@@ -227,6 +218,7 @@ mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphH
             .attr("height", graphHeight)
         ;
 
+        // border for svg
         mySvg.append("rect")
             .attr("x", 0)
             .attr("y", 0)
@@ -261,9 +253,16 @@ mutiPlanes.runNetwork = function (graphWidth, graphHeight) {
     console.log("Run and display the network ");
 
 
+    this.renderContextNetworks(this.interactionTypeNetworks, graphWidth, graphHeight, {});
+    d3.select("#multi-plane-representation").append("br");
     this.renderContextNetworks(this.speciesNetworks, graphWidth, graphHeight, speciesMap);
+    d3.select("#multi-plane-representation").append("br");
+
     this.renderContextNetworks(this.cellTypeNetworks, graphWidth, graphHeight, celltypeMap);
+    d3.select("#multi-plane-representation").append("br");
+
     this.renderContextNetworks(this.organNetworks, graphWidth, graphHeight, organMap);
+    d3.select("#multi-plane-representation").append("br");
 
 
 };
@@ -286,13 +285,25 @@ mutiPlanes.printNetwork = function (network) {
 };
 
  mutiPlanes.renderNetwork = function (svg, svgWidth, svgHeight, network) {
-     // var fd = new ForceDirectedGraph( {
-     //     svg: svg,
-     //     width: svgWidth,
-     //     height: svgHeight,
-     //     nodes: network.nodes,
-     //     links: network.links
-     // });
+
+     var cb = function () {
+         d3.select('body')
+             .selectAll("text.my-network-label")
+             .attr("x", function () {
+                 var boxContainingText = this.getBBox();
+                 return (SINGLE_NETWORK_WIDTH - boxContainingText.width) / 2;
+             });
+     };
+
+     var fd = new ForceDirectedGraph( {
+         svg: svg,
+         width: svgWidth,
+         height: svgHeight,
+         nodes: network.nodes,
+         links: network.links,
+         ontickCallback: cb,
+         simulationEndCallback: cb
+     });
  };
 
 //
