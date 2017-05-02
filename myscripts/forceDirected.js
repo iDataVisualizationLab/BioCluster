@@ -211,9 +211,7 @@ ForceDirectedGraph.prototype = {
 
     this.svg.select('rect')
       .attr('width', this.width)
-      .attr('height', this.height)
-
-    var containerWidth = this.svg.node().parentNode.getBoundingClientRect().width;
+      .attr('height', this.height);
 
     // reheat simulation
     if (this.simulation) {
@@ -378,8 +376,8 @@ ForceDirectedGraph.prototype = {
     circles.enter().append("circle")
       .attr("class", "clusterCircle")
       .style("fill", getFill)
-      .style("stroke", getFill)
-      .style("stroke-dasharray", "2, 2")
+      // .style("stroke", getFill)
+      // .style("stroke-dasharray", "2, 2")
       .style("fill-opacity", 0.3)
       .call(d3.drag()
         .on('start', function(d) {
@@ -450,8 +448,8 @@ ForceDirectedGraph.prototype = {
         .on('drag', function(d) {
           self._isDragging = true;
           d3.select(this)
-            .style("fill", self.clusterColor(d.cluster))
-            .style("stroke", "#404040");
+            .style("fill", self.clusterColor(d.cluster));
+            // .style("stroke", "#404040");
           d._fixed = true;
           d.fx = d3.event.x;
           d.fy = d3.event.y;
@@ -535,11 +533,11 @@ ForceDirectedGraph.prototype = {
         //   self.paintingManager.addNodeToPaintingCluster(d);
         // }
         // else {
-          d3.select(this)
-            .style("fill", (d) => self.clusterColor(d.cluster))
-            .style("stroke", "white");
-            d.fx = d.fy = null;
-            d._fixed = false;
+        //   d3.select(this)
+        //     .style("fill", (d) => self.clusterColor(d.cluster))
+        //     .style("stroke", "white");
+        //     d.fx = d.fy = null;
+        //     d._fixed = false;
         // }
       })
       .call(drag);
