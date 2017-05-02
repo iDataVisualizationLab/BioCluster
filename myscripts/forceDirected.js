@@ -20,6 +20,7 @@ function ForceDirectedGraph(args) {
 
   this.maxValue = Math.abs(sortedLinks[0].value);
 
+
     // initialize color palette
     // let availableColors = ['#aec7e8','#ff7f0e','#ffbb78','#2ca02c','#98df8a','#d62728','#ff9896','#9467bd','#c5b0d5','#8c564b', '#c49c94', '#e377c2', '#f7b6d2', '#7f7f7f', '#c7c7c7', '#bcbd22', '#dbdb8d', '#17becf', '#9edae5'];
     var colorFunction = d3.scaleOrdinal(d3.schemeCategory10);
@@ -101,7 +102,7 @@ ForceDirectedGraph.prototype = {
     this.nodes.forEach(function (n) {
 
         if (!n.radius) {
-            n.radius = 6;
+            n.radius = 4;
         }
 
         if (!n.x) {
@@ -590,9 +591,9 @@ ForceDirectedGraph.prototype = {
   },
 
   drawLinks: function() {
-    var strokeScale = d3.scaleQuantile()
-      .domain(this.links.map(d => Math.abs(d.value)))
-      .range(d3.range(0.4, this.links.length > 200 ? 1 : 4, 0.05));
+    // var strokeScale = d3.scaleQuantile()
+    //   .domain(this.links.map(d => Math.abs(d.value)))
+    //   .range(d3.range(0.4, this.links.length > 200 ? 1 : 4, 0.05));
 
     var mainLink = this.linkGroup.selectAll('.link-1')
       .data(this.links);
@@ -605,7 +606,8 @@ ForceDirectedGraph.prototype = {
       .merge(mainLink)
         .attr("value", d => d.value)
         .style("stroke-width", (d) => {
-          return strokeScale(Math.abs(d.value));
+          // return strokeScale(Math.abs(d.value));
+          return 0.5;
         });
 
     // invisible line for collisions
