@@ -408,7 +408,7 @@ ForceDirectedGraph.prototype = {
           //   // pin cluster nodes on cluster drag end (testing out how this feels)
           //   n._fixed = true;
           //
-          //   d3.selectAll('.rule-node')
+          //   d3.selectAll('.data-node')
           //     .style('stroke', (d) => d._fixed ? "#404040" : "white");
           //
           //   d3.select(cluster)
@@ -424,7 +424,7 @@ ForceDirectedGraph.prototype = {
         //     n._fixed = false;
         //     n.fx = n.fy = null;
         //
-        //     d3.selectAll('.rule-node')
+        //     d3.selectAll('.data-node')
         //       .style('stroke', (d) => d._fixed ? "#404040" : "white");
         //
         //     d3.select(cluster)
@@ -439,20 +439,6 @@ ForceDirectedGraph.prototype = {
 
   // draw nodes
   drawNodes: function() {
-    // var filteredData = this.filteredData;
-    // var radiusScale = d3.scaleLinear()
-    //   .domain(d3.extent(Object.keys(filteredData), (d) => {
-    //     return filteredData[d].hits;
-    //   }))
-    //   .range([4, 14]);
-    //
-    // // scale nodes by # of hits
-    // for (var key in filteredData) {
-    //   filteredData[key].radius = radiusScale(filteredData[key].hits);
-    //   filteredData[key].x = filteredData[key].x || this.width / 2;
-    //   filteredData[key].y = filteredData[key].y || this.height / 2;
-    // }
-
     // define dragging behavior
     var self = this;
     var drag = d3.drag()
@@ -477,15 +463,15 @@ ForceDirectedGraph.prototype = {
           }
         });
 
-    var rule = this.nodeGroup.selectAll(".rule-node")
+    var rule = this.nodeGroup.selectAll(".data-node")
         .data(this.nodes);
 
-    var text = this.nodeGroup.selectAll(".rule-text")
+    var text = this.nodeGroup.selectAll(".data-text")
         .data(this.nodes);
 
 
     rule.enter().append("circle")
-      .attr("class", "rule rule-node")
+      .attr("class", "rule data-node")
       .attr("transform", (d, i) => {
         return "translate(" + d.x + ", " + d.y + ")";
       })
@@ -565,7 +551,7 @@ ForceDirectedGraph.prototype = {
     // also add text
     text.enter().append('text')
       .attr('class', function (d) {
-          return "rule rule-text " + "text-cluster-" + d.cluster;
+          return "rule data-text " + "text-cluster-" + d.cluster;
 
       })
       .attr('pointer-events','none')
@@ -721,7 +707,7 @@ ForceDirectedGraph.prototype = {
     // modify the appearance of the nodes and links on tick
     var node = this.nodeGroup.selectAll(".rule");
     var link = this.linkGroup.selectAll(".link");
-    var text = this.nodeGroup.selectAll(".rule-text");
+    var text = this.nodeGroup.selectAll(".data-text");
 
     var cluster = this.clusterCircleGroup.selectAll(".clusterCircle");
 
@@ -750,7 +736,7 @@ ForceDirectedGraph.prototype = {
           });
       }
 
-      node.filter('.rule-node')
+      node.filter('.data-node')
           .style("fill", function(d, i) {
               if (!d) {
                   return;
@@ -775,7 +761,7 @@ ForceDirectedGraph.prototype = {
           if( !d) {
               return;
           }
-            return (d3.select(el[i]).classed('rule-text')) ?
+            return (d3.select(el[i]).classed('data-text')) ?
               "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")" :
               "translate(" + d.x + "," + d.y + ")";
           });
@@ -863,6 +849,9 @@ ForceDirectedGraph.prototype = {
 
         // shift text with respect to new centroids
         text.attr("transform", (d) => {
+            if (!d) {
+                return;
+            }
             let centroid =  self.clusterCentroids[d.cluster];
             let dx = d.x - centroid.x;
             let dy = d.y - centroid.y;
