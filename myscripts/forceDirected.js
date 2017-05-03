@@ -830,7 +830,7 @@ ForceDirectedGraph.prototype = {
               // console.log(d);
           }
 
-          return Math.max(5, Math.min(self.width-5, (ext[1] + ext[0]) / 2));
+          return Math.max(25, Math.min(self.width-25, (ext[1] + ext[0]) / 2));
 
           // return (ext[1] + ext[0]) / 2;
         })
@@ -844,7 +844,7 @@ ForceDirectedGraph.prototype = {
             // console.log(d);
           }
 
-            return Math.max(5, Math.min(self.height-5, (ext[1] + ext[0]) / 2));
+            return Math.max(25, Math.min(self.height-25, (ext[1] + ext[0]) / 2));
 
             // return (ext[1] + ext[0]) / 2;
         })
@@ -856,7 +856,7 @@ ForceDirectedGraph.prototype = {
           var x = Number(d3.select(this).attr("cx"));
           var y = Number(d3.select(this).attr("cy"));
 
-          var circlePadding = 15;
+          var circlePadding = 5;
 
           var radius = d3.max(d, (node) => {
             return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
