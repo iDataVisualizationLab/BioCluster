@@ -978,7 +978,7 @@ ForceDirectedGraph.prototype = {
     function clustering(alpha) {
       var clusters = self.clusters;
       nodeArr.forEach(function(d) {
-        if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
+        if (!d) { return; }
 
         var cluster = clusters[d.cluster][0];
         if (cluster === d) return;
