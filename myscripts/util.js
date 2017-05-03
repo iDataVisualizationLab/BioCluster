@@ -98,6 +98,27 @@ function getColor(category) {
   }
 }
 
+function getLinkColor(linkType) {
+    var colorMapping = getLinkColorMapping();
+
+    return colorMapping[linkType] || '#666';
+}
+
+function getLinkColorMapping() {
+    var mapping = {
+        increases_activity: '#00A000',
+        adds_modification: '#007864',
+        decreases_activity: '#C80000',
+        removes_modification: '#C86400',
+        inhibits_modification: '#780000',
+        translocation: '#AA9600',
+        binds: '#0000FF',
+        increases: '#FF00FF'
+    };
+
+    return mapping;
+}
+
 function colorFaded(d) {
   var minSat = 80;
   var maxSat = 200;

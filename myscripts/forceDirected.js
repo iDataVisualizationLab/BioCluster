@@ -166,19 +166,44 @@ ForceDirectedGraph.prototype = {
 
     var defs = this.svg.append('defs');
 
+    if (!!this.options && !!this.options['linkColors'] ) {
+        var linkColors = this.options['linkColors'];
+        for(var type in linkColors) {
+            if (!linkColors.hasOwnProperty(type)) {
+                continue;
+            }
+
+            createSVGLinearGradient([
+                linkColors[type],
+                '#222222'
+            ], type, defs);
+
+        }
+    }
+
+
     createSVGLinearGradient([
       '#fee08b',
       '#fdae61',
       '#f46d43',
-      '#d73027'
+      '#d73027',
+        '#222222'
     ], 'red', defs);
 
-    createSVGLinearGradient([
-      '#d9ef8b',
-      '#a6d96a',
-      '#66bd63',
-      '#1a9850'
-    ], 'green', defs);
+    // createSVGLinearGradient([
+    //   '#d9ef8b',
+    //   '#a6d96a',
+    //   '#66bd63',
+    //   '#1a9850'
+    // ], 'green', defs);
+
+      createSVGLinearGradient([
+          '#d9ef8b',
+          '#a6d96a',
+          '#66bd63',
+          '#1a9850',
+          '#222222'
+      ], 'green', defs);
 
     this.clusterCircleGroup = this.svg.append("g")
       .attr("class", "clusterGroup");
@@ -608,10 +633,11 @@ ForceDirectedGraph.prototype = {
         .attr("value", d => d.value)
         .style("stroke-width", (d) => {
           // return strokeScale(Math.abs(d.value));
-          return 0.5;
+          return 0.8;
         });
 
-    // invisible line for collisions
+
+      // invisible line for collisions
     // var self = this;
     // var hoverLink = this.linkGroup.selectAll('.link-2')
     //   .data(this.links);
@@ -769,24 +795,24 @@ ForceDirectedGraph.prototype = {
 
       link
         .style("stroke", (d) => {
-            if( !d) {
+            if( !d ) {
                 return;
             }
 
           var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y;
-          if (d.value > 0) {
-            if (Math.abs(dy/dx) > 3) {
-              return dy < 0 ? "url(#greenUp)" : "url(#greenDown)";
+
+            if (!dx || !dy) {
+                return;
             }
-            return dx < 0 ? "url(#greenLeft)" : "url(#greenRight)";
-          }
-          else {
+
+            var type = d.type;
+
             if (Math.abs(dy/dx) > 3) {
-              return dy < 0 ? "url(#redUp)" : "url(#redDown)";
+                return dy < 0 ? "url(#" + type + "Up)" : "url(#" + type + "Down)";
             }
-            return dx < 0 ? "url(#redLeft)" : "url(#redRight)";
-          }
+            return dx < 0 ? "url(#" + "Left)" : "url(#" + type + "Right)";
+
         })
         .attr('d', createArrowPath);
 

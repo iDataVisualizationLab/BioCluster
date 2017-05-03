@@ -303,6 +303,9 @@ mutiPlanes.printNetwork = function (network) {
          height: svgHeight,
          nodes: network.nodes,
          links: network.links,
+         options: {
+             linkColors: getLinkColorMapping()
+         },
          ontickCallback: cb,
          simulationEndCallback: cb
      });
