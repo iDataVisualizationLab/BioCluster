@@ -408,7 +408,7 @@ ForceDirectedGraph.prototype = {
       // .style("fill", "none")
       .style("stroke", getFill)
       .style("stroke-dasharray", "2, 2")
-      .style("fill-opacity", 0.005)
+      .style("fill-opacity", 0.025)
       .call(d3.drag()
         .on('start', function(d) {
           if (!d3.event.active) {
