@@ -10,6 +10,9 @@ var App = App || {};
  */
 function ForceDirectedGraph(args) {
   Object.assign(this, args || ForceDirectedGraph.prototype);
+    if (!this.options) {
+        this.options = {};
+    }
 
   this.init();
   // this.filterData(App.data);
@@ -74,7 +77,7 @@ ForceDirectedGraph.prototype = {
     // no need to redraw on resize
     this.svg.attr("viewBox", "0 0 " + this.width + " " + this.height);
 
-    if (!!this.zoomEnabled) {
+    if (!!this.options.zoomEnabled) {
         this.svg.call(d3.zoom()
             .scaleExtent([1 / 2, 4])
             .on("zoom", this.zoomed.bind(this)))
@@ -182,28 +185,28 @@ ForceDirectedGraph.prototype = {
     }
 
 
-    createSVGLinearGradient([
-      '#fee08b',
-      '#fdae61',
-      '#f46d43',
-      '#d73027',
-        '#222222'
-    ], 'red', defs);
-
     // createSVGLinearGradient([
-    //   '#d9ef8b',
-    //   '#a6d96a',
-    //   '#66bd63',
-    //   '#1a9850'
-    // ], 'green', defs);
-
-      createSVGLinearGradient([
-          '#d9ef8b',
-          '#a6d96a',
-          '#66bd63',
-          '#1a9850',
-          '#222222'
-      ], 'green', defs);
+    //   '#fee08b',
+    //   '#fdae61',
+    //   '#f46d43',
+    //   '#d73027',
+    //     '#222222'
+    // ], 'red', defs);
+    //
+    // // createSVGLinearGradient([
+    // //   '#d9ef8b',
+    // //   '#a6d96a',
+    // //   '#66bd63',
+    // //   '#1a9850'
+    // // ], 'green', defs);
+    //
+    //   createSVGLinearGradient([
+    //       '#d9ef8b',
+    //       '#a6d96a',
+    //       '#66bd63',
+    //       '#1a9850',
+    //       '#222222'
+    //   ], 'green', defs);
 
     this.clusterCircleGroup = this.svg.append("g")
       .attr("class", "clusterGroup");
@@ -268,42 +271,42 @@ ForceDirectedGraph.prototype = {
   },
 
   // process data into nodes & links where links have magnitude > 0
-  filterData: function(data) {
-    var filteredData = {};
-    var links = [];
-
-    for (var key in data) {
-      var newNode = {
-        hits: data[key].hits,
-        name: data[key].name,
-        inf: data[key].inf.filter(l => l.flux !== 0),
-        outf: data[key].outf.filter(l => l.flux !== 0)
-      };
-
-      links = _.concat(links, this.extractLinksFromNode(newNode, key));
-
-      if (newNode.inf.length > 0 || newNode.outf.length > 0) {
-        filteredData[key] = newNode;
-      }
-    }
-
-    this.filteredData = filteredData;
-    this.links = links;
-  },
-
-  extractLinksFromNode: function(node, name) {
-    let nodeLinks = [];
-
-    node.inf.forEach(l => {
-      nodeLinks.push({
-        source: name,
-        target: l.name,
-        value: l.flux
-      });
-    });
-
-    return nodeLinks;
-  },
+  // filterData: function(data) {
+  //   var filteredData = {};
+  //   var links = [];
+  //
+  //   for (var key in data) {
+  //     var newNode = {
+  //       hits: data[key].hits,
+  //       name: data[key].name,
+  //       inf: data[key].inf.filter(l => l.flux !== 0),
+  //       outf: data[key].outf.filter(l => l.flux !== 0)
+  //     };
+  //
+  //     links = _.concat(links, this.extractLinksFromNode(newNode, key));
+  //
+  //     if (newNode.inf.length > 0 || newNode.outf.length > 0) {
+  //       filteredData[key] = newNode;
+  //     }
+  //   }
+  //
+  //   this.filteredData = filteredData;
+  //   this.links = links;
+  // },
+  //
+  // extractLinksFromNode: function(node, name) {
+  //   let nodeLinks = [];
+  //
+  //   node.inf.forEach(l => {
+  //     nodeLinks.push({
+  //       source: name,
+  //       target: l.name,
+  //       value: l.flux
+  //     });
+  //   });
+  //
+  //   return nodeLinks;
+  // },
 
   // cluster data based on threshold(s) of influence
   defineClusters: function(alpha) {
@@ -748,13 +751,13 @@ ForceDirectedGraph.prototype = {
                 return;
             }
             var clampX = d3.scaleLinear()
-              .domain([16 + borderNodeMargin, self.width - 16 - borderNodeMargin])
-              .range([16 + borderNodeMargin, self.width - 16 - borderNodeMargin])
+              .domain([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
+              .range([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
               .clamp(true);
 
             var clampY = d3.scaleLinear()
-              .domain([36 + borderNodeMargin, self.height - 36 - borderNodeMargin])
-              .range([36 + borderNodeMargin, self.height - 36 - borderNodeMargin])
+              .domain([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
+              .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
               .clamp(true);
 
             d.x = clampX(d.x);

@@ -454,74 +454,74 @@ mutiPlanes.printNetwork = function (network) {
 //
 //     forceLayout.start();
 // };
+//
+// mutiPlanes.getClusterCircleForNetwork = function (network, svgWidth, svgHeight, communityIndex) {
+//     switch (network.communityCount) {
+//         case 1:
+//             return {cx: svgWidth / 2, cy: svgHeight / 2, radius: svgWidth/2 - 10};
+//         case 2:
+//             if (communityIndex == 0) {
+//                 return {cx: svgWidth / 4, cy: svgHeight / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//             else {
+//                 return {cx: svgWidth * 3 / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//
+//             break;
+//         case 3:
+//             if (communityIndex == 0) {
+//                 return {cx: svgWidth / 4, cy: svgHeight / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//             else if (communityIndex == 1) {
+//                 return {cx: svgWidth * 2 / 4, cy: svgHeight*2 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//             else {
+//                 return {cx: svgWidth / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//             break;
+//         case 4:
+//             if (communityIndex == 0) {
+//                 return {cx: svgWidth / 4, cy: svgHeight / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//             else if (communityIndex == 1) {
+//                 return {cx: svgWidth * 2 / 4, cy: svgHeight*2 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//             else if (communityIndex == 2) {
+//                 return {cx: svgWidth / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//             else {
+//                 return {cx: svgWidth * 3 / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
+//             }
+//     }
+//
+//     // 1 community
+//     return {cx: svgWidth / 2, cy: svgHeight / 2, radius: svgWidth/2 - 2};
+// };
 
-mutiPlanes.getClusterCircleForNetwork = function (network, svgWidth, svgHeight, communityIndex) {
-    switch (network.communityCount) {
-        case 1:
-            return {cx: svgWidth / 2, cy: svgHeight / 2, radius: svgWidth/2 - 10};
-        case 2:
-            if (communityIndex == 0) {
-                return {cx: svgWidth / 4, cy: svgHeight / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-            else {
-                return {cx: svgWidth * 3 / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-
-            break;
-        case 3:
-            if (communityIndex == 0) {
-                return {cx: svgWidth / 4, cy: svgHeight / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-            else if (communityIndex == 1) {
-                return {cx: svgWidth * 2 / 4, cy: svgHeight*2 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-            else {
-                return {cx: svgWidth / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-            break;
-        case 4:
-            if (communityIndex == 0) {
-                return {cx: svgWidth / 4, cy: svgHeight / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-            else if (communityIndex == 1) {
-                return {cx: svgWidth * 2 / 4, cy: svgHeight*2 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-            else if (communityIndex == 2) {
-                return {cx: svgWidth / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-            else {
-                return {cx: svgWidth * 3 / 4, cy: svgHeight*3 / 4, radius: Math.min(svgWidth, svgHeight) / 4  - 2}
-            }
-    }
-
-    // 1 community
-    return {cx: svgWidth / 2, cy: svgHeight / 2, radius: svgWidth/2 - 2};
-};
-
-mutiPlanes.renderClusterBoundaries = function (svg, svgWidth, svgHeight, network) {
-    var clusterCircle;
-
-    var colors = d3.scale.category10();
-
-    for(var i=0; i< network.communityCount; i++) {
-        clusterCircle = this.getClusterCircleForNetwork(network, svgWidth, svgHeight, i);
-
-        if (!clusterCircle) {
-            console.log("Error in getting getClusterCenterForNetwork");
-            continue;
-        }
-
-        svg.append('circle')
-            .attr('r', clusterCircle.radius)
-            .attr('cx', clusterCircle.cx)
-            .attr('cy', clusterCircle.cy)
-            .style("fill", colors(i))
-            .style("fill-opacity", 0.5)
-            // .style("stroke", "#000")
-            // .style("stroke-opacity", 1)
-            // .style("stroke-width",1)
-        ;
-
-        // break;
-    }
-};
+// mutiPlanes.renderClusterBoundaries = function (svg, svgWidth, svgHeight, network) {
+//     var clusterCircle;
+//
+//     var colors = d3.scale.category10();
+//
+//     for(var i=0; i< network.communityCount; i++) {
+//         clusterCircle = this.getClusterCircleForNetwork(network, svgWidth, svgHeight, i);
+//
+//         if (!clusterCircle) {
+//             console.log("Error in getting getClusterCenterForNetwork");
+//             continue;
+//         }
+//
+//         svg.append('circle')
+//             .attr('r', clusterCircle.radius)
+//             .attr('cx', clusterCircle.cx)
+//             .attr('cy', clusterCircle.cy)
+//             .style("fill", colors(i))
+//             .style("fill-opacity", 0.5)
+//             // .style("stroke", "#000")
+//             // .style("stroke-opacity", 1)
+//             // .style("stroke-width",1)
+//         ;
+//
+//         // break;
+//     }
+// };
