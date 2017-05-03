@@ -45,21 +45,21 @@ function ForceDirectedGraph(args) {
 
   this.defineClusters();
 
-  let nodes = this.nodes;
   // set up simulation
   this.simulation = d3.forceSimulation()
     .force("links",
       d3.forceLink()
         .id(d => d.index)
     )
-    .force("collision", d3.forceCollide(22))
+    .force("collide", d3.forceCollide(10))
     .force("charge", d3.forceManyBody()
-      .strength(-Math.pow(150, nodes.length > 30 ? 1 : 1.2))
+      .strength(-150)
       .distanceMax(Math.min(this.width, this.height)/4))
     .force("center", d3.forceCenter(
       (this.width / 2),
       (this.height / 2)
     ));
+
 
   // update graph
   this.drawGraph();
@@ -463,6 +463,8 @@ ForceDirectedGraph.prototype = {
 
       circles.exit().remove();
 
+      this.circles = circles;
+
   },
 
   // draw nodes
@@ -741,7 +743,91 @@ ForceDirectedGraph.prototype = {
 
     var cluster = this.clusterCircleGroup.selectAll(".clusterCircle");
 
-    function tick() {
+      // this.simulation = d3.forceSimulation()
+      //     .force("links",
+      //         d3.forceLink()
+      //             .id(d => d.index)
+      //     )
+      //     .force("collide", d3.forceCollide(10))
+      //     .force("charge", d3.forceManyBody()
+      //         .strength(-150)
+      //         .distanceMax(Math.min(this.width, this.height)/4))
+      //     .force("center", d3.forceCenter(
+      //         (this.width / 2),
+      //         (this.height / 2)
+      //     ));
+
+      let clusterSimulation = d3.forceSimulation()
+          .force("collide", clusterCollide)
+          .force("center", d3.forceCenter(
+              (this.width / 2),
+              (this.height / 2)
+          ))
+          ;
+
+      // var clusterSimulation = d3.forceSimulation()
+      //     .force("link", d3.forceLink().distance(30).strength(0.1))
+      //     .force("charge", d3.forceManyBody().strength(-150))
+      //     .force("collide", clusterCollide)
+      //     .force("center", d3.forceCenter(this.width / 2, this.height / 2));
+      //
+      clusterSimulation
+          .nodes(this.clusters)
+          .on("tick", clusterTicked);
+
+      function clusterTicked() {
+          // cluster
+          //     .attr("cx", function (d) {
+          //           return d.x;
+          //       })
+          //     .attr("cy", function (d) {
+          //         return d.y;
+          //
+          //     })
+          // ;
+      }
+
+      function clusterCollide(alpha) {
+          let
+          padding = 1.5, // separation between same-color circles
+          clusterPadding = 6, // separation between different-color circles
+          maxRadius = 100;
+
+          var quadtree = d3.quadtree()
+              .x((d) => d.x)
+              .y((d) => d.y)
+              .addAll(nodes);
+
+          self.clusters.forEach(function(d) {
+              if (!d.r ) {
+                  return;
+              }
+              var r = d.r + maxRadius + Math.max(padding, clusterPadding),
+                  nx1 = d.x - r,
+                  nx2 = d.x + r,
+                  ny1 = d.y - r,
+                  ny2 = d.y + r;
+              quadtree.visit(function(quad, x1, y1, x2, y2) {
+
+                  if (quad.data && (quad.data !== d)) {
+                      var x = d.x - quad.data.x,
+                          y = d.y - quad.data.y,
+                          l = Math.sqrt(x * x + y * y),
+                          r = d.r + quad.data.r + (d.cluster === quad.data.cluster ? padding : clusterPadding);
+                      if (l < r) {
+                          l = (l - r) / l * alpha;
+                          d.x -= x *= l;
+                          d.y -= y *= l;
+                          quad.data.x += x;
+                          quad.data.y += y;
+                      }
+                  }
+                  return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+              });
+          });
+      }
+
+      function tick() {
       if (self.simulation.alpha() < 0.3 && self.transform && self.transform.k < 1) { this.flagAlpha = true; }
       if (!this.flagAlpha) {
         node
@@ -819,6 +905,7 @@ ForceDirectedGraph.prototype = {
         })
         .attr('d', createArrowPath);
 
+      // clusters
       self.clusterCircleGroup.selectAll(".clusterCircle")
         .attr("cx", (d) => {
             if( !d) {
@@ -866,6 +953,8 @@ ForceDirectedGraph.prototype = {
           if (isNaN(radius)) {
             // console.log(d);
           }
+
+          d.r = radius + circlePadding;
 
           return radius + circlePadding;
         });
@@ -976,73 +1065,108 @@ ForceDirectedGraph.prototype = {
 
     // Initial clustering forces:
     function clustering(alpha) {
-      var clusters = self.clusters;
-      nodeArr.forEach(function(d) {
-        if (!d) { return; }
-
-        var cluster = clusters[d.cluster][0];
-        if (cluster === d) return;
-        var x = d.x - cluster.x,
-            y = d.y - cluster.y,
-            l = Math.sqrt(x * x + y * y),
-            r = d.radius + cluster.radius;
-        if (x === 0 && y === 0 || (isNaN(x) || isNaN(y))) return;
-        if (l !== r) {
-          l = (l - r) / l * alpha;
-          d.x -= x *= l;
-          d.y -= y *= l;
-          cluster.x += x;
-          cluster.y += y;
-        }
-      });
+      // var clusters = self.clusters;
+      // nodeArr.forEach(function(d) {
+      //   if (!d) { return; }
+      //
+      //   var cluster = clusters[d.cluster][0];
+      //   if (cluster === d) return;
+      //   var x = d.x - cluster.x,
+      //       y = d.y - cluster.y,
+      //       l = Math.sqrt(x * x + y * y),
+      //       r = d.radius + cluster.radius;
+      //   if (x === 0 && y === 0 || (isNaN(x) || isNaN(y))) return;
+      //   if (l !== r) {
+      //     l = (l - r) / l * alpha;
+      //     d.x -= x *= l;
+      //     d.y -= y *= l;
+      //     cluster.x += x;
+      //     cluster.y += y;
+      //   }
+      // });
     }
 
     function collide(alpha) {
-      var padding = 30;
-      var clusterPadding = 50; // separation between different-color circles
-      var repulsion = 3;
-      var maxRadius = 100;
-      var quadtree = d3.quadtree()
-          .x((d) => d.x)
-          .y((d) => d.y)
-          .addAll(nodeArr);
+        let
+            padding = 1.5, // separation between same-color circles
+            clusterPadding = 6, // separation between different-color circles
+            maxRadius = 12;
 
-      nodeArr.forEach(function(d) {
-        // if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
-        var r = d.radius + maxRadius + Math.max(padding, clusterPadding),
-            nx1 = d.x - r,
-            nx2 = d.x + r,
-            ny1 = d.y - r,
-            ny2 = d.y + r;
-        quadtree.visit(function(quad, x1, y1, x2, y2) {
-          if (quad.data && (quad.data !== d)) {
+        var quadtree = d3.quadtree()
+            .x((d) => d.x)
+            .y((d) => d.y)
+            .addAll(nodes);
 
-            var link = self.links.find(link => link.target == quad.data && link.source == d);
-            if (!link) { return;}
+        nodeArr.forEach(function(d) {
+            var r = d.radius + maxRadius + Math.max(padding, clusterPadding),
+                nx1 = d.x - r,
+                nx2 = d.x + r,
+                ny1 = d.y - r,
+                ny2 = d.y + r;
+            quadtree.visit(function(quad, x1, y1, x2, y2) {
 
-            var x = d.x - quad.data.x,
-                y = d.y - quad.data.y,
-                l = Math.sqrt(x * x + y * y),
-                r = d.radius + quad.data.radius;
-
-            if (d.cluster === quad.data.cluster) {
-              r += (link.value < 0) ? padding*repulsion : padding;
-            }
-            else {
-              r += clusterPadding;
-            }
-
-            if (l < r && l > 0) {
-              l = (l - r) / l * alpha;
-              d.x -= x *= l;
-              d.y -= y *= l;
-              quad.data.x += x;
-              quad.data.y += y;
-            }
-          }
-          return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+                if (quad.data && (quad.data !== d)) {
+                    var x = d.x - quad.data.x,
+                        y = d.y - quad.data.y,
+                        l = Math.sqrt(x * x + y * y),
+                        r = d.r + quad.data.radius + (d.cluster === quad.data.cluster ? padding : clusterPadding);
+                    if (l < r) {
+                        l = (l - r) / l * alpha;
+                        d.x -= x *= l;
+                        d.y -= y *= l;
+                        quad.data.x += x;
+                        quad.data.y += y;
+                    }
+                }
+                return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+            });
         });
-      });
+
+      // var padding = 30;
+      // var clusterPadding = 50; // separation between different-color circles
+      // var repulsion = 3;
+      // var maxRadius = 100;
+      // var quadtree = d3.quadtree()
+      //     .x((d) => d.x)
+      //     .y((d) => d.y)
+      //     .addAll(nodeArr);
+      //
+      // nodeArr.forEach(function(d) {
+      //   // if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
+      //   var r = d.radius + maxRadius + Math.max(padding, clusterPadding),
+      //       nx1 = d.x - r,
+      //       nx2 = d.x + r,
+      //       ny1 = d.y - r,
+      //       ny2 = d.y + r;
+      //   quadtree.visit(function(quad, x1, y1, x2, y2) {
+      //     if (quad.data && (quad.data !== d)) {
+      //
+      //       var link = self.links.find(link => link.target == quad.data && link.source == d);
+      //       if (!link) { return;}
+      //
+      //       var x = d.x - quad.data.x,
+      //           y = d.y - quad.data.y,
+      //           l = Math.sqrt(x * x + y * y),
+      //           r = d.radius + quad.data.radius;
+      //
+      //       if (d.cluster === quad.data.cluster) {
+      //         r += (link.value < 0) ? padding*repulsion : padding;
+      //       }
+      //       else {
+      //         r += clusterPadding;
+      //       }
+      //
+      //       if (l < r && l > 0) {
+      //         l = (l - r) / l * alpha;
+      //         d.x -= x *= l;
+      //         d.y -= y *= l;
+      //         quad.data.x += x;
+      //         quad.data.y += y;
+      //       }
+      //     }
+      //     return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+      //   });
+      // });
     }
   }, // end createForceLayout
 
