@@ -856,7 +856,7 @@ ForceDirectedGraph.prototype = {
           var x = Number(d3.select(this).attr("cx"));
           var y = Number(d3.select(this).attr("cy"));
 
-          var circlePadding = 5;
+          var circlePadding = 10;
 
           var radius = d3.max(d, (node) => {
             return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
