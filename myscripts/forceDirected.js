@@ -454,18 +454,32 @@ ForceDirectedGraph.prototype = {
     var mainLink = this.linkGroup.selectAll('.link-1')
       .data(this.links);
 
-    mainLink.exit().remove();
-    mainLink.enter().append('path')
-        .attr('class', 'link link-1')
-        .attr('fill','none')
-        .attr('pointer-events','none')
-        .style('stroke-opacity', 1)
-      .merge(mainLink)
-        .attr("value", d => d.value)
-        .style("stroke-width", (d) => {
-          // return strokeScale(Math.abs(d.value));
-          return 0.8;
-        });
+    // mainLink.exit().remove();
+    // mainLink.enter().append('path')
+    //     .attr('class', 'link link-1')
+    //     .attr('fill','none')
+    //     .attr('pointer-events','none')
+    //     .style('stroke-opacity', 1)
+    //   .merge(mainLink)
+    //     .attr("value", d => d.value)
+    //     .style("stroke-width", (d) => {
+    //       // return strokeScale(Math.abs(d.value));
+    //       return 0.8;
+    //     });
+
+
+      mainLink.exit().remove();
+      mainLink.enter().append('line')
+          .attr('class', 'link link-1')
+          .attr('fill','none')
+          .attr('pointer-events','none')
+          .style('stroke-opacity', 1)
+          .merge(mainLink)
+          .attr("value", d => d.value)
+          .style("stroke-width", (d) => {
+              // return strokeScale(Math.abs(d.value));
+              return 0.8;
+          });
   },
 
   // the big workhorse of the simulation ???
@@ -656,10 +670,37 @@ ForceDirectedGraph.prototype = {
             if (Math.abs(dy/dx) > 3) {
                 return dy < 0 ? "url(#" + type + "Up)" : "url(#" + type + "Down)";
             }
-            return dx < 0 ? "url(#" + "Left)" : "url(#" + type + "Right)";
+            return dx < 0 ? "url(#" + type + "Left)" : "url(#" + type + "Right)";
 
         })
-        .attr('d', createArrowPath);
+          // .style("stroke", "black")
+
+          .attr("x1", function(d) {
+              if (!d) {
+                  return;
+              }
+              return d.source.x;
+          })
+          .attr("y1", function(d) {
+              if (!d) {
+                  return;
+              }
+              return d.source.y;
+          })
+          .attr("x2", function(d) {
+              if (!d) {
+                  return;
+              }
+              return d.target.x;
+          })
+          .attr("y2", function(d) {
+              if (!d) {
+                  return;
+              }
+              return d.target.y;
+          })
+      // .attr('d', createArrowPath)
+      ;
 
       // clusters
       self.clusterCircleGroup.selectAll(".clusterCircle")
@@ -747,48 +788,6 @@ ForceDirectedGraph.prototype = {
       }
     }
 
-    function createArrowPath(d) {
-
-        if (!d) {
-            return;
-        }
-        // debugger;
-      var target = isNumeric(d.target) ? nodeArr[d.target] : d.target,
-          source = isNumeric(d.source) ? nodeArr[d.source] : d.source;
-
-      var dx = target.x - source.x,
-          dy = target.y - source.y,
-          dr = Math.sqrt(dx * dx + dy * dy)*2;
-
-      if (dr == 0) { return ""; }
-
-      var nx = -dx / dr,
-          ny = -dy / dr;
-
-      if (dr < 100) { dr /= 2; }
-
-      var t = {
-        x: target.x + (target.radius+3)*nx,
-        y: target.y + (target.radius+3)*ny
-      };
-
-      if (this.classList.contains('link-1')) {
-        return  "M" + source.x + "," + source.y +
-                "A" + dr + "," + dr + " 0 0,1 " +
-                t.x + "," + t.y;
-      }
-      else {
-        nx *= 8, ny *= 8;
-        t.x += nx, t.y += ny;
-
-        return  "M" + source.x + "," + source.y +
-              "A" + dr + "," + dr + " 0 0,1 " +
-              t.x + "," + t.y+
-              "m" + (2*nx-ny) + ',' + (2*ny+nx) +
-              "L" + t.x + "," + t.y+
-              "l" + (2*nx+ny) + ',' + (2*ny-nx);
-      }
-    }
 
     // simulation forces
       var link_force =  d3.forceLink(this.links)
