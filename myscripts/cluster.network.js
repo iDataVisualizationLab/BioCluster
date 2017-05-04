@@ -61,7 +61,7 @@ function ClusterNetworkGraph(args) {
     var attractForce = d3.forceManyBody().strength(80).distanceMax(400).distanceMin(80);
     var collisionForce = d3.forceCollide(12).strength(1).iterations(100);
 
-    this.clusterSimulation = d3.forceSimulation(nodeData).alphaDecay(0.01).force("attractForce",attractForce).force("collisionForce",collisionForce);
+    this.clusterSimulation = d3.forceSimulation(this.clusters).alphaDecay(0.01).force("attractForce",attractForce).force("collisionForce",collisionForce);
 
 
     // update graph
@@ -69,8 +69,8 @@ function ClusterNetworkGraph(args) {
 };
 
 
-ForceDirectedGraph.prototype = {
-    constructor: ForceDirectedGraph,
+ClusterNetworkGraph.prototype = {
+    constructor: ClusterNetworkGraph,
     // set up svg elements
     init: function () {
         // allows all work to be done using same coordinates initially used
@@ -197,6 +197,58 @@ ForceDirectedGraph.prototype = {
 
         this._isDragging = false;
 
+    },
+
+    // cluster data based on threshold(s) of influence
+    defineClusters: function(alpha) {
+
+        let nodes = this.nodes;
+        let clusters = [];
+        let addedClusters = {};
+        let tmpCluster;
+
+        nodes.forEach(function (n) {
+            if (!addedClusters.hasOwnProperty(n.cluster)) {
+                addedClusters[n.cluster] = [];
+            }
+
+            tmpCluster =  addedClusters[n.cluster];
+            let existed = false;
+            for(var i =0; i< tmpCluster.length; i++) {
+                if (tmpCluster[i] == n) {
+                    existed = true;
+                    break;
+                }
+            }
+
+            if (!existed) {
+                tmpCluster.push(n);
+            }
+
+        });
+
+        for(var cl in addedClusters) {
+            if (!addedClusters.hasOwnProperty(cl)) {
+                continue;
+            }
+
+            clusters.push(addedClusters[cl]);
+        }
+
+
+
+        let newColors = new Array(clusters.length);
+        for (let color = 0; color < clusters.length; color++) {
+            newColors[color] = Object.keys(this.colorPalette)[color];
+        }
+        //
+        this.clusterColors = newColors;
+        this.clusters = clusters;
+    },
+
+    clusterColor: function(cluster) {
+
+        return this.clusterColors[cluster];
     },
 
     drawGraph: function() {
