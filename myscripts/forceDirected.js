@@ -324,14 +324,8 @@ ForceDirectedGraph.prototype = {
         return self.clusterColor(d[0].cluster);
     }
 
-    var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters);
-
-    //
-    // circles
-    //   .style("fill", getFill)
-    //   .style("stroke", getFill);
-
-    circles.enter().append("circle")
+    var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters)
+            .enter().append("circle")
       .attr("class", "clusterCircle")
       .style("fill", getFill)
       // .style("fill", "none")
@@ -353,7 +347,12 @@ ForceDirectedGraph.prototype = {
           d.forEach((n) => {
             n.fx += d3.event.dx;
             n.fy += d3.event.dy;
-          })
+          });
+
+          if (!!self.clusterSimulation) {
+              self.clusterSimulation.restart();
+              self.clusterSimulation.alpha(1.0);
+          }
         })
         .on('end', function(d) {
           if (!d3.event.active) {
@@ -527,8 +526,18 @@ ForceDirectedGraph.prototype = {
       //         (this.height / 2)
       //     ));
 
-      let clusterSimulation = d3.forceSimulation()
-          .force("collide", clusterCollide)
+      var collisionForce = d3
+          .forceCollide(function (clusterItem) {
+              if (clusterItem.length < 1 || !clusterItem.r) {
+                  return 1;
+              }
+
+              return clusterItem.r;
+          })
+          .strength(1).iterations(100);
+
+      self.clusterSimulation = d3.forceSimulation(this.clusters)
+          .force("collisionForce", collisionForce)
           .force("center", d3.forceCenter(
               (this.width / 2),
               (this.height / 2)
@@ -541,8 +550,7 @@ ForceDirectedGraph.prototype = {
       //     .force("collide", clusterCollide)
       //     .force("center", d3.forceCenter(this.width / 2, this.height / 2));
       //
-      clusterSimulation
-          .nodes(this.clusters)
+      self.clusterSimulation
           .on("tick", clusterTicked);
 
       function clusterTicked() {
@@ -752,6 +760,7 @@ ForceDirectedGraph.prototype = {
           }
 
           d.r = radius + circlePadding;
+
 
           return radius + circlePadding;
         });

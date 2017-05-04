@@ -299,7 +299,20 @@ mutiPlanes.printNetwork = function (network) {
              });
      };
 
-     var fd = new ForceDirectedGraph( {
+     // var fd = new ForceDirectedGraph( {
+     //     svg: svg,
+     //     width: svgWidth,
+     //     height: svgHeight,
+     //     nodes: network.nodes,
+     //     links: network.links,
+     //     options: {
+     //         linkColors: getLinkColorMapping()
+     //     },
+     //     ontickCallback: cb,
+     //     simulationEndCallback: cb
+     // });
+
+     var fd2 = new ClusterNetworkGraph( {
          svg: svg,
          width: svgWidth,
          height: svgHeight,

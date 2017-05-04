@@ -57,20 +57,11 @@ function ClusterNetworkGraph(args) {
             (this.height / 2)
         ));
 
-    // set up simulation
-    // this.simulation = d3.forceSimulation()
-    //     .force("links",
-    //         d3.forceLink()
-    //             .id(d => d.index)
-    //     )
-    //     .force("collide", d3.forceCollide(10))
-    //     .force("charge", d3.forceManyBody()
-    //         .strength(-150)
-    //         .distanceMax(Math.min(this.width, this.height)/4))
-    //     .force("center", d3.forceCenter(
-    //         (this.width / 2),
-    //         (this.height / 2)
-    //     ));
+
+    var attractForce = d3.forceManyBody().strength(80).distanceMax(400).distanceMin(80);
+    var collisionForce = d3.forceCollide(12).strength(1).iterations(100);
+
+    this.clusterSimulation = d3.forceSimulation(nodeData).alphaDecay(0.01).force("attractForce",attractForce).force("collisionForce",collisionForce);
 
 
     // update graph
@@ -224,43 +215,49 @@ ForceDirectedGraph.prototype = {
             return self.clusterColor(d[0].cluster);
         }
 
-        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters);
-        circles.enter().append("circle")
-            .attr("class", "clusterCircle")
-            .style("fill", getFill)
-            // .style("fill", "none")
-            .style("stroke", getFill)
-            .style("stroke-dasharray", "2, 2")
-            .style("fill-opacity", 0.025)
-            .call(d3.drag()
-                .on('start', function(d) {
-                    if (!d3.event.active) {
-                        self.simulation.alphaTarget(0.3).restart();
-                    }
-                    d.forEach((n) => {
-                        n._fixed = (n.fx != null);
-                        n.fx = n.x;
-                        n.fy = n.y;
-                    })
-                })
-                .on('drag', function(d) {
-                    d.forEach((n) => {
-                        n.fx += d3.event.dx;
-                        n.fy += d3.event.dy;
-                    })
-                })
-                .on('end', function(d) {
-                    if (!d3.event.active) {
-                        self.simulation.alphaTarget(0);
-                    }
-
-                }) )
-            .on('click', function(d) {
-
-            })
+        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters)
+                .enter().append("circle")
+                .attr("class", "clusterCircle")
+                .style("fill", getFill)
+                // .style("fill", "none")
+                .style("stroke", getFill)
+                .style("stroke-dasharray", "2, 2")
+                .style("fill-opacity", 0.025)
+                .call(d3.drag()
+                    .on("start",dragstarted)
+                    .on("drag",dragged)
+                    .on("end",dragended))
         ;
 
-        circles.exit().remove();
+        function dragstarted(d)
+        {
+            simulation.restart();
+            simulation.alpha(1.0);
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+
+        function dragged(d)
+        {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+        }
+
+        function dragended(d)
+        {
+            d.fx = null;
+            d.fy = null;
+            simulation.alphaTarget(0.1);
+        }
+
+        function ticked(){
+            circles
+                .attr("cx", function(d){ return d.x;})
+                .attr("cy", function(d){ return d.y;})
+        }
+
+        self.clusterSimulation.on("tick",ticked);
+
     },
 
     // the big workhorse of the simulation ???
