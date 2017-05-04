@@ -53,8 +53,9 @@ function ForceDirectedGraph(args) {
     )
     .force("collide", d3.forceCollide(10))
     .force("charge", d3.forceManyBody()
-      .strength(-150)
-      .distanceMax(Math.min(this.width, this.height)/4))
+                      .strength(0)
+                      // .distanceMax(Math.min(this.width, this.height)/4)
+                      )
     .force("center", d3.forceCenter(
       (this.width / 2),
       (this.height / 2)
@@ -184,30 +185,6 @@ ForceDirectedGraph.prototype = {
         }
     }
 
-
-    // createSVGLinearGradient([
-    //   '#fee08b',
-    //   '#fdae61',
-    //   '#f46d43',
-    //   '#d73027',
-    //     '#222222'
-    // ], 'red', defs);
-    //
-    // // createSVGLinearGradient([
-    // //   '#d9ef8b',
-    // //   '#a6d96a',
-    // //   '#66bd63',
-    // //   '#1a9850'
-    // // ], 'green', defs);
-    //
-    //   createSVGLinearGradient([
-    //       '#d9ef8b',
-    //       '#a6d96a',
-    //       '#66bd63',
-    //       '#1a9850',
-    //       '#222222'
-    //   ], 'green', defs);
-
     this.clusterCircleGroup = this.svg.append("g")
       .attr("class", "clusterGroup");
     this.linkGroup = this.svg.append("g")
@@ -259,54 +236,6 @@ ForceDirectedGraph.prototype = {
     this.linkGroup.attr("transform", this.transform);
     this.clusterCircleGroup.attr("transform", this.transform);
   },
-  showTip: function(d, type) {
-    // this.tip.selectAll('*').remove();
-    // this.tip.transition().style('opacity',1);
-
-
-
-  },
-  hideTip: function() {
-    // this.tip.transition().style('opacity',0);
-  },
-
-  // process data into nodes & links where links have magnitude > 0
-  // filterData: function(data) {
-  //   var filteredData = {};
-  //   var links = [];
-  //
-  //   for (var key in data) {
-  //     var newNode = {
-  //       hits: data[key].hits,
-  //       name: data[key].name,
-  //       inf: data[key].inf.filter(l => l.flux !== 0),
-  //       outf: data[key].outf.filter(l => l.flux !== 0)
-  //     };
-  //
-  //     links = _.concat(links, this.extractLinksFromNode(newNode, key));
-  //
-  //     if (newNode.inf.length > 0 || newNode.outf.length > 0) {
-  //       filteredData[key] = newNode;
-  //     }
-  //   }
-  //
-  //   this.filteredData = filteredData;
-  //   this.links = links;
-  // },
-  //
-  // extractLinksFromNode: function(node, name) {
-  //   let nodeLinks = [];
-  //
-  //   node.inf.forEach(l => {
-  //     nodeLinks.push({
-  //       source: name,
-  //       target: l.name,
-  //       value: l.flux
-  //     });
-  //   });
-  //
-  //   return nodeLinks;
-  // },
 
   // cluster data based on threshold(s) of influence
   defineClusters: function(alpha) {
@@ -431,34 +360,7 @@ ForceDirectedGraph.prototype = {
             self.simulation.alphaTarget(0);
           }
           // let cluster = this;
-
-          // d.forEach((n) => {
-          //   // pin cluster nodes on cluster drag end (testing out how this feels)
-          //   n._fixed = true;
-          //
-          //   d3.selectAll('.data-node')
-          //     .style('stroke', (d) => d._fixed ? "#404040" : "white");
-          //
-          //   d3.select(cluster)
-          //     .style("stroke-dasharray", null);
-          // })
         }) )
-        .on('click', function(d) {
-          // unpin cluster and its nodes
-          // let cluster = this;
-
-        //   d.forEach((n) => {
-        //     // pin cluster nodes on cluster drag end (testing out how this feels)
-        //     n._fixed = false;
-        //     n.fx = n.fy = null;
-        //
-        //     d3.selectAll('.data-node')
-        //       .style('stroke', (d) => d._fixed ? "#404040" : "white");
-        //
-        //     d3.select(cluster)
-        //       .style("stroke-dasharray", "2, 2");
-        //   })
-        })
     ;
 
       circles.exit().remove();
@@ -508,70 +410,6 @@ ForceDirectedGraph.prototype = {
     .merge(rule)
       .attr("cluster", d => d.cluster)
       .attr("r", d => d.radius)
-      // .attr("pointer-events", (d) => {
-      //   if(App.property.node == true && d.cluster === 0) {
-      //     return 'none';
-      //   }
-      //   else return 'all';
-      // })
-      // .style("opacity", (d) => {
-      //   if( App.property.node == true && d.cluster === 0) {
-      //     return 0;
-      //   }
-      //   else return 1;
-      // })
-      // .style('stroke-opacity', (d) => {
-      //   if( App.property.node == true && d.cluster === 0) {
-      //     return 0;
-      //   }
-      //   else return 0.5;
-      // })
-      .on('mouseover', this._isDragging ? null : function(d) {
-        self.showTip(d, 'rule');
-
-        self.linkGroup.selectAll('.link-1')
-          .style('stroke-opacity',function() {
-            var opacity = d3.select(this).style('stroke-opacity');
-            return Math.min(0.4, opacity);
-          });
-
-        self.linkGroup.selectAll(".link-2").filter(function(link) {
-          return link.source.name === d.name;
-        })
-          .style('stroke-opacity', 0.6);
-      })
-      .on("mouseout", function() {
-        self.updateEdgeVisibility();
-
-        self.linkGroup.selectAll(".link-2")
-          .style('stroke-opacity', 0).interrupt();
-        self.hideTip();
-
-      })
-      .on('contextmenu', function(d) {
-        d3.event.preventDefault();
-        d3.select('.node-to-graph')
-          .classed('node-to-graph',false);
-        d3.select(this)
-          .classed('node-to-graph',true);
-        d3.select('#linegraph-help').style('display','none');
-        // if (App.panels.topVis) { App.panels.topVis.updateRule(d); }
-        // if (App.panels.bottomVis) { App.panels.bottomVis.updateRule(d); }
-        // if (App.panels.focusSlider) { App.panels.focusSlider.update(); }
-      })
-      .on('click', function(d) {
-        // if painting mode, add node to paintedClusters
-        // if (self.paintingManager.isPaintingCluster()) {
-        //   self.paintingManager.addNodeToPaintingCluster(d);
-        // }
-        // else {
-        //   d3.select(this)
-        //     .style("fill", (d) => self.clusterColor(d.cluster))
-        //     .style("stroke", "white");
-        //     d.fx = d.fy = null;
-        //     d._fixed = false;
-        // }
-      })
       .call(drag);
 
     // remove as needed
@@ -585,10 +423,6 @@ ForceDirectedGraph.prototype = {
 
       })
       .attr('pointer-events','none')
-      // .attr("transform", (d, i) => {
-      //     // debugger;
-      //   return "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")";
-      // })
         .text(function (d) {
             return d.name;
         })
@@ -608,15 +442,6 @@ ForceDirectedGraph.prototype = {
   },
 
   clusterColor: function(cluster) {
-    // if (cluster === 0) {
-    //   return '#222';
-    // }
-    //
-    // if (!this.clusterColors) {
-    //   return d3.scaleOrdinal(d3.schemeCategory10)
-    //     .domain(d3.range(1,10))
-    //     (cluster);
-    // }
 
     return this.clusterColors[cluster];
   },
@@ -634,82 +459,13 @@ ForceDirectedGraph.prototype = {
         .attr('class', 'link link-1')
         .attr('fill','none')
         .attr('pointer-events','none')
+        .style('stroke-opacity', 1)
       .merge(mainLink)
         .attr("value", d => d.value)
         .style("stroke-width", (d) => {
           // return strokeScale(Math.abs(d.value));
           return 0.8;
         });
-
-
-      // invisible line for collisions
-    // var self = this;
-    // var hoverLink = this.linkGroup.selectAll('.link-2')
-    //   .data(this.links);
-    //
-    // hoverLink.exit().remove();
-    // hoverLink.enter().append('path')
-    //     .attr("class", "link link-2")
-    //     .attr('fill','none')
-    //     .attr("value", d => d.value)
-    //     .style("stroke-opacity", 0)
-    //     .style("stroke-width", 8)
-    //     .on("mouseover", (d, i) => {
-    //       if (self._isDragging) return;
-    //       d3.select(d3.event.target)
-    //         .style('stroke-opacity',0.5)
-    //         .raise();
-    //       self.showTip(d, 'path');
-    //     })
-    //     .on("mouseout", (d, i) => {
-    //
-    //       d3.select(d3.event.target)
-    //         .transition()
-    //         .style('stroke-opacity',0);
-    //       self.hideTip();
-    //     });
-
-    this.updateEdgeVisibility();
-  },
-
-  updateEdgeVisibility: function() {
-    // link visibility
-    d3.selectAll('.link-1')
-      .interrupt()
-      .style('stroke-opacity', (d) => {
-          return 1;
-        // if( !App.property.green && d.value > 0 ) {
-        //   return 0;
-        // }
-        // else if( !App.property.red && d.value < 0) {
-        //   return 0;
-        // }
-        // else if( Math.abs(d.value) < this.visThreshold) {
-        //   return 0;
-        // }
-        // else {
-        //   return 1;
-        // }
-      });
-
-    // mouseover functionality
-    d3.selectAll('.link-2')
-      .interrupt()
-      .attr('pointer-events', (d) => {
-          return 'all';
-        // if( !App.property.green && d.value > 0 ) {
-        //   return 'none';
-        // }
-        // else if( !App.property.red && d.value < 0) {
-        //   return 'none';
-        // }
-        // else if( Math.abs(d.value) < this.visThreshold) {
-        //   return 'none';
-        // }
-        // else {
-        //   return 'all';
-        // }
-      });
   },
 
   // the big workhorse of the simulation ???
