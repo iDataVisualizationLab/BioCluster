@@ -241,9 +241,10 @@ ClusterNetworkGraph.prototype = {
         var self = this;
         clusters.forEach(function (d) {
             // debugger;
-            d.r = Math.min(40 + Math.round(60*Math.random()), (self.width - 30) /clusters.length);
+            d.r = Math.min(40 + Math.round(40*Math.random()), (self.width - 30) /clusters.length);
         });
 
+        // debugger;
         this.clusters = clusters;
     },
 
