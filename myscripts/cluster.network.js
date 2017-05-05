@@ -44,8 +44,8 @@ function ClusterNetworkGraph(args) {
     this.defineClusters();
 
     this.simulation = d3.forceSimulation()
-        .force("collisionForce", d3.forceCollide(8).strength(1).iterations(100))
-        .force("charge", d3.forceManyBody().strength(-1))
+        .force("collisionForce", d3.forceCollide(8).strength(1))
+        .force("charge", d3.forceManyBody().strength(-2))
         .force("center", d3.forceCenter(
             (this.width / 2),
             (this.height / 2)
@@ -53,11 +53,11 @@ function ClusterNetworkGraph(args) {
 
 
     // var attractForce = d3.forceManyBody().strength(80).distanceMax(400).distanceMin(80);
-    var collisionForce = d3.forceCollide(85).strength(1).iterations(100);
+    // var collisionForce = d3.forceCollide(85).strength(1).iterations(100);
 
     this.clusterSimulation = d3.forceSimulation(this.clusters).alphaDecay(0.01)
         // .force("attractForce", attractForce)
-        .force("collisionForce", collisionForce)
+        // .force("collisionForce", d3.forceCollide(85).strength(1).iterations(100))
         .force("charge", d3.forceManyBody().strength(-10))
         .force("center", d3.forceCenter(
             (this.width / 2),
@@ -296,7 +296,7 @@ ClusterNetworkGraph.prototype = {
             self.clusterSimulation.alphaTarget(0.1);
         }
 
-        function ticked(){
+        function clusterTicked(){
             circles
                 .attr("cx", function(d) {
 
@@ -324,24 +324,30 @@ ClusterNetworkGraph.prototype = {
                     return d.y;
                 })
                 .attr("r", function (d) {
-                    var x = Number(d3.select(this).attr("cx"));
-                    var y = Number(d3.select(this).attr("cy"));
-
-                    var circlePadding = 10;
-
-                    var radius = d3.max(d, (node) => {
-                        return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
-                        //  + radiusScale(node.hits);
-                    });
-
-                    return radius + circlePadding;
-                    // return CLUSTER_RADIUS;
+                    // var x = Number(d3.select(this).attr("cx"));
+                    // var y = Number(d3.select(this).attr("cy"));
+                    //
+                    // var circlePadding = 10;
+                    //
+                    // var radius = d3.max(d, (node) => {
+                    //     return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
+                    //     //  + radiusScale(node.hits);
+                    // });
+                    //
+                    // return radius + circlePadding;
+                    d.r = CLUSTER_RADIUS;
+                    return d.r;
                 })
 
             ;
         }
 
-        self.clusterSimulation.on("tick",ticked);
+        self.clusterSimulation
+            // .force("collisionForce", d3.forceCollide(function (d) {
+            //     debugger;
+            //     return 90;
+            // }).strength(1).iterations(100))
+            .on("tick", clusterTicked);
 
     },
 
@@ -391,12 +397,26 @@ ClusterNetworkGraph.prototype = {
         function innerNetworkTicked(){
             myNodes
                 .attr("cx", function(d){
+                    // svg boundaries
                     d.x = Math.max(d.r, Math.min(self.height - d.r, d.x));
 
+                    // cluster boundary:
+                    let cluster = self.clusters[d.cluster];
+
+                    // if (!!cluster.r) {
+                    //     //let distance = Math.sqrt(Math.pow(cluster.x - d.x, 2) + Math.pow(cluster.y - d.y, 2));
+                    //     d.x = Math.max(cluster.x - cluster.r + d.r, Math.min(cluster.x + cluster.r - d.r, d.x))
+                    // }
                     return d.x;
                 })
                 .attr("cy", function(d){
+                    // svg boundary
                     d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
+                    let cluster = self.clusters[d.cluster];
+                    // if (!!cluster.r) {
+                    //     //let distance = Math.sqrt(Math.pow(cluster.x - d.x, 2) + Math.pow(cluster.y - d.y, 2));
+                    //     d.y = Math.max(cluster.y - cluster.r + d.r, Math.min(cluster.y + cluster.r - d.r, d.y))
+                    // }
 
                     return d.y;
                 })
@@ -405,8 +425,8 @@ ClusterNetworkGraph.prototype = {
         }
 
         function clusteringNetwork(alpha) {
-            var myCentroids = [];
-            var myCluster;
+            let myCentroids = [];
+            let myCluster;
             for(var i=0; i< self.clusters.length; i++) {
                 myCluster = self.clusters[i];
 
@@ -435,9 +455,59 @@ ClusterNetworkGraph.prototype = {
             });
         }
 
+
+        function collide(alpha) {
+            var nodeArr = self.nodes;
+            var padding = 30;
+            var clusterPadding = 50; // separation between different-color circles
+            var repulsion = 3;
+            var maxRadius = 100;
+            var quadtree = d3.quadtree()
+                .x((d) => d.x)
+                .y((d) => d.y)
+                .addAll(nodeArr);
+
+            nodeArr.forEach(function(d) {
+                var r = d.r + maxRadius + Math.max(padding, clusterPadding),
+                    nx1 = d.x - r,
+                    nx2 = d.x + r,
+                    ny1 = d.y - r,
+                    ny2 = d.y + r;
+                quadtree.visit(function(quad, x1, y1, x2, y2) {
+                    if (quad.data && (quad.data !== d)) {
+
+                        var link = self.links.find(link => link.target == quad.data && link.source == d);
+                        if (!link) { return;}
+
+                        var x = d.x - quad.data.x,
+                            y = d.y - quad.data.y,
+                            l = Math.sqrt(x * x + y * y),
+                            r = d.r + quad.data.r;
+
+                        if (d.cluster === quad.data.cluster) {
+                            r += (link.value < 0) ? padding*repulsion : padding;
+                        }
+                        else {
+                            r += clusterPadding;
+                        }
+
+                        if (l < r && l > 0) {
+                            l = (l - r) / l * alpha;
+                            d.x -= x *= l;
+                            d.y -= y *= l;
+                            quad.data.x += x;
+                            quad.data.y += y;
+                        }
+                    }
+                    return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+                });
+            });
+        }
+
         self.simulation
             .nodes(self.nodes)
             .force("cluster", clusteringNetwork)
+            // .force("collision", collide)
             .on("tick", innerNetworkTicked)
             .on("end", function () {
 
