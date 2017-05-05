@@ -397,7 +397,7 @@ ClusterNetworkGraph.prototype = {
                     // }
                     //
                     //
-                    // d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - CLUSTER_RADIUS, d.x));
+                    d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - d.r, d.x));
 
                     return d.x;
                 })
@@ -408,7 +408,7 @@ ClusterNetworkGraph.prototype = {
                     //     });
                     // }
                     //
-                    // d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - CLUSTER_RADIUS, d.y));
+                    d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - d.r, d.y));
 
                     return d.y;
                 })
