@@ -43,7 +43,7 @@ function ClusterNetworkGraph(args) {
 
     this.defineClusters();
 
-    this.simulation = d3.forceSimulation(this.nodes)
+    this.simulation = d3.forceSimulation()
         .force("collisionForce", d3.forceCollide(8).strength(1).iterations(100))
         .force("charge", d3.forceManyBody().strength(-1))
         .force("center", d3.forceCenter(
@@ -53,10 +53,10 @@ function ClusterNetworkGraph(args) {
 
 
     var attractForce = d3.forceManyBody().strength(80).distanceMax(400).distanceMin(80);
-    var collisionForce = d3.forceCollide(80).strength(1).iterations(100);
+    var collisionForce = d3.forceCollide(85).strength(1).iterations(100);
 
     this.clusterSimulation = d3.forceSimulation(this.clusters).alphaDecay(0.01)
-        .force("attractForce", attractForce)
+        // .force("attractForce", attractForce)
         .force("collisionForce", collisionForce)
         .force("charge", d3.forceManyBody().strength(-10))
         .force("center", d3.forceCenter(
@@ -113,14 +113,6 @@ ClusterNetworkGraph.prototype = {
             if (!n.radius) {
                 n.radius = 4;
             }
-
-            // if (!n.x) {
-            //     n.x = width / 2;
-            // }
-            //
-            // if (!n.y) {
-            //     n.y = height / 2;
-            // }
 
             if (!!n.cluster) {
                 return;
@@ -264,6 +256,7 @@ ClusterNetworkGraph.prototype = {
         // let clusters = this.clusters.filter(c => c.length && !(c[0].isPainted && c[0].paintedCluster === undefined));
         let clusters = this.clusters;
         var self = this;
+        var CLUSTER_RADIUS = 80;
 
         function getFill(d) {
             return self.clusterColor(d[0].cluster);
@@ -305,9 +298,13 @@ ClusterNetworkGraph.prototype = {
 
         function ticked(){
             circles
-                .attr("cx", function(d){ return d.x;})
-                .attr("cy", function(d){ return d.y;})
-                .attr("r", 80)
+                .attr("cx", function(d) {
+                    return d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - CLUSTER_RADIUS, d.x));
+                })
+                .attr("cy", function(d) {
+                    return d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - CLUSTER_RADIUS, d.y));
+                })
+                .attr("r", CLUSTER_RADIUS)
             ;
         }
 
@@ -365,6 +362,7 @@ ClusterNetworkGraph.prototype = {
         }
 
         self.simulation
+            .nodes(self.nodes)
             .on("tick", innerNetworkTicked)
             .on("end", function () {
                 if (!!self.endCb) {
