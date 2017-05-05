@@ -239,7 +239,7 @@ mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphH
             .attr("x", (graphWidth - 8) / 2)
         ;
 
-        // break;
+        break;
     }
 };
 
