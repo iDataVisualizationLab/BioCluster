@@ -52,7 +52,7 @@ function ClusterNetworkGraph(args) {
         ));
 
 
-    var attractForce = d3.forceManyBody().strength(80).distanceMax(400).distanceMin(80);
+    // var attractForce = d3.forceManyBody().strength(80).distanceMax(400).distanceMin(80);
     var collisionForce = d3.forceCollide(85).strength(1).iterations(100);
 
     this.clusterSimulation = d3.forceSimulation(this.clusters).alphaDecay(0.01)
@@ -299,12 +299,30 @@ ClusterNetworkGraph.prototype = {
         function ticked(){
             circles
                 .attr("cx", function(d) {
-                    return d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - CLUSTER_RADIUS, d.x));
+                    d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - CLUSTER_RADIUS, d.x));
+
+                    return d.x;
                 })
                 .attr("cy", function(d) {
-                    return d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - CLUSTER_RADIUS, d.y));
+                    d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - CLUSTER_RADIUS, d.y));
+
+                    return d.y;
                 })
-                .attr("r", CLUSTER_RADIUS)
+                .attr("r", function (d) {
+                    // var x = Number(d3.select(this).attr("cx"));
+                    // var y = Number(d3.select(this).attr("cy"));
+                    //
+                    // var circlePadding = 10;
+                    //
+                    // var radius = d3.max(d, (node) => {
+                    //     return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
+                    //     //  + radiusScale(node.hits);
+                    // });
+                    //
+                    // return radius + circlePadding;
+                    return CLUSTER_RADIUS;
+                })
+
             ;
         }
 
@@ -319,7 +337,7 @@ ClusterNetworkGraph.prototype = {
 
         var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes)
                 .enter().append("circle")
-                .attr("class", "rule data-node")
+                .attr("class", "data-point data-node")
                 .attr("r", d => d.radius)
                 .style("fill", function (d) {
                     return self.clusterColor(d.cluster);
