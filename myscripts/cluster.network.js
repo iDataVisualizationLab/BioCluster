@@ -322,19 +322,43 @@ ClusterNetworkGraph.prototype = {
 
         function clusterTicked(){
 
-            var handleClission = function collide(alpha) {
+            var handleColission = function collide(alpha) {
+
                 var nodeArr = self.clusters;
                 var padding = 30;
                 var clusterPadding = CLUSTER_RADIUS; // separation between different-color circles
                 var repulsion = 3;
                 var maxRadius = 150;
                 var quadtree = d3.quadtree()
-                    .x((d) => d.x)
-                    .y((d) => d.y)
+                    .x(function (d) {
+                        d.x = d3.mean(d, function (innerNode) {
+                            return innerNode.x;
+                        });
+
+                        return d.x;
+                    })
+                    .y(function (d) {
+                        d.y = d3.mean(d, function (innerNode) {
+                            return innerNode.y;
+                        });
+
+                        return d.y;
+                    })
                     .addAll(nodeArr);
 
                 return function(d) {
-                    var r = d.r + maxRadius + Math.max(padding, clusterPadding),
+
+                    let x = d.x;
+                    let y = d.y;
+                    var radius = d3.max(d, (node) => {
+                        return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
+                        //  + radiusScale(node.hits);
+                    });
+
+                    d.r = radius;
+
+
+                    var r = d.r ,
                         nx1 = d.x - r,
                         nx2 = d.x + r,
                         ny1 = d.y - r,
@@ -362,15 +386,15 @@ ClusterNetworkGraph.prototype = {
 
 
             circles
-                .each(handleClission(.5))
+                .each(handleColission(.5))
                 .attr("cx", function(d) {
 
                     //compute from all nodes within the cluster
-                    if(!!self.nodeGroup) {
-                        // d.x = d3.mean(d, function (innerNode) {
-                        //     return innerNode.x;
-                        // });
-                    }
+                    // if(!!self.nodeGroup) {
+                    //     d.x = d3.mean(d, function (innerNode) {
+                    //         return innerNode.x;
+                    //     });
+                    // }
                     //
                     //
                     // d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - CLUSTER_RADIUS, d.x));
@@ -378,11 +402,11 @@ ClusterNetworkGraph.prototype = {
                     return d.x;
                 })
                 .attr("cy", function(d) {
-                    if(!!self.nodeGroup) {
-                        // d.y = d3.mean(d, function (innerNode) {
-                        //     return innerNode.y;
-                        // });
-                    }
+                    // if(!!self.nodeGroup) {
+                    //     d.y = d3.mean(d, function (innerNode) {
+                    //         return innerNode.y;
+                    //     });
+                    // }
                     //
                     // d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - CLUSTER_RADIUS, d.y));
 
@@ -403,9 +427,10 @@ ClusterNetworkGraph.prototype = {
                     //     return 100;
                     // }
                     //
-                    // return radius + circlePadding;
-                    d.r = CLUSTER_RADIUS;
-                    return d.r;
+                    // d.r = radius + circlePadding;
+                    // d.r = CLUSTER_RADIUS;
+
+                    return d.r + 10;
                 })
 
             ;
@@ -417,13 +442,6 @@ ClusterNetworkGraph.prototype = {
         }
 
         self.clusterSimulation
-            // .force("collisionForce", d3.forceCollide(105).strength(1).iterations(100))
-            // .force("charge", d3.forceManyBody())
-
-            // .force("collisionForce", d3.forceCollide(function (d) {
-            //     debugger;
-            //     return 90;
-            // }).strength(1).iterations(100))
             .on("tick", clusterTicked);
 
     },
