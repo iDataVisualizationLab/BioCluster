@@ -299,28 +299,43 @@ ClusterNetworkGraph.prototype = {
         function ticked(){
             circles
                 .attr("cx", function(d) {
+
+                    //compute from all nodes within the cluster
+                    if(!!self.nodeGroup) {
+                        d.x = d3.mean(d, function (innerNode) {
+                            return innerNode.x;
+                        });
+                    }
+
+
                     d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - CLUSTER_RADIUS, d.x));
 
                     return d.x;
                 })
                 .attr("cy", function(d) {
+                    if(!!self.nodeGroup) {
+                        d.y = d3.mean(d, function (innerNode) {
+                            return innerNode.y;
+                        });
+                    }
+
                     d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - CLUSTER_RADIUS, d.y));
 
                     return d.y;
                 })
                 .attr("r", function (d) {
-                    // var x = Number(d3.select(this).attr("cx"));
-                    // var y = Number(d3.select(this).attr("cy"));
-                    //
-                    // var circlePadding = 10;
-                    //
-                    // var radius = d3.max(d, (node) => {
-                    //     return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
-                    //     //  + radiusScale(node.hits);
-                    // });
-                    //
-                    // return radius + circlePadding;
-                    return CLUSTER_RADIUS;
+                    var x = Number(d3.select(this).attr("cx"));
+                    var y = Number(d3.select(this).attr("cy"));
+
+                    var circlePadding = 10;
+
+                    var radius = d3.max(d, (node) => {
+                        return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
+                        //  + radiusScale(node.hits);
+                    });
+
+                    return radius + circlePadding;
+                    // return CLUSTER_RADIUS;
                 })
 
             ;
@@ -337,7 +352,9 @@ ClusterNetworkGraph.prototype = {
 
         var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes)
                 .enter().append("circle")
-                .attr("class", "data-point data-node")
+                .attr("class", function (d) {
+                    return "data-point data-node data-node-cluster-" + d.cluster;
+                })
                 .attr("r", d => d.r)
                 .style("fill", function (d) {
                     return self.clusterColor(d.cluster);
@@ -373,8 +390,16 @@ ClusterNetworkGraph.prototype = {
 
         function innerNetworkTicked(){
             myNodes
-                .attr("cx", function(d){ return d.x;})
-                .attr("cy", function(d){ return d.y;})
+                .attr("cx", function(d){
+                    d.x = Math.max(d.r, Math.min(self.height - d.r, d.x));
+
+                    return d.x;
+                })
+                .attr("cy", function(d){
+                    d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
+
+                    return d.y;
+                })
                 .attr("r", 6)
             ;
         }
@@ -415,6 +440,10 @@ ClusterNetworkGraph.prototype = {
             .force("cluster", clusteringNetwork)
             .on("tick", innerNetworkTicked)
             .on("end", function () {
+
+                // self.clusterSimulation.restart();
+                // self.clusterSimulation.alpha(1.0);
+
                 if (!!self.endCb) {
                     self.endCb();
                 }
