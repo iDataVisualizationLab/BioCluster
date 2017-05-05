@@ -59,9 +59,17 @@ function ClusterNetworkGraph(args) {
 
 
     var attractForce = d3.forceManyBody().strength(80).distanceMax(400).distanceMin(80);
-    var collisionForce = d3.forceCollide(12).strength(1).iterations(100);
+    var collisionForce = d3.forceCollide(50).strength(1).iterations(100);
 
-    this.clusterSimulation = d3.forceSimulation(this.clusters).alphaDecay(0.01).force("attractForce",attractForce).force("collisionForce",collisionForce);
+    this.clusterSimulation = d3.forceSimulation(this.clusters).alphaDecay(0.01)
+        .force("attractForce", attractForce)
+        .force("collisionForce", collisionForce)
+        .force("charge", d3.forceManyBody().strength(-10))
+        .force("center", d3.forceCenter(
+            (this.width / 2),
+            (this.height / 2)
+        ))
+    ;
 
 
     // update graph
@@ -271,7 +279,6 @@ ClusterNetworkGraph.prototype = {
                 .enter().append("circle")
                 .attr("class", "clusterCircle")
                 .style("fill", getFill)
-                // .style("fill", "none")
                 .style("stroke", getFill)
                 .style("stroke-dasharray", "2, 2")
                 .style("fill-opacity", 0.025)
@@ -283,8 +290,8 @@ ClusterNetworkGraph.prototype = {
 
         function dragstarted(d)
         {
-            simulation.restart();
-            simulation.alpha(1.0);
+            self.clusterSimulation.restart();
+            self.clusterSimulation.alpha(1.0);
             d.fx = d.x;
             d.fy = d.y;
         }
@@ -299,13 +306,15 @@ ClusterNetworkGraph.prototype = {
         {
             d.fx = null;
             d.fy = null;
-            simulation.alphaTarget(0.1);
+            self.clusterSimulation.alphaTarget(0.1);
         }
 
         function ticked(){
             circles
                 .attr("cx", function(d){ return d.x;})
                 .attr("cy", function(d){ return d.y;})
+                .attr("r", 30)
+            ;
         }
 
         self.clusterSimulation.on("tick",ticked);
