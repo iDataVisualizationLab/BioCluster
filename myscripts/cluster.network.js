@@ -110,8 +110,8 @@ ClusterNetworkGraph.prototype = {
         // make sure each node has its cluster
         this.nodes.forEach(function (n) {
 
-            if (!n.radius) {
-                n.radius = 4;
+            if (!n.r) {
+                n.r = 4;
             }
 
             if (!!n.cluster) {
@@ -338,7 +338,7 @@ ClusterNetworkGraph.prototype = {
         var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes)
                 .enter().append("circle")
                 .attr("class", "data-point data-node")
-                .attr("r", d => d.radius)
+                .attr("r", d => d.r)
                 .style("fill", function (d) {
                     return self.clusterColor(d.cluster);
                 })
@@ -379,8 +379,40 @@ ClusterNetworkGraph.prototype = {
             ;
         }
 
+        function clusteringNetwork(alpha) {
+            var myCentroids = [];
+            var myCluster;
+            for(var i=0; i< self.clusters.length; i++) {
+                myCluster = self.clusters[i];
+
+                if (myCluster.length < 1) {
+                    continue;
+                }
+
+                // debugger;
+                myCentroids.push(myCluster[0]);
+            }
+
+            self.nodes.forEach(function(d) {
+                var cluster = myCentroids[d.cluster];
+                if (cluster === d) return;
+                var x = d.x - cluster.x,
+                    y = d.y - cluster.y,
+                    l = Math.sqrt(x * x + y * y),
+                    r = d.r + cluster.r;
+                if (l !== r) {
+                    l = (l - r) / l * alpha;
+                    d.x -= x *= l;
+                    d.y -= y *= l;
+                    cluster.x += x;
+                    cluster.y += y;
+                }
+            });
+        }
+
         self.simulation
             .nodes(self.nodes)
+            .force("cluster", clusteringNetwork)
             .on("tick", innerNetworkTicked)
             .on("end", function () {
                 if (!!self.endCb) {
