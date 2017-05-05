@@ -248,7 +248,7 @@ ClusterNetworkGraph.prototype = {
     drawGraph: function() {
         this.drawClusters();
         this.drawNodes();
-        // this.drawLinks();
+        this.drawLinks();
         this.createForceLayout();
     },
 
@@ -331,6 +331,7 @@ ClusterNetworkGraph.prototype = {
                 var maxRadius = 150;
                 var quadtree = d3.quadtree()
                     .x(function (d) {
+                        // cluster center x and y
                         d.x = d3.mean(d, function (innerNode) {
                             return innerNode.x;
                         });
@@ -350,6 +351,7 @@ ClusterNetworkGraph.prototype = {
 
                     let x = d.x;
                     let y = d.y;
+                    // compute cluster radius
                     var radius = d3.max(d, (node) => {
                         return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
                         //  + radiusScale(node.hits);
@@ -358,6 +360,7 @@ ClusterNetworkGraph.prototype = {
                     d.r = radius;
 
 
+                    // avoid collision
                     var r = d.r ,
                         nx1 = d.x - r,
                         nx2 = d.x + r,
@@ -430,7 +433,7 @@ ClusterNetworkGraph.prototype = {
                     // d.r = radius + circlePadding;
                     // d.r = CLUSTER_RADIUS;
 
-                    return d.r + 10;
+                    return d.r + 15;
                 })
 
             ;
@@ -489,6 +492,11 @@ ClusterNetworkGraph.prototype = {
                     .on("end", handleDraggedEnded))
             ;
 
+
+        self.drawLinks();
+
+        var myLinks = self.linkGroup.selectAll(".link");
+
         function innerNetworkTicked(){
             myNodes
                 .attr("cx", function(d){
@@ -515,11 +523,63 @@ ClusterNetworkGraph.prototype = {
 
                     return d.y;
                 })
-                .attr("r", 6)
+                .attr("r", function (d) {
+                    return d.r;
+                })
+            ;
+
+            myLinks
+                .style("stroke", (d) => {
+                    if( !d ) {
+                        return;
+                    }
+
+                    var dx = d.target.x - d.source.x,
+                        dy = d.target.y - d.source.y;
+
+                    if (!dx || !dy) {
+                        return;
+                    }
+
+                    var type = d.type;
+
+                    if (Math.abs(dy/dx) > 3) {
+                        return dy < 0 ? "url(#" + type + "Up)" : "url(#" + type + "Down)";
+                    }
+                    return dx < 0 ? "url(#" + type + "Left)" : "url(#" + type + "Right)";
+
+                })
+                // .style("stroke", "black")
+
+                .attr("x1", function(d) {
+                    if (!d) {
+                        return;
+                    }
+                    return d.source.x;
+                })
+                .attr("y1", function(d) {
+                    if (!d) {
+                        return;
+                    }
+                    return d.source.y;
+                })
+                .attr("x2", function(d) {
+                    if (!d) {
+                        return;
+                    }
+                    return d.target.x;
+                })
+                .attr("y2", function(d) {
+                    if (!d) {
+                        return;
+                    }
+                    return d.target.y;
+                })
+            // .attr('d', createArrowPath)
             ;
         }
 
-        function clusteringNetwork(alpha) {
+        var clusterData = function clusteringNetwork(alpha) {
             let myCentroids = [];
             let myCluster;
             for(var i=0; i< self.clusters.length; i++) {
@@ -548,18 +608,40 @@ ClusterNetworkGraph.prototype = {
                     cluster.y += y;
                 }
             });
-        }
+        };
 
+
+        var link_force =  d3.forceLink(this.links)
+                .id(function(d) {
+
+                    return d.index;
+                })
+                // .distance((d) => {
+                //
+                //     // let strengthScale = d3.scaleLinear()
+                //     //     .domain([0, self.maxValue])
+                //     //     .range([1,0.4])
+                //     //     .clamp(true);
+                //     //
+                //     // if (d.value < 0) {
+                //     //     return 25/strengthScale(-d.value);
+                //     // }
+                //     // else {
+                //     //     return 25*strengthScale(d.value);
+                //     // }
+                // })
+            ;
 
         self.simulation
             .nodes(self.nodes)
-            .force("cluster", clusteringNetwork)
+            .force("cluster", clusterData)
+            .force("links", link_force)
             // .force("collision", collide)
             .on("tick", innerNetworkTicked)
             .on("end", function () {
 
-                self.clusterSimulation.restart();
-                self.clusterSimulation.alpha(0.3);
+                // self.clusterSimulation.restart();
+                // self.clusterSimulation.alpha(0.3);
 
                 if (!!self.endCb) {
                     self.endCb();
@@ -567,6 +649,22 @@ ClusterNetworkGraph.prototype = {
             })
         ;
 
+    },
+
+    drawLinks: function() {
+
+        this.linkGroup.selectAll('.link-1')
+            .data(this.links)
+            .enter().append('line')
+                .attr('class', 'link link-1')
+                .attr('fill','none')
+                .attr('pointer-events','none')
+                .style('stroke-opacity', 1)
+                // .style('stroke', 'black')
+                .attr("value", d => d.value)
+                .style("stroke-width", (d) => {
+                    return 0.8;
+                });
     },
     // the big workhorse of the simulation ???
     createForceLayout: function() {
