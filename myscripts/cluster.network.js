@@ -237,6 +237,13 @@ ClusterNetworkGraph.prototype = {
         }
         //
         this.clusterColors = newColors;
+
+        var self = this;
+        clusters.forEach(function (d) {
+            // debugger;
+            d.r = Math.min(40 + Math.round(60*Math.random()), (self.width - 30) /clusters.length);
+        });
+
         this.clusters = clusters;
     },
 
@@ -295,8 +302,8 @@ ClusterNetworkGraph.prototype = {
 
         function dragged(d)
         {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
+            d.fx += d3.event.dx;
+            d.fy += d3.event.dy;
 
             d.forEach((n) => {
                 n.fx += d3.event.dx;
@@ -336,12 +343,18 @@ ClusterNetworkGraph.prototype = {
                             return innerNode.x;
                         });
 
+                        d.x = Math.max(d.r, Math.min(self.width - d.r, d.x));
+
+
                         return d.x;
                     })
                     .y(function (d) {
                         d.y = d3.mean(d, function (innerNode) {
                             return innerNode.y;
                         });
+
+                        d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
+
 
                         return d.y;
                     })
@@ -352,12 +365,12 @@ ClusterNetworkGraph.prototype = {
                     let x = d.x;
                     let y = d.y;
                     // compute cluster radius
-                    var radius = d3.max(d, (node) => {
-                        return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
-                        //  + radiusScale(node.hits);
-                    });
+                    // var radius = d3.max(d, (node) => {
+                    //     return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
+                    //     //  + radiusScale(node.hits);
+                    // });
 
-                    d.r = radius;
+                    // d.r = 100;
 
 
                     // avoid collision
@@ -400,7 +413,7 @@ ClusterNetworkGraph.prototype = {
                     // }
                     //
                     //
-                    d.x = Math.max(CLUSTER_RADIUS, Math.min(self.width - d.r, d.x));
+                    // d.x = Math.max(d.r, Math.min(self.width - d.r, d.x));
 
                     return d.x;
                 })
@@ -411,7 +424,7 @@ ClusterNetworkGraph.prototype = {
                     //     });
                     // }
                     //
-                    d.y = Math.max(CLUSTER_RADIUS, Math.min(self.height - d.r, d.y));
+                    // d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
 
                     return d.y;
                 })
@@ -437,6 +450,8 @@ ClusterNetworkGraph.prototype = {
                 })
 
             ;
+
+
 
 
             // circles.each(handleClission(.5));
@@ -503,23 +518,12 @@ ClusterNetworkGraph.prototype = {
                     // svg boundaries
                     d.x = Math.max(d.r, Math.min(self.height - d.r, d.x));
 
-                    // cluster boundary:
-                    let cluster = self.clusters[d.cluster];
-
-                    if (!!cluster.r) {
-                        //let distance = Math.sqrt(Math.pow(cluster.x - d.x, 2) + Math.pow(cluster.y - d.y, 2));
-                        d.x = Math.max(cluster.x - cluster.r + 2*d.r , Math.min(cluster.x + cluster.r - 2*d.r, d.x))
-                    }
                     return d.x;
                 })
                 .attr("cy", function(d){
                     // svg boundary
                     d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
-                    let cluster = self.clusters[d.cluster];
-                    // if (!!cluster.r) {
-                    //     //let distance = Math.sqrt(Math.pow(cluster.x - d.x, 2) + Math.pow(cluster.y - d.y, 2));
-                    //     d.y = Math.max(cluster.y - cluster.r + d.r, Math.min(cluster.y + cluster.r - d.r, d.y))
-                    // }
+
 
                     return d.y;
                 })
@@ -632,6 +636,58 @@ ClusterNetworkGraph.prototype = {
                 // })
             ;
 
+        // var repaintClusterCircle = function (alpha) {
+        //     if (!!alpha) {
+        //         self.clusterSimulation.alphaTarget(alpha).restart();
+        //     }
+        //
+        //     self.clusterCircleGroup.selectAll(".clusterCircle")
+        //         .attr("cx", function (d) {
+        //             if(!!self.nodeGroup) {
+        //                 d.x = d3.mean(d, function (innerNode) {
+        //                     return innerNode.x;
+        //                 });
+        //             }
+        //
+        //             // d.x = Math.max(d.r, Math.min(self.width - d.r, d.x));
+        //
+        //             return d.x;
+        //         })
+        //         .attr("cy", function (d) {
+        //             if(!!self.nodeGroup) {
+        //                 d.y= d3.mean(d, function (innerNode) {
+        //                     return innerNode.y;
+        //                 });
+        //             }
+        //
+        //             // d.y = Math.max(d.r, Math.min(self.width - d.r, d.y));
+        //
+        //             return d.y;
+        //         })
+        //         .attr("r", function (d) {
+        //             var x = Number(d3.select(this).attr("cx"));
+        //             var y = Number(d3.select(this).attr("cy"));
+        //
+        //             var circlePadding = 10;
+        //
+        //             var radius = d3.max(d, (node) => {
+        //                 return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
+        //                 //  + radiusScale(node.hits);
+        //             });
+        //
+        //             if (!radius) {
+        //                 return 100;
+        //             }
+        //
+        //             d.r = radius + circlePadding;
+        //             // d.r = CLUSTER_RADIUS;
+        //
+        //             return d.r;
+        //         })
+        //
+        //
+        // };
+
         self.simulation
             .nodes(self.nodes)
             .force("cluster", clusterData)
@@ -642,6 +698,7 @@ ClusterNetworkGraph.prototype = {
 
                 // self.clusterSimulation.restart();
                 // self.clusterSimulation.alpha(0.3);
+                // repaintClusterCircle(0.3);
 
                 if (!!self.endCb) {
                     self.endCb();
