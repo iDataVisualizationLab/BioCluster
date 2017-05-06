@@ -264,7 +264,6 @@ ClusterNetworkGraph.prototype = {
         // let clusters = this.clusters.filter(c => c.length && !(c[0].isPainted && c[0].paintedCluster === undefined));
         let clusters = this.clusters;
         var self = this;
-        var CLUSTER_RADIUS = 80;
 
         function getFill(d) {
             return self.clusterColor(d[0].cluster);
@@ -330,13 +329,77 @@ ClusterNetworkGraph.prototype = {
 
         function clusterTicked(){
 
+
+
+
+
+
+            // circles.each(handleClission(.5));
+
+
+        }
+        //
+        // self.clusterSimulation
+        //     .on("tick", clusterTicked);
+
+    },
+
+    // draw nodes
+    drawNodes: function() {
+        // define dragging behavior
+        var self = this;
+
+        var handleDrageStarted = function dragstarted(d)
+        {
+            self.simulation.restart();
+            self.simulation.alpha(1.0);
+            d.fx = d.x;
+            d.fy = d.y;
+        };
+
+        var handleDragged = function dragged(d)
+        {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+        };
+
+        var handleDraggedEnded = function dragended(d)
+        {
+            d.fx = null;
+            d.fy = null;
+            self.simulation.alphaTarget(0.1);
+        };
+
+        var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes)
+                .enter().append("circle")
+                .attr("class", function (d) {
+                    return "data-point data-node data-node-cluster-" + d.cluster;
+                })
+                .attr("r", d => d.r)
+                .style("fill", function (d) {
+                    return self.clusterColor(d.cluster);
+                })
+                .style("fill-opacity", 1)
+
+                .call(d3.drag()
+                    .on("start", handleDrageStarted)
+                    .on("drag", handleDragged)
+                    .on("end", handleDraggedEnded))
+            ;
+
+
+        self.drawLinks();
+
+        var myLinks = self.linkGroup.selectAll(".link");
+        var circles = this.clusterCircleGroup.selectAll(".clusterCircle");
+        var CLUSTER_RADIUS = 60;
+
+        function innerNetworkTicked(){
             var handleColission = function collide(alpha) {
 
                 var nodeArr = self.clusters;
-                var padding = 30;
+                var padding = 40;
                 var clusterPadding = CLUSTER_RADIUS; // separation between different-color circles
-                var repulsion = 3;
-                var maxRadius = 150;
                 var quadtree = d3.quadtree()
                     .x(function (d) {
                         // cluster center x and y
@@ -452,72 +515,29 @@ ClusterNetworkGraph.prototype = {
 
             ;
 
-
-
-
-            // circles.each(handleClission(.5));
-
-
-        }
-
-        self.clusterSimulation
-            .on("tick", clusterTicked);
-
-    },
-
-    // draw nodes
-    drawNodes: function() {
-        // define dragging behavior
-        var self = this;
-
-        var handleDrageStarted = function dragstarted(d)
-        {
-            self.simulation.restart();
-            self.simulation.alpha(1.0);
-            d.fx = d.x;
-            d.fy = d.y;
-        };
-
-        var handleDragged = function dragged(d)
-        {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-        };
-
-        var handleDraggedEnded = function dragended(d)
-        {
-            d.fx = null;
-            d.fy = null;
-            self.simulation.alphaTarget(0.1);
-        };
-
-        var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes)
-                .enter().append("circle")
-                .attr("class", function (d) {
-                    return "data-point data-node data-node-cluster-" + d.cluster;
-                })
-                .attr("r", d => d.r)
-                .style("fill", function (d) {
-                    return self.clusterColor(d.cluster);
-                })
-                .style("fill-opacity", 1)
-
-                .call(d3.drag()
-                    .on("start", handleDrageStarted)
-                    .on("drag", handleDragged)
-                    .on("end", handleDraggedEnded))
-            ;
-
-
-        self.drawLinks();
-
-        var myLinks = self.linkGroup.selectAll(".link");
-
-        function innerNetworkTicked(){
             myNodes
+                .each(function (d) {
+                    let cluster = self.clusters[d.cluster];
+                    let distance = Math.sqrt(Math.pow((d.x - cluster.x), 2) + Math.pow((d.y - cluster.y), 2));
+                    if (!!d.prex && (distance > (cluster.r - d.r))) {
+                        d.x = d.prex;
+                        d.y = d.prey;
+                    }
+
+                    d.x = Math.max(cluster.x - cluster.r + d.r, Math.min(cluster.x + cluster.r - d.r, d.x));
+                    d.y = Math.max(cluster.y - cluster.r + d.r, Math.min(cluster.y + cluster.r - d.r, d.y));
+
+                    d.prex = d.x;
+                    d.prey = d.y;
+
+                    // console.log(d);
+                })
                 .attr("cx", function(d){
                     // svg boundaries
                     d.x = Math.max(d.r, Math.min(self.height - d.r, d.x));
+
+                    // cluster circle boundary:
+
 
                     return d.x;
                 })
