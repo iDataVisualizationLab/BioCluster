@@ -306,22 +306,18 @@ ClusterNetworkGraph.prototype = {
             return self.clusterColor(d[0].cluster);
         }
 
-        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters);
-
-        circles.exit().remove();
-
-        circles
+        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters)
                 .enter().append("circle")
                 .attr("class", "clusterCircle")
                 .style("fill", getFill)
                 .style("stroke", getFill)
+                .style("opacity", 1)
                 .style("stroke-dasharray", "2, 2")
                 .style("fill-opacity", 0.025)
                 .call(d3.drag()
                     .on("start",dragstarted)
                     .on("drag",dragged)
                     .on("end",dragended))
-            // .call(self.clusterSimulation.drag)
         ;
 
 
@@ -380,6 +376,88 @@ ClusterNetworkGraph.prototype = {
                 debugger;
             }
         }
+
+        var CLUSTER_RADIUS = 60;
+
+        function clusterTicked(){
+
+            var handleColision = function collide(alpha) {
+
+                var nodeArr = self.clusters;
+                var padding = 30;
+                var clusterPadding = CLUSTER_RADIUS; // separation between different-color circles
+                var repulsion = 3;
+                var maxRadius = 150;
+                var quadtree = d3.quadtree()
+                    .x(function (d) {
+                        d.x = Math.max(d.r , Math.min(self.width - d.r , d.x));
+                        return d.x;
+                    })
+                    .y(function (d) {
+                        d.y = Math.max(d.r , Math.min(self.height - d.r , d.y));
+
+
+                        return d.y;
+                    })
+                    .addAll(nodeArr);
+
+                return function(d) {
+
+                    let x = d.x;
+                    let y = d.y;
+                    // compute cluster radius
+
+
+                    // avoid collision
+                    var r = d.r ,
+                        nx1 = d.x - r,
+                        nx2 = d.x + r,
+                        ny1 = d.y - r,
+                        ny2 = d.y + r;
+                    quadtree.visit(function(quad, x1, y1, x2, y2) {
+
+                        // debugger;
+                        if (quad.data && (quad.data !== d)) {
+                            var x = d.x - quad.data.x,
+                                y = d.y - quad.data.y,
+                                l = Math.sqrt(x * x + y * y),
+                                r = d.r + quad.data.r + (d.cluster === quad.data.cluster ? padding : clusterPadding);
+                            if (l < r) {
+                                l = (l - r) / l * alpha;
+                                d.x -= x *= l;
+                                d.y -= y *= l;
+                                quad.data.x += x;
+                                quad.data.y += y;
+                            }
+                        }
+                        return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
+                    });
+                };
+            };
+
+
+            circles
+                .each(handleColision(.5))
+                .attr("cx", function(d) {
+
+                    return d.x;
+                })
+                .attr("cy", function(d) {
+
+                    return d.y;
+                })
+                .attr("r", function (d) {
+
+
+                    return d.r + 15;
+                })
+
+            ;
+
+        }
+
+        self.clusterSimulation
+            .on("tick", clusterTicked);
     },
 
     // draw nodes
@@ -434,207 +512,85 @@ ClusterNetworkGraph.prototype = {
         myNodes = self.nodeGroup.selectAll(".data-node");
         var myLinks = self.linkGroup.selectAll(".link");
         var circles = this.clusterCircleGroup.selectAll(".clusterCircle");
-        var CLUSTER_RADIUS = 60;
 
         function innerNetworkTicked(){
-            var handleCollision = function collide(alpha) {
 
-                var nodeArr = self.clusters;
-                var padding = 40;
-                var clusterPadding = CLUSTER_RADIUS; // separation between different-color circles
-                var quadtree = d3.quadtree()
-                    .x(function (d) {
+            var pythagFunction = function pythag(bigR, r, b, coord) {
 
-                        d.forEach(function (i) {
-                           if (isNaN(i.x) ) {
-                               i.x = self.width / 2;
-                           }
-                        });
+                var margin = 30,
+                    w = 500 - margin * 2,
+                    radius = bigR,
+                    strokeWidth = 4,
+                    hyp2 = Math.pow(radius, 2),
+                    nodeBaseRad = 5;
 
-                        // cluster center x and y
-                        d.x = d3.mean(d, function (innerNode) {
-                            return innerNode.x;
-                        });
+                r += nodeBaseRad;
 
-                        if (isNaN(d.x)) {
-                            debugger;
-                        }
+                // force use of b coord that exists in circle to avoid sqrt(x<0)
+                b = Math.min(w - r - strokeWidth, Math.max(r + strokeWidth, b));
 
-                        d.x = Math.max(d.r, Math.min(self.width - d.r, d.x));
+                var b2 = Math.pow((b - radius), 2),
+                    a = Math.sqrt(hyp2 - b2);
 
+                // radius - sqrt(hyp^2 - b^2) < coord < sqrt(hyp^2 - b^2) + radius
+                coord = Math.max(radius - a + r + strokeWidth,
+                    Math.min(a + radius - r - strokeWidth, coord));
 
-                        return d.x;
-                    })
-                    .y(function (d) {
-
-                        d.forEach(function (i) {
-                            if (isNaN(i.y)) {
-                                i.y = self.height / 2;
-                            }
-                        });
-
-                        d.y = d3.mean(d, function (innerNode) {
-                            return innerNode.y;
-                        });
-
-                        if (isNaN(d.y)) {
-                            debugger;
-                        }
-
-                        d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
-
-
-                        return d.y;
-                    })
-                    .addAll(nodeArr);
-
-                return function(d) {
-
-                    let x = d.x;
-                    let y = d.y;
-                    // compute cluster radius
-                    // var radius = d3.max(d, (node) => {
-                    //     return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
-                    //     //  + radiusScale(node.hits);
-                    // });
-
-                    // d.r = 100;
-
-
-                    // avoid collision
-                    var r = d.r ,
-                        nx1 = d.x - r,
-                        nx2 = d.x + r,
-                        ny1 = d.y - r,
-                        ny2 = d.y + r;
-                    quadtree.visit(function(quad, x1, y1, x2, y2) {
-
-                        // debugger;
-                        if (quad.data && (quad.data !== d)) {
-                            var x = d.x - quad.data.x,
-                                y = d.y - quad.data.y,
-                                l = Math.sqrt(x * x + y * y),
-                                r = d.r + quad.data.r + (d.cluster === quad.data.cluster ? padding : clusterPadding);
-                            if (l < r) {
-                                l = (l - r) / l * alpha;
-                                d.x -= x *= l;
-                                d.y -= y *= l;
-                                quad.data.x += x;
-                                quad.data.y += y;
-                            }
-                        }
-                        return x1 > nx2 || x2 < nx1 || y1 > ny2 || y2 < ny1;
-                    });
-                };
+                return coord;
             };
 
-            // from x and y of nodes, calculate cluster circle center
-            var updateCoordinates = handleCollision(.5);
-
-
-            circles
-                .each(function (d) {
-                    if (d == null || d == undefined) {
-                        debugger;
-                        return;
-                    }
-
-                    updateCoordinates(d);
-                })
-                .attr("cx", function(d) {
-                        if (isNaN(d.x)) {
-                            d.x = self.width / 2;
-                        }
-                    //compute from all nodes within the cluster
-                    // if(!!self.nodeGroup) {
-                    //     d.x = d3.mean(d, function (innerNode) {
-                    //         return innerNode.x;
-                    //     });
-                    // }
-                    //
-                    //
-                    // d.x = Math.max(d.r, Math.min(self.width - d.r, d.x));
-
-                    return d.x;
-                })
-                .attr("cy", function(d) {
-                    if (isNaN(d.y)) {
-                        d.y = self.height / 2;
-                    }
-                    // if(!!self.nodeGroup) {
-                    //     d.y = d3.mean(d, function (innerNode) {
-                    //         return innerNode.y;
-                    //     });
-                    // }
-                    //
-                    // d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
-
-                    return d.y;
-                })
-                .attr("r", function (d) {
-                    if (d == null) {
-                        debugger;
-                        return 0;
-                    }
-                    // var x = Number(d3.select(this).attr("cx"));
-                    // var y = Number(d3.select(this).attr("cy"));
-                    //
-                    // var circlePadding = 10;
-                    //
-                    // var radius = d3.max(d, (node) => {
-                    //     return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
-                    //     //  + radiusScale(node.hits);
-                    // });
-                    //
-                    // if (!radius) {
-                    //     return 100;
-                    // }
-                    //
-                    // d.r = radius + circlePadding;
-                    // d.r = CLUSTER_RADIUS;
-
-                    return d.r + 15;
-                })
-
-            ;
-
             myNodes
-                .each(function (d) {
-                    let cluster = self.clusters[d.cluster];
-                    let distance = Math.sqrt(Math.pow((d.x - cluster.x), 2) + Math.pow((d.y - cluster.y), 2));
-                    if (!!d.prex && (distance > (cluster.r - d.r))) {
-                        d.x = d.prex;
-                        d.y = d.prey;
-                    }
-
-                    d.x = Math.max(cluster.x - cluster.r + d.r, Math.min(cluster.x + cluster.r - d.r, d.x));
-                    d.y = Math.max(cluster.y - cluster.r + d.r, Math.min(cluster.y + cluster.r - d.r, d.y));
-
-                    d.prex = d.x;
-                    d.prey = d.y;
-
-                    // console.log(d);
-                })
-                .attr("cx", function(d){
-                    // svg boundaries
-                    d.x = Math.max(d.r, Math.min(self.height - d.r, d.x));
-
-                    // cluster circle boundary:
-
+                .attr('cx', function (d) {
+                    // let cluster = self.clusters[d.cluster];
+                    // return d.x = pythagFunction(cluster.r, d.r, d.y, d.x);
 
                     return d.x;
                 })
-                .attr("cy", function(d){
-                    // svg boundary
-                    d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
-
+                .attr('cy', function (d) {
+                    // let cluster = self.clusters[d.cluster];
+                    //
+                    // return d.y = pythagFunction(cluster.r, d.r, d.x, d.y);
 
                     return d.y;
-                })
-                .attr("r", function (d) {
-                    return d.r;
-                })
-            ;
+                });
+
+            // myNodes
+            //     // .each(function (d) {
+            //     //     let cluster = self.clusters[d.cluster];
+            //     //     let distance = Math.sqrt(Math.pow((d.x - cluster.x), 2) + Math.pow((d.y - cluster.y), 2));
+            //     //     if (!!d.prex && (distance > (cluster.r - d.r))) {
+            //     //         d.x = d.prex;
+            //     //         d.y = d.prey;
+            //     //     }
+            //     //
+            //     //     d.x = Math.max(cluster.x - cluster.r + d.r, Math.min(cluster.x + cluster.r - d.r, d.x));
+            //     //     d.y = Math.max(cluster.y - cluster.r + d.r, Math.min(cluster.y + cluster.r - d.r, d.y));
+            //     //
+            //     //     d.prex = d.x;
+            //     //     d.prey = d.y;
+            //     //
+            //     //     // console.log(d);
+            //     // })
+            //     .attr("cx", function(d){
+            //         // svg boundaries
+            //         d.x = Math.max(d.r, Math.min(self.height - d.r, d.x));
+            //
+            //         // cluster circle boundary:
+            //
+            //
+            //         return d.x;
+            //     })
+            //     .attr("cy", function(d){
+            //         // svg boundary
+            //         d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
+            //
+            //
+            //         return d.y;
+            //     })
+            //     .attr("r", function (d) {
+            //         return d.r;
+            //     })
+            // ;
 
             myLinks
                 .style("stroke", (d) => {
