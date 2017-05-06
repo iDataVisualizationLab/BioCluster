@@ -70,6 +70,13 @@ mutiPlanes.setupContainer = function () {
     ;
 };
 mutiPlanes.clear = function () {
+    for(var i=0; i< this.myNetworks.length; i++) {
+        let nw = this.myNetworks[i];
+        if (typeof nw.clear === 'function') {
+            nw.clear();
+        }
+    }
+
     d3.select("#multi-plane-representation").selectAll('*').remove();
 };
 

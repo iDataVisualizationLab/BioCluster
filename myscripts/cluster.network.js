@@ -278,6 +278,18 @@ ClusterNetworkGraph.prototype = {
         }
     },
 
+    clear: function () {
+
+        this.clusterCircleGroup.remove();
+        this.linkGroup.remove();
+        this.nodeGroup.remove();
+        this.svg.clear();
+
+        this.nodes = [];
+        this.links = [];
+        this.clusters = [];
+    },
+
     drawGraph: function() {
         this.drawClusters();
         this.drawNodes();
@@ -327,6 +339,10 @@ ClusterNetworkGraph.prototype = {
                 n.fx = n.x;
                 n.fy = n.y;
             });
+
+            if (isNaN(d.x)) {
+                debugger;
+            }
         }
 
         function dragged(d)
@@ -338,6 +354,10 @@ ClusterNetworkGraph.prototype = {
                 n.fx += d3.event.dx;
                 n.fy += d3.event.dy;
             });
+
+            if (isNaN(d.x)) {
+                debugger;
+            }
         }
 
         function dragended(d)
@@ -353,7 +373,11 @@ ClusterNetworkGraph.prototype = {
             d.forEach((n) => {
                 n.fx = null;
                 n.fy = null;
-            })
+            });
+
+            if (isNaN(d.x)) {
+                debugger;
+            }
         }
     },
 
@@ -396,10 +420,10 @@ ClusterNetworkGraph.prototype = {
                 })
                 .style("fill-opacity", 1)
 
-                .call(d3.drag()
-                    .on("start", handleDrageStarted)
-                    .on("drag", handleDragged)
-                    .on("end", handleDraggedEnded))
+                // .call(d3.drag()
+                //     .on("start", handleDrageStarted)
+                //     .on("drag", handleDragged)
+                //     .on("end", handleDraggedEnded))
             ;
 
         myNodes.exit().remove();
