@@ -107,6 +107,8 @@ ClusterNetworkGraph.prototype = {
             }
         });
 
+        var self = this;
+
         // make sure each node has its cluster
         this.nodes.forEach(function (n) {
 
@@ -114,11 +116,21 @@ ClusterNetworkGraph.prototype = {
                 n.r = 4;
             }
 
+            if (!n.x) {
+                n.x = self.watch / 2;
+            }
+
+            if (!n.y) {
+                n.y = self.height / 2;
+            }
+
             if (!!n.cluster) {
                 return;
             }
 
             n.cluster = n.community;
+
+
         });
 
         this.clusterCount = 1 + d3.max(this.nodes, function (d) {
@@ -396,10 +408,7 @@ ClusterNetworkGraph.prototype = {
 
         myNodes = self.nodeGroup.selectAll(".data-node");
         var myLinks = self.linkGroup.selectAll(".link");
-        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").filter(function (d) {
-            debugger;
-            return !!d;
-        });
+        var circles = this.clusterCircleGroup.selectAll(".clusterCircle");
         var CLUSTER_RADIUS = 60;
 
         function innerNetworkTicked(){
@@ -410,10 +419,25 @@ ClusterNetworkGraph.prototype = {
                 var clusterPadding = CLUSTER_RADIUS; // separation between different-color circles
                 var quadtree = d3.quadtree()
                     .x(function (d) {
+
+                        d.forEach(function (i) {
+                           if (isNaN(i.x) ) {
+                               i.x = self.width / 2;
+                           }
+
+                           if (isNaN(i.y)) {
+                               i.y = self.height / 2;
+                           }
+                        });
+
                         // cluster center x and y
                         d.x = d3.mean(d, function (innerNode) {
                             return innerNode.x;
                         });
+
+                        if (isNaN(d.x)) {
+                            debugger;
+                        }
 
                         d.x = Math.max(d.r, Math.min(self.width - d.r, d.x));
 
@@ -424,6 +448,10 @@ ClusterNetworkGraph.prototype = {
                         d.y = d3.mean(d, function (innerNode) {
                             return innerNode.y;
                         });
+
+                        if (isNaN(d.y)) {
+                            debugger;
+                        }
 
                         d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
 
@@ -473,16 +501,33 @@ ClusterNetworkGraph.prototype = {
             };
 
 
-            circles = circles.filter(function (d) {
-                return d != null;
-            });
+            // set x and y for nodes
+            myNodes
+                .attr("cx", function(d){
+                    // svg boundaries
+                    d.x = Math.max(d.r, Math.min(self.height - d.r, d.x));
 
+                    // cluster circle boundary:
+
+
+                    return d.x;
+                })
+                .attr("cy", function(d){
+                    // svg boundary
+                    d.y = Math.max(d.r, Math.min(self.height - d.r, d.y));
+
+
+                    return d.y;
+                })
+            ;
+
+            // from x and y of nodes, calculate cluster circle center
             var updateCoordinates = handleCollision(.5);
 
 
             circles
                 .each(function (d) {
-                    if (d == null) {
+                    if (d == null || d == undefined) {
                         debugger;
                         return;
                     }
@@ -490,9 +535,8 @@ ClusterNetworkGraph.prototype = {
                     updateCoordinates(d);
                 })
                 .attr("cx", function(d) {
-                        if (d == null) {
+                        if (isNaN(d.x)) {
                             debugger;
-                            return 0;
                         }
                     //compute from all nodes within the cluster
                     // if(!!self.nodeGroup) {
@@ -507,9 +551,8 @@ ClusterNetworkGraph.prototype = {
                     return d.x;
                 })
                 .attr("cy", function(d) {
-                    if (d == null) {
+                    if (isNaN(d.y)) {
                         debugger;
-                        return 0;
                     }
                     // if(!!self.nodeGroup) {
                     //     d.y = d3.mean(d, function (innerNode) {
