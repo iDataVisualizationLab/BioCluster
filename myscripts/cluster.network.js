@@ -539,6 +539,14 @@ ClusterNetworkGraph.prototype = {
                 return coord;
             };
 
+            let cl;
+            for(let i=0; i< self.clusters.length; i++) {
+                cl = self.clusters[i];
+                if (!cl.x || !cl.y || !cl.r) {
+                    return;
+                }
+            }
+
             myNodes
                 .attr('cx', function (d) {
                     // let cluster = self.clusters[d.cluster];
