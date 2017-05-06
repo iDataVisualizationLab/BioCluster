@@ -187,7 +187,7 @@ ClusterNetworkGraph.prototype = {
         this.linkGroup = this.svg.append("g")
             .attr("class", "linkGroup");
         this.nodeGroup = this.svg.append("g")
-            .attr("class", "nodeGroup")
+            .attr("class", "nodeGroup");
 
         this._isDragging = false;
 
@@ -397,6 +397,7 @@ ClusterNetworkGraph.prototype = {
         myNodes = self.nodeGroup.selectAll(".data-node");
         var myLinks = self.linkGroup.selectAll(".link");
         var circles = this.clusterCircleGroup.selectAll(".clusterCircle").filter(function (d) {
+            debugger;
             return !!d;
         });
         var CLUSTER_RADIUS = 60;
