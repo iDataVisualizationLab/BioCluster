@@ -395,7 +395,7 @@ ClusterNetworkGraph.prototype = {
         var CLUSTER_RADIUS = 60;
 
         function innerNetworkTicked(){
-            var handleColission = function collide(alpha) {
+            var handleCollision = function collide(alpha) {
 
                 var nodeArr = self.clusters;
                 var padding = 40;
@@ -465,8 +465,16 @@ ClusterNetworkGraph.prototype = {
             };
 
 
+            var updateCoordinates = handleCollision(.5);
             circles
-                .each(handleColission(.5))
+                .each(function (d) {
+                    if (d == null) {
+                        debugger;
+                        return;
+                    }
+
+                    updateCoordinates(d);
+                })
                 .attr("cx", function(d) {
 
                     //compute from all nodes within the cluster
