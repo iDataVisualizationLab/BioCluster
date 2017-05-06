@@ -308,6 +308,8 @@ ClusterNetworkGraph.prototype = {
 
         var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters);
 
+        circles.exit().remove();
+
         circles
                 .enter().append("circle")
                 .attr("class", "clusterCircle")
@@ -322,7 +324,6 @@ ClusterNetworkGraph.prototype = {
             // .call(self.clusterSimulation.drag)
         ;
 
-        circles.exit().remove();
 
 
         function dragstarted(d)
@@ -409,6 +410,7 @@ ClusterNetworkGraph.prototype = {
 
         var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes);
 
+        myNodes.exit().remove();
 
         myNodes.enter().append("circle")
                 .attr("class", function (d) {
@@ -426,7 +428,6 @@ ClusterNetworkGraph.prototype = {
                 //     .on("end", handleDraggedEnded))
             ;
 
-        myNodes.exit().remove();
 
         self.drawLinks();
 
