@@ -254,13 +254,15 @@ ClusterNetworkGraph.prototype = {
     },
 
     stop: function () {
-        debugger;
         if (this.simulation != null) {
             this.simulation.alphaTarget(0);
+            this.simulation.stop();
         }
 
         if (this.clusterSimulation) {
             this.clusterSimulation.alphaTarget(0);
+            this.clusterSimulation.stop();
+
         }
     },
 
@@ -470,10 +472,12 @@ ClusterNetworkGraph.prototype = {
             };
 
 
-            var updateCoordinates = handleCollision(.5);
             circles = circles.filter(function (d) {
                 return d != null;
             });
+
+            var updateCoordinates = handleCollision(.5);
+
 
             circles
                 .each(function (d) {
