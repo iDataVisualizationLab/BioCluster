@@ -269,7 +269,9 @@ ClusterNetworkGraph.prototype = {
             return self.clusterColor(d[0].cluster);
         }
 
-        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters)
+        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").data(clusters);
+
+        circles
                 .enter().append("circle")
                 .attr("class", "clusterCircle")
                 .style("fill", getFill)
@@ -281,8 +283,10 @@ ClusterNetworkGraph.prototype = {
                     .on("drag",dragged)
                     .on("end",dragended))
             // .call(self.clusterSimulation.drag)
-
         ;
+
+        circles.exit().remove();
+
 
         function dragstarted(d)
         {
@@ -326,22 +330,6 @@ ClusterNetworkGraph.prototype = {
                 n.fy = null;
             })
         }
-
-        function clusterTicked(){
-
-
-
-
-
-
-            // circles.each(handleClission(.5));
-
-
-        }
-        //
-        // self.clusterSimulation
-        //     .on("tick", clusterTicked);
-
     },
 
     // draw nodes
@@ -370,8 +358,10 @@ ClusterNetworkGraph.prototype = {
             self.simulation.alphaTarget(0.1);
         };
 
-        var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes)
-                .enter().append("circle")
+        var myNodes = this.nodeGroup.selectAll(".data-node").data(this.nodes);
+
+
+        myNodes.enter().append("circle")
                 .attr("class", function (d) {
                     return "data-point data-node data-node-cluster-" + d.cluster;
                 })
@@ -387,9 +377,11 @@ ClusterNetworkGraph.prototype = {
                     .on("end", handleDraggedEnded))
             ;
 
+        myNodes.exit().remove();
 
         self.drawLinks();
 
+        myNodes = self.nodeGroup.selectAll(".data-node");
         var myLinks = self.linkGroup.selectAll(".link");
         var circles = this.clusterCircleGroup.selectAll(".clusterCircle");
         var CLUSTER_RADIUS = 60;
