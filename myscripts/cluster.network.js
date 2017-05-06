@@ -253,6 +253,17 @@ ClusterNetworkGraph.prototype = {
         return this.clusterColors[cluster];
     },
 
+    stop: function () {
+        debugger;
+        if (this.simulation != null) {
+            this.simulation.alphaTarget(0);
+        }
+
+        if (this.clusterSimulation) {
+            this.clusterSimulation.alphaTarget(0);
+        }
+    },
+
     drawGraph: function() {
         this.drawClusters();
         this.drawNodes();
@@ -383,7 +394,9 @@ ClusterNetworkGraph.prototype = {
 
         myNodes = self.nodeGroup.selectAll(".data-node");
         var myLinks = self.linkGroup.selectAll(".link");
-        var circles = this.clusterCircleGroup.selectAll(".clusterCircle");
+        var circles = this.clusterCircleGroup.selectAll(".clusterCircle").filter(function (d) {
+            return !!d;
+        });
         var CLUSTER_RADIUS = 60;
 
         function innerNetworkTicked(){
@@ -458,6 +471,10 @@ ClusterNetworkGraph.prototype = {
 
 
             var updateCoordinates = handleCollision(.5);
+            circles = circles.filter(function (d) {
+                return d != null;
+            });
+
             circles
                 .each(function (d) {
                     if (d == null) {
@@ -468,7 +485,10 @@ ClusterNetworkGraph.prototype = {
                     updateCoordinates(d);
                 })
                 .attr("cx", function(d) {
-
+                        if (d == null) {
+                            debugger;
+                            return 0;
+                        }
                     //compute from all nodes within the cluster
                     // if(!!self.nodeGroup) {
                     //     d.x = d3.mean(d, function (innerNode) {
@@ -482,6 +502,10 @@ ClusterNetworkGraph.prototype = {
                     return d.x;
                 })
                 .attr("cy", function(d) {
+                    if (d == null) {
+                        debugger;
+                        return 0;
+                    }
                     // if(!!self.nodeGroup) {
                     //     d.y = d3.mean(d, function (innerNode) {
                     //         return innerNode.y;
@@ -493,6 +517,10 @@ ClusterNetworkGraph.prototype = {
                     return d.y;
                 })
                 .attr("r", function (d) {
+                    if (d == null) {
+                        debugger;
+                        return 0;
+                    }
                     // var x = Number(d3.select(this).attr("cx"));
                     // var y = Number(d3.select(this).attr("cy"));
                     //

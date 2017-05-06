@@ -61,6 +61,8 @@ mutiPlanes.interactionTypeNetworks = {
     // }
 };
 
+mutiPlanes.myNetworks = [];
+
 mutiPlanes.setupContainer = function () {
     d3.select('body').select('#multi-plane-representation')
         .style("width", CONTAINER_WIDTH)
@@ -205,6 +207,7 @@ mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphH
     var tmpNetwork;
     var mySvg ;
     var text;
+
     for(var key in contextNetworks)  {
         if (!contextNetworks.hasOwnProperty(key)) {
             continue;
@@ -230,7 +233,7 @@ mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphH
             .style("fill", "none")
             .style("stroke-width", 1);
 
-        this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
+        this.myNetworks.push(this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork));
 
         mySvg.append('text')
             .attr('class', "my-network-label")
@@ -255,7 +258,12 @@ mutiPlanes.runNetwork = function (graphWidth, graphHeight) {
     }
 
     console.log("Run and display the network ");
-
+    for(var i=0; i< this.myNetworks.length; i++) {
+        let nw = this.myNetworks[i];
+        if (typeof nw.stop === 'function') {
+            nw.stop();
+        }
+    }
 
     this.renderContextNetworks(this.interactionTypeNetworks, graphWidth, graphHeight, {});
     // d3.select("#multi-plane-representation").append("br");
@@ -324,6 +332,8 @@ mutiPlanes.printNetwork = function (network) {
          ontickCallback: cb,
          simulationEndCallback: cb
      });
+
+     return fd2;
  };
 
 //
