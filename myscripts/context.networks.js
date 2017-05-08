@@ -314,20 +314,7 @@ mutiPlanes.printNetwork = function (network) {
              });
      };
 
-     // var fd = new ForceDirectedGraph( {
-     //     svg: svg,
-     //     width: svgWidth,
-     //     height: svgHeight,
-     //     nodes: network.nodes,
-     //     links: network.links,
-     //     options: {
-     //         linkColors: getLinkColorMapping()
-     //     },
-     //     ontickCallback: cb,
-     //     simulationEndCallback: cb
-     // });
-
-     var fd2 = new ClusterNetworkGraph( {
+     var fd = new ForceDirectedGraph( {
          svg: svg,
          width: svgWidth,
          height: svgHeight,
@@ -340,7 +327,20 @@ mutiPlanes.printNetwork = function (network) {
          simulationEndCallback: cb
      });
 
-     return fd2;
+     // var fd = new ClusterNetworkGraph( {
+     //     svg: svg,
+     //     width: svgWidth,
+     //     height: svgHeight,
+     //     nodes: network.nodes,
+     //     links: network.links,
+     //     options: {
+     //         linkColors: getLinkColorMapping()
+     //     },
+     //     ontickCallback: cb,
+     //     simulationEndCallback: cb
+     // });
+
+     return fd;
  };
 
 //
