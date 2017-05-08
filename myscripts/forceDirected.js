@@ -61,7 +61,7 @@ function ForceDirectedGraph(args) {
       (this.height / 2)
     ));
 
-  // update graph
+    // update graph
   this.drawGraph();
 };
 
@@ -462,6 +462,24 @@ ForceDirectedGraph.prototype = {
     ;
 
       circles.exit().remove();
+
+      var link_force =  d3.forceLink()
+              .id(function(d) {
+
+                  return d.index;
+              })
+              .distance(100)
+          ;
+      self.clusterSimulation = d3.forceSimulation(clusters)
+          .force("charge", d3.forceManyBody().strength(-500))
+          .force("links", link_force)
+          // .force("collisionForce", d3.forceCollide(50).strength(1))
+          .force("center", d3.forceCenter(
+              (this.width / 2),
+              (this.height / 2)
+          ))
+          // .on('tick', onTick)
+      ;
 
   },
 
