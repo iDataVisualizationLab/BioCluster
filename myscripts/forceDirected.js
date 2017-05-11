@@ -184,30 +184,6 @@ ForceDirectedGraph.prototype = {
         }
     }
 
-
-    // createSVGLinearGradient([
-    //   '#fee08b',
-    //   '#fdae61',
-    //   '#f46d43',
-    //   '#d73027',
-    //     '#222222'
-    // ], 'red', defs);
-    //
-    // // createSVGLinearGradient([
-    // //   '#d9ef8b',
-    // //   '#a6d96a',
-    // //   '#66bd63',
-    // //   '#1a9850'
-    // // ], 'green', defs);
-    //
-    //   createSVGLinearGradient([
-    //       '#d9ef8b',
-    //       '#a6d96a',
-    //       '#66bd63',
-    //       '#1a9850',
-    //       '#222222'
-    //   ], 'green', defs);
-
     this.clusterCircleGroup = this.svg.append("g")
       .attr("class", "clusterGroup");
     this.linkGroup = this.svg.append("g")
@@ -221,92 +197,8 @@ ForceDirectedGraph.prototype = {
     this.tip = d3.select('#forceDirectedDiv').append('div').attr('id', 'tip');
   },
 
-  resize:function() {
-    var rect = this.svg.node().parentNode.getBoundingClientRect();
-    if (rect.width && rect.height) {
-      this.width = rect.width;
-      this.height = rect.height;
-    }
-
-    this.svg
-      .attr('width', this.width)
-      .attr('height', this.height);
-
-    this.aspect = this.width / this.height;
-    this.width = 901;
-    this.height = this.width / this.aspect;
-
-    this.svg.attr("viewBox", "0 0 " + this.width + " " + this.height);
-
-    this.svg.select('rect')
-      .attr('width', this.width)
-      .attr('height', this.height);
-
-    // reheat simulation
-    if (this.simulation) {
-      this.simulation
-        .force("center", d3.forceCenter(
-          (this.width / 2),
-          (this.height / 2)
-          ));
-
-      this.simulation.alpha(0.3).restart();
-    }
-  },
-  zoomed: function() {
-    this.transform = d3.event.transform;
-    this.nodeGroup.attr("transform", this.transform);
-    this.linkGroup.attr("transform", this.transform);
-    this.clusterCircleGroup.attr("transform", this.transform);
-  },
-  showTip: function(d, type) {
-    // this.tip.selectAll('*').remove();
-    // this.tip.transition().style('opacity',1);
 
 
-
-  },
-  hideTip: function() {
-    // this.tip.transition().style('opacity',0);
-  },
-
-  // process data into nodes & links where links have magnitude > 0
-  // filterData: function(data) {
-  //   var filteredData = {};
-  //   var links = [];
-  //
-  //   for (var key in data) {
-  //     var newNode = {
-  //       hits: data[key].hits,
-  //       name: data[key].name,
-  //       inf: data[key].inf.filter(l => l.flux !== 0),
-  //       outf: data[key].outf.filter(l => l.flux !== 0)
-  //     };
-  //
-  //     links = _.concat(links, this.extractLinksFromNode(newNode, key));
-  //
-  //     if (newNode.inf.length > 0 || newNode.outf.length > 0) {
-  //       filteredData[key] = newNode;
-  //     }
-  //   }
-  //
-  //   this.filteredData = filteredData;
-  //   this.links = links;
-  // },
-  //
-  // extractLinksFromNode: function(node, name) {
-  //   let nodeLinks = [];
-  //
-  //   node.inf.forEach(l => {
-  //     nodeLinks.push({
-  //       source: name,
-  //       target: l.name,
-  //       value: l.flux
-  //     });
-  //   });
-  //
-  //   return nodeLinks;
-  // },
 
   // cluster data based on threshold(s) of influence
   defineClusters: function(alpha) {
@@ -443,22 +335,6 @@ ForceDirectedGraph.prototype = {
           //     .style("stroke-dasharray", null);
           // })
         }) )
-        .on('click', function(d) {
-          // unpin cluster and its nodes
-          // let cluster = this;
-
-        //   d.forEach((n) => {
-        //     // pin cluster nodes on cluster drag end (testing out how this feels)
-        //     n._fixed = false;
-        //     n.fx = n.fy = null;
-        //
-        //     d3.selectAll('.data-node')
-        //       .style('stroke', (d) => d._fixed ? "#404040" : "white");
-        //
-        //     d3.select(cluster)
-        //       .style("stroke-dasharray", "2, 2");
-        //   })
-        })
     ;
 
       circles.exit().remove();
@@ -523,73 +399,8 @@ ForceDirectedGraph.prototype = {
       .attr("transform", (d, i) => {
         return "translate(" + d.x + ", " + d.y + ")";
       })
-    .merge(rule)
       .attr("cluster", d => d.cluster)
       .attr("r", d => d.radius)
-      // .attr("pointer-events", (d) => {
-      //   if(App.property.node == true && d.cluster === 0) {
-      //     return 'none';
-      //   }
-      //   else return 'all';
-      // })
-      // .style("opacity", (d) => {
-      //   if( App.property.node == true && d.cluster === 0) {
-      //     return 0;
-      //   }
-      //   else return 1;
-      // })
-      // .style('stroke-opacity', (d) => {
-      //   if( App.property.node == true && d.cluster === 0) {
-      //     return 0;
-      //   }
-      //   else return 0.5;
-      // })
-      .on('mouseover', this._isDragging ? null : function(d) {
-        self.showTip(d, 'rule');
-
-        self.linkGroup.selectAll('.link-1')
-          .style('stroke-opacity',function() {
-            var opacity = d3.select(this).style('stroke-opacity');
-            return Math.min(0.4, opacity);
-          });
-
-        self.linkGroup.selectAll(".link-2").filter(function(link) {
-          return link.source.name === d.name;
-        })
-          .style('stroke-opacity', 0.6);
-      })
-      .on("mouseout", function() {
-        self.updateEdgeVisibility();
-
-        self.linkGroup.selectAll(".link-2")
-          .style('stroke-opacity', 0).interrupt();
-        self.hideTip();
-
-      })
-      .on('contextmenu', function(d) {
-        d3.event.preventDefault();
-        d3.select('.node-to-graph')
-          .classed('node-to-graph',false);
-        d3.select(this)
-          .classed('node-to-graph',true);
-        d3.select('#linegraph-help').style('display','none');
-        // if (App.panels.topVis) { App.panels.topVis.updateRule(d); }
-        // if (App.panels.bottomVis) { App.panels.bottomVis.updateRule(d); }
-        // if (App.panels.focusSlider) { App.panels.focusSlider.update(); }
-      })
-      .on('click', function(d) {
-        // if painting mode, add node to paintedClusters
-        // if (self.paintingManager.isPaintingCluster()) {
-        //   self.paintingManager.addNodeToPaintingCluster(d);
-        // }
-        // else {
-        //   d3.select(this)
-        //     .style("fill", (d) => self.clusterColor(d.cluster))
-        //     .style("stroke", "white");
-        //     d.fx = d.fy = null;
-        //     d._fixed = false;
-        // }
-      })
       .call(drag);
 
     // remove as needed
@@ -626,16 +437,6 @@ ForceDirectedGraph.prototype = {
   },
 
   clusterColor: function(cluster) {
-    // if (cluster === 0) {
-    //   return '#222';
-    // }
-    //
-    // if (!this.clusterColors) {
-    //   return d3.scaleOrdinal(d3.schemeCategory10)
-    //     .domain(d3.range(1,10))
-    //     (cluster);
-    // }
-
     return this.clusterColors[cluster];
   },
 
