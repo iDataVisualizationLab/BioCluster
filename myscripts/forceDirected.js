@@ -48,14 +48,9 @@ function ForceDirectedGraph(args) {
   let nodes = this.nodes;
   // set up simulation
   this.simulation = d3.forceSimulation()
-    .force("collision", d3.forceCollide(22))
-    .force("charge", d3.forceManyBody()
-      .strength(-Math.pow(150, nodes.length > 30 ? 1 : 1.2))
-      .distanceMax(Math.min(this.width, this.height)/4))
-    .force("center", d3.forceCenter(
-      (this.width / 2),
-      (this.height / 2)
-    ));
+    // .force("collision", d3.forceCollide(22))
+    .force("charge", d3.forceManyBody().strength(-50))
+    .force("center", d3.forceCenter(this.width / 2, this.height / 2));
 
     // update graph
   this.drawGraph();
@@ -241,11 +236,6 @@ ForceDirectedGraph.prototype = {
     //
     this.clusterColors = newColors;
     this.clusters = clusters;
-
-    if (this.simulation && alpha !== 0) {
-      this.simulation.alpha(alpha || 0.15).restart();
-    }
-
 
   },
     
@@ -580,16 +570,11 @@ ForceDirectedGraph.prototype = {
                 d.x = clampX(d.x);
                 d.y = clampY(d.y);
 
-            return (d3.select(el[i]).classed('data-text')) ?
-              "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")" :
-              "translate(" + d.x + "," + d.y + ")";
+            return "translate(" + d.x + "," + d.y + ")";
           });
 
       link
         .style("stroke", (d) => {
-            if( !d ) {
-                return;
-            }
 
           var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y;
@@ -610,32 +595,22 @@ ForceDirectedGraph.prototype = {
 
       self.clusterCircleGroup.selectAll(".clusterCircle")
         .attr("cx", (d) => {
-            if( !d) {
-                return;
-            }
 
           var ext = d3.extent(d, node => node.x);
-          if (isNaN(ext[0])  || isNaN(ext[1])) {
-              // console.log(d);
-          }
+          //
+          // return Math.max(25, Math.min(self.width-25, (ext[1] + ext[0]) / 2));
 
-          return Math.max(25, Math.min(self.width-25, (ext[1] + ext[0]) / 2));
-
-          // return (ext[1] + ext[0]) / 2;
+          return d.x = (ext[1] + ext[0]) / 2;
         })
         .attr("cy", (d) => {
-            if( !d) {
-                return;
-            }
-
           var ext = d3.extent(d, node => node.y);
-          if (isNaN(ext[0])  || isNaN(ext[1])) {
-            // console.log(d);
-          }
+          // if (isNaN(ext[0])  || isNaN(ext[1])) {
+          //   // console.log(d);
+          // }
+          //
+          //   return Math.max(25, Math.min(self.height-25, (ext[1] + ext[0]) / 2));
 
-            return Math.max(25, Math.min(self.height-25, (ext[1] + ext[0]) / 2));
-
-            // return (ext[1] + ext[0]) / 2;
+             return d.y = (ext[1] + ext[0]) / 2;
         })
         .attr("r", function(d) {
             if( !d) {
@@ -656,7 +631,7 @@ ForceDirectedGraph.prototype = {
             // console.log(d);
           }
 
-          return radius + circlePadding;
+          return d.r = (radius + circlePadding);
         });
 
 
