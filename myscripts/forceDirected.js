@@ -48,10 +48,6 @@ function ForceDirectedGraph(args) {
   let nodes = this.nodes;
   // set up simulation
   this.simulation = d3.forceSimulation()
-    .force("links",
-      d3.forceLink()
-        .id(d => d.index)
-    )
     .force("collision", d3.forceCollide(22))
     .force("charge", d3.forceManyBody()
       .strength(-Math.pow(150, nodes.length > 30 ? 1 : 1.2))
@@ -737,25 +733,25 @@ ForceDirectedGraph.prototype = {
               "l" + (2*nx+ny) + ',' + (2*ny-nx);
       }
     }
-
-    // simulation forces
-      var link_force =  d3.forceLink(this.links)
-                          .id(function(d) {
-
-                              return d.index;
-                          })
-                        .distance((d) => {
-
-                            return 8;
-                        })
-          ;
-
-
-
-    this.simulation.force("links", link_force)
-    // this.simulation.force("cluster", clustering)
-    //                .force("collision", collide)
-    ;
+    //
+    // // simulation forces
+    //   var link_force =  d3.forceLink(this.links)
+    //                       .id(function(d) {
+    //
+    //                           return d.index;
+    //                       })
+    //                     .distance((d) => {
+    //
+    //                         return 8;
+    //                     })
+    //       ;
+    //
+    //
+    //
+    // this.simulation.force("links", link_force)
+    // // this.simulation.force("cluster", clustering)
+    // //                .force("collision", collide)
+    // ;
 
 
     // Initial clustering forces:
