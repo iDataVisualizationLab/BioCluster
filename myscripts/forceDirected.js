@@ -408,7 +408,7 @@ ForceDirectedGraph.prototype = {
 
             d.forEach((n) => {
                 // pin cluster nodes on cluster drag end (testing out how this feels)
-                n._fixed = true;
+                // n._fixed = true;
                 n.fx = null;
                 n.fy = null;
 
@@ -726,17 +726,28 @@ ForceDirectedGraph.prototype = {
 
     // Initial clustering forces:
     function clustering(alpha) {
-      var clusters = self.clusters;
-      nodeArr.forEach(function(d) {
-        if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
+        let myCentroids = [];
+        let myCluster;
+        for(var i=0; i< self.clusters.length; i++) {
+            myCluster = self.clusters[i];
 
-        var cluster = clusters[d.cluster][0];
+            if (myCluster.length < 1) {
+                continue;
+            }
+
+            // debugger;
+            myCentroids.push(myCluster[0]);
+        }
+
+      let clusters = self.clusters;
+      nodeArr.forEach(function(d) {
+        let cluster = myCentroids[d.cluster];
         if (cluster === d) return;
         var x = d.x - cluster.x,
             y = d.y - cluster.y,
             l = Math.sqrt(x * x + y * y),
             r = d.radius + cluster.radius;
-        if (x === 0 && y === 0 || (isNaN(x) || isNaN(y))) return;
+        if (x === 0 && y === 0 || (isNaN(x) || isNaN(y)) || isNaN(l)) return;
         if (l !== r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
