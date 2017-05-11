@@ -767,34 +767,22 @@ ForceDirectedGraph.prototype = {
     var cluster = this.clusterCircleGroup.selectAll(".clusterCircle");
 
     function tick() {
-      if (self.simulation.alpha() < 0.3 && self.transform && self.transform.k < 1) { this.flagAlpha = true; }
-      if (!this.flagAlpha) {
-        node
-          .datum((d) => {
-            if (d == undefined || d == null) {
-                // debugger;
-                return;
-            }
-            var clampX = d3.scaleLinear()
-              .domain([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
-              .range([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
-              .clamp(true);
-
-            var clampY = d3.scaleLinear()
-              .domain([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
-              .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
-              .clamp(true);
-
-            d.x = clampX(d.x);
-            d.y = clampY(d.y);
-            return d;
-          });
-      }
 
       node.attr("transform", (d,i,el) => {
-          if( !d) {
-              return;
-          }
+
+                var clampX = d3.scaleLinear()
+                  .domain([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
+                  .range([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
+                  .clamp(true);
+
+                var clampY = d3.scaleLinear()
+                  .domain([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
+                  .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
+                  .clamp(true);
+
+                d.x = clampX(d.x);
+                d.y = clampY(d.y);
+
             return (d3.select(el[i]).classed('data-text')) ?
               "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")" :
               "translate(" + d.x + "," + d.y + ")";
