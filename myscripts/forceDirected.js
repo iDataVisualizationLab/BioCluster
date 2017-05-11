@@ -471,13 +471,15 @@ ForceDirectedGraph.prototype = {
               .distance(100)
           ;
       self.clusterSimulation = d3.forceSimulation(clusters)
-          .force("charge", d3.forceManyBody().strength(-500))
+          .force("charge", d3.forceManyBody().strength(10))
           .force("links", link_force)
           // .force("collisionForce", d3.forceCollide(50).strength(1))
           .force("center", d3.forceCenter(
               (this.width / 2),
               (this.height / 2)
           ))
+          .force('x_force', d3.forceX(this.width / 2).strength(0.5))
+          .force('y_force', d3.forceY(this.height / 2).strength(0.5))
           // .on('tick', onTick)
       ;
 
@@ -752,8 +754,13 @@ ForceDirectedGraph.prototype = {
       })
     ;
 
-    // modify the appearance of the nodes and links on tick
-    var node = this.nodeGroup.selectAll(".rule");
+
+    var node = this.nodeGroup.selectAll(".data-node")
+            .style("fill", function(d) {
+                return self.clusterColor(d.cluster);
+
+            })
+        ;
     var link = this.linkGroup.selectAll(".link");
     var text = this.nodeGroup.selectAll(".data-text");
 
@@ -783,27 +790,6 @@ ForceDirectedGraph.prototype = {
             return d;
           });
       }
-
-      node.filter('.data-node')
-          .style("fill", function(d, i) {
-              if (!d) {
-                  return;
-              }
-            return self.clusterColor(d.cluster);
-
-          })
-          // .style("stroke", function(d) {
-          //   return d.isPainted ? d.paintedCluster :
-          //     (d.hits === 0 ? "#000000" :
-          //       (d._fixed ? "#404040" : "white"));
-          // })
-          // .style("stroke-width", function(d) {
-          //   return d.isPainted ? 3 : 1.5;
-          // })
-          // .style("stroke-opacity", function(d) {
-          //   return d.isPainted ? 1 : 0.5;
-          // })
-        ;
 
       node.attr("transform", (d,i,el) => {
           if( !d) {
@@ -971,25 +957,16 @@ ForceDirectedGraph.prototype = {
                           })
                         .distance((d) => {
 
-                            let strengthScale = d3.scaleLinear()
-                                .domain([0, self.maxValue])
-                                .range([1,0.4])
-                                .clamp(true);
-
-                            if (d.value < 0) {
-                                return 25/strengthScale(-d.value);
-                            }
-                            else {
-                                return 25*strengthScale(d.value);
-                            }
+                            return 8;
                         })
           ;
 
 
 
-    this.simulation.force("links", link_force);
-    this.simulation.force("cluster", clustering)
-                   .force("collision", collide);
+    this.simulation.force("links", link_force)
+    // this.simulation.force("cluster", clustering)
+    //                .force("collision", collide)
+    ;
 
 
     // Initial clustering forces:
