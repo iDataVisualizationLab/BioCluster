@@ -119,9 +119,9 @@ var force2 = d3.forceSimulation()
         //     return d.x;
         // })
         // .force("y", d3.forceY((height-wMatrix) / 2))
-        .force("link", d3.forceLink().distance(20))
-        .force("gravity", d3.forceManyBody(0.1))
-        .force('charge', d3.forceManyBody().strength(-60))
+        .force("link", d3.forceLink().distance(70))
+        .force("gravity", d3.forceManyBody().strength(0.1))
+        .force('charge', d3.forceManyBody().strength(-120))
 
     ;
 // var force2 = d3.layout.force()
@@ -137,7 +137,7 @@ var forceLabel = d3.forceSimulation()
         .force("x", d3.forceX((width+www)/2))
         .force("y", d3.forceY((height+wMatrix) / 2))
         .force("link", d3.forceLink().distance(1).strength(5))
-        .force("gravity", d3.forceManyBody(0))
+        .force("gravity", d3.forceManyBody().strength(0))
         .force('charge', d3.forceManyBody().strength(-50))
 
     ;
