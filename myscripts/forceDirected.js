@@ -48,7 +48,7 @@ function ForceDirectedGraph(args) {
   let self = this;
   // set up simulation
   this.simulation = d3.forceSimulation(self.nodes)
-    .force("collision", d3.forceCollide(10))
+    .force("collision", d3.forceCollide(8))
     .force("charge", d3.forceManyBody().strength(-0.4))
     .force("center", d3.forceCenter(self.width / 2, self.height / 2));
     var endCb = self.simulationEndCallback ? self.simulationEndCallback : null;
@@ -750,7 +750,7 @@ ForceDirectedGraph.prototype = {
             y = d.y - cluster.y,
             l = Math.sqrt(x * x + y * y),
             r = d.radius + cluster.radius;
-        if (x === 0 && y === 0 || (isNaN(x) || isNaN(y))) return;
+        if (x === 0 && y === 0 || isNaN(l)|| isNaN(r) || (isNaN(x) || isNaN(y))) return;
         if (l !== r) {
           l = (l - r) / l * alpha;
           d.x -= x *= l;
