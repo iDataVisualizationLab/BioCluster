@@ -570,12 +570,14 @@ ForceDirectedGraph.prototype = {
           .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
           .clamp(true);
 
+      node.exit().remove();
+
     function tick() {
 
       node.attr("transform", (d,i,el) => {
-
-
-
+          if (!d){
+              return;
+          }
                 d.x = clampX(d.x);
                 d.y = clampY(d.y);
 
@@ -584,8 +586,11 @@ ForceDirectedGraph.prototype = {
 
       link
         .style("stroke", (d) => {
+            if (!d){
+                return;
+            }
 
-          var dx = d.target.x - d.source.x,
+            var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y;
 
             // if (!dx || !dy) {
@@ -604,15 +609,22 @@ ForceDirectedGraph.prototype = {
 
       self.clusterCircleGroup.selectAll(".clusterCircle")
         .attr("cx", (d) => {
+            if (!d){
+                return;
+            }
 
-          var ext = d3.extent(d, node => node.x);
+            var ext = d3.extent(d, node => node.x);
           //
           // return Math.max(25, Math.min(self.width-25, (ext[1] + ext[0]) / 2));
 
           return d.x = (ext[1] + ext[0]) / 2;
         })
         .attr("cy", (d) => {
-          var ext = d3.extent(d, node => node.y);
+            if (!d){
+                return;
+            }
+
+            var ext = d3.extent(d, node => node.y);
           // if (isNaN(ext[0])  || isNaN(ext[1])) {
           //   // console.log(d);
           // }
