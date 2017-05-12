@@ -365,6 +365,30 @@ ForceDirectedGraph.prototype = {
 
       circles.exit().remove();
 
+
+
+
+      /// new design
+
+
+      // node of each circle
+      // circles.each(function (items) {
+      //     debugger;
+      //     d3.select(this).selectAll(".inner-data-node").data(items).enter()
+      //         .append('circle')
+      //         .attr("class", "inner-data-node")
+      //         .attr("transform", (d, i) => {
+      //             return "translate(" + d.x + ", " + d.y + ")";
+      //         })
+      //         .attr("cluster", d => d.cluster)
+      //         .attr("r", d => d.radius)
+      // });
+      // d3.select(self.svg).selectAll('.cluster-group').data(self.clusters)
+      //     .enter().append("svg:g")
+      //     .attr("class", function (d) {
+      //         return "cluster-group " +
+      //     })
+
       // var link_force =  d3.forceLink()
       //         .id(function(d) {
       //
