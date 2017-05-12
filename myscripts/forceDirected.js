@@ -60,8 +60,8 @@ function ForceDirectedGraph(args) {
         ;
   // set up simulation
     this.simulation = d3.forceSimulation(self.nodes)
-        // .force("links", link_force)
-        .force("collision", d3.forceCollide(5))
+        .force("links", link_force)
+        .force("collision", d3.forceCollide(10))
         .force("charge", d3.forceManyBody().strength(-0.4))
         .force("center", d3.forceCenter(self.width / 2, self.height / 2))
     ;
@@ -373,9 +373,9 @@ ForceDirectedGraph.prototype = {
       //     ;
 
       // self.clusterSimulation = d3.forceSimulation(clusters)
-      //     .force("charge", d3.forceManyBody().strength(-10))
-      //     .force("links", link_force)
-      //     // .force("collisionForce", d3.forceCollide(50).strength(1))
+      //     .force("charge", d3.forceManyBody().strength(-100))
+      //     // .force("links", link_force)
+      //     .force("collisionForce", d3.forceCollide(50).strength(1))
       //     .force("center", d3.forceCenter(
       //         (this.width / 2),
       //         (this.height / 2)
@@ -386,8 +386,30 @@ ForceDirectedGraph.prototype = {
       //
       // var myClusters = this.clusterCircleGroup.selectAll(".clusterCircle");
       //
-      // function onClusterTick(e) {
+      // function onClusterTick() {
+      //     let alpha = this.alpha();
+      //     myClusters.each(moveClusterItems(alpha));
       //
+      //     myClusters
+      //     .attr("cx", (d) => {
+      //         return d.x;
+      //     })
+      //         .attr("cy", (d) => {
+      //             return d.y ;
+      //         });
+      //
+      //     function moveClusterItems(alpha) {
+      //
+      //         debugger;
+      //         return function (d) {
+      //
+      //             debugger;
+      //             d.forEach(function (i) {
+      //                 i.x += (d.x -i.x) * 0.1 * alpha;
+      //                 i.y += (d.y -i.y) * 0.1 * alpha;
+      //             });
+      //         }
+      //     }
       // }
 
   },
@@ -573,8 +595,14 @@ ForceDirectedGraph.prototype = {
       node.exit().remove();
 
     function tick() {
+        // function moveCluster(alpha) {
+        //     nodeArr.forEach(function (d) {
+        //
+        //     });
+        // }
+        // node.each(moveCluster(this.alpha()));
 
-      node.attr("transform", (d,i,el) => {
+        node.attr("transform", (d,i,el) => {
           if (!d){
               return;
           }
@@ -735,15 +763,15 @@ ForceDirectedGraph.prototype = {
     }
 
     self.simulation
-        // .alpha(0.3)
-        // .force("cluster", clustering)
-
+        // .alpha(0.4)
+        .force("cluster", clustering)
         .on("tick", tick)
     ;
 
 
     // Initial clustering forces:
     function clustering(alpha) {
+
       var clusterNodes = {};
       let myCluster;
       let firstNode;
@@ -764,10 +792,10 @@ ForceDirectedGraph.prototype = {
         var x = d.x - cluster.x,
             y = d.y - cluster.y,
             l = Math.sqrt(x * x + y * y),
-            r = d.radius + cluster.radius;
+            r = d.radius + cluster.radius + 10;
         if (x === 0 && y === 0 || isNaN(l)|| isNaN(r) || (isNaN(x) || isNaN(y))) return;
         if (l !== r) {
-          l = (l - r) / l * alpha;
+          l = (l - r) / l * alpha ;
           d.x -= x *= l;
           d.y -= y *= l;
           cluster.x += x;
