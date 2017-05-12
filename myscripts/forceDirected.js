@@ -51,7 +51,16 @@ function ForceDirectedGraph(args) {
     // .force("collision", d3.forceCollide(22))
     .force("charge", d3.forceManyBody().strength(-50))
     .force("center", d3.forceCenter(this.width / 2, this.height / 2));
-
+    var endCb = this.simulationEndCallback ? this.simulationEndCallback : null;
+    if (!!endCb) {
+        this.simulation
+            .on("end", function () {
+                if (!!endCb) {
+                    endCb();
+                }
+            })
+        ;
+    }
     // update graph
   this.drawGraph();
 };
@@ -530,16 +539,9 @@ ForceDirectedGraph.prototype = {
     var borderNodeMargin = 10;
 
     var self = this;
-    var endCb = this.simulationEndCallback ? this.simulationEndCallback : null;
     this.simulation
       .nodes(nodeArr)
-      .on("tick", tick)
-      .on("end", function () {
-          if (!!endCb) {
-              endCb();
-          }
-      })
-    ;
+      .on("tick", tick);
 
 
     var node = this.nodeGroup.selectAll(".data-node")
