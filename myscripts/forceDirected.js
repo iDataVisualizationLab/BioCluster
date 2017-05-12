@@ -235,6 +235,7 @@ ForceDirectedGraph.prototype = {
     nodes.forEach(function (n) {
         if (!addedClusters.hasOwnProperty(n.cluster)) {
             addedClusters[n.cluster] = [];
+            addedClusters[n.cluster].cluster = n.cluster;
         }
 
         tmpCluster =  addedClusters[n.cluster];
