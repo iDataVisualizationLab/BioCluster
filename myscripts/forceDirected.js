@@ -455,7 +455,7 @@ ForceDirectedGraph.prototype = {
         .attr('class', 'link link-1')
         .attr('fill','none')
         .attr('pointer-events','none')
-      .merge(mainLink)
+      // .attr(mainLink)
         .attr("value", d => d.value)
         .style("stroke-width", (d) => {
           // return strokeScale(Math.abs(d.value));
@@ -588,9 +588,9 @@ ForceDirectedGraph.prototype = {
           var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y;
 
-            if (!dx || !dy) {
-                return;
-            }
+            // if (!dx || !dy) {
+            //     return;
+            // }
 
             var type = d.type;
 
@@ -677,18 +677,19 @@ ForceDirectedGraph.prototype = {
 
     function createArrowPath(d) {
 
-        if (!d) {
-            return;
-        }
-        // debugger;
-      var target = isNumeric(d.target) ? nodeArr[d.target] : d.target,
+        var target = isNumeric(d.target) ? nodeArr[d.target] : d.target,
           source = isNumeric(d.source) ? nodeArr[d.source] : d.source;
 
+        if (target == source) {
+            return;
+        }
       var dx = target.x - source.x,
           dy = target.y - source.y,
           dr = Math.sqrt(dx * dx + dy * dy)*2;
 
-      if (dr == 0) { return ""; }
+      if (dr == 0) {
+          return "";
+      }
 
       var nx = -dx / dr,
           ny = -dy / dr;
