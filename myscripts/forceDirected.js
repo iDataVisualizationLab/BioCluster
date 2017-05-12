@@ -101,6 +101,7 @@ ForceDirectedGraph.prototype = {
         }
     });
 
+    let self = this;
     // make sure each node has its cluster
     this.nodes.forEach(function (n) {
 
@@ -109,11 +110,11 @@ ForceDirectedGraph.prototype = {
         }
 
         if (!n.x) {
-            n.x = width / 2;
+            n.x = self.width / 2;
         }
 
         if (!n.y) {
-            n.y = height / 2;
+            n.y = self.height / 2;
         }
 
         if (!!n.cluster) {
@@ -189,7 +190,7 @@ ForceDirectedGraph.prototype = {
     this.linkGroup = this.svg.append("g")
       .attr("class", "linkGroup");
     this.nodeGroup = this.svg.append("g")
-      .attr("class", "nodeGroup")
+      .attr("class", "nodeGroup");
 
     this._isDragging = false;
 
