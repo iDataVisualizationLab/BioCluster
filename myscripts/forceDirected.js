@@ -45,13 +45,13 @@ function ForceDirectedGraph(args) {
 
   this.defineClusters();
 
-  let nodes = this.nodes;
+  let self = this;
   // set up simulation
-  this.simulation = d3.forceSimulation()
-    // .force("collision", d3.forceCollide(22))
-    .force("charge", d3.forceManyBody().strength(-50))
-    .force("center", d3.forceCenter(this.width / 2, this.height / 2));
-    var endCb = this.simulationEndCallback ? this.simulationEndCallback : null;
+  this.simulation = d3.forceSimulation(self.nodes)
+    .force("collision", d3.forceCollide(10))
+    .force("charge", d3.forceManyBody().strength(-0.4))
+    .force("center", d3.forceCenter(self.width / 2, self.height / 2));
+    var endCb = self.simulationEndCallback ? self.simulationEndCallback : null;
     if (!!endCb) {
         this.simulation
             .on("end", function () {
@@ -318,6 +318,12 @@ ForceDirectedGraph.prototype = {
           if (!d3.event.active) {
             self.simulation.alphaTarget(0);
           }
+
+            d.forEach((n) => {
+                n.fx = null;
+                n.fy = null;
+            });
+
           // let cluster = this;
 
           // d.forEach((n) => {
@@ -541,7 +547,6 @@ ForceDirectedGraph.prototype = {
 
     var self = this;
     this.simulation
-      .nodes(nodeArr)
       .on("tick", tick);
 
 
@@ -712,33 +717,32 @@ ForceDirectedGraph.prototype = {
               "l" + (2*nx+ny) + ',' + (2*ny-nx);
       }
     }
-    //
-    // // simulation forces
-    //   var link_force =  d3.forceLink(this.links)
-    //                       .id(function(d) {
-    //
-    //                           return d.index;
-    //                       })
-    //                     .distance((d) => {
-    //
-    //                         return 8;
-    //                     })
-    //       ;
-    //
-    //
-    //
-    // this.simulation.force("links", link_force)
-    // // this.simulation.force("cluster", clustering)
+
+    // simulation forces
+      var link_force =  d3.forceLink(this.links)
+                          .id(function(d) {
+
+                              return d.index;
+                          })
+                        .distance((d) => {
+
+                            return 8;
+                        })
+          ;
+
+
+
+    this.simulation
+        .force("links", link_force)
+        .force("cluster", clustering)
     // //                .force("collision", collide)
-    // ;
+    ;
 
 
     // Initial clustering forces:
     function clustering(alpha) {
       var clusters = self.clusters;
       nodeArr.forEach(function(d) {
-        if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
-
         var cluster = clusters[d.cluster][0];
         if (cluster === d) return;
         var x = d.x - cluster.x,
