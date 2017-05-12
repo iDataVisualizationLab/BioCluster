@@ -46,11 +46,26 @@ function ForceDirectedGraph(args) {
   this.defineClusters();
 
   let self = this;
+
+    var link_force =  d3.forceLink(self.links)
+            .id(function(d) {
+
+                return d.index;
+            })
+            .distance((d) => {
+
+                return 20;
+            })
+            // .strength(1)
+        ;
   // set up simulation
-  this.simulation = d3.forceSimulation(self.nodes)
-    .force("collision", d3.forceCollide(8))
-    .force("charge", d3.forceManyBody().strength(-0.4))
-    .force("center", d3.forceCenter(self.width / 2, self.height / 2));
+    this.simulation = d3.forceSimulation(self.nodes)
+        // .force("links", link_force)
+        .force("collision", d3.forceCollide(5))
+        .force("charge", d3.forceManyBody().strength(-0.4))
+        .force("center", d3.forceCenter(self.width / 2, self.height / 2))
+    ;
+
     var endCb = self.simulationEndCallback ? self.simulationEndCallback : null;
     if (!!endCb) {
         this.simulation
@@ -61,6 +76,14 @@ function ForceDirectedGraph(args) {
             })
         ;
     }
+
+
+    //
+    // this.clusterSimulation = d3.forceSimulation(self.clusters)
+    // // .force("links", link_force)
+    //     .force("collision", d3.forceCollide(8))
+    //     .force("charge", d3.forceManyBody().strength(-0.4))
+    //     .force("center", d3.forceCenter(self.width / 2, self.height / 2));
     // update graph
   this.drawGraph();
 };
@@ -109,13 +132,13 @@ ForceDirectedGraph.prototype = {
             n.radius = 4;
         }
 
-        if (!n.x) {
-            n.x = self.width / 2;
-        }
-
-        if (!n.y) {
-            n.y = self.height / 2;
-        }
+        // if (!n.x) {
+        //     n.x = self.width / 2;
+        // }
+        //
+        // if (!n.y) {
+        //     n.y = self.height / 2;
+        // }
 
         if (!!n.cluster) {
             return;
@@ -348,18 +371,24 @@ ForceDirectedGraph.prototype = {
       //         })
       //         .distance(100)
       //     ;
+
       // self.clusterSimulation = d3.forceSimulation(clusters)
-      //     .force("charge", d3.forceManyBody().strength(10))
+      //     .force("charge", d3.forceManyBody().strength(-10))
       //     .force("links", link_force)
       //     // .force("collisionForce", d3.forceCollide(50).strength(1))
       //     .force("center", d3.forceCenter(
       //         (this.width / 2),
       //         (this.height / 2)
       //     ))
-      //     .force('x_force', d3.forceX(this.width / 2).strength(0.5))
-      //     .force('y_force', d3.forceY(this.height / 2).strength(0.5))
-          // .on('tick', onTick)
+      //     .on('tick', onClusterTick)
       // ;
+      //
+      //
+      // var myClusters = this.clusterCircleGroup.selectAll(".clusterCircle");
+      //
+      // function onClusterTick(e) {
+      //
+      // }
 
   },
 
@@ -462,34 +491,6 @@ ForceDirectedGraph.prototype = {
           return 0.8;
         });
 
-
-      // invisible line for collisions
-    // var self = this;
-    // var hoverLink = this.linkGroup.selectAll('.link-2')
-    //   .data(this.links);
-    //
-    // hoverLink.exit().remove();
-    // hoverLink.enter().append('path')
-    //     .attr("class", "link link-2")
-    //     .attr('fill','none')
-    //     .attr("value", d => d.value)
-    //     .style("stroke-opacity", 0)
-    //     .style("stroke-width", 8)
-    //     .on("mouseover", (d, i) => {
-    //       if (self._isDragging) return;
-    //       d3.select(d3.event.target)
-    //         .style('stroke-opacity',0.5)
-    //         .raise();
-    //       self.showTip(d, 'path');
-    //     })
-    //     .on("mouseout", (d, i) => {
-    //
-    //       d3.select(d3.event.target)
-    //         .transition()
-    //         .style('stroke-opacity',0);
-    //       self.hideTip();
-    //     });
-
     this.updateEdgeVisibility();
   },
 
@@ -546,8 +547,7 @@ ForceDirectedGraph.prototype = {
     var borderNodeMargin = 10;
 
     var self = this;
-    this.simulation
-      .on("tick", tick);
+
 
 
     var node = this.nodeGroup.selectAll(".data-node")
@@ -689,6 +689,9 @@ ForceDirectedGraph.prototype = {
 
     function createArrowPath(d) {
 
+        if (!d) {
+            return;
+        }
         var target = isNumeric(d.target) ? nodeArr[d.target] : d.target,
           source = isNumeric(d.source) ? nodeArr[d.source] : d.source;
 
@@ -731,32 +734,32 @@ ForceDirectedGraph.prototype = {
       }
     }
 
-    // simulation forces
-      var link_force =  d3.forceLink(this.links)
-                          .id(function(d) {
+    self.simulation
+        // .alpha(0.3)
+        // .force("cluster", clustering)
 
-                              return d.index;
-                          })
-                        .distance((d) => {
-
-                            return 8;
-                        })
-          ;
-
-
-
-    this.simulation
-        .force("links", link_force)
-        .force("cluster", clustering)
-    // //                .force("collision", collide)
+        .on("tick", tick)
     ;
 
 
     // Initial clustering forces:
     function clustering(alpha) {
-      var clusters = self.clusters;
+      var clusterNodes = {};
+      let myCluster;
+      let firstNode;
+      for(let i=0; i< self.clusters.length; i++) {
+          myCluster = self.clusters[i];
+          if (myCluster.length < 1) {
+              continue;
+          }
+
+          firstNode = myCluster[0];
+
+          clusterNodes[firstNode.cluster] = firstNode;
+      }
+
       nodeArr.forEach(function(d) {
-        var cluster = clusters[d.cluster][0];
+        var cluster = clusterNodes[d.cluster];
         if (cluster === d) return;
         var x = d.x - cluster.x,
             y = d.y - cluster.y,
