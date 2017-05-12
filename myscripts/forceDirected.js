@@ -552,20 +552,21 @@ ForceDirectedGraph.prototype = {
     var text = this.nodeGroup.selectAll(".data-text");
 
     var cluster = this.clusterCircleGroup.selectAll(".clusterCircle");
+      var clampX = d3.scaleLinear()
+          .domain([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
+          .range([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
+          .clamp(true);
+
+      var clampY = d3.scaleLinear()
+          .domain([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
+          .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
+          .clamp(true);
 
     function tick() {
 
       node.attr("transform", (d,i,el) => {
 
-                var clampX = d3.scaleLinear()
-                  .domain([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
-                  .range([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
-                  .clamp(true);
 
-                var clampY = d3.scaleLinear()
-                  .domain([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
-                  .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
-                  .clamp(true);
 
                 d.x = clampX(d.x);
                 d.y = clampY(d.y);
