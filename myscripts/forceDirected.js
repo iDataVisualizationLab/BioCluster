@@ -155,17 +155,17 @@ ForceDirectedGraph.prototype = {
           .attr('id', id + 'Right')
           .attr('xlink:href', xid)
           .attr('x1',0)
-          .attr('x2',1)
+          .attr('x2',1);
       defs.append('linearGradient')
           .attr('id', id + 'Up')
           .attr('xlink:href', xid)
           .attr('x1',0)
-          .attr('y1',1)
+          .attr('y1',1);
       defs.append('linearGradient')
           .attr('id', id + 'Down')
           .attr('xlink:href', xid)
           .attr('x1',0)
-          .attr('y2',1)
+          .attr('y2',1);
     }
 
     var defs = this.svg.append('defs');
@@ -597,7 +597,7 @@ ForceDirectedGraph.prototype = {
             if (Math.abs(dy/dx) > 3) {
                 return dy < 0 ? "url(#" + type + "Up)" : "url(#" + type + "Down)";
             }
-            return dx < 0 ? "url(#" + "Left)" : "url(#" + type + "Right)";
+            return dx < 0 ? "url(#" + type + "Left)" : "url(#" + type + "Right)";
 
         })
         .attr('d', createArrowPath);
