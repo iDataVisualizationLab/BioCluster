@@ -760,7 +760,8 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
                 neighborNode.ref = neighbor;
 
                 if (!!d.x) {
-                    neighborNode.x = d.x + 30 + 50*Math.random();
+                    // neighborNode.x = d.x + 30 + 50*Math.random();
+                    neighborNode.x = d.x + 10 + 20*Math.random(); // longnh
                 }
 
                 if (!!d.y) {
