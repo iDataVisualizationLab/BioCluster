@@ -119,9 +119,9 @@ var force2 = d3.forceSimulation()
         //     return d.x;
         // })
         // .force("y", d3.forceY((height-wMatrix) / 2))
-        .force("link", d3.forceLink().distance(70))
+        .force("link", d3.forceLink().distance(20))
         .force("gravity", d3.forceManyBody(0.1))
-        .force('charge', d3.forceManyBody().strength(-120))
+        .force('charge', d3.forceManyBody().strength(-60))
 
     ;
 // var force2 = d3.layout.force()
@@ -653,8 +653,9 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
         if (curNode.ref!=undefined){
             curNode = curNode.ref;
         }
+
         if (curNode.directLinks)
-          return 3+Math.pow(curNode.directLinks.length, 0.3);    
+          return 3+Math.pow(curNode.directLinks.length, 0.15);
         else
           return 3;
       })
