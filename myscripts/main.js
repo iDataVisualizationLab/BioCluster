@@ -114,14 +114,11 @@ svg2.on('mousemove', function () {
 
 var force2 = d3.forceSimulation()
         .force("centeringForce", d3.forceCenter((width+www)/2, (height-wMatrix) / 2))
-        // .force("x", function (d) {
-        //
-        //     return d.x;
-        // })
-        // .force("y", d3.forceY((height-wMatrix) / 2))
-        .force("link", d3.forceLink().distance(70))
-        .force("gravity", d3.forceManyBody(0.1))
-        .force('charge', d3.forceManyBody().strength(-120))
+        .force("x", d3.forceX((width-wMatrix) / 2))
+        .force("y", d3.forceY((height-wMatrix) / 2))
+        .force("link", d3.forceLink().distance(60).strength(1))
+        // .force("gravity", d3.forceManyBody().strength(0.1))
+        .force('charge', d3.forceManyBody().strength(-100))
 
     ;
 // var force2 = d3.layout.force()
@@ -137,7 +134,7 @@ var forceLabel = d3.forceSimulation()
         .force("x", d3.forceX((width+www)/2))
         .force("y", d3.forceY((height+wMatrix) / 2))
         .force("link", d3.forceLink().distance(1).strength(5))
-        .force("gravity", d3.forceManyBody(0))
+        .force("gravity", d3.forceManyBody().strength(0))
         .force('charge', d3.forceManyBody().strength(-50))
 
     ;
@@ -653,8 +650,9 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
         if (curNode.ref!=undefined){
             curNode = curNode.ref;
         }
+
         if (curNode.directLinks)
-          return 3+Math.pow(curNode.directLinks.length, 0.3);    
+          return 3+Math.pow(curNode.directLinks.length, 0.15);
         else
           return 3;
       })
@@ -759,7 +757,8 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
                 neighborNode.ref = neighbor;
 
                 if (!!d.x) {
-                    neighborNode.x = d.x + 30 + 50*Math.random();
+                    // neighborNode.x = d.x + 30 + 50*Math.random();
+                    neighborNode.x = d.x + 10 + 20*Math.random(); // longnh
                 }
 
                 if (!!d.y) {

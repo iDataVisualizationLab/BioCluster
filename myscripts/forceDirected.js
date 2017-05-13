@@ -45,22 +45,45 @@ function ForceDirectedGraph(args) {
 
   this.defineClusters();
 
-  let nodes = this.nodes;
-  // set up simulation
-  this.simulation = d3.forceSimulation()
-    .force("links",
-      d3.forceLink()
-        .id(d => d.index)
-    )
-    .force("collision", d3.forceCollide(22))
-    .force("charge", d3.forceManyBody()
-      .strength(-Math.pow(150, nodes.length > 30 ? 1 : 1.2))
-      .distanceMax(Math.min(this.width, this.height)/4))
-    .force("center", d3.forceCenter(
-      (this.width / 2),
-      (this.height / 2)
-    ));
+  let self = this;
 
+    var link_force =  d3.forceLink(self.links)
+            .id(function(d) {
+
+                return d.index;
+            })
+            .distance((d) => {
+
+                return 20;
+            })
+            // .strength(1)
+        ;
+  // set up simulation
+    this.simulation = d3.forceSimulation(self.nodes)
+        .force("links", link_force)
+        .force("collision", d3.forceCollide(10))
+        .force("charge", d3.forceManyBody().strength(-0.4))
+        .force("center", d3.forceCenter(self.width / 2, self.height / 2))
+    ;
+
+    var endCb = self.simulationEndCallback ? self.simulationEndCallback : null;
+    if (!!endCb) {
+        this.simulation
+            .on("end", function () {
+                if (!!endCb) {
+                    endCb();
+                }
+            })
+        ;
+    }
+
+
+    //
+    // this.clusterSimulation = d3.forceSimulation(self.clusters)
+    // // .force("links", link_force)
+    //     .force("collision", d3.forceCollide(8))
+    //     .force("charge", d3.forceManyBody().strength(-0.4))
+    //     .force("center", d3.forceCenter(self.width / 2, self.height / 2));
     // update graph
   this.drawGraph();
 };
@@ -101,20 +124,21 @@ ForceDirectedGraph.prototype = {
         }
     });
 
+    let self = this;
     // make sure each node has its cluster
     this.nodes.forEach(function (n) {
 
         if (!n.radius) {
-            n.radius = 4;
+            n.radius = 3;
         }
 
-        if (!n.x) {
-            n.x = width / 2;
-        }
-
-        if (!n.y) {
-            n.y = height / 2;
-        }
+        // if (!n.x) {
+        //     n.x = self.width / 2;
+        // }
+        //
+        // if (!n.y) {
+        //     n.y = self.height / 2;
+        // }
 
         if (!!n.cluster) {
             return;
@@ -154,17 +178,17 @@ ForceDirectedGraph.prototype = {
           .attr('id', id + 'Right')
           .attr('xlink:href', xid)
           .attr('x1',0)
-          .attr('x2',1)
+          .attr('x2',1);
       defs.append('linearGradient')
           .attr('id', id + 'Up')
           .attr('xlink:href', xid)
           .attr('x1',0)
-          .attr('y1',1)
+          .attr('y1',1);
       defs.append('linearGradient')
           .attr('id', id + 'Down')
           .attr('xlink:href', xid)
           .attr('x1',0)
-          .attr('y2',1)
+          .attr('y2',1);
     }
 
     var defs = this.svg.append('defs');
@@ -184,36 +208,12 @@ ForceDirectedGraph.prototype = {
         }
     }
 
-
-    // createSVGLinearGradient([
-    //   '#fee08b',
-    //   '#fdae61',
-    //   '#f46d43',
-    //   '#d73027',
-    //     '#222222'
-    // ], 'red', defs);
-    //
-    // // createSVGLinearGradient([
-    // //   '#d9ef8b',
-    // //   '#a6d96a',
-    // //   '#66bd63',
-    // //   '#1a9850'
-    // // ], 'green', defs);
-    //
-    //   createSVGLinearGradient([
-    //       '#d9ef8b',
-    //       '#a6d96a',
-    //       '#66bd63',
-    //       '#1a9850',
-    //       '#222222'
-    //   ], 'green', defs);
-
     this.clusterCircleGroup = this.svg.append("g")
       .attr("class", "clusterGroup");
     this.linkGroup = this.svg.append("g")
       .attr("class", "linkGroup");
     this.nodeGroup = this.svg.append("g")
-      .attr("class", "nodeGroup")
+      .attr("class", "nodeGroup");
 
     this._isDragging = false;
 
@@ -221,92 +221,8 @@ ForceDirectedGraph.prototype = {
     this.tip = d3.select('#forceDirectedDiv').append('div').attr('id', 'tip');
   },
 
-  resize:function() {
-    var rect = this.svg.node().parentNode.getBoundingClientRect();
-    if (rect.width && rect.height) {
-      this.width = rect.width;
-      this.height = rect.height;
-    }
-
-    this.svg
-      .attr('width', this.width)
-      .attr('height', this.height);
-
-    this.aspect = this.width / this.height;
-    this.width = 901;
-    this.height = this.width / this.aspect;
-
-    this.svg.attr("viewBox", "0 0 " + this.width + " " + this.height);
-
-    this.svg.select('rect')
-      .attr('width', this.width)
-      .attr('height', this.height);
-
-    // reheat simulation
-    if (this.simulation) {
-      this.simulation
-        .force("center", d3.forceCenter(
-          (this.width / 2),
-          (this.height / 2)
-          ));
-
-      this.simulation.alpha(0.3).restart();
-    }
-  },
-  zoomed: function() {
-    this.transform = d3.event.transform;
-    this.nodeGroup.attr("transform", this.transform);
-    this.linkGroup.attr("transform", this.transform);
-    this.clusterCircleGroup.attr("transform", this.transform);
-  },
-  showTip: function(d, type) {
-    // this.tip.selectAll('*').remove();
-    // this.tip.transition().style('opacity',1);
 
 
-
-  },
-  hideTip: function() {
-    // this.tip.transition().style('opacity',0);
-  },
-
-  // process data into nodes & links where links have magnitude > 0
-  // filterData: function(data) {
-  //   var filteredData = {};
-  //   var links = [];
-  //
-  //   for (var key in data) {
-  //     var newNode = {
-  //       hits: data[key].hits,
-  //       name: data[key].name,
-  //       inf: data[key].inf.filter(l => l.flux !== 0),
-  //       outf: data[key].outf.filter(l => l.flux !== 0)
-  //     };
-  //
-  //     links = _.concat(links, this.extractLinksFromNode(newNode, key));
-  //
-  //     if (newNode.inf.length > 0 || newNode.outf.length > 0) {
-  //       filteredData[key] = newNode;
-  //     }
-  //   }
-  //
-  //   this.filteredData = filteredData;
-  //   this.links = links;
-  // },
-  //
-  // extractLinksFromNode: function(node, name) {
-  //   let nodeLinks = [];
-  //
-  //   node.inf.forEach(l => {
-  //     nodeLinks.push({
-  //       source: name,
-  //       target: l.name,
-  //       value: l.flux
-  //     });
-  //   });
-  //
-  //   return nodeLinks;
-  // },
 
   // cluster data based on threshold(s) of influence
   defineClusters: function(alpha) {
@@ -319,6 +235,7 @@ ForceDirectedGraph.prototype = {
     nodes.forEach(function (n) {
         if (!addedClusters.hasOwnProperty(n.cluster)) {
             addedClusters[n.cluster] = [];
+            addedClusters[n.cluster].cluster = n.cluster;
         }
 
         tmpCluster =  addedClusters[n.cluster];
@@ -353,11 +270,6 @@ ForceDirectedGraph.prototype = {
     //
     this.clusterColors = newColors;
     this.clusters = clusters;
-
-    if (this.simulation && alpha !== 0) {
-      this.simulation.alpha(alpha || 0.15).restart();
-    }
-
 
   },
     
@@ -430,6 +342,12 @@ ForceDirectedGraph.prototype = {
           if (!d3.event.active) {
             self.simulation.alphaTarget(0);
           }
+
+            d.forEach((n) => {
+                n.fx = null;
+                n.fy = null;
+            });
+
           // let cluster = this;
 
           // d.forEach((n) => {
@@ -443,43 +361,57 @@ ForceDirectedGraph.prototype = {
           //     .style("stroke-dasharray", null);
           // })
         }) )
-        .on('click', function(d) {
-          // unpin cluster and its nodes
-          // let cluster = this;
-
-        //   d.forEach((n) => {
-        //     // pin cluster nodes on cluster drag end (testing out how this feels)
-        //     n._fixed = false;
-        //     n.fx = n.fy = null;
-        //
-        //     d3.selectAll('.data-node')
-        //       .style('stroke', (d) => d._fixed ? "#404040" : "white");
-        //
-        //     d3.select(cluster)
-        //       .style("stroke-dasharray", "2, 2");
-        //   })
-        })
     ;
 
       circles.exit().remove();
 
-      var link_force =  d3.forceLink()
-              .id(function(d) {
+      // var link_force =  d3.forceLink()
+      //         .id(function(d) {
+      //
+      //             return d.index;
+      //         })
+      //         .distance(100)
+      //     ;
 
-                  return d.index;
-              })
-              .distance(100)
-          ;
-      self.clusterSimulation = d3.forceSimulation(clusters)
-          .force("charge", d3.forceManyBody().strength(-500))
-          .force("links", link_force)
-          // .force("collisionForce", d3.forceCollide(50).strength(1))
-          .force("center", d3.forceCenter(
-              (this.width / 2),
-              (this.height / 2)
-          ))
-          // .on('tick', onTick)
-      ;
+      // self.clusterSimulation = d3.forceSimulation(clusters)
+      //     .force("charge", d3.forceManyBody().strength(-100))
+      //     // .force("links", link_force)
+      //     .force("collisionForce", d3.forceCollide(50).strength(1))
+      //     .force("center", d3.forceCenter(
+      //         (this.width / 2),
+      //         (this.height / 2)
+      //     ))
+      //     .on('tick', onClusterTick)
+      // ;
+      //
+      //
+      // var myClusters = this.clusterCircleGroup.selectAll(".clusterCircle");
+      //
+      // function onClusterTick() {
+      //     let alpha = this.alpha();
+      //     myClusters.each(moveClusterItems(alpha));
+      //
+      //     myClusters
+      //     .attr("cx", (d) => {
+      //         return d.x;
+      //     })
+      //         .attr("cy", (d) => {
+      //             return d.y ;
+      //         });
+      //
+      //     function moveClusterItems(alpha) {
+      //
+      //         debugger;
+      //         return function (d) {
+      //
+      //             debugger;
+      //             d.forEach(function (i) {
+      //                 i.x += (d.x -i.x) * 0.1 * alpha;
+      //                 i.y += (d.y -i.y) * 0.1 * alpha;
+      //             });
+      //         }
+      //     }
+      // }
 
   },
 
@@ -521,73 +453,8 @@ ForceDirectedGraph.prototype = {
       .attr("transform", (d, i) => {
         return "translate(" + d.x + ", " + d.y + ")";
       })
-    .merge(rule)
       .attr("cluster", d => d.cluster)
       .attr("r", d => d.radius)
-      // .attr("pointer-events", (d) => {
-      //   if(App.property.node == true && d.cluster === 0) {
-      //     return 'none';
-      //   }
-      //   else return 'all';
-      // })
-      // .style("opacity", (d) => {
-      //   if( App.property.node == true && d.cluster === 0) {
-      //     return 0;
-      //   }
-      //   else return 1;
-      // })
-      // .style('stroke-opacity', (d) => {
-      //   if( App.property.node == true && d.cluster === 0) {
-      //     return 0;
-      //   }
-      //   else return 0.5;
-      // })
-      .on('mouseover', this._isDragging ? null : function(d) {
-        self.showTip(d, 'rule');
-
-        self.linkGroup.selectAll('.link-1')
-          .style('stroke-opacity',function() {
-            var opacity = d3.select(this).style('stroke-opacity');
-            return Math.min(0.4, opacity);
-          });
-
-        self.linkGroup.selectAll(".link-2").filter(function(link) {
-          return link.source.name === d.name;
-        })
-          .style('stroke-opacity', 0.6);
-      })
-      .on("mouseout", function() {
-        self.updateEdgeVisibility();
-
-        self.linkGroup.selectAll(".link-2")
-          .style('stroke-opacity', 0).interrupt();
-        self.hideTip();
-
-      })
-      .on('contextmenu', function(d) {
-        d3.event.preventDefault();
-        d3.select('.node-to-graph')
-          .classed('node-to-graph',false);
-        d3.select(this)
-          .classed('node-to-graph',true);
-        d3.select('#linegraph-help').style('display','none');
-        // if (App.panels.topVis) { App.panels.topVis.updateRule(d); }
-        // if (App.panels.bottomVis) { App.panels.bottomVis.updateRule(d); }
-        // if (App.panels.focusSlider) { App.panels.focusSlider.update(); }
-      })
-      .on('click', function(d) {
-        // if painting mode, add node to paintedClusters
-        // if (self.paintingManager.isPaintingCluster()) {
-        //   self.paintingManager.addNodeToPaintingCluster(d);
-        // }
-        // else {
-        //   d3.select(this)
-        //     .style("fill", (d) => self.clusterColor(d.cluster))
-        //     .style("stroke", "white");
-        //     d.fx = d.fy = null;
-        //     d._fixed = false;
-        // }
-      })
       .call(drag);
 
     // remove as needed
@@ -624,16 +491,6 @@ ForceDirectedGraph.prototype = {
   },
 
   clusterColor: function(cluster) {
-    // if (cluster === 0) {
-    //   return '#222';
-    // }
-    //
-    // if (!this.clusterColors) {
-    //   return d3.scaleOrdinal(d3.schemeCategory10)
-    //     .domain(d3.range(1,10))
-    //     (cluster);
-    // }
-
     return this.clusterColors[cluster];
   },
 
@@ -650,40 +507,12 @@ ForceDirectedGraph.prototype = {
         .attr('class', 'link link-1')
         .attr('fill','none')
         .attr('pointer-events','none')
-      .merge(mainLink)
+      // .attr(mainLink)
         .attr("value", d => d.value)
         .style("stroke-width", (d) => {
           // return strokeScale(Math.abs(d.value));
           return 0.8;
         });
-
-
-      // invisible line for collisions
-    // var self = this;
-    // var hoverLink = this.linkGroup.selectAll('.link-2')
-    //   .data(this.links);
-    //
-    // hoverLink.exit().remove();
-    // hoverLink.enter().append('path')
-    //     .attr("class", "link link-2")
-    //     .attr('fill','none')
-    //     .attr("value", d => d.value)
-    //     .style("stroke-opacity", 0)
-    //     .style("stroke-width", 8)
-    //     .on("mouseover", (d, i) => {
-    //       if (self._isDragging) return;
-    //       d3.select(d3.event.target)
-    //         .style('stroke-opacity',0.5)
-    //         .raise();
-    //       self.showTip(d, 'path');
-    //     })
-    //     .on("mouseout", (d, i) => {
-    //
-    //       d3.select(d3.event.target)
-    //         .transition()
-    //         .style('stroke-opacity',0);
-    //       self.hideTip();
-    //     });
 
     this.updateEdgeVisibility();
   },
@@ -741,130 +570,97 @@ ForceDirectedGraph.prototype = {
     var borderNodeMargin = 10;
 
     var self = this;
-    var endCb = this.simulationEndCallback ? this.simulationEndCallback : null;
-    this.simulation
-      .nodes(nodeArr)
-      .on("tick", tick)
-      .on("end", function () {
-          if (!!endCb) {
-              endCb();
-          }
-      })
-    ;
 
-    // modify the appearance of the nodes and links on tick
-    var node = this.nodeGroup.selectAll(".rule");
+
+
+    var node = this.nodeGroup.selectAll(".data-node")
+            .style("fill", function(d) {
+                return self.clusterColor(d.cluster);
+
+            })
+        ;
     var link = this.linkGroup.selectAll(".link");
     var text = this.nodeGroup.selectAll(".data-text");
 
     var cluster = this.clusterCircleGroup.selectAll(".clusterCircle");
+      var clampX = d3.scaleLinear()
+          .domain([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
+          .range([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
+          .clamp(true);
+
+      var clampY = d3.scaleLinear()
+          .domain([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
+          .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
+          .clamp(true);
+
+      node.exit().remove();
 
     function tick() {
-      if (self.simulation.alpha() < 0.3 && self.transform && self.transform.k < 1) { this.flagAlpha = true; }
-      if (!this.flagAlpha) {
-        node
-          .datum((d) => {
-            if (d == undefined || d == null) {
-                // debugger;
-                return;
-            }
-            var clampX = d3.scaleLinear()
-              .domain([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
-              .range([3 + borderNodeMargin, self.width - 3 - borderNodeMargin])
-              .clamp(true);
+        // function moveCluster(alpha) {
+        //     nodeArr.forEach(function (d) {
+        //
+        //     });
+        // }
+        // node.each(moveCluster(this.alpha()));
 
-            var clampY = d3.scaleLinear()
-              .domain([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
-              .range([3 + borderNodeMargin, self.height - 3 - borderNodeMargin])
-              .clamp(true);
-
-            d.x = clampX(d.x);
-            d.y = clampY(d.y);
-            return d;
-          });
-      }
-
-      node.filter('.data-node')
-          .style("fill", function(d, i) {
-              if (!d) {
-                  return;
-              }
-            return self.clusterColor(d.cluster);
-
-          })
-          // .style("stroke", function(d) {
-          //   return d.isPainted ? d.paintedCluster :
-          //     (d.hits === 0 ? "#000000" :
-          //       (d._fixed ? "#404040" : "white"));
-          // })
-          // .style("stroke-width", function(d) {
-          //   return d.isPainted ? 3 : 1.5;
-          // })
-          // .style("stroke-opacity", function(d) {
-          //   return d.isPainted ? 1 : 0.5;
-          // })
-        ;
-
-      node.attr("transform", (d,i,el) => {
-          if( !d) {
+        node.attr("transform", (d,i,el) => {
+          if (!d){
               return;
           }
-            return (d3.select(el[i]).classed('data-text')) ?
-              "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")" :
-              "translate(" + d.x + "," + d.y + ")";
+                d.x = clampX(d.x);
+                d.y = clampY(d.y);
+
+            return "translate(" + d.x + "," + d.y + ")";
           });
 
       link
         .style("stroke", (d) => {
-            if( !d ) {
+            if (!d){
                 return;
             }
 
-          var dx = d.target.x - d.source.x,
+            var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y;
 
-            if (!dx || !dy) {
-                return;
-            }
+            // if (!dx || !dy) {
+            //     return;
+            // }
 
             var type = d.type;
 
             if (Math.abs(dy/dx) > 3) {
                 return dy < 0 ? "url(#" + type + "Up)" : "url(#" + type + "Down)";
             }
-            return dx < 0 ? "url(#" + "Left)" : "url(#" + type + "Right)";
+            return dx < 0 ? "url(#" + type + "Left)" : "url(#" + type + "Right)";
 
         })
         .attr('d', createArrowPath);
 
       self.clusterCircleGroup.selectAll(".clusterCircle")
         .attr("cx", (d) => {
-            if( !d) {
+            if (!d){
                 return;
             }
 
-          var ext = d3.extent(d, node => node.x);
-          if (isNaN(ext[0])  || isNaN(ext[1])) {
-              // console.log(d);
-          }
+            var ext = d3.extent(d, node => node.x);
+          //
+          // return Math.max(25, Math.min(self.width-25, (ext[1] + ext[0]) / 2));
 
-          return Math.max(25, Math.min(self.width-25, (ext[1] + ext[0]) / 2));
-
-          // return (ext[1] + ext[0]) / 2;
+          return d.x = (ext[1] + ext[0]) / 2;
         })
         .attr("cy", (d) => {
-            if( !d) {
+            if (!d){
                 return;
             }
 
-          var ext = d3.extent(d, node => node.y);
-          if (isNaN(ext[0])  || isNaN(ext[1])) {
-            // console.log(d);
-          }
+            var ext = d3.extent(d, node => node.y);
+          // if (isNaN(ext[0])  || isNaN(ext[1])) {
+          //   // console.log(d);
+          // }
+          //
+          //   return Math.max(25, Math.min(self.height-25, (ext[1] + ext[0]) / 2));
 
-            return Math.max(25, Math.min(self.height-25, (ext[1] + ext[0]) / 2));
-
-            // return (ext[1] + ext[0]) / 2;
+             return d.y = (ext[1] + ext[0]) / 2;
         })
         .attr("r", function(d) {
             if( !d) {
@@ -885,7 +681,7 @@ ForceDirectedGraph.prototype = {
             // console.log(d);
           }
 
-          return radius + circlePadding;
+          return d.r = (radius + circlePadding);
         });
 
 
@@ -925,15 +721,19 @@ ForceDirectedGraph.prototype = {
         if (!d) {
             return;
         }
-        // debugger;
-      var target = isNumeric(d.target) ? nodeArr[d.target] : d.target,
+        var target = isNumeric(d.target) ? nodeArr[d.target] : d.target,
           source = isNumeric(d.source) ? nodeArr[d.source] : d.source;
 
+        if (target == source) {
+            return;
+        }
       var dx = target.x - source.x,
           dy = target.y - source.y,
           dr = Math.sqrt(dx * dx + dy * dy)*2;
 
-      if (dr == 0) { return ""; }
+      if (dr == 0) {
+          return "";
+      }
 
       var nx = -dx / dr,
           ny = -dy / dr;
@@ -963,50 +763,40 @@ ForceDirectedGraph.prototype = {
       }
     }
 
-    // simulation forces
-      var link_force =  d3.forceLink(this.links)
-                          .id(function(d) {
-
-                              return d.index;
-                          })
-                        .distance((d) => {
-
-                            let strengthScale = d3.scaleLinear()
-                                .domain([0, self.maxValue])
-                                .range([1,0.4])
-                                .clamp(true);
-
-                            if (d.value < 0) {
-                                return 25/strengthScale(-d.value);
-                            }
-                            else {
-                                return 25*strengthScale(d.value);
-                            }
-                        })
-          ;
-
-
-
-    this.simulation.force("links", link_force);
-    this.simulation.force("cluster", clustering)
-                   .force("collision", collide);
+    self.simulation
+        // .alpha(0.4)
+        .force("cluster", clustering)
+        .on("tick", tick)
+    ;
 
 
     // Initial clustering forces:
     function clustering(alpha) {
-      var clusters = self.clusters;
-      nodeArr.forEach(function(d) {
-        if (d.cluster === 0 || (d.isPainted && d.paintedCluster === undefined)) { return; }
 
-        var cluster = clusters[d.cluster][0];
+      var clusterNodes = {};
+      let myCluster;
+      let firstNode;
+      for(let i=0; i< self.clusters.length; i++) {
+          myCluster = self.clusters[i];
+          if (myCluster.length < 1) {
+              continue;
+          }
+
+          firstNode = myCluster[0];
+
+          clusterNodes[firstNode.cluster] = firstNode;
+      }
+
+      nodeArr.forEach(function(d) {
+        var cluster = clusterNodes[d.cluster];
         if (cluster === d) return;
         var x = d.x - cluster.x,
             y = d.y - cluster.y,
             l = Math.sqrt(x * x + y * y),
-            r = d.radius + cluster.radius;
-        if (x === 0 && y === 0 || (isNaN(x) || isNaN(y))) return;
+            r = d.radius + cluster.radius + 10;
+        if (x === 0 && y === 0 || isNaN(l)|| isNaN(r) || (isNaN(x) || isNaN(y))) return;
         if (l !== r) {
-          l = (l - r) / l * alpha;
+          l = (l - r) / l * alpha ;
           d.x -= x *= l;
           d.y -= y *= l;
           cluster.x += x;
