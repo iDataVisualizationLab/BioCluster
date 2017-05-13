@@ -116,9 +116,9 @@ var force2 = d3.forceSimulation()
         .force("centeringForce", d3.forceCenter((width+www)/2, (height-wMatrix) / 2))
         .force("x", d3.forceX((width-wMatrix) / 2))
         .force("y", d3.forceY((height-wMatrix) / 2))
-        .force("link", d3.forceLink().distance(70))
+        .force("link", d3.forceLink().distance(60).strength(1))
         // .force("gravity", d3.forceManyBody().strength(0.1))
-        .force('charge', d3.forceManyBody().strength(-120))
+        .force('charge', d3.forceManyBody().strength(-100))
 
     ;
 // var force2 = d3.layout.force()
