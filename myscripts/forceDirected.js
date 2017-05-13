@@ -348,18 +348,6 @@ ForceDirectedGraph.prototype = {
                 n.fy = null;
             });
 
-          // let cluster = this;
-
-          // d.forEach((n) => {
-          //   // pin cluster nodes on cluster drag end (testing out how this feels)
-          //   n._fixed = true;
-          //
-          //   d3.selectAll('.data-node')
-          //     .style('stroke', (d) => d._fixed ? "#404040" : "white");
-          //
-          //   d3.select(cluster)
-          //     .style("stroke-dasharray", null);
-          // })
         }) )
     ;
 
@@ -367,75 +355,56 @@ ForceDirectedGraph.prototype = {
 
 
 
+      var clusterGroups  = this.svg.selectAll(".cluster-group").data(clusters).enter()
+              .append("g")
+                .attr("class", function (d) {
+                    return "cluster-group cluster-group-" + d.cluster;
+                })
+          ;
+
+      // var clusterGroups = self.svg.selectAll('.cluster-group');
+
+      clusterGroups.each(function (d) {
+          d3.select(this).selectAll(".node-in-cluster").data(d).enter()
+              .append("circle")
+                  .attr("class", function (i) {
+                      return "node-in-cluster node-in-cluster-" + i.cluster;
+                  })
+                .attr("r", i => i.radius)
+
+                .style("fill", i => self.clusterColor(i.cluster))
+                .style("fill-opacity", 1)
+
+            });
+
 
       /// new design
 
+      self.clusterSimulation = d3.forceSimulation(clusters)
+          .force("charge", d3.forceManyBody().strength(-100))
+          .force("collisionForce", d3.forceCollide(50).strength(1))
+          .force("center", d3.forceCenter(
+              (this.width / 2),
+              (this.height / 2)
+          ))
+          .on('tick', onClusterTick)
+      ;
 
-      // node of each circle
-      // circles.each(function (items) {
-      //     debugger;
-      //     d3.select(this).selectAll(".inner-data-node").data(items).enter()
-      //         .append('circle')
-      //         .attr("class", "inner-data-node")
-      //         .attr("transform", (d, i) => {
-      //             return "translate(" + d.x + ", " + d.y + ")";
-      //         })
-      //         .attr("cluster", d => d.cluster)
-      //         .attr("r", d => d.radius)
-      // });
-      // d3.select(self.svg).selectAll('.cluster-group').data(self.clusters)
-      //     .enter().append("svg:g")
-      //     .attr("class", function (d) {
-      //         return "cluster-group " +
-      //     })
+      function onClusterTick() {
 
-      // var link_force =  d3.forceLink()
-      //         .id(function(d) {
-      //
-      //             return d.index;
-      //         })
-      //         .distance(100)
-      //     ;
+          clusterGroups.each(function (d) {
 
-      // self.clusterSimulation = d3.forceSimulation(clusters)
-      //     .force("charge", d3.forceManyBody().strength(-100))
-      //     // .force("links", link_force)
-      //     .force("collisionForce", d3.forceCollide(50).strength(1))
-      //     .force("center", d3.forceCenter(
-      //         (this.width / 2),
-      //         (this.height / 2)
-      //     ))
-      //     .on('tick', onClusterTick)
-      // ;
-      //
-      //
-      // var myClusters = this.clusterCircleGroup.selectAll(".clusterCircle");
-      //
-      // function onClusterTick() {
-      //     let alpha = this.alpha();
-      //     myClusters.each(moveClusterItems(alpha));
-      //
-      //     myClusters
-      //     .attr("cx", (d) => {
-      //         return d.x;
-      //     })
-      //         .attr("cy", (d) => {
-      //             return d.y ;
-      //         });
-      //
-      //     function moveClusterItems(alpha) {
-      //
-      //         debugger;
-      //         return function (d) {
-      //
-      //             debugger;
-      //             d.forEach(function (i) {
-      //                 i.x += (d.x -i.x) * 0.1 * alpha;
-      //                 i.y += (d.y -i.y) * 0.1 * alpha;
-      //             });
-      //         }
-      //     }
-      // }
+              d.forEach(function (i) {
+                  i.offsetX = d.x;
+                  i.offsetY = d.y;
+              })
+          });
+
+          clusterGroups.attr("transform", (d,i,el) => {
+              // debugger;
+              return "translate(" + d.x + "," + d.y + ")";
+          });
+      }
 
   },
 
@@ -465,24 +434,12 @@ ForceDirectedGraph.prototype = {
           }
         });
 
-    var rule = this.nodeGroup.selectAll(".data-node")
-        .data(this.nodes);
+    var nodesInCluster = self.svg.selectAll(".node-in-cluster")
+        .call(drag)
+      ;
 
     var text = this.nodeGroup.selectAll(".data-text")
         .data(this.nodes);
-
-
-    rule.enter().append("circle")
-      .attr("class", "rule data-node")
-      .attr("transform", (d, i) => {
-        return "translate(" + d.x + ", " + d.y + ")";
-      })
-      .attr("cluster", d => d.cluster)
-      .attr("r", d => d.radius)
-      .call(drag);
-
-    // remove as needed
-    rule.exit().remove();
 
 
     // also add text
@@ -597,12 +554,7 @@ ForceDirectedGraph.prototype = {
 
 
 
-    var node = this.nodeGroup.selectAll(".data-node")
-            .style("fill", function(d) {
-                return self.clusterColor(d.cluster);
-
-            })
-        ;
+    var node = self.svg.selectAll(".node-in-cluster");
     var link = this.linkGroup.selectAll(".link");
     var text = this.nodeGroup.selectAll(".data-text");
 
@@ -620,21 +572,15 @@ ForceDirectedGraph.prototype = {
       node.exit().remove();
 
     function tick() {
-        // function moveCluster(alpha) {
-        //     nodeArr.forEach(function (d) {
-        //
-        //     });
-        // }
-        // node.each(moveCluster(this.alpha()));
-
         node.attr("transform", (d,i,el) => {
           if (!d){
               return;
           }
+
                 d.x = clampX(d.x);
                 d.y = clampY(d.y);
 
-            return "translate(" + d.x + "," + d.y + ")";
+            return "translate(" + (d.x - d.offsetX) + "," + (d.y - d.offsetY)+ ")";
           });
 
       link
@@ -645,10 +591,6 @@ ForceDirectedGraph.prototype = {
 
             var dx = d.target.x - d.source.x,
               dy = d.target.y - d.source.y;
-
-            // if (!dx || !dy) {
-            //     return;
-            // }
 
             var type = d.type;
 
