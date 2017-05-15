@@ -294,8 +294,6 @@ ForceDirectedGraph.prototype = {
 
       this.nodeGroup.selectAll(".data-node")
           .style("opacity", function (i) {
-
-              debugger;
               return d.ref.id == i.ref.id ? 1 : 0.2;
           });
 
