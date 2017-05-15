@@ -673,12 +673,22 @@ function secondLayout(selected, isSource){   // isSource: is the selected node a
       })
       .on('mouseover', function(d) {
         if (force2.alpha()<=0.06){
-          showTip(d); 
+
+            // debugger;
+          showTip(d);
+          if (!!mutiPlanes) {
+              mutiPlanes.highlightNode(d);
+          }
+
           force2.stop()
         }
       })
       .on('mouseout', function(d) {
-        tip.hide(); 
+        tip.hide();
+
+          if (!!mutiPlanes) {
+              mutiPlanes.clearHighlightNode(d);
+          }
       });
 
       force2

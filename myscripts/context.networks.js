@@ -169,7 +169,6 @@ mutiPlanes.createNodesAndLinks = function (links) {
             sourceNode =  addedNodes[link.source.ref.id];
         }
 
-
         if (!addedNodes.hasOwnProperty(link.target.ref.id)) {
             targetNode = new Object();
             targetNode.ref = link.target.ref;
@@ -248,7 +247,7 @@ mutiPlanes.renderContextNetworks = function (contextNetworks, graphWidth, graphH
             .style("fill", "none")
             .style("stroke-width", 1);
 
-        this.myNetworks.push(this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork));
+        this.myNetworks[key] = this.renderNetwork(mySvg, graphWidth, graphHeight, tmpNetwork);
 
         mySvg.append('text')
             .attr('class', "my-network-label")
@@ -273,13 +272,7 @@ mutiPlanes.runNetwork = function (graphWidth, graphHeight) {
     }
 
     console.log("Run and display the network ");
-    for(var i=0; i< this.myNetworks.length; i++) {
-        let nw = this.myNetworks[i];
-        if (typeof nw.stop === 'function') {
-            nw.stop();
-        }
-    }
-
+    this.myNetworks = {};
     this.renderContextNetworks(this.interactionTypeNetworks, graphWidth, graphHeight, {});
     d3.select("#multi-plane-representation").append("br");
     this.renderContextNetworks(this.speciesNetworks, graphWidth, graphHeight, speciesMap);
@@ -292,6 +285,31 @@ mutiPlanes.runNetwork = function (graphWidth, graphHeight) {
     d3.select("#multi-plane-representation").append("br");
 
 
+};
+
+mutiPlanes.highlightNode = function (d) {
+
+    let nw;
+    for(let k in this.myNetworks) {
+        if (!this.myNetworks.hasOwnProperty(k)) {
+            continue;
+        }
+
+        nw = this.myNetworks[k];
+        nw.highLightNode(d);
+    }
+};
+
+mutiPlanes.clearHighlightNode = function (d) {
+    let nw;
+    for(let k in this.myNetworks) {
+        if (!this.myNetworks.hasOwnProperty(k)) {
+            continue;
+        }
+
+        nw = this.myNetworks[k];
+        nw.clearHighlight(d);
+    }
 };
 
 mutiPlanes.printNetwork = function (network) {

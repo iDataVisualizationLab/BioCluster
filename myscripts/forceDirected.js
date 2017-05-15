@@ -289,6 +289,26 @@ ForceDirectedGraph.prototype = {
         return {x: x, y: y};
     },
 
+    highLightNode: function (d) {
+      console.log("Highlight for node: " + d.ref.id);
+
+      this.nodeGroup.selectAll(".data-node")
+          .style("opacity", function (i) {
+
+              debugger;
+              return d.ref.id == i.ref.id ? 1 : 0.2;
+          });
+
+      this.linkGroup.selectAll(".link-1")
+          .style("opacity", 0.2);
+    },
+
+    clearHighlight: function (d) {
+        this.nodeGroup.selectAll(".data-node")
+            .style("opacity", 1);
+        this.linkGroup.selectAll(".link-1")
+            .style("opacity", 1);
+    },
   // update function
   drawGraph: function() {
     this.drawClusters();
