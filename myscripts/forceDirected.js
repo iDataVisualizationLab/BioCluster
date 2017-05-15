@@ -113,11 +113,14 @@ ForceDirectedGraph.prototype = {
     });
 
     let self = this;
+
+    let distanceLink = this.getLinkDistance();
+    let radius = distanceLink / 20;
     // make sure each node has its cluster
     this.nodes.forEach(function (n) {
 
         if (!n.radius) {
-            n.radius = 3;
+            n.radius = radius < 2 ? 2 : radius;
         }
 
         // if (!n.x) {
