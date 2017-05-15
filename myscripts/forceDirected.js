@@ -47,20 +47,8 @@ function ForceDirectedGraph(args) {
 
   let self = this;
 
-    var link_force =  d3.forceLink(self.links)
-            .id(function(d) {
-
-                return d.index;
-            })
-            .distance((d) => {
-
-                return 20;
-            })
-            // .strength(1)
-        ;
   // set up simulation
     this.simulation = d3.forceSimulation(self.nodes)
-        .force("links", link_force)
         .force("collision", d3.forceCollide(10))
         .force("charge", d3.forceManyBody().strength(-0.4))
         .force("center", d3.forceCenter(self.width / 2, self.height / 2))
@@ -221,8 +209,16 @@ ForceDirectedGraph.prototype = {
     this.tip = d3.select('#forceDirectedDiv').append('div').attr('id', 'tip');
   },
 
+    getLinkDistance: function () {
+      let distance = 20;
+      let self = this;
+      if (!isNaN(this.options.maxNodeCount) && this.options.maxNodeCount > 0) {
+          let min = Math.min(self.width, self.height);
+          distance = min / Math.sqrt(this.options.maxNodeCount);
+      }
 
-
+      return distance;
+    },
 
   // cluster data based on threshold(s) of influence
   defineClusters: function(alpha) {
@@ -763,8 +759,20 @@ ForceDirectedGraph.prototype = {
       }
     }
 
+
+      var link_force =  d3.forceLink(self.links)
+              .id(function(d) {
+
+                  return d.index;
+              })
+              .distance((d) => {
+                  return self.getLinkDistance();
+              })
+          // .strength(1)
+          ;
+
     self.simulation
-        // .alpha(0.4)
+        .force("links", link_force)
         .force("cluster", clustering)
         .on("tick", tick)
     ;
