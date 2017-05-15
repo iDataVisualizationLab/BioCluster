@@ -63,6 +63,8 @@ mutiPlanes.interactionTypeNetworks = {
 
 mutiPlanes.myNetworks = [];
 
+mutiPlanes.maxNodeCountPerNetwork = 0;
+
 mutiPlanes.setupContainer = function () {
     d3.select('body').select('#multi-plane-representation')
         .style("width", CONTAINER_WIDTH)
@@ -105,6 +107,8 @@ mutiPlanes.setupNetworks = function (originalNetworks, type) {
 
     var result = {};
     var singleNetwork;
+    let nodeCountForNetwork;
+
     for(var i=0; i< 5; i++) {
         if (i >= originalNetworks.length) {
             break;
@@ -113,6 +117,10 @@ mutiPlanes.setupNetworks = function (originalNetworks, type) {
         singleNetwork = originalNetworks[i];
 
         result[singleNetwork[type]] = this.createNodesAndLinks(singleNetwork.list);
+        nodeCountForNetwork = result[singleNetwork[type]].nodes.length
+        if (this.maxNodeCountPerNetwork < nodeCountForNetwork) {
+            this.maxNodeCountPerNetwork = nodeCountForNetwork;
+        }
     }
 
     return result;
@@ -321,7 +329,8 @@ mutiPlanes.printNetwork = function (network) {
          nodes: network.nodes,
          links: network.links,
          options: {
-             linkColors: getLinkColorMapping()
+             linkColors: getLinkColorMapping(),
+             maxNodeCount: this.maxNodeCountPerNetwork
          },
          ontickCallback: cb,
          simulationEndCallback: cb

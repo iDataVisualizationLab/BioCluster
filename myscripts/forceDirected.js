@@ -462,32 +462,32 @@ ForceDirectedGraph.prototype = {
 
 
     // also add text
-    text.enter().append('text')
-      .attr('class', function (d) {
-          return "rule data-text " + "text-cluster-" + d.cluster;
-
-      })
-      .attr('pointer-events','none')
-      // .attr("transform", (d, i) => {
-      //     // debugger;
-      //   return "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")";
-      // })
-        .text(function (d) {
-            return d.name;
-        })
-
-    .merge(text)
-      .text( function (d) {
-          return d.name;
-      })
-      .style('font-size', 9)
-      .style('opacity', function(d) {
-        return 1;
-      })
-    ;
-
-
-    text.exit().remove();
+    // text.enter().append('text')
+    //   .attr('class', function (d) {
+    //       return "rule data-text " + "text-cluster-" + d.cluster;
+    //
+    //   })
+    //   .attr('pointer-events','none')
+    //   // .attr("transform", (d, i) => {
+    //   //     // debugger;
+    //   //   return "translate(" + (d.x+d.radius+2) + "," + (d.y-d.radius) + ")";
+    //   // })
+    //     .text(function (d) {
+    //         return d.name;
+    //     })
+    //
+    // .merge(text)
+    //   .text( function (d) {
+    //       return d.name;
+    //   })
+    //   .style('font-size', 9)
+    //   .style('opacity', function(d) {
+    //     return 1;
+    //   })
+    // ;
+    //
+    //
+    // text.exit().remove();
   },
 
   clusterColor: function(cluster) {
@@ -580,7 +580,7 @@ ForceDirectedGraph.prototype = {
             })
         ;
     var link = this.linkGroup.selectAll(".link");
-    var text = this.nodeGroup.selectAll(".data-text");
+    // var text = this.nodeGroup.selectAll(".data-text");
 
     var cluster = this.clusterCircleGroup.selectAll(".clusterCircle");
       var clampX = d3.scaleLinear()
@@ -692,23 +692,23 @@ ForceDirectedGraph.prototype = {
         }
 
         // shift text with respect to new centroids
-        text.attr("transform", (d) => {
-            if (!d) {
-                return;
-            }
-            let centroid =  self.clusterCentroids[d.cluster];
-            let dx = d.x - centroid.x;
-            let dy = d.y - centroid.y;
-            if (!dx || !dy) {
-                return;
-            }
-            let distance = Math.sqrt(dx*dx + dy*dy);
-            let kx = dx / distance;
-            let ky = dy / distance;
-            let shiftX = kx * (d.radius + 15);
-            let shiftY = ky * (d.radius + 15);
-            return "translate(" + (d.x + shiftX) + "," + (d.y + shiftY) + ")";
-        });
+        // text.attr("transform", (d) => {
+        //     if (!d) {
+        //         return;
+        //     }
+        //     let centroid =  self.clusterCentroids[d.cluster];
+        //     let dx = d.x - centroid.x;
+        //     let dy = d.y - centroid.y;
+        //     if (!dx || !dy) {
+        //         return;
+        //     }
+        //     let distance = Math.sqrt(dx*dx + dy*dy);
+        //     let kx = dx / distance;
+        //     let ky = dy / distance;
+        //     let shiftX = kx * (d.radius + 15);
+        //     let shiftY = ky * (d.radius + 15);
+        //     return "translate(" + (d.x + shiftX) + "," + (d.y + shiftY) + ")";
+        // });
 
 
         if (!!self.ontickCallback) {
