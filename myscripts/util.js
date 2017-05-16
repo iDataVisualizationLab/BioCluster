@@ -247,25 +247,81 @@ function createLouvainCommunityNetworkFromLinks(links) {
  *
  * @param nodes
  * @param links
+ * @param options: is an object with supported keys: createNew, minNodeCount
  */
-function createLouvainCommunityNetwork(nodes, links) {
-
+function createLouvainCommunityNetwork(nodes, links, options) {
 
     let node_data = nodes.map(function (d) {return d.id});
-    let edge_data = links.map(function (d) {return {source: d.source.id, target: d.target.id, weight: 1}; });
+    let edge_data = links.map(function (d) {
+
+        let result = {source: d.source.id, target: d.target.id, weight: 1};
+        if (!!d.type) {
+            result.type = d.type;
+        }
+
+        return result;
+    });
 
     let community = jLouvain().nodes(node_data).edges(edge_data);
     let result  = community();
 
     var communityCount = 0;
     var communityMap = {};
+
+
     nodes.forEach(function (node) {
         node.community = result[node.id];
         if (!communityMap.hasOwnProperty(node.community)) {
-            communityMap[node.community] = true;
+            communityMap[node.community] = 1;
             communityCount ++;
         }
+        else {
+            communityMap[node.community] ++;
+        }
     });
+
+    // remove nodes and links
+    if (!!options && !!options.minNodeCount && options.minNodeCount > 0) {
+        nodes = nodes.filter(function (n) {
+            return communityMap[n.community] >= options.minNodeCount;
+        });
+
+        links = links.filter(function (l) {
+
+            let source = l.source;
+            let target = l.target;
+
+           return communityMap[source.community] >= options.minNodeCount && communityMap[target.community] >= options.minNodeCount;
+        });
+
+        communityCount = 0;
+        for(let k in communityMap) {
+            if (!communityMap.hasOwnProperty(k)) {
+                continue;
+            }
+
+            if (communityMap[k] >= options.minNodeCount) {
+                communityCount ++;
+            }
+        }
+    }
+
+    // create new arrays
+    if (!!options && !!options.createNew) {
+        nodes = nodes.map(function (d) {
+            return { id: d.id, community: d.community} ;
+        });
+
+        links = links.map(function (d) {
+
+            let result = {source: d.source.id, target: d.target.id, weight: 1};
+            if (!!d.type) {
+                result.type = d.type;
+            }
+
+            return result;
+        });
+    }
 
     return {nodes: nodes, links: links, communityCount: communityCount};
 }
