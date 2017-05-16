@@ -214,6 +214,34 @@ function isNumeric(n) {
 
 
 /**
+ *
+ * @param links is an array of object { source: {id: 1}, target: {id: 2} }
+ */
+function createLouvainCommunityNetworkFromLinks(links) {
+
+    let myLink;
+    let existNodes = {};
+    let nodes = [];
+    let tmpNode;
+    for(let i=0; i< links.length; i++) {
+        myLink = links[i];
+        tmpNode = myLink.source;
+        if (!existNodes.hasOwnProperty(tmpNode.id)) {
+            existNodes[tmpNode.id] = true;
+            nodes.push(tmpNode);
+        }
+
+        tmpNode = myLink.target;
+        if (!existNodes.hasOwnProperty(tmpNode.id)) {
+            existNodes[tmpNode.id] = true;
+            nodes.push(tmpNode);
+        }
+    }
+
+    return createLouvainCommunityNetwork(nodes, links);
+}
+
+/**
  * links is an array of object with structure {source: {id: 1}, target: {id: 2}, weight}
  * nodes is optional. This is an array of object with structure {id: 1}
  *
