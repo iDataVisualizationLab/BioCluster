@@ -212,3 +212,32 @@ function isNumeric(n) {
     return !isNaN(parseFloat(n)) && isFinite(n);
 }
 
+
+/**
+ * links is an array of object with structure {source: {id: 1}, target: {id: 2}, weight}
+ * nodes is optional. This is an array of object with structure {id: 1}
+ *
+ * @param nodes
+ * @param links
+ */
+function createLouvainCommunityNetwork(nodes, links) {
+
+
+    let node_data = nodes.map(function (d) {return d.id});
+    let edge_data = links.map(function (d) {return {source: d.source.id, target: d.target.id, weight: 1}; });
+
+    let community = jLouvain().nodes(node_data).edges(edge_data);
+    let result  = community();
+
+    var communityCount = 0;
+    var communityMap = {};
+    nodes.forEach(function (node) {
+        node.community = result[node.id];
+        if (!communityMap.hasOwnProperty(node.community)) {
+            communityMap[node.community] = true;
+            communityCount ++;
+        }
+    });
+
+    return {nodes: nodes, links: links, communityCount: communityCount};
+}
