@@ -49,7 +49,6 @@ function ForceDirectedGraph(args) {
 
   // set up simulation
     this.simulation = d3.forceSimulation(self.nodes)
-        .force("collision", d3.forceCollide(5))
         .force("charge", d3.forceManyBody().strength(-0.4))
         .force("center", d3.forceCenter(self.width / 2, self.height / 2))
     ;
@@ -114,13 +113,12 @@ ForceDirectedGraph.prototype = {
 
     let self = this;
 
-    let distanceLink = this.getLinkDistance();
-    let radius = distanceLink / 10;
+    let radius = this.getNodeRadius();
     // make sure each node has its cluster
     this.nodes.forEach(function (n) {
 
         if (!n.radius) {
-            n.radius = radius < 2 ? 2 : radius;
+            n.radius = radius;
         }
 
         // if (!n.x) {
@@ -221,6 +219,11 @@ ForceDirectedGraph.prototype = {
       }
 
       return distance * 0.8;
+    },
+
+    getNodeRadius: function () {
+        let radius = this.getLinkDistance() / 10;
+      return radius < 2 ? 2 : radius;
     },
 
   // cluster data based on threshold(s) of influence
@@ -612,7 +615,9 @@ ForceDirectedGraph.prototype = {
 
       node.exit().remove();
 
-    function tick() {
+      var circlePadding = self.getNodeRadius() + 2;
+
+      function tick() {
         // function moveCluster(alpha) {
         //     nodeArr.forEach(function (d) {
         //
@@ -686,8 +691,6 @@ ForceDirectedGraph.prototype = {
            // return d.radius;
           var x = Number(d3.select(this).attr("cx"));
           var y = Number(d3.select(this).attr("cy"));
-
-          var circlePadding = 2;
 
           var radius = d3.max(d, (node) => {
             return Math.sqrt(Math.pow((node.x - x), 2) + Math.pow((node.y - y), 2));
@@ -794,6 +797,7 @@ ForceDirectedGraph.prototype = {
 
     self.simulation
         .force("links", link_force)
+        .force("collision", d3.forceCollide(self.getNodeRadius() + 3))
         .force("cluster", clustering)
         .on("tick", tick)
     ;
