@@ -398,8 +398,8 @@ d3.json("data/cardsWithContextData.json", function(error, data_) {
     .enter().append("line")
       .attr("class", "link-overview")
       .style("stroke", '#000000')
-      .style("stroke-opacity", 0.4)
-      .style("stroke-width", 1);
+      .style("stroke-opacity", 0.1)
+      .style("stroke-width", 0.7);
 
     var colorFunction = d3.scaleOrdinal(d3.schemeCategory10);
     var node = svgOverview.selectAll(".node-overview")
